@@ -1,0 +1,10 @@
+__pycache__/
+*.py[cod]
+*.egg-info/
+cookies/
+cookiesFile/
+logs/
+qrcode.png
+verify_code.txt
+*.log
+debug_*.png

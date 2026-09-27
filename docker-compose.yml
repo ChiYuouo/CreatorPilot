@@ -1,0 +1,76 @@
+name: creatorpilot-cloud
+
+services:
+  postgres:
+    image: postgres:16-alpine
+    restart: unless-stopped
+    environment:
+      POSTGRES_USER: creatorpilot
+      POSTGRES_PASSWORD: creatorpilot
+      POSTGRES_DB: creatorpilot
+    ports:
+      - "127.0.0.1:5433:5432"
+    volumes:
+      - pgdata:/var/lib/postgresql/data
+    healthcheck:
+      test: ["CMD-SHELL", "pg_isready -U creatorpilot"]
+      interval: 5s
+      timeout: 3s
+      retries: 10
+
+  redis:
+    image: redis:7-alpine
+    restart: unless-stopped
+    ports:
+      - "127.0.0.1:6380:6379"
+    volumes:
+      - redisdata:/data
+    command: redis-server --appendonly yes
+    healthcheck:
+      test: ["CMD", "redis-cli", "ping"]
+      interval: 5s
+      timeout: 3s
+      retries: 10
+
+  # API、前端和可见浏览器发布 Worker 在 Windows 本机运行。
+  worker:
+    build: ./backend
+    image: creatorpilot-automation:latest
+    profiles: ["automation"]
+    restart: unless-stopped
+    command: celery -A app.tasks.celery_app:celery_app worker --loglevel=info -Q celery --concurrency=2
+    environment:
+      DATABASE_URL: postgresql+asyncpg://creatorpilot:creatorpilot@postgres:5432/creatorpilot
+      REDIS_URL: redis://redis:6379/0
+      LLM_BASE_URL: ${LLM_BASE_URL:-https://api.deepseek.com/v1}
+      LLM_API_KEY: ${LLM_API_KEY:-}
+      LLM_MODEL: ${LLM_MODEL:-deepseek-chat}
+      LLM_TIMEOUT_SECONDS: ${LLM_TIMEOUT_SECONDS:-120}
+      METRICS_SYNC_TIMEOUT_SECONDS: ${METRICS_SYNC_TIMEOUT_SECONDS:-180}
+    depends_on:
+      postgres:
+        condition: service_healthy
+      redis:
+        condition: service_healthy
+
+  beat:
+    build: ./backend
+    image: creatorpilot-automation:latest
+    profiles: ["automation"]
+    restart: unless-stopped
+    command: celery -A app.tasks.celery_app:celery_app beat --loglevel=info --schedule=/app/.local/celerybeat-schedule
+    environment:
+      DATABASE_URL: postgresql+asyncpg://creatorpilot:creatorpilot@postgres:5432/creatorpilot
+      REDIS_URL: redis://redis:6379/0
+    volumes:
+      - beatdata:/app/.local
+    depends_on:
+      postgres:
+        condition: service_healthy
+      redis:
+        condition: service_healthy
+
+volumes:
+  pgdata:
+  redisdata:
+  beatdata:

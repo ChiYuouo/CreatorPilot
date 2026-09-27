@@ -1,0 +1,16 @@
+.venv/
+.venv-publish/
+.env
+.env.*
+.local/
+build/
+dist/
+vendor/
+tests/
+__pycache__/
+**/__pycache__/
+*.py[cod]
+**/*.egg-info/
+.pytest_cache/
+.mypy_cache/
+qrcode.png

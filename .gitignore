@@ -1,0 +1,45 @@
+# Python 缓存与虚拟环境
+__pycache__/
+*.py[cod]
+*.egg-info/
+build/
+.venv/
+.venv-publish/
+.local/
+.pytest_cache/
+.mypy_cache/
+
+# Node.js 依赖与构建产物
+node_modules/
+dist/
+
+# 环境配置文件
+.env
+.env.*
+!.env.example
+!.env.*.example
+
+# 运行数据与登录凭据
+cookies/
+cookiesFile/
+logs/
+*.log
+celerybeat-schedule*
+qrcode.png
+verify_code.txt
+debug_*.png
+*.sqlite
+*.sqlite3
+*.db
+*.dump
+*.bak
+coverage.xml
+.coverage
+htmlcov/
+.ruff_cache/
+
+# 编辑器与操作系统文件
+.idea/
+.vscode/
+.DS_Store
+Thumbs.db
