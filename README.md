@@ -1,10 +1,19 @@
 # CreatorPilot
 
+[![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](LICENSE)
+[![GitHub Stars](https://img.shields.io/github/stars/ChiYuouo/CreatorPilot?style=social)](https://github.com/ChiYuouo/CreatorPilot/stargazers)
+[![GitHub Forks](https://img.shields.io/github/forks/ChiYuouo/CreatorPilot?style=social)](https://github.com/ChiYuouo/CreatorPilot/network/members)
+[![GitHub Issues](https://img.shields.io/github/issues/ChiYuouo/CreatorPilot)](https://github.com/ChiYuouo/CreatorPilot/issues)
+[![Python](https://img.shields.io/badge/Python-3.12-blue.svg)](https://www.python.org/downloads/)
+[![AI Built](https://img.shields.io/badge/AI%20Built-95%25-brightgreen.svg)](https://github.com/ChiYuouo/CreatorPilot)
+
+**🤖 本项目 95% 的代码由 AI 辅助完成，使用 GPT 6作为核心开发助手。包括GitHub仓库创建、代码提交、开源发布等全部流程均由AI辅助完成。**
+
 AI 内容运营平台，将内容创作、素材管理、多账号发布和运营分析集中在一个工作台中。
 
-当前版本：**v1.0.0**。
+当前版本：**v1.0**。
 
-[功能](#功能) · [快速开始](#快速开始) · [配置](#配置) · [开发指南](DEVELOPMENT.md) · [常见问题](#常见问题)
+[功能](#功能) · [界面展示](#界面展示) · [快速开始](#快速开始) · [配置](#配置) · [开发指南](DEVELOPMENT.md) · [常见问题](#常见问题)
 
 ## 功能
 
@@ -15,6 +24,69 @@ AI 内容运营平台，将内容创作、素材管理、多账号发布和运�
 - **每周自动化**：定时同步指标、生成报告，支持先同步再分析。
 
 目前接入抖音、快手、小红书、视频号和 B 站。各平台的发布类型、预约和采集能力以页面说明为准，部分流程仍需真实账号验收。上传器返回“已提交”后，请到平台确认作品是否公开。
+
+## 界面展示
+
+前端采用简洁的黑白配色、侧边导航与卡片布局，将创作、素材、发布和复盘集中在同一工作台。
+
+以下截图来自本机运行的 v1.0。AI 文案为真实对话生成结果；发布与自动化配置为未提交的操作示例。新账号尚未绑定平台、上传素材或产生发布数据，因此部分页面展示初始空状态。
+
+### 运营总览
+
+集中查看账号、素材、执行中任务和待处理事项，通过工作流入口进入创作、发布与分析。
+
+![运营仪表盘：统计卡片、任务概览与工作流入口](docs/screenshots/overview.png)
+
+### AI 运营助手
+
+输入创作需求，生成标题、正文、话题标签和运营建议。示例展示“周末城市漫游”文案创作与会话管理。
+
+![AI 运营助手：真实提问与生成的标题、文案](docs/screenshots/ai-assistant.png)
+
+### 多平台发布
+
+使用流程：绑定账号 → 上传素材 → 选择平台与账号 → 填写标题、正文和标签 → 选择立即发布或平台预约 → 查看任务记录。
+
+![发布工作台：平台多选、账号与素材选择、作品信息填写](docs/screenshots/publishing.png)
+
+<details>
+<summary>查看预约发布与其他功能页面</summary>
+
+#### 平台预约
+
+选择日期与时间，将素材上传并向平台提交预约；提交后在任务记录中核实结果。
+
+![平台预约：日期时间选择与发布任务记录](docs/screenshots/publishing-schedule.png)
+
+#### 每周自动化
+
+配置任务类型、执行星期、时间与时区，可选择先同步最新指标再生成分析报告。
+
+![自动化任务：每周执行计划与先同步再分析设置](docs/screenshots/automation.png)
+
+#### 素材管理
+
+集中上传、搜索和筛选图片与视频，已有素材可在发布中心选择使用。
+
+![素材库：上传入口、类型筛选与搜索](docs/screenshots/media-library.png)
+
+#### 平台账号
+
+选择抖音、快手、小红书、视频号或 B 站，按页面提示完成账号绑定。
+
+![账号绑定：支持的平台选择](docs/screenshots/platform-accounts.png)
+
+#### 运营分析
+
+绑定账号并收录作品后，可同步平台指标、生成批量报告，查看同步记录和分析历史。
+
+![数据分析：平台同步、批量报告与已发布内容入口](docs/screenshots/analytics.png)
+
+#### 登录入口
+
+![登录页面：CreatorPilot 内容运营工作台入口](docs/screenshots/login.png)
+
+</details>
 
 ## 技术栈与运行方式
 
