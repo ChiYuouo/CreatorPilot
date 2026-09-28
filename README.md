@@ -33,7 +33,7 @@ AI 内容运营平台，将内容创作、素材管理、多账号发布和运�
 
 ### 动画演示
 
-[[点击查看演示视频](docs/video/CreatorPilot-intro.mp4)](https://github.com/user-attachments/assets/e7eb28a6-ac0c-4fe9-8619-73ed195c9ce0)
+https://github.com/user-attachments/assets/e7eb28a6-ac0c-4fe9-8619-73ed195c9ce0
 
 ### 运营总览
 
