@@ -44,7 +44,17 @@ def _parse_route(resp: LLMResponse) -> tuple[str, str, bool, bool, bool] | None:
         data = json.loads(match.group(0))
     except json.JSONDecodeError:
         return None
-    if not isinstance(data, dict) or data.get("route") not in _VALID_ROUTES:
+    if not isinstance(data, dict):
+        return None
+
+    route = data.get("route")
+
+    # 类型不符合要求，按解析失败处理
+    if not isinstance(route, str):
+        return None
+
+    # 字符串合法，但不是支持的路由
+    if route not in _VALID_ROUTES:
         return None
     return (str(data["route"]), str(data.get("reason", ""))[:50],
             data["route"] == ROUTE_OPERATIONS_AGENT and data.get("allow_publish") is True,

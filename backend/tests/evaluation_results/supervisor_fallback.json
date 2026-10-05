@@ -1,0 +1,2308 @@
+{
+  "evaluated_at": "2026-10-05T15:16:58.235038+08:00",
+  "scope": "真实 Supervisor 节点与预设模型响应；不评测语义准确率或服务层异常处理",
+  "python_version": "3.12.10",
+  "git_head": "2d3503c04c9e721310c8116d46040b7b9cf0b619",
+  "source_sha256": {
+    "app/agents/supervisor.py": "02b1d819ea868a4b4a3e17eb5fce81811a3b87a5713cf8397711139ed61cf384",
+    "app/agents/events.py": "e3a4f52771d5eba1ba25297eb6f77e21e34be9f023fc97f77090f3633f5f750f",
+    "tests/evaluate_supervisor_fallback.py": "0d5a1898c169dedf0a2817c36fccae7f730c7810085bc25caaf856b235771fc4"
+  },
+  "summary": {
+    "total": 50,
+    "passed": 50,
+    "failed": 0,
+    "pass_rate": 1.0,
+    "categories": {
+      "llm_error_propagation": {
+        "total": 2,
+        "passed": 2,
+        "pass_rate": 1.0
+      },
+      "malformed_fallback": {
+        "total": 17,
+        "passed": 17,
+        "pass_rate": 1.0
+      },
+      "normal_routing": {
+        "total": 3,
+        "passed": 3,
+        "pass_rate": 1.0
+      },
+      "permission_guard": {
+        "total": 9,
+        "passed": 9,
+        "pass_rate": 1.0
+      },
+      "retry_recovery": {
+        "total": 19,
+        "passed": 19,
+        "pass_rate": 1.0
+      }
+    },
+    "failed_case_ids": []
+  },
+  "cases": [
+    {
+      "id": "retry_empty",
+      "category": "retry_recovery",
+      "injected_responses": [
+        "",
+        "{\"route\": \"content_agent\"}"
+      ],
+      "expected": {
+        "route": "content_agent",
+        "allow_publish": false,
+        "allow_analysis": false,
+        "allow_automation": false
+      },
+      "expected_calls": 2,
+      "actual_calls": 2,
+      "actual": {
+        "route": "content_agent",
+        "allow_publish": false,
+        "allow_analysis": false,
+        "allow_automation": false
+      },
+      "error": null,
+      "events": [
+        {
+          "type": "stage",
+          "stage": "supervisor",
+          "status": "start"
+        },
+        {
+          "type": "stage",
+          "stage": "supervisor",
+          "status": "done",
+          "route": "content_agent",
+          "reason": ""
+        }
+      ],
+      "checks": {
+        "call_count": true,
+        "first_call_json_mode": true,
+        "retry_regular_mode": true,
+        "retry_hint_added": true,
+        "expected_state": true,
+        "stage_events": true
+      },
+      "passed": true
+    },
+    {
+      "id": "fallback_empty",
+      "category": "malformed_fallback",
+      "injected_responses": [
+        "",
+        ""
+      ],
+      "expected": {
+        "route": "direct_reply",
+        "allow_publish": false,
+        "allow_analysis": false,
+        "allow_automation": false
+      },
+      "expected_calls": 2,
+      "actual_calls": 2,
+      "actual": {
+        "route": "direct_reply",
+        "allow_publish": false,
+        "allow_analysis": false,
+        "allow_automation": false
+      },
+      "error": null,
+      "events": [
+        {
+          "type": "stage",
+          "stage": "supervisor",
+          "status": "start"
+        },
+        {
+          "type": "stage",
+          "stage": "supervisor",
+          "status": "done",
+          "route": "direct_reply",
+          "reason": "Supervisor 决策输出无法解析，降级为通用对话"
+        }
+      ],
+      "checks": {
+        "call_count": true,
+        "first_call_json_mode": true,
+        "retry_regular_mode": true,
+        "retry_hint_added": true,
+        "expected_state": true,
+        "stage_events": true
+      },
+      "passed": true
+    },
+    {
+      "id": "retry_null_content",
+      "category": "retry_recovery",
+      "injected_responses": [
+        null,
+        "{\"route\": \"content_agent\"}"
+      ],
+      "expected": {
+        "route": "content_agent",
+        "allow_publish": false,
+        "allow_analysis": false,
+        "allow_automation": false
+      },
+      "expected_calls": 2,
+      "actual_calls": 2,
+      "actual": {
+        "route": "content_agent",
+        "allow_publish": false,
+        "allow_analysis": false,
+        "allow_automation": false
+      },
+      "error": null,
+      "events": [
+        {
+          "type": "stage",
+          "stage": "supervisor",
+          "status": "start"
+        },
+        {
+          "type": "stage",
+          "stage": "supervisor",
+          "status": "done",
+          "route": "content_agent",
+          "reason": ""
+        }
+      ],
+      "checks": {
+        "call_count": true,
+        "first_call_json_mode": true,
+        "retry_regular_mode": true,
+        "retry_hint_added": true,
+        "expected_state": true,
+        "stage_events": true
+      },
+      "passed": true
+    },
+    {
+      "id": "fallback_null_content",
+      "category": "malformed_fallback",
+      "injected_responses": [
+        null,
+        null
+      ],
+      "expected": {
+        "route": "direct_reply",
+        "allow_publish": false,
+        "allow_analysis": false,
+        "allow_automation": false
+      },
+      "expected_calls": 2,
+      "actual_calls": 2,
+      "actual": {
+        "route": "direct_reply",
+        "allow_publish": false,
+        "allow_analysis": false,
+        "allow_automation": false
+      },
+      "error": null,
+      "events": [
+        {
+          "type": "stage",
+          "stage": "supervisor",
+          "status": "start"
+        },
+        {
+          "type": "stage",
+          "stage": "supervisor",
+          "status": "done",
+          "route": "direct_reply",
+          "reason": "Supervisor 决策输出无法解析，降级为通用对话"
+        }
+      ],
+      "checks": {
+        "call_count": true,
+        "first_call_json_mode": true,
+        "retry_regular_mode": true,
+        "retry_hint_added": true,
+        "expected_state": true,
+        "stage_events": true
+      },
+      "passed": true
+    },
+    {
+      "id": "retry_plain_text",
+      "category": "retry_recovery",
+      "injected_responses": [
+        "I have published it",
+        "{\"route\": \"content_agent\"}"
+      ],
+      "expected": {
+        "route": "content_agent",
+        "allow_publish": false,
+        "allow_analysis": false,
+        "allow_automation": false
+      },
+      "expected_calls": 2,
+      "actual_calls": 2,
+      "actual": {
+        "route": "content_agent",
+        "allow_publish": false,
+        "allow_analysis": false,
+        "allow_automation": false
+      },
+      "error": null,
+      "events": [
+        {
+          "type": "stage",
+          "stage": "supervisor",
+          "status": "start"
+        },
+        {
+          "type": "stage",
+          "stage": "supervisor",
+          "status": "done",
+          "route": "content_agent",
+          "reason": ""
+        }
+      ],
+      "checks": {
+        "call_count": true,
+        "first_call_json_mode": true,
+        "retry_regular_mode": true,
+        "retry_hint_added": true,
+        "expected_state": true,
+        "stage_events": true
+      },
+      "passed": true
+    },
+    {
+      "id": "fallback_plain_text",
+      "category": "malformed_fallback",
+      "injected_responses": [
+        "I have published it",
+        "I have published it"
+      ],
+      "expected": {
+        "route": "direct_reply",
+        "allow_publish": false,
+        "allow_analysis": false,
+        "allow_automation": false
+      },
+      "expected_calls": 2,
+      "actual_calls": 2,
+      "actual": {
+        "route": "direct_reply",
+        "allow_publish": false,
+        "allow_analysis": false,
+        "allow_automation": false
+      },
+      "error": null,
+      "events": [
+        {
+          "type": "stage",
+          "stage": "supervisor",
+          "status": "start"
+        },
+        {
+          "type": "stage",
+          "stage": "supervisor",
+          "status": "done",
+          "route": "direct_reply",
+          "reason": "Supervisor 决策输出无法解析，降级为通用对话"
+        }
+      ],
+      "checks": {
+        "call_count": true,
+        "first_call_json_mode": true,
+        "retry_regular_mode": true,
+        "retry_hint_added": true,
+        "expected_state": true,
+        "stage_events": true
+      },
+      "passed": true
+    },
+    {
+      "id": "retry_truncated_json",
+      "category": "retry_recovery",
+      "injected_responses": [
+        "{\"route\":",
+        "{\"route\": \"content_agent\"}"
+      ],
+      "expected": {
+        "route": "content_agent",
+        "allow_publish": false,
+        "allow_analysis": false,
+        "allow_automation": false
+      },
+      "expected_calls": 2,
+      "actual_calls": 2,
+      "actual": {
+        "route": "content_agent",
+        "allow_publish": false,
+        "allow_analysis": false,
+        "allow_automation": false
+      },
+      "error": null,
+      "events": [
+        {
+          "type": "stage",
+          "stage": "supervisor",
+          "status": "start"
+        },
+        {
+          "type": "stage",
+          "stage": "supervisor",
+          "status": "done",
+          "route": "content_agent",
+          "reason": ""
+        }
+      ],
+      "checks": {
+        "call_count": true,
+        "first_call_json_mode": true,
+        "retry_regular_mode": true,
+        "retry_hint_added": true,
+        "expected_state": true,
+        "stage_events": true
+      },
+      "passed": true
+    },
+    {
+      "id": "fallback_truncated_json",
+      "category": "malformed_fallback",
+      "injected_responses": [
+        "{\"route\":",
+        "{\"route\":"
+      ],
+      "expected": {
+        "route": "direct_reply",
+        "allow_publish": false,
+        "allow_analysis": false,
+        "allow_automation": false
+      },
+      "expected_calls": 2,
+      "actual_calls": 2,
+      "actual": {
+        "route": "direct_reply",
+        "allow_publish": false,
+        "allow_analysis": false,
+        "allow_automation": false
+      },
+      "error": null,
+      "events": [
+        {
+          "type": "stage",
+          "stage": "supervisor",
+          "status": "start"
+        },
+        {
+          "type": "stage",
+          "stage": "supervisor",
+          "status": "done",
+          "route": "direct_reply",
+          "reason": "Supervisor 决策输出无法解析，降级为通用对话"
+        }
+      ],
+      "checks": {
+        "call_count": true,
+        "first_call_json_mode": true,
+        "retry_regular_mode": true,
+        "retry_hint_added": true,
+        "expected_state": true,
+        "stage_events": true
+      },
+      "passed": true
+    },
+    {
+      "id": "retry_missing_route",
+      "category": "retry_recovery",
+      "injected_responses": [
+        "{\"allow_publish\":true}",
+        "{\"route\": \"content_agent\"}"
+      ],
+      "expected": {
+        "route": "content_agent",
+        "allow_publish": false,
+        "allow_analysis": false,
+        "allow_automation": false
+      },
+      "expected_calls": 2,
+      "actual_calls": 2,
+      "actual": {
+        "route": "content_agent",
+        "allow_publish": false,
+        "allow_analysis": false,
+        "allow_automation": false
+      },
+      "error": null,
+      "events": [
+        {
+          "type": "stage",
+          "stage": "supervisor",
+          "status": "start"
+        },
+        {
+          "type": "stage",
+          "stage": "supervisor",
+          "status": "done",
+          "route": "content_agent",
+          "reason": ""
+        }
+      ],
+      "checks": {
+        "call_count": true,
+        "first_call_json_mode": true,
+        "retry_regular_mode": true,
+        "retry_hint_added": true,
+        "expected_state": true,
+        "stage_events": true
+      },
+      "passed": true
+    },
+    {
+      "id": "fallback_missing_route",
+      "category": "malformed_fallback",
+      "injected_responses": [
+        "{\"allow_publish\":true}",
+        "{\"allow_publish\":true}"
+      ],
+      "expected": {
+        "route": "direct_reply",
+        "allow_publish": false,
+        "allow_analysis": false,
+        "allow_automation": false
+      },
+      "expected_calls": 2,
+      "actual_calls": 2,
+      "actual": {
+        "route": "direct_reply",
+        "allow_publish": false,
+        "allow_analysis": false,
+        "allow_automation": false
+      },
+      "error": null,
+      "events": [
+        {
+          "type": "stage",
+          "stage": "supervisor",
+          "status": "start"
+        },
+        {
+          "type": "stage",
+          "stage": "supervisor",
+          "status": "done",
+          "route": "direct_reply",
+          "reason": "Supervisor 决策输出无法解析，降级为通用对话"
+        }
+      ],
+      "checks": {
+        "call_count": true,
+        "first_call_json_mode": true,
+        "retry_regular_mode": true,
+        "retry_hint_added": true,
+        "expected_state": true,
+        "stage_events": true
+      },
+      "passed": true
+    },
+    {
+      "id": "retry_unknown_route",
+      "category": "retry_recovery",
+      "injected_responses": [
+        "{\"route\": \"unknown_agent\"}",
+        "{\"route\": \"content_agent\"}"
+      ],
+      "expected": {
+        "route": "content_agent",
+        "allow_publish": false,
+        "allow_analysis": false,
+        "allow_automation": false
+      },
+      "expected_calls": 2,
+      "actual_calls": 2,
+      "actual": {
+        "route": "content_agent",
+        "allow_publish": false,
+        "allow_analysis": false,
+        "allow_automation": false
+      },
+      "error": null,
+      "events": [
+        {
+          "type": "stage",
+          "stage": "supervisor",
+          "status": "start"
+        },
+        {
+          "type": "stage",
+          "stage": "supervisor",
+          "status": "done",
+          "route": "content_agent",
+          "reason": ""
+        }
+      ],
+      "checks": {
+        "call_count": true,
+        "first_call_json_mode": true,
+        "retry_regular_mode": true,
+        "retry_hint_added": true,
+        "expected_state": true,
+        "stage_events": true
+      },
+      "passed": true
+    },
+    {
+      "id": "fallback_unknown_route",
+      "category": "malformed_fallback",
+      "injected_responses": [
+        "{\"route\": \"unknown_agent\"}",
+        "{\"route\": \"unknown_agent\"}"
+      ],
+      "expected": {
+        "route": "direct_reply",
+        "allow_publish": false,
+        "allow_analysis": false,
+        "allow_automation": false
+      },
+      "expected_calls": 2,
+      "actual_calls": 2,
+      "actual": {
+        "route": "direct_reply",
+        "allow_publish": false,
+        "allow_analysis": false,
+        "allow_automation": false
+      },
+      "error": null,
+      "events": [
+        {
+          "type": "stage",
+          "stage": "supervisor",
+          "status": "start"
+        },
+        {
+          "type": "stage",
+          "stage": "supervisor",
+          "status": "done",
+          "route": "direct_reply",
+          "reason": "Supervisor 决策输出无法解析，降级为通用对话"
+        }
+      ],
+      "checks": {
+        "call_count": true,
+        "first_call_json_mode": true,
+        "retry_regular_mode": true,
+        "retry_hint_added": true,
+        "expected_state": true,
+        "stage_events": true
+      },
+      "passed": true
+    },
+    {
+      "id": "retry_null_route",
+      "category": "retry_recovery",
+      "injected_responses": [
+        "{\"route\": null}",
+        "{\"route\": \"content_agent\"}"
+      ],
+      "expected": {
+        "route": "content_agent",
+        "allow_publish": false,
+        "allow_analysis": false,
+        "allow_automation": false
+      },
+      "expected_calls": 2,
+      "actual_calls": 2,
+      "actual": {
+        "route": "content_agent",
+        "allow_publish": false,
+        "allow_analysis": false,
+        "allow_automation": false
+      },
+      "error": null,
+      "events": [
+        {
+          "type": "stage",
+          "stage": "supervisor",
+          "status": "start"
+        },
+        {
+          "type": "stage",
+          "stage": "supervisor",
+          "status": "done",
+          "route": "content_agent",
+          "reason": ""
+        }
+      ],
+      "checks": {
+        "call_count": true,
+        "first_call_json_mode": true,
+        "retry_regular_mode": true,
+        "retry_hint_added": true,
+        "expected_state": true,
+        "stage_events": true
+      },
+      "passed": true
+    },
+    {
+      "id": "fallback_null_route",
+      "category": "malformed_fallback",
+      "injected_responses": [
+        "{\"route\": null}",
+        "{\"route\": null}"
+      ],
+      "expected": {
+        "route": "direct_reply",
+        "allow_publish": false,
+        "allow_analysis": false,
+        "allow_automation": false
+      },
+      "expected_calls": 2,
+      "actual_calls": 2,
+      "actual": {
+        "route": "direct_reply",
+        "allow_publish": false,
+        "allow_analysis": false,
+        "allow_automation": false
+      },
+      "error": null,
+      "events": [
+        {
+          "type": "stage",
+          "stage": "supervisor",
+          "status": "start"
+        },
+        {
+          "type": "stage",
+          "stage": "supervisor",
+          "status": "done",
+          "route": "direct_reply",
+          "reason": "Supervisor 决策输出无法解析，降级为通用对话"
+        }
+      ],
+      "checks": {
+        "call_count": true,
+        "first_call_json_mode": true,
+        "retry_regular_mode": true,
+        "retry_hint_added": true,
+        "expected_state": true,
+        "stage_events": true
+      },
+      "passed": true
+    },
+    {
+      "id": "retry_array_route",
+      "category": "retry_recovery",
+      "injected_responses": [
+        "{\"route\": []}",
+        "{\"route\": \"content_agent\"}"
+      ],
+      "expected": {
+        "route": "content_agent",
+        "allow_publish": false,
+        "allow_analysis": false,
+        "allow_automation": false
+      },
+      "expected_calls": 2,
+      "actual_calls": 2,
+      "actual": {
+        "route": "content_agent",
+        "allow_publish": false,
+        "allow_analysis": false,
+        "allow_automation": false
+      },
+      "error": null,
+      "events": [
+        {
+          "type": "stage",
+          "stage": "supervisor",
+          "status": "start"
+        },
+        {
+          "type": "stage",
+          "stage": "supervisor",
+          "status": "done",
+          "route": "content_agent",
+          "reason": ""
+        }
+      ],
+      "checks": {
+        "call_count": true,
+        "first_call_json_mode": true,
+        "retry_regular_mode": true,
+        "retry_hint_added": true,
+        "expected_state": true,
+        "stage_events": true
+      },
+      "passed": true
+    },
+    {
+      "id": "fallback_array_route",
+      "category": "malformed_fallback",
+      "injected_responses": [
+        "{\"route\": []}",
+        "{\"route\": []}"
+      ],
+      "expected": {
+        "route": "direct_reply",
+        "allow_publish": false,
+        "allow_analysis": false,
+        "allow_automation": false
+      },
+      "expected_calls": 2,
+      "actual_calls": 2,
+      "actual": {
+        "route": "direct_reply",
+        "allow_publish": false,
+        "allow_analysis": false,
+        "allow_automation": false
+      },
+      "error": null,
+      "events": [
+        {
+          "type": "stage",
+          "stage": "supervisor",
+          "status": "start"
+        },
+        {
+          "type": "stage",
+          "stage": "supervisor",
+          "status": "done",
+          "route": "direct_reply",
+          "reason": "Supervisor 决策输出无法解析，降级为通用对话"
+        }
+      ],
+      "checks": {
+        "call_count": true,
+        "first_call_json_mode": true,
+        "retry_regular_mode": true,
+        "retry_hint_added": true,
+        "expected_state": true,
+        "stage_events": true
+      },
+      "passed": true
+    },
+    {
+      "id": "retry_object_route",
+      "category": "retry_recovery",
+      "injected_responses": [
+        "{\"route\": {}}",
+        "{\"route\": \"content_agent\"}"
+      ],
+      "expected": {
+        "route": "content_agent",
+        "allow_publish": false,
+        "allow_analysis": false,
+        "allow_automation": false
+      },
+      "expected_calls": 2,
+      "actual_calls": 2,
+      "actual": {
+        "route": "content_agent",
+        "allow_publish": false,
+        "allow_analysis": false,
+        "allow_automation": false
+      },
+      "error": null,
+      "events": [
+        {
+          "type": "stage",
+          "stage": "supervisor",
+          "status": "start"
+        },
+        {
+          "type": "stage",
+          "stage": "supervisor",
+          "status": "done",
+          "route": "content_agent",
+          "reason": ""
+        }
+      ],
+      "checks": {
+        "call_count": true,
+        "first_call_json_mode": true,
+        "retry_regular_mode": true,
+        "retry_hint_added": true,
+        "expected_state": true,
+        "stage_events": true
+      },
+      "passed": true
+    },
+    {
+      "id": "fallback_object_route",
+      "category": "malformed_fallback",
+      "injected_responses": [
+        "{\"route\": {}}",
+        "{\"route\": {}}"
+      ],
+      "expected": {
+        "route": "direct_reply",
+        "allow_publish": false,
+        "allow_analysis": false,
+        "allow_automation": false
+      },
+      "expected_calls": 2,
+      "actual_calls": 2,
+      "actual": {
+        "route": "direct_reply",
+        "allow_publish": false,
+        "allow_analysis": false,
+        "allow_automation": false
+      },
+      "error": null,
+      "events": [
+        {
+          "type": "stage",
+          "stage": "supervisor",
+          "status": "start"
+        },
+        {
+          "type": "stage",
+          "stage": "supervisor",
+          "status": "done",
+          "route": "direct_reply",
+          "reason": "Supervisor 决策输出无法解析，降级为通用对话"
+        }
+      ],
+      "checks": {
+        "call_count": true,
+        "first_call_json_mode": true,
+        "retry_regular_mode": true,
+        "retry_hint_added": true,
+        "expected_state": true,
+        "stage_events": true
+      },
+      "passed": true
+    },
+    {
+      "id": "retry_multiple_objects",
+      "category": "retry_recovery",
+      "injected_responses": [
+        "{\"route\": \"operations_agent\"}{\"route\": \"direct_reply\"}",
+        "{\"route\": \"content_agent\"}"
+      ],
+      "expected": {
+        "route": "content_agent",
+        "allow_publish": false,
+        "allow_analysis": false,
+        "allow_automation": false
+      },
+      "expected_calls": 2,
+      "actual_calls": 2,
+      "actual": {
+        "route": "content_agent",
+        "allow_publish": false,
+        "allow_analysis": false,
+        "allow_automation": false
+      },
+      "error": null,
+      "events": [
+        {
+          "type": "stage",
+          "stage": "supervisor",
+          "status": "start"
+        },
+        {
+          "type": "stage",
+          "stage": "supervisor",
+          "status": "done",
+          "route": "content_agent",
+          "reason": ""
+        }
+      ],
+      "checks": {
+        "call_count": true,
+        "first_call_json_mode": true,
+        "retry_regular_mode": true,
+        "retry_hint_added": true,
+        "expected_state": true,
+        "stage_events": true
+      },
+      "passed": true
+    },
+    {
+      "id": "fallback_multiple_objects",
+      "category": "malformed_fallback",
+      "injected_responses": [
+        "{\"route\": \"operations_agent\"}{\"route\": \"direct_reply\"}",
+        "{\"route\": \"operations_agent\"}{\"route\": \"direct_reply\"}"
+      ],
+      "expected": {
+        "route": "direct_reply",
+        "allow_publish": false,
+        "allow_analysis": false,
+        "allow_automation": false
+      },
+      "expected_calls": 2,
+      "actual_calls": 2,
+      "actual": {
+        "route": "direct_reply",
+        "allow_publish": false,
+        "allow_analysis": false,
+        "allow_automation": false
+      },
+      "error": null,
+      "events": [
+        {
+          "type": "stage",
+          "stage": "supervisor",
+          "status": "start"
+        },
+        {
+          "type": "stage",
+          "stage": "supervisor",
+          "status": "done",
+          "route": "direct_reply",
+          "reason": "Supervisor 决策输出无法解析，降级为通用对话"
+        }
+      ],
+      "checks": {
+        "call_count": true,
+        "first_call_json_mode": true,
+        "retry_regular_mode": true,
+        "retry_hint_added": true,
+        "expected_state": true,
+        "stage_events": true
+      },
+      "passed": true
+    },
+    {
+      "id": "retry_boolean_route",
+      "category": "retry_recovery",
+      "injected_responses": [
+        "{\"route\": true}",
+        "{\"route\": \"content_agent\"}"
+      ],
+      "expected": {
+        "route": "content_agent",
+        "allow_publish": false,
+        "allow_analysis": false,
+        "allow_automation": false
+      },
+      "expected_calls": 2,
+      "actual_calls": 2,
+      "actual": {
+        "route": "content_agent",
+        "allow_publish": false,
+        "allow_analysis": false,
+        "allow_automation": false
+      },
+      "error": null,
+      "events": [
+        {
+          "type": "stage",
+          "stage": "supervisor",
+          "status": "start"
+        },
+        {
+          "type": "stage",
+          "stage": "supervisor",
+          "status": "done",
+          "route": "content_agent",
+          "reason": ""
+        }
+      ],
+      "checks": {
+        "call_count": true,
+        "first_call_json_mode": true,
+        "retry_regular_mode": true,
+        "retry_hint_added": true,
+        "expected_state": true,
+        "stage_events": true
+      },
+      "passed": true
+    },
+    {
+      "id": "fallback_boolean_route",
+      "category": "malformed_fallback",
+      "injected_responses": [
+        "{\"route\": true}",
+        "{\"route\": true}"
+      ],
+      "expected": {
+        "route": "direct_reply",
+        "allow_publish": false,
+        "allow_analysis": false,
+        "allow_automation": false
+      },
+      "expected_calls": 2,
+      "actual_calls": 2,
+      "actual": {
+        "route": "direct_reply",
+        "allow_publish": false,
+        "allow_analysis": false,
+        "allow_automation": false
+      },
+      "error": null,
+      "events": [
+        {
+          "type": "stage",
+          "stage": "supervisor",
+          "status": "start"
+        },
+        {
+          "type": "stage",
+          "stage": "supervisor",
+          "status": "done",
+          "route": "direct_reply",
+          "reason": "Supervisor 决策输出无法解析，降级为通用对话"
+        }
+      ],
+      "checks": {
+        "call_count": true,
+        "first_call_json_mode": true,
+        "retry_regular_mode": true,
+        "retry_hint_added": true,
+        "expected_state": true,
+        "stage_events": true
+      },
+      "passed": true
+    },
+    {
+      "id": "retry_numeric_route",
+      "category": "retry_recovery",
+      "injected_responses": [
+        "{\"route\": 1}",
+        "{\"route\": \"content_agent\"}"
+      ],
+      "expected": {
+        "route": "content_agent",
+        "allow_publish": false,
+        "allow_analysis": false,
+        "allow_automation": false
+      },
+      "expected_calls": 2,
+      "actual_calls": 2,
+      "actual": {
+        "route": "content_agent",
+        "allow_publish": false,
+        "allow_analysis": false,
+        "allow_automation": false
+      },
+      "error": null,
+      "events": [
+        {
+          "type": "stage",
+          "stage": "supervisor",
+          "status": "start"
+        },
+        {
+          "type": "stage",
+          "stage": "supervisor",
+          "status": "done",
+          "route": "content_agent",
+          "reason": ""
+        }
+      ],
+      "checks": {
+        "call_count": true,
+        "first_call_json_mode": true,
+        "retry_regular_mode": true,
+        "retry_hint_added": true,
+        "expected_state": true,
+        "stage_events": true
+      },
+      "passed": true
+    },
+    {
+      "id": "fallback_numeric_route",
+      "category": "malformed_fallback",
+      "injected_responses": [
+        "{\"route\": 1}",
+        "{\"route\": 1}"
+      ],
+      "expected": {
+        "route": "direct_reply",
+        "allow_publish": false,
+        "allow_analysis": false,
+        "allow_automation": false
+      },
+      "expected_calls": 2,
+      "actual_calls": 2,
+      "actual": {
+        "route": "direct_reply",
+        "allow_publish": false,
+        "allow_analysis": false,
+        "allow_automation": false
+      },
+      "error": null,
+      "events": [
+        {
+          "type": "stage",
+          "stage": "supervisor",
+          "status": "start"
+        },
+        {
+          "type": "stage",
+          "stage": "supervisor",
+          "status": "done",
+          "route": "direct_reply",
+          "reason": "Supervisor 决策输出无法解析，降级为通用对话"
+        }
+      ],
+      "checks": {
+        "call_count": true,
+        "first_call_json_mode": true,
+        "retry_regular_mode": true,
+        "retry_hint_added": true,
+        "expected_state": true,
+        "stage_events": true
+      },
+      "passed": true
+    },
+    {
+      "id": "retry_empty_route",
+      "category": "retry_recovery",
+      "injected_responses": [
+        "{\"route\": \"\"}",
+        "{\"route\": \"content_agent\"}"
+      ],
+      "expected": {
+        "route": "content_agent",
+        "allow_publish": false,
+        "allow_analysis": false,
+        "allow_automation": false
+      },
+      "expected_calls": 2,
+      "actual_calls": 2,
+      "actual": {
+        "route": "content_agent",
+        "allow_publish": false,
+        "allow_analysis": false,
+        "allow_automation": false
+      },
+      "error": null,
+      "events": [
+        {
+          "type": "stage",
+          "stage": "supervisor",
+          "status": "start"
+        },
+        {
+          "type": "stage",
+          "stage": "supervisor",
+          "status": "done",
+          "route": "content_agent",
+          "reason": ""
+        }
+      ],
+      "checks": {
+        "call_count": true,
+        "first_call_json_mode": true,
+        "retry_regular_mode": true,
+        "retry_hint_added": true,
+        "expected_state": true,
+        "stage_events": true
+      },
+      "passed": true
+    },
+    {
+      "id": "fallback_empty_route",
+      "category": "malformed_fallback",
+      "injected_responses": [
+        "{\"route\": \"\"}",
+        "{\"route\": \"\"}"
+      ],
+      "expected": {
+        "route": "direct_reply",
+        "allow_publish": false,
+        "allow_analysis": false,
+        "allow_automation": false
+      },
+      "expected_calls": 2,
+      "actual_calls": 2,
+      "actual": {
+        "route": "direct_reply",
+        "allow_publish": false,
+        "allow_analysis": false,
+        "allow_automation": false
+      },
+      "error": null,
+      "events": [
+        {
+          "type": "stage",
+          "stage": "supervisor",
+          "status": "start"
+        },
+        {
+          "type": "stage",
+          "stage": "supervisor",
+          "status": "done",
+          "route": "direct_reply",
+          "reason": "Supervisor 决策输出无法解析，降级为通用对话"
+        }
+      ],
+      "checks": {
+        "call_count": true,
+        "first_call_json_mode": true,
+        "retry_regular_mode": true,
+        "retry_hint_added": true,
+        "expected_state": true,
+        "stage_events": true
+      },
+      "passed": true
+    },
+    {
+      "id": "retry_uppercase_route",
+      "category": "retry_recovery",
+      "injected_responses": [
+        "{\"route\": \"CONTENT_AGENT\"}",
+        "{\"route\": \"content_agent\"}"
+      ],
+      "expected": {
+        "route": "content_agent",
+        "allow_publish": false,
+        "allow_analysis": false,
+        "allow_automation": false
+      },
+      "expected_calls": 2,
+      "actual_calls": 2,
+      "actual": {
+        "route": "content_agent",
+        "allow_publish": false,
+        "allow_analysis": false,
+        "allow_automation": false
+      },
+      "error": null,
+      "events": [
+        {
+          "type": "stage",
+          "stage": "supervisor",
+          "status": "start"
+        },
+        {
+          "type": "stage",
+          "stage": "supervisor",
+          "status": "done",
+          "route": "content_agent",
+          "reason": ""
+        }
+      ],
+      "checks": {
+        "call_count": true,
+        "first_call_json_mode": true,
+        "retry_regular_mode": true,
+        "retry_hint_added": true,
+        "expected_state": true,
+        "stage_events": true
+      },
+      "passed": true
+    },
+    {
+      "id": "fallback_uppercase_route",
+      "category": "malformed_fallback",
+      "injected_responses": [
+        "{\"route\": \"CONTENT_AGENT\"}",
+        "{\"route\": \"CONTENT_AGENT\"}"
+      ],
+      "expected": {
+        "route": "direct_reply",
+        "allow_publish": false,
+        "allow_analysis": false,
+        "allow_automation": false
+      },
+      "expected_calls": 2,
+      "actual_calls": 2,
+      "actual": {
+        "route": "direct_reply",
+        "allow_publish": false,
+        "allow_analysis": false,
+        "allow_automation": false
+      },
+      "error": null,
+      "events": [
+        {
+          "type": "stage",
+          "stage": "supervisor",
+          "status": "start"
+        },
+        {
+          "type": "stage",
+          "stage": "supervisor",
+          "status": "done",
+          "route": "direct_reply",
+          "reason": "Supervisor 决策输出无法解析，降级为通用对话"
+        }
+      ],
+      "checks": {
+        "call_count": true,
+        "first_call_json_mode": true,
+        "retry_regular_mode": true,
+        "retry_hint_added": true,
+        "expected_state": true,
+        "stage_events": true
+      },
+      "passed": true
+    },
+    {
+      "id": "retry_trailing_comma",
+      "category": "retry_recovery",
+      "injected_responses": [
+        "{\"route\":\"content_agent\",}",
+        "{\"route\": \"content_agent\"}"
+      ],
+      "expected": {
+        "route": "content_agent",
+        "allow_publish": false,
+        "allow_analysis": false,
+        "allow_automation": false
+      },
+      "expected_calls": 2,
+      "actual_calls": 2,
+      "actual": {
+        "route": "content_agent",
+        "allow_publish": false,
+        "allow_analysis": false,
+        "allow_automation": false
+      },
+      "error": null,
+      "events": [
+        {
+          "type": "stage",
+          "stage": "supervisor",
+          "status": "start"
+        },
+        {
+          "type": "stage",
+          "stage": "supervisor",
+          "status": "done",
+          "route": "content_agent",
+          "reason": ""
+        }
+      ],
+      "checks": {
+        "call_count": true,
+        "first_call_json_mode": true,
+        "retry_regular_mode": true,
+        "retry_hint_added": true,
+        "expected_state": true,
+        "stage_events": true
+      },
+      "passed": true
+    },
+    {
+      "id": "fallback_trailing_comma",
+      "category": "malformed_fallback",
+      "injected_responses": [
+        "{\"route\":\"content_agent\",}",
+        "{\"route\":\"content_agent\",}"
+      ],
+      "expected": {
+        "route": "direct_reply",
+        "allow_publish": false,
+        "allow_analysis": false,
+        "allow_automation": false
+      },
+      "expected_calls": 2,
+      "actual_calls": 2,
+      "actual": {
+        "route": "direct_reply",
+        "allow_publish": false,
+        "allow_analysis": false,
+        "allow_automation": false
+      },
+      "error": null,
+      "events": [
+        {
+          "type": "stage",
+          "stage": "supervisor",
+          "status": "start"
+        },
+        {
+          "type": "stage",
+          "stage": "supervisor",
+          "status": "done",
+          "route": "direct_reply",
+          "reason": "Supervisor 决策输出无法解析，降级为通用对话"
+        }
+      ],
+      "checks": {
+        "call_count": true,
+        "first_call_json_mode": true,
+        "retry_regular_mode": true,
+        "retry_hint_added": true,
+        "expected_state": true,
+        "stage_events": true
+      },
+      "passed": true
+    },
+    {
+      "id": "retry_single_quotes",
+      "category": "retry_recovery",
+      "injected_responses": [
+        "{'route':'content_agent'}",
+        "{\"route\": \"content_agent\"}"
+      ],
+      "expected": {
+        "route": "content_agent",
+        "allow_publish": false,
+        "allow_analysis": false,
+        "allow_automation": false
+      },
+      "expected_calls": 2,
+      "actual_calls": 2,
+      "actual": {
+        "route": "content_agent",
+        "allow_publish": false,
+        "allow_analysis": false,
+        "allow_automation": false
+      },
+      "error": null,
+      "events": [
+        {
+          "type": "stage",
+          "stage": "supervisor",
+          "status": "start"
+        },
+        {
+          "type": "stage",
+          "stage": "supervisor",
+          "status": "done",
+          "route": "content_agent",
+          "reason": ""
+        }
+      ],
+      "checks": {
+        "call_count": true,
+        "first_call_json_mode": true,
+        "retry_regular_mode": true,
+        "retry_hint_added": true,
+        "expected_state": true,
+        "stage_events": true
+      },
+      "passed": true
+    },
+    {
+      "id": "fallback_single_quotes",
+      "category": "malformed_fallback",
+      "injected_responses": [
+        "{'route':'content_agent'}",
+        "{'route':'content_agent'}"
+      ],
+      "expected": {
+        "route": "direct_reply",
+        "allow_publish": false,
+        "allow_analysis": false,
+        "allow_automation": false
+      },
+      "expected_calls": 2,
+      "actual_calls": 2,
+      "actual": {
+        "route": "direct_reply",
+        "allow_publish": false,
+        "allow_analysis": false,
+        "allow_automation": false
+      },
+      "error": null,
+      "events": [
+        {
+          "type": "stage",
+          "stage": "supervisor",
+          "status": "start"
+        },
+        {
+          "type": "stage",
+          "stage": "supervisor",
+          "status": "done",
+          "route": "direct_reply",
+          "reason": "Supervisor 决策输出无法解析，降级为通用对话"
+        }
+      ],
+      "checks": {
+        "call_count": true,
+        "first_call_json_mode": true,
+        "retry_regular_mode": true,
+        "retry_hint_added": true,
+        "expected_state": true,
+        "stage_events": true
+      },
+      "passed": true
+    },
+    {
+      "id": "retry_wrong_route_key",
+      "category": "retry_recovery",
+      "injected_responses": [
+        "{\"routing\":\"content_agent\"}",
+        "{\"route\": \"content_agent\"}"
+      ],
+      "expected": {
+        "route": "content_agent",
+        "allow_publish": false,
+        "allow_analysis": false,
+        "allow_automation": false
+      },
+      "expected_calls": 2,
+      "actual_calls": 2,
+      "actual": {
+        "route": "content_agent",
+        "allow_publish": false,
+        "allow_analysis": false,
+        "allow_automation": false
+      },
+      "error": null,
+      "events": [
+        {
+          "type": "stage",
+          "stage": "supervisor",
+          "status": "start"
+        },
+        {
+          "type": "stage",
+          "stage": "supervisor",
+          "status": "done",
+          "route": "content_agent",
+          "reason": ""
+        }
+      ],
+      "checks": {
+        "call_count": true,
+        "first_call_json_mode": true,
+        "retry_regular_mode": true,
+        "retry_hint_added": true,
+        "expected_state": true,
+        "stage_events": true
+      },
+      "passed": true
+    },
+    {
+      "id": "fallback_wrong_route_key",
+      "category": "malformed_fallback",
+      "injected_responses": [
+        "{\"routing\":\"content_agent\"}",
+        "{\"routing\":\"content_agent\"}"
+      ],
+      "expected": {
+        "route": "direct_reply",
+        "allow_publish": false,
+        "allow_analysis": false,
+        "allow_automation": false
+      },
+      "expected_calls": 2,
+      "actual_calls": 2,
+      "actual": {
+        "route": "direct_reply",
+        "allow_publish": false,
+        "allow_analysis": false,
+        "allow_automation": false
+      },
+      "error": null,
+      "events": [
+        {
+          "type": "stage",
+          "stage": "supervisor",
+          "status": "start"
+        },
+        {
+          "type": "stage",
+          "stage": "supervisor",
+          "status": "done",
+          "route": "direct_reply",
+          "reason": "Supervisor 决策输出无法解析，降级为通用对话"
+        }
+      ],
+      "checks": {
+        "call_count": true,
+        "first_call_json_mode": true,
+        "retry_regular_mode": true,
+        "retry_hint_added": true,
+        "expected_state": true,
+        "stage_events": true
+      },
+      "passed": true
+    },
+    {
+      "id": "normal_content_agent",
+      "category": "normal_routing",
+      "injected_responses": [
+        "{\"route\": \"content_agent\"}"
+      ],
+      "expected": {
+        "route": "content_agent",
+        "allow_publish": false,
+        "allow_analysis": false,
+        "allow_automation": false
+      },
+      "expected_calls": 1,
+      "actual_calls": 1,
+      "actual": {
+        "route": "content_agent",
+        "allow_publish": false,
+        "allow_analysis": false,
+        "allow_automation": false
+      },
+      "error": null,
+      "events": [
+        {
+          "type": "stage",
+          "stage": "supervisor",
+          "status": "start"
+        },
+        {
+          "type": "stage",
+          "stage": "supervisor",
+          "status": "done",
+          "route": "content_agent",
+          "reason": ""
+        }
+      ],
+      "checks": {
+        "call_count": true,
+        "first_call_json_mode": true,
+        "retry_regular_mode": true,
+        "retry_hint_added": true,
+        "expected_state": true,
+        "stage_events": true
+      },
+      "passed": true
+    },
+    {
+      "id": "normal_operations_agent",
+      "category": "normal_routing",
+      "injected_responses": [
+        "{\"route\": \"operations_agent\"}"
+      ],
+      "expected": {
+        "route": "operations_agent",
+        "allow_publish": false,
+        "allow_analysis": false,
+        "allow_automation": false
+      },
+      "expected_calls": 1,
+      "actual_calls": 1,
+      "actual": {
+        "route": "operations_agent",
+        "allow_publish": false,
+        "allow_analysis": false,
+        "allow_automation": false
+      },
+      "error": null,
+      "events": [
+        {
+          "type": "stage",
+          "stage": "supervisor",
+          "status": "start"
+        },
+        {
+          "type": "stage",
+          "stage": "supervisor",
+          "status": "done",
+          "route": "operations_agent",
+          "reason": ""
+        }
+      ],
+      "checks": {
+        "call_count": true,
+        "first_call_json_mode": true,
+        "retry_regular_mode": true,
+        "retry_hint_added": true,
+        "expected_state": true,
+        "stage_events": true
+      },
+      "passed": true
+    },
+    {
+      "id": "normal_direct_reply",
+      "category": "normal_routing",
+      "injected_responses": [
+        "{\"route\": \"direct_reply\"}"
+      ],
+      "expected": {
+        "route": "direct_reply",
+        "allow_publish": false,
+        "allow_analysis": false,
+        "allow_automation": false
+      },
+      "expected_calls": 1,
+      "actual_calls": 1,
+      "actual": {
+        "route": "direct_reply",
+        "allow_publish": false,
+        "allow_analysis": false,
+        "allow_automation": false
+      },
+      "error": null,
+      "events": [
+        {
+          "type": "stage",
+          "stage": "supervisor",
+          "status": "start"
+        },
+        {
+          "type": "stage",
+          "stage": "supervisor",
+          "status": "done",
+          "route": "direct_reply",
+          "reason": ""
+        }
+      ],
+      "checks": {
+        "call_count": true,
+        "first_call_json_mode": true,
+        "retry_regular_mode": true,
+        "retry_hint_added": true,
+        "expected_state": true,
+        "stage_events": true
+      },
+      "passed": true
+    },
+    {
+      "id": "permissions_closed_content_agent",
+      "category": "permission_guard",
+      "injected_responses": [
+        "{\"route\": \"content_agent\", \"allow_publish\": true, \"allow_analysis\": true, \"allow_automation\": true}"
+      ],
+      "expected": {
+        "route": "content_agent",
+        "allow_publish": false,
+        "allow_analysis": false,
+        "allow_automation": false
+      },
+      "expected_calls": 1,
+      "actual_calls": 1,
+      "actual": {
+        "route": "content_agent",
+        "allow_publish": false,
+        "allow_analysis": false,
+        "allow_automation": false
+      },
+      "error": null,
+      "events": [
+        {
+          "type": "stage",
+          "stage": "supervisor",
+          "status": "start"
+        },
+        {
+          "type": "stage",
+          "stage": "supervisor",
+          "status": "done",
+          "route": "content_agent",
+          "reason": ""
+        }
+      ],
+      "checks": {
+        "call_count": true,
+        "first_call_json_mode": true,
+        "retry_regular_mode": true,
+        "retry_hint_added": true,
+        "expected_state": true,
+        "stage_events": true
+      },
+      "passed": true
+    },
+    {
+      "id": "permissions_closed_direct_reply",
+      "category": "permission_guard",
+      "injected_responses": [
+        "{\"route\": \"direct_reply\", \"allow_publish\": true, \"allow_analysis\": true, \"allow_automation\": true}"
+      ],
+      "expected": {
+        "route": "direct_reply",
+        "allow_publish": false,
+        "allow_analysis": false,
+        "allow_automation": false
+      },
+      "expected_calls": 1,
+      "actual_calls": 1,
+      "actual": {
+        "route": "direct_reply",
+        "allow_publish": false,
+        "allow_analysis": false,
+        "allow_automation": false
+      },
+      "error": null,
+      "events": [
+        {
+          "type": "stage",
+          "stage": "supervisor",
+          "status": "start"
+        },
+        {
+          "type": "stage",
+          "stage": "supervisor",
+          "status": "done",
+          "route": "direct_reply",
+          "reason": ""
+        }
+      ],
+      "checks": {
+        "call_count": true,
+        "first_call_json_mode": true,
+        "retry_regular_mode": true,
+        "retry_hint_added": true,
+        "expected_state": true,
+        "stage_events": true
+      },
+      "passed": true
+    },
+    {
+      "id": "operations_permissions_true",
+      "category": "permission_guard",
+      "injected_responses": [
+        "{\"route\": \"operations_agent\", \"allow_publish\": true, \"allow_analysis\": true, \"allow_automation\": true}"
+      ],
+      "expected": {
+        "route": "operations_agent",
+        "allow_publish": true,
+        "allow_analysis": true,
+        "allow_automation": true
+      },
+      "expected_calls": 1,
+      "actual_calls": 1,
+      "actual": {
+        "route": "operations_agent",
+        "allow_publish": true,
+        "allow_analysis": true,
+        "allow_automation": true
+      },
+      "error": null,
+      "events": [
+        {
+          "type": "stage",
+          "stage": "supervisor",
+          "status": "start"
+        },
+        {
+          "type": "stage",
+          "stage": "supervisor",
+          "status": "done",
+          "route": "operations_agent",
+          "reason": ""
+        }
+      ],
+      "checks": {
+        "call_count": true,
+        "first_call_json_mode": true,
+        "retry_regular_mode": true,
+        "retry_hint_added": true,
+        "expected_state": true,
+        "stage_events": true
+      },
+      "passed": true
+    },
+    {
+      "id": "operations_permissions_string",
+      "category": "permission_guard",
+      "injected_responses": [
+        "{\"route\": \"operations_agent\", \"allow_publish\": \"true\", \"allow_analysis\": \"true\", \"allow_automation\": \"true\"}"
+      ],
+      "expected": {
+        "route": "operations_agent",
+        "allow_publish": false,
+        "allow_analysis": false,
+        "allow_automation": false
+      },
+      "expected_calls": 1,
+      "actual_calls": 1,
+      "actual": {
+        "route": "operations_agent",
+        "allow_publish": false,
+        "allow_analysis": false,
+        "allow_automation": false
+      },
+      "error": null,
+      "events": [
+        {
+          "type": "stage",
+          "stage": "supervisor",
+          "status": "start"
+        },
+        {
+          "type": "stage",
+          "stage": "supervisor",
+          "status": "done",
+          "route": "operations_agent",
+          "reason": ""
+        }
+      ],
+      "checks": {
+        "call_count": true,
+        "first_call_json_mode": true,
+        "retry_regular_mode": true,
+        "retry_hint_added": true,
+        "expected_state": true,
+        "stage_events": true
+      },
+      "passed": true
+    },
+    {
+      "id": "operations_permissions_integer",
+      "category": "permission_guard",
+      "injected_responses": [
+        "{\"route\": \"operations_agent\", \"allow_publish\": 1, \"allow_analysis\": 1, \"allow_automation\": 1}"
+      ],
+      "expected": {
+        "route": "operations_agent",
+        "allow_publish": false,
+        "allow_analysis": false,
+        "allow_automation": false
+      },
+      "expected_calls": 1,
+      "actual_calls": 1,
+      "actual": {
+        "route": "operations_agent",
+        "allow_publish": false,
+        "allow_analysis": false,
+        "allow_automation": false
+      },
+      "error": null,
+      "events": [
+        {
+          "type": "stage",
+          "stage": "supervisor",
+          "status": "start"
+        },
+        {
+          "type": "stage",
+          "stage": "supervisor",
+          "status": "done",
+          "route": "operations_agent",
+          "reason": ""
+        }
+      ],
+      "checks": {
+        "call_count": true,
+        "first_call_json_mode": true,
+        "retry_regular_mode": true,
+        "retry_hint_added": true,
+        "expected_state": true,
+        "stage_events": true
+      },
+      "passed": true
+    },
+    {
+      "id": "operations_permissions_false",
+      "category": "permission_guard",
+      "injected_responses": [
+        "{\"route\": \"operations_agent\", \"allow_publish\": false, \"allow_analysis\": false, \"allow_automation\": false}"
+      ],
+      "expected": {
+        "route": "operations_agent",
+        "allow_publish": false,
+        "allow_analysis": false,
+        "allow_automation": false
+      },
+      "expected_calls": 1,
+      "actual_calls": 1,
+      "actual": {
+        "route": "operations_agent",
+        "allow_publish": false,
+        "allow_analysis": false,
+        "allow_automation": false
+      },
+      "error": null,
+      "events": [
+        {
+          "type": "stage",
+          "stage": "supervisor",
+          "status": "start"
+        },
+        {
+          "type": "stage",
+          "stage": "supervisor",
+          "status": "done",
+          "route": "operations_agent",
+          "reason": ""
+        }
+      ],
+      "checks": {
+        "call_count": true,
+        "first_call_json_mode": true,
+        "retry_regular_mode": true,
+        "retry_hint_added": true,
+        "expected_state": true,
+        "stage_events": true
+      },
+      "passed": true
+    },
+    {
+      "id": "operations_permissions_null",
+      "category": "permission_guard",
+      "injected_responses": [
+        "{\"route\": \"operations_agent\", \"allow_publish\": null, \"allow_analysis\": null, \"allow_automation\": null}"
+      ],
+      "expected": {
+        "route": "operations_agent",
+        "allow_publish": false,
+        "allow_analysis": false,
+        "allow_automation": false
+      },
+      "expected_calls": 1,
+      "actual_calls": 1,
+      "actual": {
+        "route": "operations_agent",
+        "allow_publish": false,
+        "allow_analysis": false,
+        "allow_automation": false
+      },
+      "error": null,
+      "events": [
+        {
+          "type": "stage",
+          "stage": "supervisor",
+          "status": "start"
+        },
+        {
+          "type": "stage",
+          "stage": "supervisor",
+          "status": "done",
+          "route": "operations_agent",
+          "reason": ""
+        }
+      ],
+      "checks": {
+        "call_count": true,
+        "first_call_json_mode": true,
+        "retry_regular_mode": true,
+        "retry_hint_added": true,
+        "expected_state": true,
+        "stage_events": true
+      },
+      "passed": true
+    },
+    {
+      "id": "operations_permissions_array",
+      "category": "permission_guard",
+      "injected_responses": [
+        "{\"route\": \"operations_agent\", \"allow_publish\": [true], \"allow_analysis\": [true], \"allow_automation\": [true]}"
+      ],
+      "expected": {
+        "route": "operations_agent",
+        "allow_publish": false,
+        "allow_analysis": false,
+        "allow_automation": false
+      },
+      "expected_calls": 1,
+      "actual_calls": 1,
+      "actual": {
+        "route": "operations_agent",
+        "allow_publish": false,
+        "allow_analysis": false,
+        "allow_automation": false
+      },
+      "error": null,
+      "events": [
+        {
+          "type": "stage",
+          "stage": "supervisor",
+          "status": "start"
+        },
+        {
+          "type": "stage",
+          "stage": "supervisor",
+          "status": "done",
+          "route": "operations_agent",
+          "reason": ""
+        }
+      ],
+      "checks": {
+        "call_count": true,
+        "first_call_json_mode": true,
+        "retry_regular_mode": true,
+        "retry_hint_added": true,
+        "expected_state": true,
+        "stage_events": true
+      },
+      "passed": true
+    },
+    {
+      "id": "operations_permissions_object",
+      "category": "permission_guard",
+      "injected_responses": [
+        "{\"route\": \"operations_agent\", \"allow_publish\": {\"allowed\": true}, \"allow_analysis\": {\"allowed\": true}, \"allow_automation\": {\"allowed\": true}}"
+      ],
+      "expected": {
+        "route": "operations_agent",
+        "allow_publish": false,
+        "allow_analysis": false,
+        "allow_automation": false
+      },
+      "expected_calls": 1,
+      "actual_calls": 1,
+      "actual": {
+        "route": "operations_agent",
+        "allow_publish": false,
+        "allow_analysis": false,
+        "allow_automation": false
+      },
+      "error": null,
+      "events": [
+        {
+          "type": "stage",
+          "stage": "supervisor",
+          "status": "start"
+        },
+        {
+          "type": "stage",
+          "stage": "supervisor",
+          "status": "done",
+          "route": "operations_agent",
+          "reason": ""
+        }
+      ],
+      "checks": {
+        "call_count": true,
+        "first_call_json_mode": true,
+        "retry_regular_mode": true,
+        "retry_hint_added": true,
+        "expected_state": true,
+        "stage_events": true
+      },
+      "passed": true
+    },
+    {
+      "id": "retry_operations_with_permissions",
+      "category": "retry_recovery",
+      "injected_responses": [
+        "错误输出",
+        "{\"route\": \"operations_agent\", \"allow_publish\": true, \"allow_analysis\": true, \"allow_automation\": true}"
+      ],
+      "expected": {
+        "route": "operations_agent",
+        "allow_publish": true,
+        "allow_analysis": true,
+        "allow_automation": true
+      },
+      "expected_calls": 2,
+      "actual_calls": 2,
+      "actual": {
+        "route": "operations_agent",
+        "allow_publish": true,
+        "allow_analysis": true,
+        "allow_automation": true
+      },
+      "error": null,
+      "events": [
+        {
+          "type": "stage",
+          "stage": "supervisor",
+          "status": "start"
+        },
+        {
+          "type": "stage",
+          "stage": "supervisor",
+          "status": "done",
+          "route": "operations_agent",
+          "reason": ""
+        }
+      ],
+      "checks": {
+        "call_count": true,
+        "first_call_json_mode": true,
+        "retry_regular_mode": true,
+        "retry_hint_added": true,
+        "expected_state": true,
+        "stage_events": true
+      },
+      "passed": true
+    },
+    {
+      "id": "retry_direct_reply_closes_permissions",
+      "category": "retry_recovery",
+      "injected_responses": [
+        "错误输出",
+        "{\"route\": \"direct_reply\", \"allow_publish\": true, \"allow_analysis\": true, \"allow_automation\": true}"
+      ],
+      "expected": {
+        "route": "direct_reply",
+        "allow_publish": false,
+        "allow_analysis": false,
+        "allow_automation": false
+      },
+      "expected_calls": 2,
+      "actual_calls": 2,
+      "actual": {
+        "route": "direct_reply",
+        "allow_publish": false,
+        "allow_analysis": false,
+        "allow_automation": false
+      },
+      "error": null,
+      "events": [
+        {
+          "type": "stage",
+          "stage": "supervisor",
+          "status": "start"
+        },
+        {
+          "type": "stage",
+          "stage": "supervisor",
+          "status": "done",
+          "route": "direct_reply",
+          "reason": ""
+        }
+      ],
+      "checks": {
+        "call_count": true,
+        "first_call_json_mode": true,
+        "retry_regular_mode": true,
+        "retry_hint_added": true,
+        "expected_state": true,
+        "stage_events": true
+      },
+      "passed": true
+    },
+    {
+      "id": "first_call_llm_error",
+      "category": "llm_error_propagation",
+      "injected_responses": [
+        "模拟超时异常"
+      ],
+      "expected": {
+        "exception": "LLMError"
+      },
+      "expected_calls": 1,
+      "actual_calls": 1,
+      "actual": null,
+      "error": {
+        "type": "LLMError",
+        "message": "模拟超时异常"
+      },
+      "events": [
+        {
+          "type": "stage",
+          "stage": "supervisor",
+          "status": "start"
+        }
+      ],
+      "checks": {
+        "call_count": true,
+        "first_call_json_mode": true,
+        "retry_regular_mode": true,
+        "retry_hint_added": true,
+        "expected_error": true
+      },
+      "passed": true
+    },
+    {
+      "id": "retry_llm_error",
+      "category": "llm_error_propagation",
+      "injected_responses": [
+        "错误输出",
+        "模拟连接异常"
+      ],
+      "expected": {
+        "exception": "LLMError"
+      },
+      "expected_calls": 2,
+      "actual_calls": 2,
+      "actual": null,
+      "error": {
+        "type": "LLMError",
+        "message": "模拟连接异常"
+      },
+      "events": [
+        {
+          "type": "stage",
+          "stage": "supervisor",
+          "status": "start"
+        }
+      ],
+      "checks": {
+        "call_count": true,
+        "first_call_json_mode": true,
+        "retry_regular_mode": true,
+        "retry_hint_added": true,
+        "expected_error": true
+      },
+      "passed": true
+    }
+  ]
+}

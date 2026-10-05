@@ -1,0 +1,1094 @@
+{
+  "evaluated_at": "2026-10-05T15:15:20.455569+08:00",
+  "scope": "发布工具参数校验；使用记录调用的模拟业务接口；不调用模型或执行真实业务",
+  "python_version": "3.12.10",
+  "git_head": "2d3503c04c9e721310c8116d46040b7b9cf0b619",
+  "source_sha256": {
+    "app/agents/tools.py": "7f5bfbad28318dfe6eb454a24bfbd232ff913ffbf9f7d9b6fcc8bf9e58e34056",
+    "app/agents/publishing_tools.py": "f36421a3b21d4a7f1e83bc7618ccd1108beb95d42398edfa37ba851ad98e69f1",
+    "app/schemas/agent_operations.py": "19ffc8d39d0d15e97d54059fb11206f431bab65206807c103cbe0f6adf11ce9d",
+    "app/schemas/publishing.py": "194294c341c4ede2cbffa079296ee64f21a0ca2930c532459ddac943d6a64650",
+    "tests/evaluate_tool_arguments.py": "54518ef8d1e21dce992c8c1fec4e6489b4e74301181b08bc66eb5c0cfbbd1596"
+  },
+  "summary": {
+    "total": 50,
+    "passed": 50,
+    "failed": 0,
+    "pass_rate": 1.0,
+    "invalid_total": 40,
+    "invalid_blocked_before_execution": 40,
+    "invalid_interception_rate": 1.0,
+    "valid_total": 10,
+    "valid_accepted_and_executed": 10
+  },
+  "cases": [
+    {
+      "id": "missing_asset_id",
+      "tool": "get_asset",
+      "arguments": "{}",
+      "expected_valid": false,
+      "result": {
+        "ok": false,
+        "output": "工具 get_asset 缺少必填参数：['asset_id']"
+      },
+      "business_calls": [],
+      "passed": true
+    },
+    {
+      "id": "zero_asset_id",
+      "tool": "get_asset",
+      "arguments": "{\"asset_id\": 0}",
+      "expected_valid": false,
+      "result": {
+        "ok": false,
+        "output": {
+          "code": "invalid_arguments",
+          "errors": [
+            {
+              "field": "asset_id",
+              "message": "Input should be greater than 0"
+            }
+          ]
+        }
+      },
+      "business_calls": [],
+      "passed": true
+    },
+    {
+      "id": "negative_asset_id",
+      "tool": "get_asset",
+      "arguments": "{\"asset_id\": -1}",
+      "expected_valid": false,
+      "result": {
+        "ok": false,
+        "output": {
+          "code": "invalid_arguments",
+          "errors": [
+            {
+              "field": "asset_id",
+              "message": "Input should be greater than 0"
+            }
+          ]
+        }
+      },
+      "business_calls": [],
+      "passed": true
+    },
+    {
+      "id": "string_asset_id",
+      "tool": "get_asset",
+      "arguments": "{\"asset_id\": \"1\"}",
+      "expected_valid": false,
+      "result": {
+        "ok": false,
+        "output": {
+          "code": "invalid_arguments",
+          "errors": [
+            {
+              "field": "asset_id",
+              "message": "Input should be a valid integer"
+            }
+          ]
+        }
+      },
+      "business_calls": [],
+      "passed": true
+    },
+    {
+      "id": "boolean_asset_id",
+      "tool": "get_asset",
+      "arguments": "{\"asset_id\": true}",
+      "expected_valid": false,
+      "result": {
+        "ok": false,
+        "output": {
+          "code": "invalid_arguments",
+          "errors": [
+            {
+              "field": "asset_id",
+              "message": "Input should be a valid integer"
+            }
+          ]
+        }
+      },
+      "business_calls": [],
+      "passed": true
+    },
+    {
+      "id": "null_asset_id",
+      "tool": "get_asset",
+      "arguments": "{\"asset_id\": null}",
+      "expected_valid": false,
+      "result": {
+        "ok": false,
+        "output": {
+          "code": "invalid_arguments",
+          "errors": [
+            {
+              "field": "asset_id",
+              "message": "Input should be a valid integer"
+            }
+          ]
+        }
+      },
+      "business_calls": [],
+      "passed": true
+    },
+    {
+      "id": "injected_user_id",
+      "tool": "get_asset",
+      "arguments": "{\"asset_id\": 1, \"user_id\": 2}",
+      "expected_valid": false,
+      "result": {
+        "ok": false,
+        "output": "工具 get_asset 收到未定义参数：['user_id']"
+      },
+      "business_calls": [],
+      "passed": true
+    },
+    {
+      "id": "negative_offset",
+      "tool": "list_assets",
+      "arguments": "{\"offset\": -1}",
+      "expected_valid": false,
+      "result": {
+        "ok": false,
+        "output": {
+          "code": "invalid_arguments",
+          "errors": [
+            {
+              "field": "offset",
+              "message": "Input should be greater than or equal to 0"
+            }
+          ]
+        }
+      },
+      "business_calls": [],
+      "passed": true
+    },
+    {
+      "id": "zero_limit",
+      "tool": "list_assets",
+      "arguments": "{\"limit\": 0}",
+      "expected_valid": false,
+      "result": {
+        "ok": false,
+        "output": {
+          "code": "invalid_arguments",
+          "errors": [
+            {
+              "field": "limit",
+              "message": "Input should be greater than or equal to 1"
+            }
+          ]
+        }
+      },
+      "business_calls": [],
+      "passed": true
+    },
+    {
+      "id": "excessive_limit",
+      "tool": "list_assets",
+      "arguments": "{\"limit\": 51}",
+      "expected_valid": false,
+      "result": {
+        "ok": false,
+        "output": {
+          "code": "invalid_arguments",
+          "errors": [
+            {
+              "field": "limit",
+              "message": "Input should be less than or equal to 50"
+            }
+          ]
+        }
+      },
+      "business_calls": [],
+      "passed": true
+    },
+    {
+      "id": "string_limit",
+      "tool": "list_assets",
+      "arguments": "{\"limit\": \"20\"}",
+      "expected_valid": false,
+      "result": {
+        "ok": false,
+        "output": {
+          "code": "invalid_arguments",
+          "errors": [
+            {
+              "field": "limit",
+              "message": "Input should be a valid integer"
+            }
+          ]
+        }
+      },
+      "business_calls": [],
+      "passed": true
+    },
+    {
+      "id": "unsupported_media_type",
+      "tool": "list_assets",
+      "arguments": "{\"media_type\": \"audio\"}",
+      "expected_valid": false,
+      "result": {
+        "ok": false,
+        "output": {
+          "code": "invalid_arguments",
+          "errors": [
+            {
+              "field": "media_type",
+              "message": "Input should be 'video' or 'image'"
+            }
+          ]
+        }
+      },
+      "business_calls": [],
+      "passed": true
+    },
+    {
+      "id": "long_search",
+      "tool": "list_assets",
+      "arguments": "{\"search\": \"xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx\"}",
+      "expected_valid": false,
+      "result": {
+        "ok": false,
+        "output": {
+          "code": "invalid_arguments",
+          "errors": [
+            {
+              "field": "search",
+              "message": "String should have at most 100 characters"
+            }
+          ]
+        }
+      },
+      "business_calls": [],
+      "passed": true
+    },
+    {
+      "id": "array_arguments",
+      "tool": "list_assets",
+      "arguments": "[]",
+      "expected_valid": false,
+      "result": {
+        "ok": false,
+        "output": "工具 list_assets 的参数必须是 JSON 对象"
+      },
+      "business_calls": [],
+      "passed": true
+    },
+    {
+      "id": "malformed_json",
+      "tool": "list_assets",
+      "arguments": "{",
+      "expected_valid": false,
+      "result": {
+        "ok": false,
+        "output": "工具 list_assets 的参数不是合法 JSON：Expecting property name enclosed in double quotes: line 1 column 2 (char 1)"
+      },
+      "business_calls": [],
+      "passed": true
+    },
+    {
+      "id": "missing_job_id",
+      "tool": "get_publish_status",
+      "arguments": "{}",
+      "expected_valid": false,
+      "result": {
+        "ok": false,
+        "output": "工具 get_publish_status 缺少必填参数：['job_id']"
+      },
+      "business_calls": [],
+      "passed": true
+    },
+    {
+      "id": "zero_job_id",
+      "tool": "get_publish_status",
+      "arguments": "{\"job_id\": 0}",
+      "expected_valid": false,
+      "result": {
+        "ok": false,
+        "output": {
+          "code": "invalid_arguments",
+          "errors": [
+            {
+              "field": "job_id",
+              "message": "Input should be greater than 0"
+            }
+          ]
+        }
+      },
+      "business_calls": [],
+      "passed": true
+    },
+    {
+      "id": "fractional_job_id",
+      "tool": "get_publish_status",
+      "arguments": "{\"job_id\": 1.5}",
+      "expected_valid": false,
+      "result": {
+        "ok": false,
+        "output": {
+          "code": "invalid_arguments",
+          "errors": [
+            {
+              "field": "job_id",
+              "message": "Input should be a valid integer"
+            }
+          ]
+        }
+      },
+      "business_calls": [],
+      "passed": true
+    },
+    {
+      "id": "injected_path",
+      "tool": "get_publish_status",
+      "arguments": "{\"job_id\": 1, \"path\": \"/tmp/file\"}",
+      "expected_valid": false,
+      "result": {
+        "ok": false,
+        "output": "工具 get_publish_status 收到未定义参数：['path']"
+      },
+      "business_calls": [],
+      "passed": true
+    },
+    {
+      "id": "boolean_jobs_limit",
+      "tool": "list_publish_jobs",
+      "arguments": "{\"limit\": true}",
+      "expected_valid": false,
+      "result": {
+        "ok": false,
+        "output": {
+          "code": "invalid_arguments",
+          "errors": [
+            {
+              "field": "limit",
+              "message": "Input should be a valid integer"
+            }
+          ]
+        }
+      },
+      "business_calls": [],
+      "passed": true
+    },
+    {
+      "id": "valid_asset",
+      "tool": "get_asset",
+      "arguments": "{\"asset_id\": 1}",
+      "expected_valid": true,
+      "result": {
+        "ok": true,
+        "output": {
+          "recorded_arguments": {
+            "asset_id": 1
+          }
+        }
+      },
+      "business_calls": [
+        {
+          "asset_id": 1
+        }
+      ],
+      "passed": true
+    },
+    {
+      "id": "default_asset_list",
+      "tool": "list_assets",
+      "arguments": "{}",
+      "expected_valid": true,
+      "result": {
+        "ok": true,
+        "output": {
+          "recorded_arguments": {
+            "search": "",
+            "media_type": null,
+            "offset": 0,
+            "limit": 20
+          }
+        }
+      },
+      "business_calls": [
+        {
+          "search": "",
+          "media_type": null,
+          "offset": 0,
+          "limit": 20
+        }
+      ],
+      "passed": true
+    },
+    {
+      "id": "asset_list_boundaries",
+      "tool": "list_assets",
+      "arguments": "{\"offset\": 0, \"limit\": 50, \"media_type\": \"image\", \"search\": \"xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx\"}",
+      "expected_valid": true,
+      "result": {
+        "ok": true,
+        "output": {
+          "recorded_arguments": {
+            "search": "xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx",
+            "media_type": "image",
+            "offset": 0,
+            "limit": 50
+          }
+        }
+      },
+      "business_calls": [
+        {
+          "search": "xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx",
+          "media_type": "image",
+          "offset": 0,
+          "limit": 50
+        }
+      ],
+      "passed": true
+    },
+    {
+      "id": "valid_job_status",
+      "tool": "get_publish_status",
+      "arguments": "{\"job_id\": 1}",
+      "expected_valid": true,
+      "result": {
+        "ok": true,
+        "output": {
+          "recorded_arguments": {
+            "job_id": 1
+          }
+        }
+      },
+      "business_calls": [
+        {
+          "job_id": 1
+        }
+      ],
+      "passed": true
+    },
+    {
+      "id": "valid_jobs_limit",
+      "tool": "list_publish_jobs",
+      "arguments": "{\"limit\": 1}",
+      "expected_valid": true,
+      "result": {
+        "ok": true,
+        "output": {
+          "recorded_arguments": {
+            "limit": 1
+          }
+        }
+      },
+      "business_calls": [
+        {
+          "limit": 1
+        }
+      ],
+      "passed": true
+    },
+    {
+      "id": "long_account_platform",
+      "tool": "list_accounts",
+      "arguments": "{\"platform\": \"xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx\"}",
+      "expected_valid": false,
+      "result": {
+        "ok": false,
+        "output": {
+          "code": "invalid_arguments",
+          "errors": [
+            {
+              "field": "platform",
+              "message": "String should have at most 32 characters"
+            }
+          ]
+        }
+      },
+      "business_calls": [],
+      "passed": true
+    },
+    {
+      "id": "numeric_account_platform",
+      "tool": "list_accounts",
+      "arguments": "{\"platform\": 123}",
+      "expected_valid": false,
+      "result": {
+        "ok": false,
+        "output": {
+          "code": "invalid_arguments",
+          "errors": [
+            {
+              "field": "platform",
+              "message": "Input should be a valid string"
+            }
+          ]
+        }
+      },
+      "business_calls": [],
+      "passed": true
+    },
+    {
+      "id": "extra_platform_argument",
+      "tool": "list_platforms",
+      "arguments": "{\"user_id\": 2}",
+      "expected_valid": false,
+      "result": {
+        "ok": false,
+        "output": "工具 list_platforms 收到未定义参数：['user_id']"
+      },
+      "business_calls": [],
+      "passed": true
+    },
+    {
+      "id": "scalar_arguments",
+      "tool": "list_assets",
+      "arguments": "42",
+      "expected_valid": false,
+      "result": {
+        "ok": false,
+        "output": "工具 list_assets 的参数必须是 JSON 对象"
+      },
+      "business_calls": [],
+      "passed": true
+    },
+    {
+      "id": "null_arguments",
+      "tool": "list_assets",
+      "arguments": "null",
+      "expected_valid": false,
+      "result": {
+        "ok": false,
+        "output": "工具 list_assets 的参数必须是 JSON 对象"
+      },
+      "business_calls": [],
+      "passed": true
+    },
+    {
+      "id": "fractional_asset_id",
+      "tool": "get_asset",
+      "arguments": "{\"asset_id\": 1.5}",
+      "expected_valid": false,
+      "result": {
+        "ok": false,
+        "output": {
+          "code": "invalid_arguments",
+          "errors": [
+            {
+              "field": "asset_id",
+              "message": "Input should be a valid integer"
+            }
+          ]
+        }
+      },
+      "business_calls": [],
+      "passed": true
+    },
+    {
+      "id": "string_offset",
+      "tool": "list_assets",
+      "arguments": "{\"offset\": \"0\"}",
+      "expected_valid": false,
+      "result": {
+        "ok": false,
+        "output": {
+          "code": "invalid_arguments",
+          "errors": [
+            {
+              "field": "offset",
+              "message": "Input should be a valid integer"
+            }
+          ]
+        }
+      },
+      "business_calls": [],
+      "passed": true
+    },
+    {
+      "id": "boolean_offset",
+      "tool": "list_assets",
+      "arguments": "{\"offset\": false}",
+      "expected_valid": false,
+      "result": {
+        "ok": false,
+        "output": {
+          "code": "invalid_arguments",
+          "errors": [
+            {
+              "field": "offset",
+              "message": "Input should be a valid integer"
+            }
+          ]
+        }
+      },
+      "business_calls": [],
+      "passed": true
+    },
+    {
+      "id": "publish_missing_accounts",
+      "tool": "submit_publish",
+      "arguments": "{\"asset_id\": 1, \"title\": \"test\"}",
+      "expected_valid": false,
+      "result": {
+        "ok": false,
+        "output": "工具 submit_publish 缺少必填参数：['account_ids']"
+      },
+      "business_calls": [],
+      "passed": true
+    },
+    {
+      "id": "publish_empty_accounts",
+      "tool": "submit_publish",
+      "arguments": "{\"account_ids\": [], \"asset_id\": 1, \"title\": \"test\"}",
+      "expected_valid": false,
+      "result": {
+        "ok": false,
+        "output": {
+          "code": "invalid_arguments",
+          "errors": [
+            {
+              "field": "account_ids",
+              "message": "List should have at least 1 item after validation, not 0"
+            }
+          ]
+        }
+      },
+      "business_calls": [],
+      "passed": true
+    },
+    {
+      "id": "publish_excessive_accounts",
+      "tool": "submit_publish",
+      "arguments": "{\"account_ids\": [1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19, 20, 21, 22, 23, 24, 25, 26, 27, 28, 29, 30, 31], \"asset_id\": 1, \"title\": \"test\"}",
+      "expected_valid": false,
+      "result": {
+        "ok": false,
+        "output": {
+          "code": "invalid_arguments",
+          "errors": [
+            {
+              "field": "account_ids",
+              "message": "List should have at most 30 items after validation, not 31"
+            }
+          ]
+        }
+      },
+      "business_calls": [],
+      "passed": true
+    },
+    {
+      "id": "publish_zero_account",
+      "tool": "submit_publish",
+      "arguments": "{\"account_ids\": [0], \"asset_id\": 1, \"title\": \"test\"}",
+      "expected_valid": false,
+      "result": {
+        "ok": false,
+        "output": {
+          "code": "invalid_arguments",
+          "errors": [
+            {
+              "field": "account_ids.0",
+              "message": "Input should be greater than 0"
+            }
+          ]
+        }
+      },
+      "business_calls": [],
+      "passed": true
+    },
+    {
+      "id": "publish_boolean_account",
+      "tool": "submit_publish",
+      "arguments": "{\"account_ids\": [true], \"asset_id\": 1, \"title\": \"test\"}",
+      "expected_valid": false,
+      "result": {
+        "ok": false,
+        "output": {
+          "code": "invalid_arguments",
+          "errors": [
+            {
+              "field": "account_ids.0",
+              "message": "Input should be a valid integer"
+            }
+          ]
+        }
+      },
+      "business_calls": [],
+      "passed": true
+    },
+    {
+      "id": "publish_missing_asset",
+      "tool": "submit_publish",
+      "arguments": "{\"account_ids\": [1], \"title\": \"test\"}",
+      "expected_valid": false,
+      "result": {
+        "ok": false,
+        "output": "工具 submit_publish 缺少必填参数：['asset_id']"
+      },
+      "business_calls": [],
+      "passed": true
+    },
+    {
+      "id": "publish_missing_title",
+      "tool": "submit_publish",
+      "arguments": "{\"account_ids\": [1], \"asset_id\": 1}",
+      "expected_valid": false,
+      "result": {
+        "ok": false,
+        "output": "工具 submit_publish 缺少必填参数：['title']"
+      },
+      "business_calls": [],
+      "passed": true
+    },
+    {
+      "id": "publish_empty_title",
+      "tool": "submit_publish",
+      "arguments": "{\"account_ids\": [1], \"asset_id\": 1, \"title\": \"\"}",
+      "expected_valid": false,
+      "result": {
+        "ok": false,
+        "output": {
+          "code": "invalid_arguments",
+          "errors": [
+            {
+              "field": "title",
+              "message": "String should have at least 1 character"
+            }
+          ]
+        }
+      },
+      "business_calls": [],
+      "passed": true
+    },
+    {
+      "id": "publish_long_title",
+      "tool": "submit_publish",
+      "arguments": "{\"account_ids\": [1], \"asset_id\": 1, \"title\": \"xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx\"}",
+      "expected_valid": false,
+      "result": {
+        "ok": false,
+        "output": {
+          "code": "invalid_arguments",
+          "errors": [
+            {
+              "field": "title",
+              "message": "String should have at most 255 characters"
+            }
+          ]
+        }
+      },
+      "business_calls": [],
+      "passed": true
+    },
+    {
+      "id": "publish_excessive_images",
+      "tool": "submit_publish",
+      "arguments": "{\"account_ids\": [1], \"asset_id\": 1, \"title\": \"test\", \"image_asset_ids\": [1, 2, 3, 4, 5, 6, 7, 8, 9, 10]}",
+      "expected_valid": false,
+      "result": {
+        "ok": false,
+        "output": {
+          "code": "invalid_arguments",
+          "errors": [
+            {
+              "field": "image_asset_ids",
+              "message": "List should have at most 9 items after validation, not 10"
+            }
+          ]
+        }
+      },
+      "business_calls": [],
+      "passed": true
+    },
+    {
+      "id": "publish_excessive_tags",
+      "tool": "submit_publish",
+      "arguments": "{\"account_ids\": [1], \"asset_id\": 1, \"title\": \"test\", \"tags\": [\"tag\", \"tag\", \"tag\", \"tag\", \"tag\", \"tag\", \"tag\", \"tag\", \"tag\", \"tag\", \"tag\", \"tag\", \"tag\", \"tag\", \"tag\", \"tag\", \"tag\", \"tag\", \"tag\", \"tag\", \"tag\"]}",
+      "expected_valid": false,
+      "result": {
+        "ok": false,
+        "output": {
+          "code": "invalid_arguments",
+          "errors": [
+            {
+              "field": "tags",
+              "message": "List should have at most 20 items after validation, not 21"
+            }
+          ]
+        }
+      },
+      "business_calls": [],
+      "passed": true
+    },
+    {
+      "id": "publish_invalid_datetime",
+      "tool": "submit_publish",
+      "arguments": "{\"account_ids\": [1], \"asset_id\": 1, \"title\": \"test\", \"scheduled_at\": \"invalid-date\"}",
+      "expected_valid": false,
+      "result": {
+        "ok": false,
+        "output": {
+          "code": "invalid_arguments",
+          "errors": [
+            {
+              "field": "scheduled_at",
+              "message": "Input should be a valid datetime or date, invalid character in year"
+            }
+          ]
+        }
+      },
+      "business_calls": [],
+      "passed": true
+    },
+    {
+      "id": "default_accounts",
+      "tool": "list_accounts",
+      "arguments": "{}",
+      "expected_valid": true,
+      "result": {
+        "ok": true,
+        "output": {
+          "recorded_arguments": {
+            "platform": null
+          }
+        }
+      },
+      "business_calls": [
+        {
+          "platform": null
+        }
+      ],
+      "passed": true
+    },
+    {
+      "id": "account_platform_boundary",
+      "tool": "list_accounts",
+      "arguments": "{\"platform\": \"xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx\"}",
+      "expected_valid": true,
+      "result": {
+        "ok": true,
+        "output": {
+          "recorded_arguments": {
+            "platform": "xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx"
+          }
+        }
+      },
+      "business_calls": [
+        {
+          "platform": "xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx"
+        }
+      ],
+      "passed": true
+    },
+    {
+      "id": "valid_platform_list",
+      "tool": "list_platforms",
+      "arguments": "{}",
+      "expected_valid": true,
+      "result": {
+        "ok": true,
+        "output": {
+          "recorded_arguments": {}
+        }
+      },
+      "business_calls": [
+        {}
+      ],
+      "passed": true
+    },
+    {
+      "id": "valid_publish_minimum",
+      "tool": "submit_publish",
+      "arguments": "{\"account_ids\": [1], \"asset_id\": 1, \"title\": \"x\"}",
+      "expected_valid": true,
+      "result": {
+        "ok": true,
+        "output": {
+          "recorded_arguments": {
+            "account_ids": [
+              1
+            ],
+            "asset_id": 1,
+            "image_asset_ids": [],
+            "title": "x",
+            "description": "",
+            "tags": [],
+            "scheduled_at": null,
+            "platform_options": {}
+          }
+        }
+      },
+      "business_calls": [
+        {
+          "account_ids": [
+            1
+          ],
+          "asset_id": 1,
+          "image_asset_ids": [],
+          "title": "x",
+          "description": "",
+          "tags": [],
+          "scheduled_at": null,
+          "platform_options": {}
+        }
+      ],
+      "passed": true
+    },
+    {
+      "id": "valid_publish_boundaries",
+      "tool": "submit_publish",
+      "arguments": "{\"account_ids\": [1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19, 20, 21, 22, 23, 24, 25, 26, 27, 28, 29, 30], \"asset_id\": 1, \"title\": \"xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx\", \"image_asset_ids\": [1, 2, 3, 4, 5, 6, 7, 8, 9], \"tags\": [\"tag\", \"tag\", \"tag\", \"tag\", \"tag\", \"tag\", \"tag\", \"tag\", \"tag\", \"tag\", \"tag\", \"tag\", \"tag\", \"tag\", \"tag\", \"tag\", \"tag\", \"tag\", \"tag\", \"tag\"]}",
+      "expected_valid": true,
+      "result": {
+        "ok": true,
+        "output": {
+          "recorded_arguments": {
+            "account_ids": [
+              1,
+              2,
+              3,
+              4,
+              5,
+              6,
+              7,
+              8,
+              9,
+              10,
+              11,
+              12,
+              13,
+              14,
+              15,
+              16,
+              17,
+              18,
+              19,
+              20,
+              21,
+              22,
+              23,
+              24,
+              25,
+              26,
+              27,
+              28,
+              29,
+              30
+            ],
+            "asset_id": 1,
+            "image_asset_ids": [
+              1,
+              2,
+              3,
+              4,
+              5,
+              6,
+              7,
+              8,
+              9
+            ],
+            "title": "xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx",
+            "description": "",
+            "tags": [
+              "tag",
+              "tag",
+              "tag",
+              "tag",
+              "tag",
+              "tag",
+              "tag",
+              "tag",
+              "tag",
+              "tag",
+              "tag",
+              "tag",
+              "tag",
+              "tag",
+              "tag",
+              "tag",
+              "tag",
+              "tag",
+              "tag",
+              "tag"
+            ],
+            "scheduled_at": null,
+            "platform_options": {}
+          }
+        }
+      },
+      "business_calls": [
+        {
+          "account_ids": [
+            1,
+            2,
+            3,
+            4,
+            5,
+            6,
+            7,
+            8,
+            9,
+            10,
+            11,
+            12,
+            13,
+            14,
+            15,
+            16,
+            17,
+            18,
+            19,
+            20,
+            21,
+            22,
+            23,
+            24,
+            25,
+            26,
+            27,
+            28,
+            29,
+            30
+          ],
+          "asset_id": 1,
+          "image_asset_ids": [
+            1,
+            2,
+            3,
+            4,
+            5,
+            6,
+            7,
+            8,
+            9
+          ],
+          "title": "xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx",
+          "description": "",
+          "tags": [
+            "tag",
+            "tag",
+            "tag",
+            "tag",
+            "tag",
+            "tag",
+            "tag",
+            "tag",
+            "tag",
+            "tag",
+            "tag",
+            "tag",
+            "tag",
+            "tag",
+            "tag",
+            "tag",
+            "tag",
+            "tag",
+            "tag",
+            "tag"
+          ],
+          "scheduled_at": null,
+          "platform_options": {}
+        }
+      ],
+      "passed": true
+    }
+  ]
+}
