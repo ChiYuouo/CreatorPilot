@@ -1,8 +1,8 @@
 {
-  "evaluated_at": "2026-10-05T15:16:58.235038+08:00",
+  "evaluated_at": "2026-10-05T16:28:42.979362+08:00",
   "scope": "真实 Supervisor 节点与预设模型响应；不评测语义准确率或服务层异常处理",
   "python_version": "3.12.10",
-  "git_head": "2d3503c04c9e721310c8116d46040b7b9cf0b619",
+  "git_head": "3647096d16c028a1d55506ea23423ff4a47eb422",
   "source_sha256": {
     "app/agents/supervisor.py": "02b1d819ea868a4b4a3e17eb5fce81811a3b87a5713cf8397711139ed61cf384",
     "app/agents/events.py": "e3a4f52771d5eba1ba25297eb6f77e21e34be9f023fc97f77090f3633f5f750f",

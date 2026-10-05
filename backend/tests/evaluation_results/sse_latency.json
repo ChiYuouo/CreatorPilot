@@ -1,0 +1,6077 @@
+{
+  "evaluated_at": "2026-10-05T16:37:52.469701+08:00",
+  "model": "deepseek-chat",
+  "scope": "本地 HTTP SSE，真实模型与 AgentService，内存替代 Redis，测试用户替代登录鉴权；并发 1；不含反向代理、平台业务或旧版本对照",
+  "summary": {
+    "planned": 20,
+    "completed": 20,
+    "successful": 20,
+    "metrics": {
+      "first_event_seconds": {
+        "samples": 20,
+        "p50": 0.004,
+        "p95": 0.008
+      },
+      "first_token_seconds": {
+        "samples": 20,
+        "p50": 1.273,
+        "p95": 1.789
+      },
+      "total_seconds": {
+        "samples": 20,
+        "p50": 1.604,
+        "p95": 2.693
+      }
+    }
+  },
+  "cases": [
+    {
+      "id": "latency_001",
+      "category": "直接回复",
+      "message": "用一句话解释什么是质数。",
+      "first_event_seconds": 0.071,
+      "first_token_seconds": 1.558,
+      "total_seconds": 1.697,
+      "error": null,
+      "events": [
+        {
+          "type": "session",
+          "session_id": "49110962ce874dc38117945dfbfb65cf"
+        },
+        {
+          "type": "stage",
+          "stage": "supervisor",
+          "status": "start"
+        },
+        {
+          "type": "stage",
+          "stage": "supervisor",
+          "status": "done",
+          "route": "direct_reply",
+          "reason": "通用知识问答"
+        },
+        {
+          "type": "stage",
+          "stage": "direct_reply",
+          "status": "start"
+        },
+        {
+          "type": "token",
+          "text": "质"
+        },
+        {
+          "type": "token",
+          "text": "数是"
+        },
+        {
+          "type": "token",
+          "text": "只能"
+        },
+        {
+          "type": "token",
+          "text": "被"
+        },
+        {
+          "type": "token",
+          "text": " "
+        },
+        {
+          "type": "token",
+          "text": "1"
+        },
+        {
+          "type": "token",
+          "text": " "
+        },
+        {
+          "type": "token",
+          "text": "和"
+        },
+        {
+          "type": "token",
+          "text": "它"
+        },
+        {
+          "type": "token",
+          "text": "本身"
+        },
+        {
+          "type": "token",
+          "text": "整除"
+        },
+        {
+          "type": "token",
+          "text": "的大"
+        },
+        {
+          "type": "token",
+          "text": "于"
+        },
+        {
+          "type": "token",
+          "text": " "
+        },
+        {
+          "type": "token",
+          "text": "1"
+        },
+        {
+          "type": "token",
+          "text": " "
+        },
+        {
+          "type": "token",
+          "text": "的自然"
+        },
+        {
+          "type": "token",
+          "text": "数"
+        },
+        {
+          "type": "token",
+          "text": "。"
+        },
+        {
+          "type": "stage",
+          "stage": "direct_reply",
+          "status": "done"
+        },
+        {
+          "type": "done",
+          "final_content": "质数是只能被 1 和它本身整除的大于 1 的自然数。"
+        }
+      ]
+    },
+    {
+      "id": "latency_002",
+      "category": "直接回复",
+      "message": "用一句话解释什么是二分查找。",
+      "first_event_seconds": 0.003,
+      "first_token_seconds": 1.2,
+      "total_seconds": 1.45,
+      "error": null,
+      "events": [
+        {
+          "type": "session",
+          "session_id": "13ca4dbbea3946058fb41fada1744f7e"
+        },
+        {
+          "type": "stage",
+          "stage": "supervisor",
+          "status": "start"
+        },
+        {
+          "type": "stage",
+          "stage": "supervisor",
+          "status": "done",
+          "route": "direct_reply",
+          "reason": "通用知识问答"
+        },
+        {
+          "type": "stage",
+          "stage": "direct_reply",
+          "status": "start"
+        },
+        {
+          "type": "token",
+          "text": "二分"
+        },
+        {
+          "type": "token",
+          "text": "查找"
+        },
+        {
+          "type": "token",
+          "text": "是在"
+        },
+        {
+          "type": "token",
+          "text": "有序"
+        },
+        {
+          "type": "token",
+          "text": "数组中"
+        },
+        {
+          "type": "token",
+          "text": "每次"
+        },
+        {
+          "type": "token",
+          "text": "将"
+        },
+        {
+          "type": "token",
+          "text": "查找"
+        },
+        {
+          "type": "token",
+          "text": "范围"
+        },
+        {
+          "type": "token",
+          "text": "缩小"
+        },
+        {
+          "type": "token",
+          "text": "一半"
+        },
+        {
+          "type": "token",
+          "text": "、"
+        },
+        {
+          "type": "token",
+          "text": "从而"
+        },
+        {
+          "type": "token",
+          "text": "快速"
+        },
+        {
+          "type": "token",
+          "text": "定位"
+        },
+        {
+          "type": "token",
+          "text": "目标"
+        },
+        {
+          "type": "token",
+          "text": "值"
+        },
+        {
+          "type": "token",
+          "text": "的高"
+        },
+        {
+          "type": "token",
+          "text": "效"
+        },
+        {
+          "type": "token",
+          "text": "查找"
+        },
+        {
+          "type": "token",
+          "text": "算法"
+        },
+        {
+          "type": "token",
+          "text": "。"
+        },
+        {
+          "type": "stage",
+          "stage": "direct_reply",
+          "status": "done"
+        },
+        {
+          "type": "done",
+          "final_content": "二分查找是在有序数组中每次将查找范围缩小一半、从而快速定位目标值的高效查找算法。"
+        }
+      ]
+    },
+    {
+      "id": "latency_003",
+      "category": "直接回复",
+      "message": "用一句话解释什么是数据库事务。",
+      "first_event_seconds": 0.004,
+      "first_token_seconds": 1.271,
+      "total_seconds": 1.397,
+      "error": null,
+      "events": [
+        {
+          "type": "session",
+          "session_id": "d186da8d22f8461688ac51a9628ffab8"
+        },
+        {
+          "type": "stage",
+          "stage": "supervisor",
+          "status": "start"
+        },
+        {
+          "type": "stage",
+          "stage": "supervisor",
+          "status": "done",
+          "route": "direct_reply",
+          "reason": "通用知识问答，与内容运营无关"
+        },
+        {
+          "type": "stage",
+          "stage": "direct_reply",
+          "status": "start"
+        },
+        {
+          "type": "token",
+          "text": "数据库"
+        },
+        {
+          "type": "token",
+          "text": "事务"
+        },
+        {
+          "type": "token",
+          "text": "是一"
+        },
+        {
+          "type": "token",
+          "text": "组"
+        },
+        {
+          "type": "token",
+          "text": "要么"
+        },
+        {
+          "type": "token",
+          "text": "全部"
+        },
+        {
+          "type": "token",
+          "text": "成功"
+        },
+        {
+          "type": "token",
+          "text": "、"
+        },
+        {
+          "type": "token",
+          "text": "要么"
+        },
+        {
+          "type": "token",
+          "text": "全部"
+        },
+        {
+          "type": "token",
+          "text": "失败"
+        },
+        {
+          "type": "token",
+          "text": "（"
+        },
+        {
+          "type": "token",
+          "text": "回"
+        },
+        {
+          "type": "token",
+          "text": "滚"
+        },
+        {
+          "type": "token",
+          "text": "）"
+        },
+        {
+          "type": "token",
+          "text": "的"
+        },
+        {
+          "type": "token",
+          "text": "数据库"
+        },
+        {
+          "type": "token",
+          "text": "操作"
+        },
+        {
+          "type": "token",
+          "text": "，"
+        },
+        {
+          "type": "token",
+          "text": "用于"
+        },
+        {
+          "type": "token",
+          "text": "保证"
+        },
+        {
+          "type": "token",
+          "text": "数据"
+        },
+        {
+          "type": "token",
+          "text": "的一致"
+        },
+        {
+          "type": "token",
+          "text": "性和"
+        },
+        {
+          "type": "token",
+          "text": "完整性"
+        },
+        {
+          "type": "token",
+          "text": "。"
+        },
+        {
+          "type": "stage",
+          "stage": "direct_reply",
+          "status": "done"
+        },
+        {
+          "type": "done",
+          "final_content": "数据库事务是一组要么全部成功、要么全部失败（回滚）的数据库操作，用于保证数据的一致性和完整性。"
+        }
+      ]
+    },
+    {
+      "id": "latency_004",
+      "category": "直接回复",
+      "message": "用一句话解释 HTTP 请求。",
+      "first_event_seconds": 0.005,
+      "first_token_seconds": 1.275,
+      "total_seconds": 1.368,
+      "error": null,
+      "events": [
+        {
+          "type": "session",
+          "session_id": "a5caaaadcf1a45728d077a84b143512d"
+        },
+        {
+          "type": "stage",
+          "stage": "supervisor",
+          "status": "start"
+        },
+        {
+          "type": "stage",
+          "stage": "supervisor",
+          "status": "done",
+          "route": "direct_reply",
+          "reason": "通用知识问答"
+        },
+        {
+          "type": "stage",
+          "stage": "direct_reply",
+          "status": "start"
+        },
+        {
+          "type": "token",
+          "text": "HTTP"
+        },
+        {
+          "type": "token",
+          "text": " "
+        },
+        {
+          "type": "token",
+          "text": "请求"
+        },
+        {
+          "type": "token",
+          "text": "是"
+        },
+        {
+          "type": "token",
+          "text": "客户端"
+        },
+        {
+          "type": "token",
+          "text": "向"
+        },
+        {
+          "type": "token",
+          "text": "服务器"
+        },
+        {
+          "type": "token",
+          "text": "发送"
+        },
+        {
+          "type": "token",
+          "text": "的一条"
+        },
+        {
+          "type": "token",
+          "text": "消息"
+        },
+        {
+          "type": "token",
+          "text": "，"
+        },
+        {
+          "type": "token",
+          "text": "用来"
+        },
+        {
+          "type": "token",
+          "text": "索取"
+        },
+        {
+          "type": "token",
+          "text": "资源"
+        },
+        {
+          "type": "token",
+          "text": "或"
+        },
+        {
+          "type": "token",
+          "text": "提交"
+        },
+        {
+          "type": "token",
+          "text": "数据"
+        },
+        {
+          "type": "token",
+          "text": "。"
+        },
+        {
+          "type": "stage",
+          "stage": "direct_reply",
+          "status": "done"
+        },
+        {
+          "type": "done",
+          "final_content": "HTTP 请求是客户端向服务器发送的一条消息，用来索取资源或提交数据。"
+        }
+      ]
+    },
+    {
+      "id": "latency_005",
+      "category": "直接回复",
+      "message": "用一句话解释 Python 字典。",
+      "first_event_seconds": 0.004,
+      "first_token_seconds": 1.352,
+      "total_seconds": 1.607,
+      "error": null,
+      "events": [
+        {
+          "type": "session",
+          "session_id": "20f6a2c3cd0546d4a4df7f45067693d9"
+        },
+        {
+          "type": "stage",
+          "stage": "supervisor",
+          "status": "start"
+        },
+        {
+          "type": "stage",
+          "stage": "supervisor",
+          "status": "done",
+          "route": "direct_reply",
+          "reason": "通用知识问答，与内容运营无关"
+        },
+        {
+          "type": "stage",
+          "stage": "direct_reply",
+          "status": "start"
+        },
+        {
+          "type": "token",
+          "text": "Python"
+        },
+        {
+          "type": "token",
+          "text": " "
+        },
+        {
+          "type": "token",
+          "text": "字典"
+        },
+        {
+          "type": "token",
+          "text": "是一种"
+        },
+        {
+          "type": "token",
+          "text": "用"
+        },
+        {
+          "type": "token",
+          "text": "键"
+        },
+        {
+          "type": "token",
+          "text": "值"
+        },
+        {
+          "type": "token",
+          "text": "对"
+        },
+        {
+          "type": "token",
+          "text": "（"
+        },
+        {
+          "type": "token",
+          "text": "key"
+        },
+        {
+          "type": "token",
+          "text": "-value"
+        },
+        {
+          "type": "token",
+          "text": "）"
+        },
+        {
+          "type": "token",
+          "text": "存储"
+        },
+        {
+          "type": "token",
+          "text": "数据的"
+        },
+        {
+          "type": "token",
+          "text": "可变"
+        },
+        {
+          "type": "token",
+          "text": "容器"
+        },
+        {
+          "type": "token",
+          "text": "，"
+        },
+        {
+          "type": "token",
+          "text": "通过"
+        },
+        {
+          "type": "token",
+          "text": "键"
+        },
+        {
+          "type": "token",
+          "text": "快速"
+        },
+        {
+          "type": "token",
+          "text": "查找"
+        },
+        {
+          "type": "token",
+          "text": "对应的"
+        },
+        {
+          "type": "token",
+          "text": "值"
+        },
+        {
+          "type": "token",
+          "text": "。"
+        },
+        {
+          "type": "stage",
+          "stage": "direct_reply",
+          "status": "done"
+        },
+        {
+          "type": "done",
+          "final_content": "Python 字典是一种用键值对（key-value）存储数据的可变容器，通过键快速查找对应的值。"
+        }
+      ]
+    },
+    {
+      "id": "latency_006",
+      "category": "直接回复",
+      "message": "用一句话介绍你自己。",
+      "first_event_seconds": 0.007,
+      "first_token_seconds": 1.767,
+      "total_seconds": 1.86,
+      "error": null,
+      "events": [
+        {
+          "type": "session",
+          "session_id": "908cc896330b4db4b10fe09ba9341a46"
+        },
+        {
+          "type": "stage",
+          "stage": "supervisor",
+          "status": "start"
+        },
+        {
+          "type": "stage",
+          "stage": "supervisor",
+          "status": "done",
+          "route": "direct_reply",
+          "reason": "自我介绍类闲聊"
+        },
+        {
+          "type": "stage",
+          "stage": "direct_reply",
+          "status": "start"
+        },
+        {
+          "type": "token",
+          "text": "我是"
+        },
+        {
+          "type": "token",
+          "text": " Creator"
+        },
+        {
+          "type": "token",
+          "text": "P"
+        },
+        {
+          "type": "token",
+          "text": "ilot"
+        },
+        {
+          "type": "token",
+          "text": " "
+        },
+        {
+          "type": "token",
+          "text": "的"
+        },
+        {
+          "type": "token",
+          "text": " AI"
+        },
+        {
+          "type": "token",
+          "text": " "
+        },
+        {
+          "type": "token",
+          "text": "助手"
+        },
+        {
+          "type": "token",
+          "text": "，"
+        },
+        {
+          "type": "token",
+          "text": "能"
+        },
+        {
+          "type": "token",
+          "text": "帮你"
+        },
+        {
+          "type": "token",
+          "text": "搞定"
+        },
+        {
+          "type": "token",
+          "text": "选题"
+        },
+        {
+          "type": "token",
+          "text": "、"
+        },
+        {
+          "type": "token",
+          "text": "文案"
+        },
+        {
+          "type": "token",
+          "text": "、"
+        },
+        {
+          "type": "token",
+          "text": "脚本"
+        },
+        {
+          "type": "token",
+          "text": "等"
+        },
+        {
+          "type": "token",
+          "text": "各类"
+        },
+        {
+          "type": "token",
+          "text": "内容"
+        },
+        {
+          "type": "token",
+          "text": "创作"
+        },
+        {
+          "type": "token",
+          "text": "，"
+        },
+        {
+          "type": "token",
+          "text": "需要"
+        },
+        {
+          "type": "token",
+          "text": "时"
+        },
+        {
+          "type": "token",
+          "text": "告诉我"
+        },
+        {
+          "type": "token",
+          "text": "平台"
+        },
+        {
+          "type": "token",
+          "text": "和"
+        },
+        {
+          "type": "token",
+          "text": "风格"
+        },
+        {
+          "type": "token",
+          "text": "即可"
+        },
+        {
+          "type": "token",
+          "text": "。"
+        },
+        {
+          "type": "stage",
+          "stage": "direct_reply",
+          "status": "done"
+        },
+        {
+          "type": "done",
+          "final_content": "我是 CreatorPilot 的 AI 助手，能帮你搞定选题、文案、脚本等各类内容创作，需要时告诉我平台和风格即可。"
+        }
+      ]
+    },
+    {
+      "id": "latency_007",
+      "category": "直接回复",
+      "message": "请简短回答，12 加 13 等于几？",
+      "first_event_seconds": 0.003,
+      "first_token_seconds": 1.042,
+      "total_seconds": 1.096,
+      "error": null,
+      "events": [
+        {
+          "type": "session",
+          "session_id": "155449b449df45fd876e1dcca6ab77f4"
+        },
+        {
+          "type": "stage",
+          "stage": "supervisor",
+          "status": "start"
+        },
+        {
+          "type": "stage",
+          "stage": "supervisor",
+          "status": "done",
+          "route": "direct_reply",
+          "reason": "简单数学计算"
+        },
+        {
+          "type": "stage",
+          "stage": "direct_reply",
+          "status": "start"
+        },
+        {
+          "type": "token",
+          "text": "25"
+        },
+        {
+          "type": "stage",
+          "stage": "direct_reply",
+          "status": "done"
+        },
+        {
+          "type": "done",
+          "final_content": "25"
+        }
+      ]
+    },
+    {
+      "id": "latency_008",
+      "category": "直接回复",
+      "message": "用一句话解释什么是递归。",
+      "first_event_seconds": 0.005,
+      "first_token_seconds": 1.049,
+      "total_seconds": 1.283,
+      "error": null,
+      "events": [
+        {
+          "type": "session",
+          "session_id": "c72125d36ab54659b6bcd9388cd76214"
+        },
+        {
+          "type": "stage",
+          "stage": "supervisor",
+          "status": "start"
+        },
+        {
+          "type": "stage",
+          "stage": "supervisor",
+          "status": "done",
+          "route": "direct_reply",
+          "reason": "通用知识问答"
+        },
+        {
+          "type": "stage",
+          "stage": "direct_reply",
+          "status": "start"
+        },
+        {
+          "type": "token",
+          "text": "递归"
+        },
+        {
+          "type": "token",
+          "text": "就是"
+        },
+        {
+          "type": "token",
+          "text": "函数"
+        },
+        {
+          "type": "token",
+          "text": "自己"
+        },
+        {
+          "type": "token",
+          "text": "调用"
+        },
+        {
+          "type": "token",
+          "text": "自己"
+        },
+        {
+          "type": "token",
+          "text": "，"
+        },
+        {
+          "type": "token",
+          "text": "把"
+        },
+        {
+          "type": "token",
+          "text": "大"
+        },
+        {
+          "type": "token",
+          "text": "问题"
+        },
+        {
+          "type": "token",
+          "text": "不断"
+        },
+        {
+          "type": "token",
+          "text": "拆"
+        },
+        {
+          "type": "token",
+          "text": "成"
+        },
+        {
+          "type": "token",
+          "text": "同样"
+        },
+        {
+          "type": "token",
+          "text": "结构"
+        },
+        {
+          "type": "token",
+          "text": "的小"
+        },
+        {
+          "type": "token",
+          "text": "问题"
+        },
+        {
+          "type": "token",
+          "text": "，"
+        },
+        {
+          "type": "token",
+          "text": "直到"
+        },
+        {
+          "type": "token",
+          "text": "碰到"
+        },
+        {
+          "type": "token",
+          "text": "能"
+        },
+        {
+          "type": "token",
+          "text": "直接"
+        },
+        {
+          "type": "token",
+          "text": "解决"
+        },
+        {
+          "type": "token",
+          "text": "的最小"
+        },
+        {
+          "type": "token",
+          "text": "情况"
+        },
+        {
+          "type": "token",
+          "text": "为止"
+        },
+        {
+          "type": "token",
+          "text": "。"
+        },
+        {
+          "type": "stage",
+          "stage": "direct_reply",
+          "status": "done"
+        },
+        {
+          "type": "done",
+          "final_content": "递归就是函数自己调用自己，把大问题不断拆成同样结构的小问题，直到碰到能直接解决的最小情况为止。"
+        }
+      ]
+    },
+    {
+      "id": "latency_009",
+      "category": "直接回复",
+      "message": "用一句话解释什么是缓存。",
+      "first_event_seconds": 0.003,
+      "first_token_seconds": 1.04,
+      "total_seconds": 1.116,
+      "error": null,
+      "events": [
+        {
+          "type": "session",
+          "session_id": "8fcde21ab20140b6947937db01af9020"
+        },
+        {
+          "type": "stage",
+          "stage": "supervisor",
+          "status": "start"
+        },
+        {
+          "type": "stage",
+          "stage": "supervisor",
+          "status": "done",
+          "route": "direct_reply",
+          "reason": "通用知识问答，与内容运营无关"
+        },
+        {
+          "type": "stage",
+          "stage": "direct_reply",
+          "status": "start"
+        },
+        {
+          "type": "token",
+          "text": "缓存"
+        },
+        {
+          "type": "token",
+          "text": "就是把"
+        },
+        {
+          "type": "token",
+          "text": "常用"
+        },
+        {
+          "type": "token",
+          "text": "数据"
+        },
+        {
+          "type": "token",
+          "text": "临时"
+        },
+        {
+          "type": "token",
+          "text": "存放在"
+        },
+        {
+          "type": "token",
+          "text": "更"
+        },
+        {
+          "type": "token",
+          "text": "快的"
+        },
+        {
+          "type": "token",
+          "text": "存储"
+        },
+        {
+          "type": "token",
+          "text": "里"
+        },
+        {
+          "type": "token",
+          "text": "，"
+        },
+        {
+          "type": "token",
+          "text": "以便"
+        },
+        {
+          "type": "token",
+          "text": "下次"
+        },
+        {
+          "type": "token",
+          "text": "访问"
+        },
+        {
+          "type": "token",
+          "text": "时"
+        },
+        {
+          "type": "token",
+          "text": "能"
+        },
+        {
+          "type": "token",
+          "text": "更快"
+        },
+        {
+          "type": "token",
+          "text": "获取"
+        },
+        {
+          "type": "token",
+          "text": "、"
+        },
+        {
+          "type": "token",
+          "text": "减少"
+        },
+        {
+          "type": "token",
+          "text": "重复"
+        },
+        {
+          "type": "token",
+          "text": "计算"
+        },
+        {
+          "type": "token",
+          "text": "或"
+        },
+        {
+          "type": "token",
+          "text": "查询"
+        },
+        {
+          "type": "token",
+          "text": "。"
+        },
+        {
+          "type": "stage",
+          "stage": "direct_reply",
+          "status": "done"
+        },
+        {
+          "type": "done",
+          "final_content": "缓存就是把常用数据临时存放在更快的存储里，以便下次访问时能更快获取、减少重复计算或查询。"
+        }
+      ]
+    },
+    {
+      "id": "latency_010",
+      "category": "直接回复",
+      "message": "用一句话解释什么是操作系统。",
+      "first_event_seconds": 0.004,
+      "first_token_seconds": 1.066,
+      "total_seconds": 1.225,
+      "error": null,
+      "events": [
+        {
+          "type": "session",
+          "session_id": "1d54483d17b947108e7452b677d2a24f"
+        },
+        {
+          "type": "stage",
+          "stage": "supervisor",
+          "status": "start"
+        },
+        {
+          "type": "stage",
+          "stage": "supervisor",
+          "status": "done",
+          "route": "direct_reply",
+          "reason": "通用知识问答"
+        },
+        {
+          "type": "stage",
+          "stage": "direct_reply",
+          "status": "start"
+        },
+        {
+          "type": "token",
+          "text": "操作系统"
+        },
+        {
+          "type": "token",
+          "text": "是"
+        },
+        {
+          "type": "token",
+          "text": "管理"
+        },
+        {
+          "type": "token",
+          "text": "计算机"
+        },
+        {
+          "type": "token",
+          "text": "硬件"
+        },
+        {
+          "type": "token",
+          "text": "与"
+        },
+        {
+          "type": "token",
+          "text": "软件"
+        },
+        {
+          "type": "token",
+          "text": "资源"
+        },
+        {
+          "type": "token",
+          "text": "、"
+        },
+        {
+          "type": "token",
+          "text": "并为"
+        },
+        {
+          "type": "token",
+          "text": "程序"
+        },
+        {
+          "type": "token",
+          "text": "提供"
+        },
+        {
+          "type": "token",
+          "text": "运行"
+        },
+        {
+          "type": "token",
+          "text": "环境的"
+        },
+        {
+          "type": "token",
+          "text": "系统"
+        },
+        {
+          "type": "token",
+          "text": "软件"
+        },
+        {
+          "type": "token",
+          "text": "。"
+        },
+        {
+          "type": "stage",
+          "stage": "direct_reply",
+          "status": "done"
+        },
+        {
+          "type": "done",
+          "final_content": "操作系统是管理计算机硬件与软件资源、并为程序提供运行环境的系统软件。"
+        }
+      ]
+    },
+    {
+      "id": "latency_011",
+      "category": "内容生成",
+      "message": "给晨跑视频写一个十字以内标题。",
+      "first_event_seconds": 0.003,
+      "first_token_seconds": 1.497,
+      "total_seconds": 2.085,
+      "error": null,
+      "events": [
+        {
+          "type": "session",
+          "session_id": "82558549a3074a78a2c09b96e65a8df7"
+        },
+        {
+          "type": "stage",
+          "stage": "supervisor",
+          "status": "start"
+        },
+        {
+          "type": "stage",
+          "stage": "supervisor",
+          "status": "done",
+          "route": "content_agent",
+          "reason": "创作视频标题"
+        },
+        {
+          "type": "stage",
+          "stage": "content_agent",
+          "status": "start"
+        },
+        {
+          "type": "tool_call",
+          "id": "call_00_GiKf5DDRaNAssyIRJAC97088",
+          "name": "get_platform_guidelines",
+          "arguments": "{\"platform\": \"douyin\"}"
+        },
+        {
+          "type": "tool_result",
+          "id": "call_00_GiKf5DDRaNAssyIRJAC97088",
+          "name": "get_platform_guidelines",
+          "ok": true,
+          "output": {
+            "platform": "douyin",
+            "title_limit": "作品标题控制在 30 字以内，突出视频主题",
+            "body_limit": "视频描述与作品标题独立，写发布页文案；不要把拍摄或口播脚本放进作品描述",
+            "tags": "3-5 个话题标签，带热点话题优先",
+            "rhythm": "午 12:00-14:00 / 晚 18:00-23:00 发布",
+            "style": "强节奏、悬念前置、口语化"
+          }
+        },
+        {
+          "type": "token",
+          "text": "晨"
+        },
+        {
+          "type": "token",
+          "text": "跑"
+        },
+        {
+          "type": "token",
+          "text": "视频"
+        },
+        {
+          "type": "token",
+          "text": "的"
+        },
+        {
+          "type": "token",
+          "text": "十字"
+        },
+        {
+          "type": "token",
+          "text": "以内"
+        },
+        {
+          "type": "token",
+          "text": "标题"
+        },
+        {
+          "type": "token",
+          "text": "（"
+        },
+        {
+          "type": "token",
+          "text": "抖音"
+        },
+        {
+          "type": "token",
+          "text": "，"
+        },
+        {
+          "type": "token",
+          "text": "字数"
+        },
+        {
+          "type": "token",
+          "text": "已"
+        },
+        {
+          "type": "token",
+          "text": "标注"
+        },
+        {
+          "type": "token",
+          "text": "）：\n\n"
+        },
+        {
+          "type": "token",
+          "text": "1"
+        },
+        {
+          "type": "token",
+          "text": "."
+        },
+        {
+          "type": "token",
+          "text": " "
+        },
+        {
+          "type": "token",
+          "text": "晨"
+        },
+        {
+          "type": "token",
+          "text": "跑"
+        },
+        {
+          "type": "token",
+          "text": "，"
+        },
+        {
+          "type": "token",
+          "text": "天"
+        },
+        {
+          "type": "token",
+          "text": "刚"
+        },
+        {
+          "type": "token",
+          "text": "亮"
+        },
+        {
+          "type": "token",
+          "text": "（"
+        },
+        {
+          "type": "token",
+          "text": "6"
+        },
+        {
+          "type": "token",
+          "text": "字"
+        },
+        {
+          "type": "token",
+          "text": "）\n"
+        },
+        {
+          "type": "token",
+          "text": "2"
+        },
+        {
+          "type": "token",
+          "text": "."
+        },
+        {
+          "type": "token",
+          "text": " "
+        },
+        {
+          "type": "token",
+          "text": "五点"
+        },
+        {
+          "type": "token",
+          "text": "起床"
+        },
+        {
+          "type": "token",
+          "text": "去"
+        },
+        {
+          "type": "token",
+          "text": "跑步"
+        },
+        {
+          "type": "token",
+          "text": "（"
+        },
+        {
+          "type": "token",
+          "text": "7"
+        },
+        {
+          "type": "token",
+          "text": "字"
+        },
+        {
+          "type": "token",
+          "text": "）\n"
+        },
+        {
+          "type": "token",
+          "text": "3"
+        },
+        {
+          "type": "token",
+          "text": "."
+        },
+        {
+          "type": "token",
+          "text": " "
+        },
+        {
+          "type": "token",
+          "text": "一个人"
+        },
+        {
+          "type": "token",
+          "text": "晨"
+        },
+        {
+          "type": "token",
+          "text": "跑"
+        },
+        {
+          "type": "token",
+          "text": "的第"
+        },
+        {
+          "type": "token",
+          "text": "1"
+        },
+        {
+          "type": "token",
+          "text": "天"
+        },
+        {
+          "type": "token",
+          "text": "（"
+        },
+        {
+          "type": "token",
+          "text": "9"
+        },
+        {
+          "type": "token",
+          "text": "字"
+        },
+        {
+          "type": "token",
+          "text": "）\n"
+        },
+        {
+          "type": "token",
+          "text": "4"
+        },
+        {
+          "type": "token",
+          "text": "."
+        },
+        {
+          "type": "token",
+          "text": " "
+        },
+        {
+          "type": "token",
+          "text": "天"
+        },
+        {
+          "type": "token",
+          "text": "没"
+        },
+        {
+          "type": "token",
+          "text": "亮"
+        },
+        {
+          "type": "token",
+          "text": "就"
+        },
+        {
+          "type": "token",
+          "text": "出门"
+        },
+        {
+          "type": "token",
+          "text": "了"
+        },
+        {
+          "type": "token",
+          "text": "（"
+        },
+        {
+          "type": "token",
+          "text": "7"
+        },
+        {
+          "type": "token",
+          "text": "字"
+        },
+        {
+          "type": "token",
+          "text": "）\n"
+        },
+        {
+          "type": "token",
+          "text": "5"
+        },
+        {
+          "type": "token",
+          "text": "."
+        },
+        {
+          "type": "token",
+          "text": " "
+        },
+        {
+          "type": "token",
+          "text": "晨"
+        },
+        {
+          "type": "token",
+          "text": "跑"
+        },
+        {
+          "type": "token",
+          "text": "5"
+        },
+        {
+          "type": "token",
+          "text": "公里"
+        },
+        {
+          "type": "token",
+          "text": "不"
+        },
+        {
+          "type": "token",
+          "text": "喘"
+        },
+        {
+          "type": "token",
+          "text": "（"
+        },
+        {
+          "type": "token",
+          "text": "7"
+        },
+        {
+          "type": "token",
+          "text": "字"
+        },
+        {
+          "type": "token",
+          "text": "）\n\n"
+        },
+        {
+          "type": "token",
+          "text": "如果"
+        },
+        {
+          "type": "token",
+          "text": "告诉我"
+        },
+        {
+          "type": "token",
+          "text": "视频"
+        },
+        {
+          "type": "token",
+          "text": "里"
+        },
+        {
+          "type": "token",
+          "text": "最有"
+        },
+        {
+          "type": "token",
+          "text": "画面的"
+        },
+        {
+          "type": "token",
+          "text": "那个"
+        },
+        {
+          "type": "token",
+          "text": "瞬间"
+        },
+        {
+          "type": "token",
+          "text": "（"
+        },
+        {
+          "type": "token",
+          "text": "比如"
+        },
+        {
+          "type": "token",
+          "text": "天"
+        },
+        {
+          "type": "token",
+          "text": "边的"
+        },
+        {
+          "type": "token",
+          "text": "光"
+        },
+        {
+          "type": "token",
+          "text": "、"
+        },
+        {
+          "type": "token",
+          "text": "脚下的"
+        },
+        {
+          "type": "token",
+          "text": "路"
+        },
+        {
+          "type": "token",
+          "text": "、"
+        },
+        {
+          "type": "token",
+          "text": "跑"
+        },
+        {
+          "type": "token",
+          "text": "完"
+        },
+        {
+          "type": "token",
+          "text": "的状态"
+        },
+        {
+          "type": "token",
+          "text": "），"
+        },
+        {
+          "type": "token",
+          "text": "我可以"
+        },
+        {
+          "type": "token",
+          "text": "再"
+        },
+        {
+          "type": "token",
+          "text": "帮你"
+        },
+        {
+          "type": "token",
+          "text": "收敛"
+        },
+        {
+          "type": "token",
+          "text": "成"
+        },
+        {
+          "type": "token",
+          "text": "更"
+        },
+        {
+          "type": "token",
+          "text": "抓"
+        },
+        {
+          "type": "token",
+          "text": "人的"
+        },
+        {
+          "type": "token",
+          "text": "一"
+        },
+        {
+          "type": "token",
+          "text": "版"
+        },
+        {
+          "type": "token",
+          "text": "。"
+        },
+        {
+          "type": "stage",
+          "stage": "content_agent",
+          "status": "done"
+        },
+        {
+          "type": "done",
+          "final_content": "晨跑视频的十字以内标题（抖音，字数已标注）：\n\n1. 晨跑，天刚亮（6字）\n2. 五点起床去跑步（7字）\n3. 一个人晨跑的第1天（9字）\n4. 天没亮就出门了（7字）\n5. 晨跑5公里不喘（7字）\n\n如果告诉我视频里最有画面的那个瞬间（比如天边的光、脚下的路、跑完的状态），我可以再帮你收敛成更抓人的一版。"
+        }
+      ]
+    },
+    {
+      "id": "latency_012",
+      "category": "内容生成",
+      "message": "给猫咪视频写一个十字以内标题。",
+      "first_event_seconds": 0.004,
+      "first_token_seconds": 1.273,
+      "total_seconds": 1.604,
+      "error": null,
+      "events": [
+        {
+          "type": "session",
+          "session_id": "45a858b17e184e85a5eca189ea7b6a75"
+        },
+        {
+          "type": "stage",
+          "stage": "supervisor",
+          "status": "start"
+        },
+        {
+          "type": "stage",
+          "stage": "supervisor",
+          "status": "done",
+          "route": "content_agent",
+          "reason": "创作猫咪视频标题"
+        },
+        {
+          "type": "stage",
+          "stage": "content_agent",
+          "status": "start"
+        },
+        {
+          "type": "token",
+          "text": "喵"
+        },
+        {
+          "type": "token",
+          "text": "星"
+        },
+        {
+          "type": "token",
+          "text": "人"
+        },
+        {
+          "type": "token",
+          "text": "日常"
+        },
+        {
+          "type": "token",
+          "text": " 🐾"
+        },
+        {
+          "type": "token",
+          "text": "（"
+        },
+        {
+          "type": "token",
+          "text": "7"
+        },
+        {
+          "type": "token",
+          "text": "字"
+        },
+        {
+          "type": "token",
+          "text": "）\n\n"
+        },
+        {
+          "type": "token",
+          "text": "或者"
+        },
+        {
+          "type": "token",
+          "text": "：\n\n"
+        },
+        {
+          "type": "token",
+          "text": "猫"
+        },
+        {
+          "type": "token",
+          "text": "主子"
+        },
+        {
+          "type": "token",
+          "text": "日常"
+        },
+        {
+          "type": "token",
+          "text": "（"
+        },
+        {
+          "type": "token",
+          "text": "5"
+        },
+        {
+          "type": "token",
+          "text": "字"
+        },
+        {
+          "type": "token",
+          "text": "）\n\n"
+        },
+        {
+          "type": "token",
+          "text": "需要"
+        },
+        {
+          "type": "token",
+          "text": "我"
+        },
+        {
+          "type": "token",
+          "text": "按"
+        },
+        {
+          "type": "token",
+          "text": "某个"
+        },
+        {
+          "type": "token",
+          "text": "平台"
+        },
+        {
+          "type": "token",
+          "text": "（"
+        },
+        {
+          "type": "token",
+          "text": "抖音"
+        },
+        {
+          "type": "token",
+          "text": "/"
+        },
+        {
+          "type": "token",
+          "text": "小红书"
+        },
+        {
+          "type": "token",
+          "text": "）"
+        },
+        {
+          "type": "token",
+          "text": "再"
+        },
+        {
+          "type": "token",
+          "text": "优化"
+        },
+        {
+          "type": "token",
+          "text": "一"
+        },
+        {
+          "type": "token",
+          "text": "版"
+        },
+        {
+          "type": "token",
+          "text": "吗"
+        },
+        {
+          "type": "token",
+          "text": "？"
+        },
+        {
+          "type": "token",
+          "text": "告诉我"
+        },
+        {
+          "type": "token",
+          "text": "平台"
+        },
+        {
+          "type": "token",
+          "text": "，"
+        },
+        {
+          "type": "token",
+          "text": "我"
+        },
+        {
+          "type": "token",
+          "text": "按"
+        },
+        {
+          "type": "token",
+          "text": "规范"
+        },
+        {
+          "type": "token",
+          "text": "给你"
+        },
+        {
+          "type": "token",
+          "text": "更"
+        },
+        {
+          "type": "token",
+          "text": "贴合"
+        },
+        {
+          "type": "token",
+          "text": "风格"
+        },
+        {
+          "type": "token",
+          "text": "和"
+        },
+        {
+          "type": "token",
+          "text": "长度的"
+        },
+        {
+          "type": "token",
+          "text": "标题"
+        },
+        {
+          "type": "token",
+          "text": "。"
+        },
+        {
+          "type": "stage",
+          "stage": "content_agent",
+          "status": "done"
+        },
+        {
+          "type": "done",
+          "final_content": "喵星人日常 🐾（7字）\n\n或者：\n\n猫主子日常（5字）\n\n需要我按某个平台（抖音/小红书）再优化一版吗？告诉我平台，我按规范给你更贴合风格和长度的标题。"
+        }
+      ]
+    },
+    {
+      "id": "latency_013",
+      "category": "内容生成",
+      "message": "把标题改短：适合新手的五个做饭小技巧。",
+      "first_event_seconds": 0.003,
+      "first_token_seconds": 1.952,
+      "total_seconds": 3.155,
+      "error": null,
+      "events": [
+        {
+          "type": "session",
+          "session_id": "63a56952ae5f454fa74ffee21789e3f3"
+        },
+        {
+          "type": "stage",
+          "stage": "supervisor",
+          "status": "start"
+        },
+        {
+          "type": "stage",
+          "stage": "supervisor",
+          "status": "done",
+          "route": "content_agent",
+          "reason": "改写标题文案"
+        },
+        {
+          "type": "stage",
+          "stage": "content_agent",
+          "status": "start"
+        },
+        {
+          "type": "token",
+          "text": "“"
+        },
+        {
+          "type": "token",
+          "text": "适合"
+        },
+        {
+          "type": "token",
+          "text": "新"
+        },
+        {
+          "type": "token",
+          "text": "手的"
+        },
+        {
+          "type": "token",
+          "text": "五个"
+        },
+        {
+          "type": "token",
+          "text": "做饭"
+        },
+        {
+          "type": "token",
+          "text": "小"
+        },
+        {
+          "type": "token",
+          "text": "技巧"
+        },
+        {
+          "type": "token",
+          "text": "”"
+        },
+        {
+          "type": "token",
+          "text": "本身"
+        },
+        {
+          "type": "token",
+          "text": "更适合"
+        },
+        {
+          "type": "token",
+          "text": "小红书"
+        },
+        {
+          "type": "token",
+          "text": "笔记"
+        },
+        {
+          "type": "token",
+          "text": "标题"
+        },
+        {
+          "type": "token",
+          "text": "，"
+        },
+        {
+          "type": "token",
+          "text": "我"
+        },
+        {
+          "type": "token",
+          "text": "按"
+        },
+        {
+          "type": "token",
+          "text": "平台"
+        },
+        {
+          "type": "token",
+          "text": "规范"
+        },
+        {
+          "type": "token",
+          "text": "给你"
+        },
+        {
+          "type": "token",
+          "text": "几个"
+        },
+        {
+          "type": "token",
+          "text": "更"
+        },
+        {
+          "type": "token",
+          "text": "短的"
+        },
+        {
+          "type": "token",
+          "text": "版本"
+        },
+        {
+          "type": "token",
+          "text": "。\n\n"
+        },
+        {
+          "type": "token",
+          "text": "不过"
+        },
+        {
+          "type": "token",
+          "text": "先"
+        },
+        {
+          "type": "token",
+          "text": "确认"
+        },
+        {
+          "type": "token",
+          "text": "一下"
+        },
+        {
+          "type": "token",
+          "text": "："
+        },
+        {
+          "type": "token",
+          "text": "你要"
+        },
+        {
+          "type": "token",
+          "text": "发"
+        },
+        {
+          "type": "token",
+          "text": "的是"
+        },
+        {
+          "type": "token",
+          "text": "哪个"
+        },
+        {
+          "type": "token",
+          "text": "平台"
+        },
+        {
+          "type": "token",
+          "text": "？"
+        },
+        {
+          "type": "token",
+          "text": "我"
+        },
+        {
+          "type": "token",
+          "text": "暂时"
+        },
+        {
+          "type": "token",
+          "text": "按"
+        },
+        {
+          "type": "token",
+          "text": "小红书"
+        },
+        {
+          "type": "token",
+          "text": "来"
+        },
+        {
+          "type": "token",
+          "text": "给你"
+        },
+        {
+          "type": "token",
+          "text": "改"
+        },
+        {
+          "type": "token",
+          "text": "。\n\n"
+        },
+        {
+          "type": "token",
+          "text": "**"
+        },
+        {
+          "type": "token",
+          "text": "5"
+        },
+        {
+          "type": "token",
+          "text": " "
+        },
+        {
+          "type": "token",
+          "text": "个"
+        },
+        {
+          "type": "token",
+          "text": "候选"
+        },
+        {
+          "type": "token",
+          "text": "短"
+        },
+        {
+          "type": "token",
+          "text": "标题"
+        },
+        {
+          "type": "token",
+          "text": "（"
+        },
+        {
+          "type": "token",
+          "text": "每个"
+        },
+        {
+          "type": "token",
+          "text": "都"
+        },
+        {
+          "type": "token",
+          "text": "控制在"
+        },
+        {
+          "type": "token",
+          "text": " "
+        },
+        {
+          "type": "token",
+          "text": "20"
+        },
+        {
+          "type": "token",
+          "text": " "
+        },
+        {
+          "type": "token",
+          "text": "字"
+        },
+        {
+          "type": "token",
+          "text": "以内"
+        },
+        {
+          "type": "token",
+          "text": "）"
+        },
+        {
+          "type": "token",
+          "text": "**\n\n"
+        },
+        {
+          "type": "token",
+          "text": "1"
+        },
+        {
+          "type": "token",
+          "text": "."
+        },
+        {
+          "type": "token",
+          "text": " "
+        },
+        {
+          "type": "token",
+          "text": "5"
+        },
+        {
+          "type": "token",
+          "text": " "
+        },
+        {
+          "type": "token",
+          "text": "个"
+        },
+        {
+          "type": "token",
+          "text": "做饭"
+        },
+        {
+          "type": "token",
+          "text": "小"
+        },
+        {
+          "type": "token",
+          "text": "技巧"
+        },
+        {
+          "type": "token",
+          "text": "，"
+        },
+        {
+          "type": "token",
+          "text": "新手"
+        },
+        {
+          "type": "token",
+          "text": "也能"
+        },
+        {
+          "type": "token",
+          "text": "上手"
+        },
+        {
+          "type": "token",
+          "text": "\n"
+        },
+        {
+          "type": "token",
+          "text": "2"
+        },
+        {
+          "type": "token",
+          "text": "."
+        },
+        {
+          "type": "token",
+          "text": " "
+        },
+        {
+          "type": "token",
+          "text": "新手"
+        },
+        {
+          "type": "token",
+          "text": "做饭"
+        },
+        {
+          "type": "token",
+          "text": "，"
+        },
+        {
+          "type": "token",
+          "text": "记住"
+        },
+        {
+          "type": "token",
+          "text": "这"
+        },
+        {
+          "type": "token",
+          "text": " "
+        },
+        {
+          "type": "token",
+          "text": "5"
+        },
+        {
+          "type": "token",
+          "text": " "
+        },
+        {
+          "type": "token",
+          "text": "点"
+        },
+        {
+          "type": "token",
+          "text": "\n"
+        },
+        {
+          "type": "token",
+          "text": "3"
+        },
+        {
+          "type": "token",
+          "text": "."
+        },
+        {
+          "type": "token",
+          "text": " "
+        },
+        {
+          "type": "token",
+          "text": "做饭"
+        },
+        {
+          "type": "token",
+          "text": " "
+        },
+        {
+          "type": "token",
+          "text": "5"
+        },
+        {
+          "type": "token",
+          "text": " "
+        },
+        {
+          "type": "token",
+          "text": "个小"
+        },
+        {
+          "type": "token",
+          "text": "技巧"
+        },
+        {
+          "type": "token",
+          "text": "，"
+        },
+        {
+          "type": "token",
+          "text": "零"
+        },
+        {
+          "type": "token",
+          "text": "基础"
+        },
+        {
+          "type": "token",
+          "text": "必"
+        },
+        {
+          "type": "token",
+          "text": "看"
+        },
+        {
+          "type": "token",
+          "text": "\n"
+        },
+        {
+          "type": "token",
+          "text": "4"
+        },
+        {
+          "type": "token",
+          "text": "."
+        },
+        {
+          "type": "token",
+          "text": " "
+        },
+        {
+          "type": "token",
+          "text": "新手"
+        },
+        {
+          "type": "token",
+          "text": "学"
+        },
+        {
+          "type": "token",
+          "text": "做饭"
+        },
+        {
+          "type": "token",
+          "text": "，"
+        },
+        {
+          "type": "token",
+          "text": "5"
+        },
+        {
+          "type": "token",
+          "text": " "
+        },
+        {
+          "type": "token",
+          "text": "个"
+        },
+        {
+          "type": "token",
+          "text": "技巧"
+        },
+        {
+          "type": "token",
+          "text": "管"
+        },
+        {
+          "type": "token",
+          "text": "够"
+        },
+        {
+          "type": "token",
+          "text": "\n"
+        },
+        {
+          "type": "token",
+          "text": "5"
+        },
+        {
+          "type": "token",
+          "text": "."
+        },
+        {
+          "type": "token",
+          "text": " "
+        },
+        {
+          "type": "token",
+          "text": "5"
+        },
+        {
+          "type": "token",
+          "text": " "
+        },
+        {
+          "type": "token",
+          "text": "个"
+        },
+        {
+          "type": "token",
+          "text": "做饭"
+        },
+        {
+          "type": "token",
+          "text": "技巧"
+        },
+        {
+          "type": "token",
+          "text": "，"
+        },
+        {
+          "type": "token",
+          "text": "新手"
+        },
+        {
+          "type": "token",
+          "text": "直接"
+        },
+        {
+          "type": "token",
+          "text": "抄"
+        },
+        {
+          "type": "token",
+          "text": "\n\n"
+        },
+        {
+          "type": "token",
+          "text": "**"
+        },
+        {
+          "type": "token",
+          "text": "几点"
+        },
+        {
+          "type": "token",
+          "text": "调整"
+        },
+        {
+          "type": "token",
+          "text": "说明"
+        },
+        {
+          "type": "token",
+          "text": "**\n\n"
+        },
+        {
+          "type": "token",
+          "text": "-"
+        },
+        {
+          "type": "token",
+          "text": " "
+        },
+        {
+          "type": "token",
+          "text": "标题"
+        },
+        {
+          "type": "token",
+          "text": "里"
+        },
+        {
+          "type": "token",
+          "text": "带"
+        },
+        {
+          "type": "token",
+          "text": "数字"
+        },
+        {
+          "type": "token",
+          "text": "（"
+        },
+        {
+          "type": "token",
+          "text": "5"
+        },
+        {
+          "type": "token",
+          "text": "）"
+        },
+        {
+          "type": "token",
+          "text": "更容易"
+        },
+        {
+          "type": "token",
+          "text": "被"
+        },
+        {
+          "type": "token",
+          "text": "点"
+        },
+        {
+          "type": "token",
+          "text": "开"
+        },
+        {
+          "type": "token",
+          "text": "，"
+        },
+        {
+          "type": "token",
+          "text": "所以"
+        },
+        {
+          "type": "token",
+          "text": "保留"
+        },
+        {
+          "type": "token",
+          "text": "在"
+        },
+        {
+          "type": "token",
+          "text": "开头"
+        },
+        {
+          "type": "token",
+          "text": "。\n"
+        },
+        {
+          "type": "token",
+          "text": "-"
+        },
+        {
+          "type": "token",
+          "text": " “"
+        },
+        {
+          "type": "token",
+          "text": "适合"
+        },
+        {
+          "type": "token",
+          "text": "新手"
+        },
+        {
+          "type": "token",
+          "text": "”"
+        },
+        {
+          "type": "token",
+          "text": "改成"
+        },
+        {
+          "type": "token",
+          "text": "“"
+        },
+        {
+          "type": "token",
+          "text": "新手"
+        },
+        {
+          "type": "token",
+          "text": "也能"
+        },
+        {
+          "type": "token",
+          "text": "上手"
+        },
+        {
+          "type": "token",
+          "text": "”“"
+        },
+        {
+          "type": "token",
+          "text": "零"
+        },
+        {
+          "type": "token",
+          "text": "基础"
+        },
+        {
+          "type": "token",
+          "text": "必"
+        },
+        {
+          "type": "token",
+          "text": "看"
+        },
+        {
+          "type": "token",
+          "text": "”，"
+        },
+        {
+          "type": "token",
+          "text": "更有"
+        },
+        {
+          "type": "token",
+          "text": "画面"
+        },
+        {
+          "type": "token",
+          "text": "感"
+        },
+        {
+          "type": "token",
+          "text": "，"
+        },
+        {
+          "type": "token",
+          "text": "也更"
+        },
+        {
+          "type": "token",
+          "text": "符合"
+        },
+        {
+          "type": "token",
+          "text": "小红书"
+        },
+        {
+          "type": "token",
+          "text": "口语"
+        },
+        {
+          "type": "token",
+          "text": "化"
+        },
+        {
+          "type": "token",
+          "text": "风格"
+        },
+        {
+          "type": "token",
+          "text": "。\n"
+        },
+        {
+          "type": "token",
+          "text": "-"
+        },
+        {
+          "type": "token",
+          "text": " "
+        },
+        {
+          "type": "token",
+          "text": "想"
+        },
+        {
+          "type": "token",
+          "text": "更"
+        },
+        {
+          "type": "token",
+          "text": "短"
+        },
+        {
+          "type": "token",
+          "text": "的话"
+        },
+        {
+          "type": "token",
+          "text": "，"
+        },
+        {
+          "type": "token",
+          "text": "第"
+        },
+        {
+          "type": "token",
+          "text": " "
+        },
+        {
+          "type": "token",
+          "text": "2"
+        },
+        {
+          "type": "token",
+          "text": " "
+        },
+        {
+          "type": "token",
+          "text": "条"
+        },
+        {
+          "type": "token",
+          "text": "“"
+        },
+        {
+          "type": "token",
+          "text": "新手"
+        },
+        {
+          "type": "token",
+          "text": "做饭"
+        },
+        {
+          "type": "token",
+          "text": "，"
+        },
+        {
+          "type": "token",
+          "text": "记住"
+        },
+        {
+          "type": "token",
+          "text": "这"
+        },
+        {
+          "type": "token",
+          "text": " "
+        },
+        {
+          "type": "token",
+          "text": "5"
+        },
+        {
+          "type": "token",
+          "text": " "
+        },
+        {
+          "type": "token",
+          "text": "点"
+        },
+        {
+          "type": "token",
+          "text": "”"
+        },
+        {
+          "type": "token",
+          "text": "只有"
+        },
+        {
+          "type": "token",
+          "text": " "
+        },
+        {
+          "type": "token",
+          "text": "11"
+        },
+        {
+          "type": "token",
+          "text": " "
+        },
+        {
+          "type": "token",
+          "text": "个"
+        },
+        {
+          "type": "token",
+          "text": "字段"
+        },
+        {
+          "type": "token",
+          "text": "，"
+        },
+        {
+          "type": "token",
+          "text": "最"
+        },
+        {
+          "type": "token",
+          "text": "干净"
+        },
+        {
+          "type": "token",
+          "text": "。\n\n"
+        },
+        {
+          "type": "token",
+          "text": "如果你"
+        },
+        {
+          "type": "token",
+          "text": "告诉我"
+        },
+        {
+          "type": "token",
+          "text": "具体"
+        },
+        {
+          "type": "token",
+          "text": "平台"
+        },
+        {
+          "type": "token",
+          "text": "，"
+        },
+        {
+          "type": "token",
+          "text": "我可以"
+        },
+        {
+          "type": "token",
+          "text": "再"
+        },
+        {
+          "type": "token",
+          "text": "按"
+        },
+        {
+          "type": "token",
+          "text": "那个"
+        },
+        {
+          "type": "token",
+          "text": "平台的"
+        },
+        {
+          "type": "token",
+          "text": "标题"
+        },
+        {
+          "type": "token",
+          "text": "长度"
+        },
+        {
+          "type": "token",
+          "text": "和"
+        },
+        {
+          "type": "token",
+          "text": "风格"
+        },
+        {
+          "type": "token",
+          "text": "重新"
+        },
+        {
+          "type": "token",
+          "text": "调"
+        },
+        {
+          "type": "token",
+          "text": "一"
+        },
+        {
+          "type": "token",
+          "text": "版"
+        },
+        {
+          "type": "token",
+          "text": "。"
+        },
+        {
+          "type": "stage",
+          "stage": "content_agent",
+          "status": "done"
+        },
+        {
+          "type": "done",
+          "final_content": "“适合新手的五个做饭小技巧”本身更适合小红书笔记标题，我按平台规范给你几个更短的版本。\n\n不过先确认一下：你要发的是哪个平台？我暂时按小红书来给你改。\n\n**5 个候选短标题（每个都控制在 20 字以内）**\n\n1. 5 个做饭小技巧，新手也能上手\n2. 新手做饭，记住这 5 点\n3. 做饭 5 个小技巧，零基础必看\n4. 新手学做饭，5 个技巧管够\n5. 5 个做饭技巧，新手直接抄\n\n**几点调整说明**\n\n- 标题里带数字（5）更容易被点开，所以保留在开头。\n- “适合新手”改成“新手也能上手”“零基础必看”，更有画面感，也更符合小红书口语化风格。\n- 想更短的话，第 2 条“新手做饭，记住这 5 点”只有 11 个字段，最干净。\n\n如果你告诉我具体平台，我可以再按那个平台的标题长度和风格重新调一版。"
+        }
+      ]
+    },
+    {
+      "id": "latency_014",
+      "category": "内容生成",
+      "message": "给露营视频写一句开场白，不查平台规范。",
+      "first_event_seconds": 0.004,
+      "first_token_seconds": 1.169,
+      "total_seconds": 2.552,
+      "error": null,
+      "events": [
+        {
+          "type": "session",
+          "session_id": "86bd3b1e1fee40c5a023287c47ef23db"
+        },
+        {
+          "type": "stage",
+          "stage": "supervisor",
+          "status": "start"
+        },
+        {
+          "type": "stage",
+          "stage": "supervisor",
+          "status": "done",
+          "route": "content_agent",
+          "reason": "创作露营视频开场白"
+        },
+        {
+          "type": "stage",
+          "stage": "content_agent",
+          "status": "start"
+        },
+        {
+          "type": "token",
+          "text": "说"
+        },
+        {
+          "type": "token",
+          "text": "真的"
+        },
+        {
+          "type": "token",
+          "text": "，"
+        },
+        {
+          "type": "token",
+          "text": "没有"
+        },
+        {
+          "type": "token",
+          "text": "平台"
+        },
+        {
+          "type": "token",
+          "text": "信息"
+        },
+        {
+          "type": "token",
+          "text": "我"
+        },
+        {
+          "type": "token",
+          "text": "也可以"
+        },
+        {
+          "type": "token",
+          "text": "直接"
+        },
+        {
+          "type": "token",
+          "text": "给你"
+        },
+        {
+          "type": "token",
+          "text": "几句"
+        },
+        {
+          "type": "token",
+          "text": "方向"
+        },
+        {
+          "type": "token",
+          "text": "不同的"
+        },
+        {
+          "type": "token",
+          "text": "开场"
+        },
+        {
+          "type": "token",
+          "text": "白"
+        },
+        {
+          "type": "token",
+          "text": "，"
+        },
+        {
+          "type": "token",
+          "text": "你"
+        },
+        {
+          "type": "token",
+          "text": "挑"
+        },
+        {
+          "type": "token",
+          "text": "一个"
+        },
+        {
+          "type": "token",
+          "text": "感觉"
+        },
+        {
+          "type": "token",
+          "text": "对"
+        },
+        {
+          "type": "token",
+          "text": "味的"
+        },
+        {
+          "type": "token",
+          "text": "：\n\n"
+        },
+        {
+          "type": "token",
+          "text": "**"
+        },
+        {
+          "type": "token",
+          "text": "一句话"
+        },
+        {
+          "type": "token",
+          "text": "开场"
+        },
+        {
+          "type": "token",
+          "text": "白"
+        },
+        {
+          "type": "token",
+          "text": "候选"
+        },
+        {
+          "type": "token",
+          "text": "："
+        },
+        {
+          "type": "token",
+          "text": "**\n\n"
+        },
+        {
+          "type": "token",
+          "text": "1"
+        },
+        {
+          "type": "token",
+          "text": "."
+        },
+        {
+          "type": "token",
+          "text": " "
+        },
+        {
+          "type": "token",
+          "text": "别"
+        },
+        {
+          "type": "token",
+          "text": "问"
+        },
+        {
+          "type": "token",
+          "text": "周末"
+        },
+        {
+          "type": "token",
+          "text": "去哪"
+        },
+        {
+          "type": "token",
+          "text": "了"
+        },
+        {
+          "type": "token",
+          "text": "，"
+        },
+        {
+          "type": "token",
+          "text": "答案"
+        },
+        {
+          "type": "token",
+          "text": "就在"
+        },
+        {
+          "type": "token",
+          "text": "这片"
+        },
+        {
+          "type": "token",
+          "text": "没有"
+        },
+        {
+          "type": "token",
+          "text": "天花板"
+        },
+        {
+          "type": "token",
+          "text": "的地方"
+        },
+        {
+          "type": "token",
+          "text": "。\n"
+        },
+        {
+          "type": "token",
+          "text": "2"
+        },
+        {
+          "type": "token",
+          "text": "."
+        },
+        {
+          "type": "token",
+          "text": " "
+        },
+        {
+          "type": "token",
+          "text": "车"
+        },
+        {
+          "type": "token",
+          "text": "停下"
+        },
+        {
+          "type": "token",
+          "text": "，"
+        },
+        {
+          "type": "token",
+          "text": "帐篷"
+        },
+        {
+          "type": "token",
+          "text": "支"
+        },
+        {
+          "type": "token",
+          "text": "起来"
+        },
+        {
+          "type": "token",
+          "text": "，"
+        },
+        {
+          "type": "token",
+          "text": "生活"
+        },
+        {
+          "type": "token",
+          "text": "突然"
+        },
+        {
+          "type": "token",
+          "text": "就"
+        },
+        {
+          "type": "token",
+          "text": "安静"
+        },
+        {
+          "type": "token",
+          "text": "了"
+        },
+        {
+          "type": "token",
+          "text": "。\n"
+        },
+        {
+          "type": "token",
+          "text": "3"
+        },
+        {
+          "type": "token",
+          "text": "."
+        },
+        {
+          "type": "token",
+          "text": " "
+        },
+        {
+          "type": "token",
+          "text": "不是"
+        },
+        {
+          "type": "token",
+          "text": "逃离"
+        },
+        {
+          "type": "token",
+          "text": "城市"
+        },
+        {
+          "type": "token",
+          "text": "，"
+        },
+        {
+          "type": "token",
+          "text": "是把"
+        },
+        {
+          "type": "token",
+          "text": "城市"
+        },
+        {
+          "type": "token",
+          "text": "里"
+        },
+        {
+          "type": "token",
+          "text": "丢掉"
+        },
+        {
+          "type": "token",
+          "text": "的那"
+        },
+        {
+          "type": "token",
+          "text": "点"
+        },
+        {
+          "type": "token",
+          "text": "松弛"
+        },
+        {
+          "type": "token",
+          "text": "感"
+        },
+        {
+          "type": "token",
+          "text": "，"
+        },
+        {
+          "type": "token",
+          "text": "捡"
+        },
+        {
+          "type": "token",
+          "text": "回来"
+        },
+        {
+          "type": "token",
+          "text": "。\n"
+        },
+        {
+          "type": "token",
+          "text": "4"
+        },
+        {
+          "type": "token",
+          "text": "."
+        },
+        {
+          "type": "token",
+          "text": " "
+        },
+        {
+          "type": "token",
+          "text": "从"
+        },
+        {
+          "type": "token",
+          "text": "决定"
+        },
+        {
+          "type": "token",
+          "text": "出发"
+        },
+        {
+          "type": "token",
+          "text": "的那一刻"
+        },
+        {
+          "type": "token",
+          "text": "起"
+        },
+        {
+          "type": "token",
+          "text": "，"
+        },
+        {
+          "type": "token",
+          "text": "这"
+        },
+        {
+          "type": "token",
+          "text": "趟"
+        },
+        {
+          "type": "token",
+          "text": "露营"
+        },
+        {
+          "type": "token",
+          "text": "就已经"
+        },
+        {
+          "type": "token",
+          "text": "值"
+        },
+        {
+          "type": "token",
+          "text": "了"
+        },
+        {
+          "type": "token",
+          "text": "。\n"
+        },
+        {
+          "type": "token",
+          "text": "5"
+        },
+        {
+          "type": "token",
+          "text": "."
+        },
+        {
+          "type": "token",
+          "text": " "
+        },
+        {
+          "type": "token",
+          "text": "天"
+        },
+        {
+          "type": "token",
+          "text": "幕"
+        },
+        {
+          "type": "token",
+          "text": "一"
+        },
+        {
+          "type": "token",
+          "text": "拉"
+        },
+        {
+          "type": "token",
+          "text": "，"
+        },
+        {
+          "type": "token",
+          "text": "椅子"
+        },
+        {
+          "type": "token",
+          "text": "一"
+        },
+        {
+          "type": "token",
+          "text": "摆"
+        },
+        {
+          "type": "token",
+          "text": "，"
+        },
+        {
+          "type": "token",
+          "text": "这里"
+        },
+        {
+          "type": "token",
+          "text": "就是我们"
+        },
+        {
+          "type": "token",
+          "text": "今天的"
+        },
+        {
+          "type": "token",
+          "text": "客厅"
+        },
+        {
+          "type": "token",
+          "text": "。\n\n"
+        },
+        {
+          "type": "token",
+          "text": "**"
+        },
+        {
+          "type": "token",
+          "text": "小"
+        },
+        {
+          "type": "token",
+          "text": "提示"
+        },
+        {
+          "type": "token",
+          "text": "："
+        },
+        {
+          "type": "token",
+          "text": "**"
+        },
+        {
+          "type": "token",
+          "text": " "
+        },
+        {
+          "type": "token",
+          "text": "开场"
+        },
+        {
+          "type": "token",
+          "text": "白"
+        },
+        {
+          "type": "token",
+          "text": "建议"
+        },
+        {
+          "type": "token",
+          "text": "控制在"
+        },
+        {
+          "type": "token",
+          "text": " "
+        },
+        {
+          "type": "token",
+          "text": "3"
+        },
+        {
+          "type": "token",
+          "text": " "
+        },
+        {
+          "type": "token",
+          "text": "秒"
+        },
+        {
+          "type": "token",
+          "text": "内"
+        },
+        {
+          "type": "token",
+          "text": "能"
+        },
+        {
+          "type": "token",
+          "text": "说完"
+        },
+        {
+          "type": "token",
+          "text": "（"
+        },
+        {
+          "type": "token",
+          "text": "视频"
+        },
+        {
+          "type": "token",
+          "text": "的话"
+        },
+        {
+          "type": "token",
+          "text": "大概"
+        },
+        {
+          "type": "token",
+          "text": " "
+        },
+        {
+          "type": "token",
+          "text": "12"
+        },
+        {
+          "type": "token",
+          "text": "～"
+        },
+        {
+          "type": "token",
+          "text": "18"
+        },
+        {
+          "type": "token",
+          "text": " "
+        },
+        {
+          "type": "token",
+          "text": "字"
+        },
+        {
+          "type": "token",
+          "text": "最"
+        },
+        {
+          "type": "token",
+          "text": "舒服"
+        },
+        {
+          "type": "token",
+          "text": "），"
+        },
+        {
+          "type": "token",
+          "text": "并且"
+        },
+        {
+          "type": "token",
+          "text": "第一"
+        },
+        {
+          "type": "token",
+          "text": "句"
+        },
+        {
+          "type": "token",
+          "text": "尽量"
+        },
+        {
+          "type": "token",
+          "text": "带"
+        },
+        {
+          "type": "token",
+          "text": "一个"
+        },
+        {
+          "type": "token",
+          "text": "\""
+        },
+        {
+          "type": "token",
+          "text": "画面"
+        },
+        {
+          "type": "token",
+          "text": "感"
+        },
+        {
+          "type": "token",
+          "text": "动作"
+        },
+        {
+          "type": "token",
+          "text": "\""
+        },
+        {
+          "type": "token",
+          "text": "——"
+        },
+        {
+          "type": "token",
+          "text": "比如"
+        },
+        {
+          "type": "token",
+          "text": "\""
+        },
+        {
+          "type": "token",
+          "text": "支"
+        },
+        {
+          "type": "token",
+          "text": "帐篷"
+        },
+        {
+          "type": "token",
+          "text": "\"\""
+        },
+        {
+          "type": "token",
+          "text": "拉"
+        },
+        {
+          "type": "token",
+          "text": "天"
+        },
+        {
+          "type": "token",
+          "text": "幕"
+        },
+        {
+          "type": "token",
+          "text": "\"\""
+        },
+        {
+          "type": "token",
+          "text": "点"
+        },
+        {
+          "type": "token",
+          "text": "炉"
+        },
+        {
+          "type": "token",
+          "text": "子"
+        },
+        {
+          "type": "token",
+          "text": "\"，"
+        },
+        {
+          "type": "token",
+          "text": "比"
+        },
+        {
+          "type": "token",
+          "text": "单纯"
+        },
+        {
+          "type": "token",
+          "text": "抒情"
+        },
+        {
+          "type": "token",
+          "text": "更容易"
+        },
+        {
+          "type": "token",
+          "text": "留住"
+        },
+        {
+          "type": "token",
+          "text": "人"
+        },
+        {
+          "type": "token",
+          "text": "。\n\n"
+        },
+        {
+          "type": "token",
+          "text": "如果你"
+        },
+        {
+          "type": "token",
+          "text": "告诉我"
+        },
+        {
+          "type": "token",
+          "text": "这条"
+        },
+        {
+          "type": "token",
+          "text": "视频"
+        },
+        {
+          "type": "token",
+          "text": "是"
+        },
+        {
+          "type": "token",
+          "text": "抖音"
+        },
+        {
+          "type": "token",
+          "text": "还是"
+        },
+        {
+          "type": "token",
+          "text": " B"
+        },
+        {
+          "type": "token",
+          "text": " "
+        },
+        {
+          "type": "token",
+          "text": "站"
+        },
+        {
+          "type": "token",
+          "text": "、"
+        },
+        {
+          "type": "token",
+          "text": "大概"
+        },
+        {
+          "type": "token",
+          "text": "什么"
+        },
+        {
+          "type": "token",
+          "text": "风格"
+        },
+        {
+          "type": "token",
+          "text": "（"
+        },
+        {
+          "type": "token",
+          "text": "治愈"
+        },
+        {
+          "type": "token",
+          "text": " /"
+        },
+        {
+          "type": "token",
+          "text": " "
+        },
+        {
+          "type": "token",
+          "text": "硬"
+        },
+        {
+          "type": "token",
+          "text": "核"
+        },
+        {
+          "type": "token",
+          "text": "装备"
+        },
+        {
+          "type": "token",
+          "text": " /"
+        },
+        {
+          "type": "token",
+          "text": " "
+        },
+        {
+          "type": "token",
+          "text": "搞笑"
+        },
+        {
+          "type": "token",
+          "text": " /"
+        },
+        {
+          "type": "token",
+          "text": " v"
+        },
+        {
+          "type": "token",
+          "text": "log"
+        },
+        {
+          "type": "token",
+          "text": "），"
+        },
+        {
+          "type": "token",
+          "text": "我可以"
+        },
+        {
+          "type": "token",
+          "text": "再"
+        },
+        {
+          "type": "token",
+          "text": "精准"
+        },
+        {
+          "type": "token",
+          "text": "改"
+        },
+        {
+          "type": "token",
+          "text": "一"
+        },
+        {
+          "type": "token",
+          "text": "版"
+        },
+        {
+          "type": "token",
+          "text": "。"
+        },
+        {
+          "type": "stage",
+          "stage": "content_agent",
+          "status": "done"
+        },
+        {
+          "type": "done",
+          "final_content": "说真的，没有平台信息我也可以直接给你几句方向不同的开场白，你挑一个感觉对味的：\n\n**一句话开场白候选：**\n\n1. 别问周末去哪了，答案就在这片没有天花板的地方。\n2. 车停下，帐篷支起来，生活突然就安静了。\n3. 不是逃离城市，是把城市里丢掉的那点松弛感，捡回来。\n4. 从决定出发的那一刻起，这趟露营就已经值了。\n5. 天幕一拉，椅子一摆，这里就是我们今天的客厅。\n\n**小提示：** 开场白建议控制在 3 秒内能说完（视频的话大概 12～18 字最舒服），并且第一句尽量带一个\"画面感动作\"——比如\"支帐篷\"\"拉天幕\"\"点炉子\"，比单纯抒情更容易留住人。\n\n如果你告诉我这条视频是抖音还是 B 站、大概什么风格（治愈 / 硬核装备 / 搞笑 / vlog），我可以再精准改一版。"
+        }
+      ]
+    },
+    {
+      "id": "latency_015",
+      "category": "内容生成",
+      "message": "给读书分享写一句结尾互动问题。",
+      "first_event_seconds": 0.007,
+      "first_token_seconds": 1.789,
+      "total_seconds": 2.693,
+      "error": null,
+      "events": [
+        {
+          "type": "session",
+          "session_id": "cd12636501ee446988fe772a1b287a5f"
+        },
+        {
+          "type": "stage",
+          "stage": "supervisor",
+          "status": "start"
+        },
+        {
+          "type": "stage",
+          "stage": "supervisor",
+          "status": "done",
+          "route": "content_agent",
+          "reason": "创作结尾互动问题"
+        },
+        {
+          "type": "stage",
+          "stage": "content_agent",
+          "status": "start"
+        },
+        {
+          "type": "token",
+          "text": "**"
+        },
+        {
+          "type": "token",
+          "text": "结尾"
+        },
+        {
+          "type": "token",
+          "text": "互动"
+        },
+        {
+          "type": "token",
+          "text": "问题"
+        },
+        {
+          "type": "token",
+          "text": "（"
+        },
+        {
+          "type": "token",
+          "text": "3"
+        },
+        {
+          "type": "token",
+          "text": " "
+        },
+        {
+          "type": "token",
+          "text": "个"
+        },
+        {
+          "type": "token",
+          "text": "可选"
+        },
+        {
+          "type": "token",
+          "text": "）"
+        },
+        {
+          "type": "token",
+          "text": "**\n\n"
+        },
+        {
+          "type": "token",
+          "text": "1"
+        },
+        {
+          "type": "token",
+          "text": "."
+        },
+        {
+          "type": "token",
+          "text": " "
+        },
+        {
+          "type": "token",
+          "text": "你"
+        },
+        {
+          "type": "token",
+          "text": "最近"
+        },
+        {
+          "type": "token",
+          "text": "读"
+        },
+        {
+          "type": "token",
+          "text": "的"
+        },
+        {
+          "type": "token",
+          "text": "哪"
+        },
+        {
+          "type": "token",
+          "text": "本书"
+        },
+        {
+          "type": "token",
+          "text": "，"
+        },
+        {
+          "type": "token",
+          "text": "是"
+        },
+        {
+          "type": "token",
+          "text": "让你"
+        },
+        {
+          "type": "token",
+          "text": "合"
+        },
+        {
+          "type": "token",
+          "text": "上书"
+        },
+        {
+          "type": "token",
+          "text": "之后"
+        },
+        {
+          "type": "token",
+          "text": "还"
+        },
+        {
+          "type": "token",
+          "text": "久久"
+        },
+        {
+          "type": "token",
+          "text": "没"
+        },
+        {
+          "type": "token",
+          "text": "缓"
+        },
+        {
+          "type": "token",
+          "text": "过来的"
+        },
+        {
+          "type": "token",
+          "text": "？\n"
+        },
+        {
+          "type": "token",
+          "text": "2"
+        },
+        {
+          "type": "token",
+          "text": "."
+        },
+        {
+          "type": "token",
+          "text": " "
+        },
+        {
+          "type": "token",
+          "text": "如果"
+        },
+        {
+          "type": "token",
+          "text": "只能"
+        },
+        {
+          "type": "token",
+          "text": "推荐"
+        },
+        {
+          "type": "token",
+          "text": "一本书"
+        },
+        {
+          "type": "token",
+          "text": "给"
+        },
+        {
+          "type": "token",
+          "text": "和你"
+        },
+        {
+          "type": "token",
+          "text": "处在"
+        },
+        {
+          "type": "token",
+          "text": "同一"
+        },
+        {
+          "type": "token",
+          "text": "阶段"
+        },
+        {
+          "type": "token",
+          "text": "的人"
+        },
+        {
+          "type": "token",
+          "text": "，"
+        },
+        {
+          "type": "token",
+          "text": "你会"
+        },
+        {
+          "type": "token",
+          "text": "选"
+        },
+        {
+          "type": "token",
+          "text": "哪"
+        },
+        {
+          "type": "token",
+          "text": "本"
+        },
+        {
+          "type": "token",
+          "text": "？"
+        },
+        {
+          "type": "token",
+          "text": "为什么"
+        },
+        {
+          "type": "token",
+          "text": "？\n"
+        },
+        {
+          "type": "token",
+          "text": "3"
+        },
+        {
+          "type": "token",
+          "text": "."
+        },
+        {
+          "type": "token",
+          "text": " "
+        },
+        {
+          "type": "token",
+          "text": "你有没有"
+        },
+        {
+          "type": "token",
+          "text": "哪"
+        },
+        {
+          "type": "token",
+          "text": "本书"
+        },
+        {
+          "type": "token",
+          "text": "，"
+        },
+        {
+          "type": "token",
+          "text": "是"
+        },
+        {
+          "type": "token",
+          "text": "第一次"
+        },
+        {
+          "type": "token",
+          "text": "读"
+        },
+        {
+          "type": "token",
+          "text": "没"
+        },
+        {
+          "type": "token",
+          "text": "感觉"
+        },
+        {
+          "type": "token",
+          "text": "、"
+        },
+        {
+          "type": "token",
+          "text": "隔"
+        },
+        {
+          "type": "token",
+          "text": "几年"
+        },
+        {
+          "type": "token",
+          "text": "再"
+        },
+        {
+          "type": "token",
+          "text": "读"
+        },
+        {
+          "type": "token",
+          "text": "却被"
+        },
+        {
+          "type": "token",
+          "text": "击"
+        },
+        {
+          "type": "token",
+          "text": "中的"
+        },
+        {
+          "type": "token",
+          "text": "？\n\n"
+        },
+        {
+          "type": "token",
+          "text": "**"
+        },
+        {
+          "type": "token",
+          "text": "小"
+        },
+        {
+          "type": "token",
+          "text": "提示"
+        },
+        {
+          "type": "token",
+          "text": "**\n"
+        },
+        {
+          "type": "token",
+          "text": "-"
+        },
+        {
+          "type": "token",
+          "text": " "
+        },
+        {
+          "type": "token",
+          "text": "问题"
+        },
+        {
+          "type": "token",
+          "text": "最好"
+        },
+        {
+          "type": "token",
+          "text": "只"
+        },
+        {
+          "type": "token",
+          "text": "问"
+        },
+        {
+          "type": "token",
+          "text": "一件事"
+        },
+        {
+          "type": "token",
+          "text": "，"
+        },
+        {
+          "type": "token",
+          "text": "读者"
+        },
+        {
+          "type": "token",
+          "text": "才"
+        },
+        {
+          "type": "token",
+          "text": "愿意"
+        },
+        {
+          "type": "token",
+          "text": "在"
+        },
+        {
+          "type": "token",
+          "text": "评论区"
+        },
+        {
+          "type": "token",
+          "text": "回答"
+        },
+        {
+          "type": "token",
+          "text": "；"
+        },
+        {
+          "type": "token",
+          "text": "一次"
+        },
+        {
+          "type": "token",
+          "text": "抛"
+        },
+        {
+          "type": "token",
+          "text": "三"
+        },
+        {
+          "type": "token",
+          "text": "问"
+        },
+        {
+          "type": "token",
+          "text": "容易"
+        },
+        {
+          "type": "token",
+          "text": "没人"
+        },
+        {
+          "type": "token",
+          "text": "回"
+        },
+        {
+          "type": "token",
+          "text": "。\n"
+        },
+        {
+          "type": "token",
+          "text": "-"
+        },
+        {
+          "type": "token",
+          "text": " "
+        },
+        {
+          "type": "token",
+          "text": "加"
+        },
+        {
+          "type": "token",
+          "text": "一句"
+        },
+        {
+          "type": "token",
+          "text": "\""
+        },
+        {
+          "type": "token",
+          "text": "我在"
+        },
+        {
+          "type": "token",
+          "text": "评论区"
+        },
+        {
+          "type": "token",
+          "text": "等"
+        },
+        {
+          "type": "token",
+          "text": "你的"
+        },
+        {
+          "type": "token",
+          "text": "书"
+        },
+        {
+          "type": "token",
+          "text": "单"
+        },
+        {
+          "type": "token",
+          "text": "\""
+        },
+        {
+          "type": "token",
+          "text": "比"
+        },
+        {
+          "type": "token",
+          "text": "单"
+        },
+        {
+          "type": "token",
+          "text": "问"
+        },
+        {
+          "type": "token",
+          "text": "一句"
+        },
+        {
+          "type": "token",
+          "text": "更能"
+        },
+        {
+          "type": "token",
+          "text": "带动"
+        },
+        {
+          "type": "token",
+          "text": "留言"
+        },
+        {
+          "type": "token",
+          "text": "。\n\n"
+        },
+        {
+          "type": "token",
+          "text": "想"
+        },
+        {
+          "type": "token",
+          "text": "更"
+        },
+        {
+          "type": "token",
+          "text": "贴"
+        },
+        {
+          "type": "token",
+          "text": "你的"
+        },
+        {
+          "type": "token",
+          "text": "内容"
+        },
+        {
+          "type": "token",
+          "text": "，"
+        },
+        {
+          "type": "token",
+          "text": "告诉我"
+        },
+        {
+          "type": "token",
+          "text": "这本书"
+        },
+        {
+          "type": "token",
+          "text": "的名字"
+        },
+        {
+          "type": "token",
+          "text": "和"
+        },
+        {
+          "type": "token",
+          "text": "分享"
+        },
+        {
+          "type": "token",
+          "text": "角度"
+        },
+        {
+          "type": "token",
+          "text": "，"
+        },
+        {
+          "type": "token",
+          "text": "我可以"
+        },
+        {
+          "type": "token",
+          "text": "再"
+        },
+        {
+          "type": "token",
+          "text": "定制"
+        },
+        {
+          "type": "token",
+          "text": "一"
+        },
+        {
+          "type": "token",
+          "text": "版"
+        },
+        {
+          "type": "token",
+          "text": "。"
+        },
+        {
+          "type": "stage",
+          "stage": "content_agent",
+          "status": "done"
+        },
+        {
+          "type": "done",
+          "final_content": "**结尾互动问题（3 个可选）**\n\n1. 你最近读的哪本书，是让你合上书之后还久久没缓过来的？\n2. 如果只能推荐一本书给和你处在同一阶段的人，你会选哪本？为什么？\n3. 你有没有哪本书，是第一次读没感觉、隔几年再读却被击中的？\n\n**小提示**\n- 问题最好只问一件事，读者才愿意在评论区回答；一次抛三问容易没人回。\n- 加一句\"我在评论区等你的书单\"比单问一句更能带动留言。\n\n想更贴你的内容，告诉我这本书的名字和分享角度，我可以再定制一版。"
+        }
+      ]
+    },
+    {
+      "id": "latency_016",
+      "category": "内容生成",
+      "message": "为旅行笔记推荐两个话题标签，不查平台规范。",
+      "first_event_seconds": 0.008,
+      "first_token_seconds": 1.301,
+      "total_seconds": 1.915,
+      "error": null,
+      "events": [
+        {
+          "type": "session",
+          "session_id": "d195974356de4aaa84b317b014ee773b"
+        },
+        {
+          "type": "stage",
+          "stage": "supervisor",
+          "status": "start"
+        },
+        {
+          "type": "stage",
+          "stage": "supervisor",
+          "status": "done",
+          "route": "content_agent",
+          "reason": "推荐话题标签属内容创作"
+        },
+        {
+          "type": "stage",
+          "stage": "content_agent",
+          "status": "start"
+        },
+        {
+          "type": "token",
+          "text": "旅行"
+        },
+        {
+          "type": "token",
+          "text": "笔记"
+        },
+        {
+          "type": "token",
+          "text": "的话题"
+        },
+        {
+          "type": "token",
+          "text": "标签"
+        },
+        {
+          "type": "token",
+          "text": "推荐"
+        },
+        {
+          "type": "token",
+          "text": "：\n\n"
+        },
+        {
+          "type": "token",
+          "text": "#"
+        },
+        {
+          "type": "token",
+          "text": "旅行"
+        },
+        {
+          "type": "token",
+          "text": "笔记"
+        },
+        {
+          "type": "token",
+          "text": " #"
+        },
+        {
+          "type": "token",
+          "text": "旅行"
+        },
+        {
+          "type": "token",
+          "text": "攻略"
+        },
+        {
+          "type": "token",
+          "text": "\n\n"
+        },
+        {
+          "type": "token",
+          "text": "如果想要"
+        },
+        {
+          "type": "token",
+          "text": "更"
+        },
+        {
+          "type": "token",
+          "text": "细分"
+        },
+        {
+          "type": "token",
+          "text": "的方向"
+        },
+        {
+          "type": "token",
+          "text": "，"
+        },
+        {
+          "type": "token",
+          "text": "也可以"
+        },
+        {
+          "type": "token",
+          "text": "从"
+        },
+        {
+          "type": "token",
+          "text": "这些"
+        },
+        {
+          "type": "token",
+          "text": "里"
+        },
+        {
+          "type": "token",
+          "text": "挑"
+        },
+        {
+          "type": "token",
+          "text": "合适的"
+        },
+        {
+          "type": "token",
+          "text": "组合"
+        },
+        {
+          "type": "token",
+          "text": "：\n\n"
+        },
+        {
+          "type": "token",
+          "text": "-"
+        },
+        {
+          "type": "token",
+          "text": " "
+        },
+        {
+          "type": "token",
+          "text": "目的地"
+        },
+        {
+          "type": "token",
+          "text": "向"
+        },
+        {
+          "type": "token",
+          "text": "：#"
+        },
+        {
+          "type": "token",
+          "text": "云南"
+        },
+        {
+          "type": "token",
+          "text": "旅行"
+        },
+        {
+          "type": "token",
+          "text": " #"
+        },
+        {
+          "type": "token",
+          "text": "海边"
+        },
+        {
+          "type": "token",
+          "text": "旅行"
+        },
+        {
+          "type": "token",
+          "text": " #"
+        },
+        {
+          "type": "token",
+          "text": "小众"
+        },
+        {
+          "type": "token",
+          "text": "目的地"
+        },
+        {
+          "type": "token",
+          "text": "\n"
+        },
+        {
+          "type": "token",
+          "text": "-"
+        },
+        {
+          "type": "token",
+          "text": " "
+        },
+        {
+          "type": "token",
+          "text": "玩法"
+        },
+        {
+          "type": "token",
+          "text": "向"
+        },
+        {
+          "type": "token",
+          "text": "：#"
+        },
+        {
+          "type": "token",
+          "text": "city"
+        },
+        {
+          "type": "token",
+          "text": "walk"
+        },
+        {
+          "type": "token",
+          "text": " #"
+        },
+        {
+          "type": "token",
+          "text": "自驾"
+        },
+        {
+          "type": "token",
+          "text": "游"
+        },
+        {
+          "type": "token",
+          "text": " #"
+        },
+        {
+          "type": "token",
+          "text": "穷"
+        },
+        {
+          "type": "token",
+          "text": "游"
+        },
+        {
+          "type": "token",
+          "text": "攻略"
+        },
+        {
+          "type": "token",
+          "text": "\n"
+        },
+        {
+          "type": "token",
+          "text": "-"
+        },
+        {
+          "type": "token",
+          "text": " "
+        },
+        {
+          "type": "token",
+          "text": "内容"
+        },
+        {
+          "type": "token",
+          "text": "向"
+        },
+        {
+          "type": "token",
+          "text": "：#"
+        },
+        {
+          "type": "token",
+          "text": "旅行"
+        },
+        {
+          "type": "token",
+          "text": "v"
+        },
+        {
+          "type": "token",
+          "text": "log"
+        },
+        {
+          "type": "token",
+          "text": " #"
+        },
+        {
+          "type": "token",
+          "text": "旅行"
+        },
+        {
+          "type": "token",
+          "text": "摄影"
+        },
+        {
+          "type": "token",
+          "text": " #"
+        },
+        {
+          "type": "token",
+          "text": "景点"
+        },
+        {
+          "type": "token",
+          "text": "打卡"
+        },
+        {
+          "type": "token",
+          "text": "\n"
+        },
+        {
+          "type": "token",
+          "text": "-"
+        },
+        {
+          "type": "token",
+          "text": " "
+        },
+        {
+          "type": "token",
+          "text": "情绪"
+        },
+        {
+          "type": "token",
+          "text": "向"
+        },
+        {
+          "type": "token",
+          "text": "：#"
+        },
+        {
+          "type": "token",
+          "text": "治愈"
+        },
+        {
+          "type": "token",
+          "text": "系"
+        },
+        {
+          "type": "token",
+          "text": "风景"
+        },
+        {
+          "type": "token",
+          "text": " #"
+        },
+        {
+          "type": "token",
+          "text": "说"
+        },
+        {
+          "type": "token",
+          "text": "走"
+        },
+        {
+          "type": "token",
+          "text": "就"
+        },
+        {
+          "type": "token",
+          "text": "走的"
+        },
+        {
+          "type": "token",
+          "text": "旅行"
+        },
+        {
+          "type": "token",
+          "text": "\n\n"
+        },
+        {
+          "type": "token",
+          "text": "两个"
+        },
+        {
+          "type": "token",
+          "text": "标签"
+        },
+        {
+          "type": "token",
+          "text": "的话"
+        },
+        {
+          "type": "token",
+          "text": "，"
+        },
+        {
+          "type": "token",
+          "text": "建议"
+        },
+        {
+          "type": "token",
+          "text": "一个"
+        },
+        {
+          "type": "token",
+          "text": "用"
+        },
+        {
+          "type": "token",
+          "text": "大"
+        },
+        {
+          "type": "token",
+          "text": "词"
+        },
+        {
+          "type": "token",
+          "text": "（"
+        },
+        {
+          "type": "token",
+          "text": "#"
+        },
+        {
+          "type": "token",
+          "text": "旅行"
+        },
+        {
+          "type": "token",
+          "text": "笔记"
+        },
+        {
+          "type": "token",
+          "text": "），"
+        },
+        {
+          "type": "token",
+          "text": "一个"
+        },
+        {
+          "type": "token",
+          "text": "用"
+        },
+        {
+          "type": "token",
+          "text": "你的"
+        },
+        {
+          "type": "token",
+          "text": "具体"
+        },
+        {
+          "type": "token",
+          "text": "目的地"
+        },
+        {
+          "type": "token",
+          "text": "或"
+        },
+        {
+          "type": "token",
+          "text": "玩法"
+        },
+        {
+          "type": "token",
+          "text": "，"
+        },
+        {
+          "type": "token",
+          "text": "这样"
+        },
+        {
+          "type": "token",
+          "text": "既有"
+        },
+        {
+          "type": "token",
+          "text": "流量"
+        },
+        {
+          "type": "token",
+          "text": "池"
+        },
+        {
+          "type": "token",
+          "text": "又有"
+        },
+        {
+          "type": "token",
+          "text": "精准"
+        },
+        {
+          "type": "token",
+          "text": "度"
+        },
+        {
+          "type": "token",
+          "text": "。"
+        },
+        {
+          "type": "stage",
+          "stage": "content_agent",
+          "status": "done"
+        },
+        {
+          "type": "done",
+          "final_content": "旅行笔记的话题标签推荐：\n\n#旅行笔记 #旅行攻略\n\n如果想要更细分的方向，也可以从这些里挑合适的组合：\n\n- 目的地向：#云南旅行 #海边旅行 #小众目的地\n- 玩法向：#citywalk #自驾游 #穷游攻略\n- 内容向：#旅行vlog #旅行摄影 #景点打卡\n- 情绪向：#治愈系风景 #说走就走的旅行\n\n两个标签的话，建议一个用大词（#旅行笔记），一个用你的具体目的地或玩法，这样既有流量池又有精准度。"
+        }
+      ]
+    },
+    {
+      "id": "latency_017",
+      "category": "内容生成",
+      "message": "把这句文案润色得口语化：今天分享三个整理技巧。",
+      "first_event_seconds": 0.005,
+      "first_token_seconds": 0.952,
+      "total_seconds": 1.066,
+      "error": null,
+      "events": [
+        {
+          "type": "session",
+          "session_id": "fa54711d4e2448e1967073b96886168b"
+        },
+        {
+          "type": "stage",
+          "stage": "supervisor",
+          "status": "start"
+        },
+        {
+          "type": "stage",
+          "stage": "supervisor",
+          "status": "done",
+          "route": "content_agent",
+          "reason": "润色文案属内容创作"
+        },
+        {
+          "type": "stage",
+          "stage": "content_agent",
+          "status": "start"
+        },
+        {
+          "type": "token",
+          "text": "咱"
+        },
+        {
+          "type": "token",
+          "text": "今天"
+        },
+        {
+          "type": "token",
+          "text": "唠"
+        },
+        {
+          "type": "token",
+          "text": "仨"
+        },
+        {
+          "type": "token",
+          "text": "整理"
+        },
+        {
+          "type": "token",
+          "text": "小"
+        },
+        {
+          "type": "token",
+          "text": "技巧"
+        },
+        {
+          "type": "token",
+          "text": "。"
+        },
+        {
+          "type": "stage",
+          "stage": "content_agent",
+          "status": "done"
+        },
+        {
+          "type": "done",
+          "final_content": "咱今天唠仨整理小技巧。"
+        }
+      ]
+    },
+    {
+      "id": "latency_018",
+      "category": "内容生成",
+      "message": "给咖啡探店写一个十字以内标题。",
+      "first_event_seconds": 0.003,
+      "first_token_seconds": 1.207,
+      "total_seconds": 1.442,
+      "error": null,
+      "events": [
+        {
+          "type": "session",
+          "session_id": "a8e25f9b72c54a8592089a14e3aa3f26"
+        },
+        {
+          "type": "stage",
+          "stage": "supervisor",
+          "status": "start"
+        },
+        {
+          "type": "stage",
+          "stage": "supervisor",
+          "status": "done",
+          "route": "content_agent",
+          "reason": "创作标题文案"
+        },
+        {
+          "type": "stage",
+          "stage": "content_agent",
+          "status": "start"
+        },
+        {
+          "type": "token",
+          "text": "连"
+        },
+        {
+          "type": "token",
+          "text": "跑"
+        },
+        {
+          "type": "token",
+          "text": "三家"
+        },
+        {
+          "type": "token",
+          "text": "咖啡馆"
+        },
+        {
+          "type": "token",
+          "text": "\n"
+        },
+        {
+          "type": "token",
+          "text": "巷"
+        },
+        {
+          "type": "token",
+          "text": "子"
+        },
+        {
+          "type": "token",
+          "text": "里的"
+        },
+        {
+          "type": "token",
+          "text": "手"
+        },
+        {
+          "type": "token",
+          "text": "冲"
+        },
+        {
+          "type": "token",
+          "text": "\n"
+        },
+        {
+          "type": "token",
+          "text": "早"
+        },
+        {
+          "type": "token",
+          "text": "八"
+        },
+        {
+          "type": "token",
+          "text": "人"
+        },
+        {
+          "type": "token",
+          "text": "咖啡"
+        },
+        {
+          "type": "token",
+          "text": "地图"
+        },
+        {
+          "type": "token",
+          "text": "\n"
+        },
+        {
+          "type": "token",
+          "text": "冰"
+        },
+        {
+          "type": "token",
+          "text": "美"
+        },
+        {
+          "type": "token",
+          "text": "式"
+        },
+        {
+          "type": "token",
+          "text": "测评"
+        },
+        {
+          "type": "token",
+          "text": "日记"
+        },
+        {
+          "type": "stage",
+          "stage": "content_agent",
+          "status": "done"
+        },
+        {
+          "type": "done",
+          "final_content": "连跑三家咖啡馆\n巷子里的手冲\n早八人咖啡地图\n冰美式测评日记"
+        }
+      ]
+    },
+    {
+      "id": "latency_019",
+      "category": "内容生成",
+      "message": "给健身视频写一句结尾。",
+      "first_event_seconds": 0.003,
+      "first_token_seconds": 1.322,
+      "total_seconds": 2.168,
+      "error": null,
+      "events": [
+        {
+          "type": "session",
+          "session_id": "30dcd90689fa4086ba345e2e6e14a084"
+        },
+        {
+          "type": "stage",
+          "stage": "supervisor",
+          "status": "start"
+        },
+        {
+          "type": "stage",
+          "stage": "supervisor",
+          "status": "done",
+          "route": "content_agent",
+          "reason": "创作视频结尾文案"
+        },
+        {
+          "type": "stage",
+          "stage": "content_agent",
+          "status": "start"
+        },
+        {
+          "type": "token",
+          "text": "这个"
+        },
+        {
+          "type": "token",
+          "text": "需求"
+        },
+        {
+          "type": "token",
+          "text": "信息"
+        },
+        {
+          "type": "token",
+          "text": "不太"
+        },
+        {
+          "type": "token",
+          "text": "够"
+        },
+        {
+          "type": "token",
+          "text": "，"
+        },
+        {
+          "type": "token",
+          "text": "先"
+        },
+        {
+          "type": "token",
+          "text": "确认"
+        },
+        {
+          "type": "token",
+          "text": "两点"
+        },
+        {
+          "type": "token",
+          "text": "：\n\n"
+        },
+        {
+          "type": "token",
+          "text": "1"
+        },
+        {
+          "type": "token",
+          "text": "."
+        },
+        {
+          "type": "token",
+          "text": " **"
+        },
+        {
+          "type": "token",
+          "text": "哪个"
+        },
+        {
+          "type": "token",
+          "text": "平台"
+        },
+        {
+          "type": "token",
+          "text": "**"
+        },
+        {
+          "type": "token",
+          "text": "？"
+        },
+        {
+          "type": "token",
+          "text": "小红书"
+        },
+        {
+          "type": "token",
+          "text": "、"
+        },
+        {
+          "type": "token",
+          "text": "抖音"
+        },
+        {
+          "type": "token",
+          "text": "、"
+        },
+        {
+          "type": "token",
+          "text": "B"
+        },
+        {
+          "type": "token",
+          "text": "站的"
+        },
+        {
+          "type": "token",
+          "text": "结尾"
+        },
+        {
+          "type": "token",
+          "text": "话"
+        },
+        {
+          "type": "token",
+          "text": "术"
+        },
+        {
+          "type": "token",
+          "text": "风格"
+        },
+        {
+          "type": "token",
+          "text": "差别"
+        },
+        {
+          "type": "token",
+          "text": "挺"
+        },
+        {
+          "type": "token",
+          "text": "大"
+        },
+        {
+          "type": "token",
+          "text": "（"
+        },
+        {
+          "type": "token",
+          "text": "小红书"
+        },
+        {
+          "type": "token",
+          "text": "偏"
+        },
+        {
+          "type": "token",
+          "text": "陪伴"
+        },
+        {
+          "type": "token",
+          "text": "感"
+        },
+        {
+          "type": "token",
+          "text": "，"
+        },
+        {
+          "type": "token",
+          "text": "抖音"
+        },
+        {
+          "type": "token",
+          "text": "偏"
+        },
+        {
+          "type": "token",
+          "text": "钩"
+        },
+        {
+          "type": "token",
+          "text": "子"
+        },
+        {
+          "type": "token",
+          "text": "+"
+        },
+        {
+          "type": "token",
+          "text": "互动"
+        },
+        {
+          "type": "token",
+          "text": "，"
+        },
+        {
+          "type": "token",
+          "text": "B"
+        },
+        {
+          "type": "token",
+          "text": "站长"
+        },
+        {
+          "type": "token",
+          "text": "视频"
+        },
+        {
+          "type": "token",
+          "text": "偏"
+        },
+        {
+          "type": "token",
+          "text": "收"
+        },
+        {
+          "type": "token",
+          "text": "束"
+        },
+        {
+          "type": "token",
+          "text": "+"
+        },
+        {
+          "type": "token",
+          "text": "预告"
+        },
+        {
+          "type": "token",
+          "text": "）。\n"
+        },
+        {
+          "type": "token",
+          "text": "2"
+        },
+        {
+          "type": "token",
+          "text": "."
+        },
+        {
+          "type": "token",
+          "text": " **"
+        },
+        {
+          "type": "token",
+          "text": "视频"
+        },
+        {
+          "type": "token",
+          "text": "具体"
+        },
+        {
+          "type": "token",
+          "text": "是什么"
+        },
+        {
+          "type": "token",
+          "text": "内容"
+        },
+        {
+          "type": "token",
+          "text": "**"
+        },
+        {
+          "type": "token",
+          "text": "？"
+        },
+        {
+          "type": "token",
+          "text": "比如"
+        },
+        {
+          "type": "token",
+          "text": "增"
+        },
+        {
+          "type": "token",
+          "text": "肌"
+        },
+        {
+          "type": "token",
+          "text": "教程"
+        },
+        {
+          "type": "token",
+          "text": "、"
+        },
+        {
+          "type": "token",
+          "text": "跟"
+        },
+        {
+          "type": "token",
+          "text": "练"
+        },
+        {
+          "type": "token",
+          "text": "、"
+        },
+        {
+          "type": "token",
+          "text": "减"
+        },
+        {
+          "type": "token",
+          "text": "脂"
+        },
+        {
+          "type": "token",
+          "text": "v"
+        },
+        {
+          "type": "token",
+          "text": "log"
+        },
+        {
+          "type": "token",
+          "text": "、"
+        },
+        {
+          "type": "token",
+          "text": "器械"
+        },
+        {
+          "type": "token",
+          "text": "讲解"
+        },
+        {
+          "type": "token",
+          "text": "——"
+        },
+        {
+          "type": "token",
+          "text": "结尾"
+        },
+        {
+          "type": "token",
+          "text": "的"
+        },
+        {
+          "type": "token",
+          "text": "落"
+        },
+        {
+          "type": "token",
+          "text": "点"
+        },
+        {
+          "type": "token",
+          "text": "不一样"
+        },
+        {
+          "type": "token",
+          "text": "。\n\n"
+        },
+        {
+          "type": "token",
+          "text": "如果"
+        },
+        {
+          "type": "token",
+          "text": "只是"
+        },
+        {
+          "type": "token",
+          "text": "要"
+        },
+        {
+          "type": "token",
+          "text": "一句"
+        },
+        {
+          "type": "token",
+          "text": "通用的"
+        },
+        {
+          "type": "token",
+          "text": "，"
+        },
+        {
+          "type": "token",
+          "text": "可以"
+        },
+        {
+          "type": "token",
+          "text": "先用"
+        },
+        {
+          "type": "token",
+          "text": "这个"
+        },
+        {
+          "type": "token",
+          "text": "：\n\n"
+        },
+        {
+          "type": "token",
+          "text": ">"
+        },
+        {
+          "type": "token",
+          "text": " "
+        },
+        {
+          "type": "token",
+          "text": "别"
+        },
+        {
+          "type": "token",
+          "text": "等"
+        },
+        {
+          "type": "token",
+          "text": "状态"
+        },
+        {
+          "type": "token",
+          "text": "好了"
+        },
+        {
+          "type": "token",
+          "text": "再"
+        },
+        {
+          "type": "token",
+          "text": "练"
+        },
+        {
+          "type": "token",
+          "text": "，"
+        },
+        {
+          "type": "token",
+          "text": "练"
+        },
+        {
+          "type": "token",
+          "text": "起来"
+        },
+        {
+          "type": "token",
+          "text": "状态"
+        },
+        {
+          "type": "token",
+          "text": "才会"
+        },
+        {
+          "type": "token",
+          "text": "好"
+        },
+        {
+          "type": "token",
+          "text": "。"
+        },
+        {
+          "type": "token",
+          "text": "评论区"
+        },
+        {
+          "type": "token",
+          "text": "告诉我"
+        },
+        {
+          "type": "token",
+          "text": "你今天"
+        },
+        {
+          "type": "token",
+          "text": "练"
+        },
+        {
+          "type": "token",
+          "text": "了"
+        },
+        {
+          "type": "token",
+          "text": "哪儿"
+        },
+        {
+          "type": "token",
+          "text": "，"
+        },
+        {
+          "type": "token",
+          "text": "明天"
+        },
+        {
+          "type": "token",
+          "text": "接着"
+        },
+        {
+          "type": "token",
+          "text": "来"
+        },
+        {
+          "type": "token",
+          "text": "。\n\n"
+        },
+        {
+          "type": "token",
+          "text": "告诉我"
+        },
+        {
+          "type": "token",
+          "text": "平台"
+        },
+        {
+          "type": "token",
+          "text": "和"
+        },
+        {
+          "type": "token",
+          "text": "内容"
+        },
+        {
+          "type": "token",
+          "text": "方向"
+        },
+        {
+          "type": "token",
+          "text": "，"
+        },
+        {
+          "type": "token",
+          "text": "我给你"
+        },
+        {
+          "type": "token",
+          "text": "出"
+        },
+        {
+          "type": "token",
+          "text": " "
+        },
+        {
+          "type": "token",
+          "text": "3"
+        },
+        {
+          "type": "token",
+          "text": " "
+        },
+        {
+          "type": "token",
+          "text": "个"
+        },
+        {
+          "type": "token",
+          "text": "更"
+        },
+        {
+          "type": "token",
+          "text": "贴"
+        },
+        {
+          "type": "token",
+          "text": "的"
+        },
+        {
+          "type": "token",
+          "text": "版本"
+        },
+        {
+          "type": "token",
+          "text": "。"
+        },
+        {
+          "type": "stage",
+          "stage": "content_agent",
+          "status": "done"
+        },
+        {
+          "type": "done",
+          "final_content": "这个需求信息不太够，先确认两点：\n\n1. **哪个平台**？小红书、抖音、B站的结尾话术风格差别挺大（小红书偏陪伴感，抖音偏钩子+互动，B站长视频偏收束+预告）。\n2. **视频具体是什么内容**？比如增肌教程、跟练、减脂vlog、器械讲解——结尾的落点不一样。\n\n如果只是要一句通用的，可以先用这个：\n\n> 别等状态好了再练，练起来状态才会好。评论区告诉我你今天练了哪儿，明天接着来。\n\n告诉我平台和内容方向，我给你出 3 个更贴的版本。"
+        }
+      ]
+    },
+    {
+      "id": "latency_020",
+      "category": "内容生成",
+      "message": "为城市骑行视频写一个十字以内标题。",
+      "first_event_seconds": 0.007,
+      "first_token_seconds": 1.327,
+      "total_seconds": 1.713,
+      "error": null,
+      "events": [
+        {
+          "type": "session",
+          "session_id": "8e1cc9ab7c274407bd7c560862e5fb21"
+        },
+        {
+          "type": "stage",
+          "stage": "supervisor",
+          "status": "start"
+        },
+        {
+          "type": "stage",
+          "stage": "supervisor",
+          "status": "done",
+          "route": "content_agent",
+          "reason": "创作视频标题"
+        },
+        {
+          "type": "stage",
+          "stage": "content_agent",
+          "status": "start"
+        },
+        {
+          "type": "token",
+          "text": "十字"
+        },
+        {
+          "type": "token",
+          "text": "以内"
+        },
+        {
+          "type": "token",
+          "text": "，"
+        },
+        {
+          "type": "token",
+          "text": "城市"
+        },
+        {
+          "type": "token",
+          "text": "骑行"
+        },
+        {
+          "type": "token",
+          "text": "视频"
+        },
+        {
+          "type": "token",
+          "text": "标题"
+        },
+        {
+          "type": "token",
+          "text": "推荐"
+        },
+        {
+          "type": "token",
+          "text": "：\n\n"
+        },
+        {
+          "type": "token",
+          "text": "1"
+        },
+        {
+          "type": "token",
+          "text": "."
+        },
+        {
+          "type": "token",
+          "text": " "
+        },
+        {
+          "type": "token",
+          "text": "骑行"
+        },
+        {
+          "type": "token",
+          "text": "穿过"
+        },
+        {
+          "type": "token",
+          "text": "这座"
+        },
+        {
+          "type": "token",
+          "text": "城"
+        },
+        {
+          "type": "token",
+          "text": "\n"
+        },
+        {
+          "type": "token",
+          "text": "2"
+        },
+        {
+          "type": "token",
+          "text": "."
+        },
+        {
+          "type": "token",
+          "text": " "
+        },
+        {
+          "type": "token",
+          "text": "城市"
+        },
+        {
+          "type": "token",
+          "text": "骑行"
+        },
+        {
+          "type": "token",
+          "text": "日记"
+        },
+        {
+          "type": "token",
+          "text": "\n"
+        },
+        {
+          "type": "token",
+          "text": "3"
+        },
+        {
+          "type": "token",
+          "text": "."
+        },
+        {
+          "type": "token",
+          "text": " "
+        },
+        {
+          "type": "token",
+          "text": "一个人的"
+        },
+        {
+          "type": "token",
+          "text": "城市"
+        },
+        {
+          "type": "token",
+          "text": "骑行"
+        },
+        {
+          "type": "token",
+          "text": "\n"
+        },
+        {
+          "type": "token",
+          "text": "4"
+        },
+        {
+          "type": "token",
+          "text": "."
+        },
+        {
+          "type": "token",
+          "text": " "
+        },
+        {
+          "type": "token",
+          "text": "骑车"
+        },
+        {
+          "type": "token",
+          "text": "逛"
+        },
+        {
+          "type": "token",
+          "text": "城市"
+        },
+        {
+          "type": "token",
+          "text": "\n"
+        },
+        {
+          "type": "token",
+          "text": "5"
+        },
+        {
+          "type": "token",
+          "text": "."
+        },
+        {
+          "type": "token",
+          "text": " "
+        },
+        {
+          "type": "token",
+          "text": "城市"
+        },
+        {
+          "type": "token",
+          "text": "夜"
+        },
+        {
+          "type": "token",
+          "text": "骑"
+        },
+        {
+          "type": "token",
+          "text": "漫"
+        },
+        {
+          "type": "token",
+          "text": "游"
+        },
+        {
+          "type": "token",
+          "text": "\n\n"
+        },
+        {
+          "type": "token",
+          "text": "如果"
+        },
+        {
+          "type": "token",
+          "text": "告诉我"
+        },
+        {
+          "type": "token",
+          "text": "发布"
+        },
+        {
+          "type": "token",
+          "text": "平台"
+        },
+        {
+          "type": "token",
+          "text": "（"
+        },
+        {
+          "type": "token",
+          "text": "抖音"
+        },
+        {
+          "type": "token",
+          "text": "/"
+        },
+        {
+          "type": "token",
+          "text": "小红书"
+        },
+        {
+          "type": "token",
+          "text": "/B"
+        },
+        {
+          "type": "token",
+          "text": "站"
+        },
+        {
+          "type": "token",
+          "text": "等"
+        },
+        {
+          "type": "token",
+          "text": "），"
+        },
+        {
+          "type": "token",
+          "text": "我可以"
+        },
+        {
+          "type": "token",
+          "text": "按"
+        },
+        {
+          "type": "token",
+          "text": "该"
+        },
+        {
+          "type": "token",
+          "text": "平台"
+        },
+        {
+          "type": "token",
+          "text": "风格"
+        },
+        {
+          "type": "token",
+          "text": "再"
+        },
+        {
+          "type": "token",
+          "text": "优化"
+        },
+        {
+          "type": "token",
+          "text": "一"
+        },
+        {
+          "type": "token",
+          "text": "版"
+        },
+        {
+          "type": "token",
+          "text": "。"
+        },
+        {
+          "type": "stage",
+          "stage": "content_agent",
+          "status": "done"
+        },
+        {
+          "type": "done",
+          "final_content": "十字以内，城市骑行视频标题推荐：\n\n1. 骑行穿过这座城\n2. 城市骑行日记\n3. 一个人的城市骑行\n4. 骑车逛城市\n5. 城市夜骑漫游\n\n如果告诉我发布平台（抖音/小红书/B站等），我可以按该平台风格再优化一版。"
+        }
+      ]
+    }
+  ]
+}

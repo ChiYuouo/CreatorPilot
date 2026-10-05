@@ -1,8 +1,8 @@
 {
-  "evaluated_at": "2026-10-05T15:15:20.455569+08:00",
+  "evaluated_at": "2026-10-05T16:28:43.033539+08:00",
   "scope": "发布工具参数校验；使用记录调用的模拟业务接口；不调用模型或执行真实业务",
   "python_version": "3.12.10",
-  "git_head": "2d3503c04c9e721310c8116d46040b7b9cf0b619",
+  "git_head": "3647096d16c028a1d55506ea23423ff4a47eb422",
   "source_sha256": {
     "app/agents/tools.py": "7f5bfbad28318dfe6eb454a24bfbd232ff913ffbf9f7d9b6fcc8bf9e58e34056",
     "app/agents/publishing_tools.py": "f36421a3b21d4a7f1e83bc7618ccd1108beb95d42398edfa37ba851ad98e69f1",

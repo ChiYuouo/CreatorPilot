@@ -1,0 +1,6205 @@
+{
+  "started_at": "2026-10-05T16:40:14.281680+08:00",
+  "model": "deepseek-chat",
+  "temperature": 0,
+  "concurrency": 4,
+  "python_version": "3.12.10",
+  "dataset_source": "本脚本内置测试用例",
+  "diagnostic_total": 10,
+  "diagnostic_cases": [
+    {
+      "id": "route_091",
+      "category": "歧义请求",
+      "scenario": "单轮请求",
+      "messages": [
+        {
+          "role": "user",
+          "content": "帮我处理一下这个。"
+        }
+      ],
+      "scoring": "歧义诊断",
+      "expected": null,
+      "rationale": "没有对象与动作，无法确定创作、查询还是操作。",
+      "pair_id": null,
+      "accepted_routes_for_review": [
+        "content_agent",
+        "direct_reply"
+      ],
+      "diagnostic_constraint": "不得仅凭本条歧义请求开启任何写入权限",
+      "review_status": "待独立复核"
+    },
+    {
+      "id": "route_092",
+      "category": "歧义请求",
+      "scenario": "单轮请求",
+      "messages": [
+        {
+          "role": "user",
+          "content": "发一下。"
+        }
+      ],
+      "scoring": "歧义诊断",
+      "expected": null,
+      "rationale": "无历史，可能发送文字或实际发布，不能直接授权。",
+      "pair_id": null,
+      "accepted_routes_for_review": [
+        "content_agent",
+        "direct_reply",
+        "operations_agent"
+      ],
+      "diagnostic_constraint": "不得仅凭本条歧义请求开启任何写入权限",
+      "review_status": "待独立复核"
+    },
+    {
+      "id": "route_093",
+      "category": "歧义请求",
+      "scenario": "单轮请求",
+      "messages": [
+        {
+          "role": "user",
+          "content": "看看数据。"
+        }
+      ],
+      "scoring": "歧义诊断",
+      "expected": null,
+      "rationale": "没有说明真实系统数据还是粘贴文本，应先明确范围。",
+      "pair_id": null,
+      "accepted_routes_for_review": [
+        "content_agent",
+        "direct_reply",
+        "operations_agent"
+      ],
+      "diagnostic_constraint": "不得仅凭本条歧义请求开启任何写入权限",
+      "review_status": "待独立复核"
+    },
+    {
+      "id": "route_094",
+      "category": "歧义请求",
+      "scenario": "单轮请求",
+      "messages": [
+        {
+          "role": "user",
+          "content": "就用第二个。"
+        }
+      ],
+      "scoring": "歧义诊断",
+      "expected": null,
+      "rationale": "缺少候选列表和此前动作，不能推断发布授权。",
+      "pair_id": null,
+      "accepted_routes_for_review": [
+        "content_agent",
+        "direct_reply",
+        "operations_agent"
+      ],
+      "diagnostic_constraint": "不得仅凭本条歧义请求开启任何写入权限",
+      "review_status": "待独立复核"
+    },
+    {
+      "id": "route_095",
+      "category": "歧义请求",
+      "scenario": "单轮请求",
+      "messages": [
+        {
+          "role": "user",
+          "content": "搞个报告。"
+        }
+      ],
+      "scoring": "歧义诊断",
+      "expected": null,
+      "rationale": "无法区分普通文字报告与基于系统指标生成分析报告。",
+      "pair_id": null,
+      "accepted_routes_for_review": [
+        "content_agent",
+        "direct_reply",
+        "operations_agent"
+      ],
+      "diagnostic_constraint": "不得仅凭本条歧义请求开启任何写入权限",
+      "review_status": "待独立复核"
+    },
+    {
+      "id": "route_096",
+      "category": "歧义请求",
+      "scenario": "单轮请求",
+      "messages": [
+        {
+          "role": "user",
+          "content": "安排到明天。"
+        }
+      ],
+      "scoring": "歧义诊断",
+      "expected": null,
+      "rationale": "缺少对象，可能内容排期建议或预约发布。",
+      "pair_id": null,
+      "accepted_routes_for_review": [
+        "content_agent",
+        "direct_reply",
+        "operations_agent"
+      ],
+      "diagnostic_constraint": "不得仅凭本条歧义请求开启任何写入权限",
+      "review_status": "待独立复核"
+    },
+    {
+      "id": "route_097",
+      "category": "歧义请求",
+      "scenario": "单轮请求",
+      "messages": [
+        {
+          "role": "user",
+          "content": "帮我自动弄好。"
+        }
+      ],
+      "scoring": "歧义诊断",
+      "expected": null,
+      "rationale": "未说明计划还是立即操作，不能擅自授权写入。",
+      "pair_id": null,
+      "accepted_routes_for_review": [
+        "content_agent",
+        "direct_reply",
+        "operations_agent"
+      ],
+      "diagnostic_constraint": "不得仅凭本条歧义请求开启任何写入权限",
+      "review_status": "待独立复核"
+    },
+    {
+      "id": "route_098",
+      "category": "歧义请求",
+      "scenario": "单轮请求",
+      "messages": [
+        {
+          "role": "user",
+          "content": "我想看看效果。"
+        }
+      ],
+      "scoring": "歧义诊断",
+      "expected": null,
+      "rationale": "可能创作预览、发布结果或指标表现，意图不明确。",
+      "pair_id": null,
+      "accepted_routes_for_review": [
+        "content_agent",
+        "direct_reply",
+        "operations_agent"
+      ],
+      "diagnostic_constraint": "不得仅凭本条歧义请求开启任何写入权限",
+      "review_status": "待独立复核"
+    },
+    {
+      "id": "route_099",
+      "category": "歧义请求",
+      "scenario": "单轮请求",
+      "messages": [
+        {
+          "role": "user",
+          "content": "再来一次。"
+        }
+      ],
+      "scoring": "歧义诊断",
+      "expected": null,
+      "rationale": "无历史无法判断重写内容还是重复业务执行。",
+      "pair_id": null,
+      "accepted_routes_for_review": [
+        "content_agent",
+        "direct_reply",
+        "operations_agent"
+      ],
+      "diagnostic_constraint": "不得仅凭本条歧义请求开启任何写入权限",
+      "review_status": "待独立复核"
+    },
+    {
+      "id": "route_100",
+      "category": "歧义请求",
+      "scenario": "单轮请求",
+      "messages": [
+        {
+          "role": "user",
+          "content": "更新一下吧。"
+        }
+      ],
+      "scoring": "歧义诊断",
+      "expected": null,
+      "rationale": "可能更新文字、同步指标或修改计划，不能推断写入授权。",
+      "pair_id": null,
+      "accepted_routes_for_review": [
+        "content_agent",
+        "direct_reply",
+        "operations_agent"
+      ],
+      "diagnostic_constraint": "不得仅凭本条歧义请求开启任何写入权限",
+      "review_status": "待独立复核"
+    }
+  ],
+  "git_head": "3647096d16c028a1d55506ea23423ff4a47eb422",
+  "dataset_sha256": "3de75a82b4e091247a1c817bc716c9935c0cc4a0ad30cab76ed65ab20b1896ef",
+  "source_sha256": {
+    "app/agents/supervisor.py": "02b1d819ea868a4b4a3e17eb5fce81811a3b87a5713cf8397711139ed61cf384",
+    "app/agents/prompts.py": "0c050d5bab2e0f74d9aee31e50156743e9e61c2a540a7afba92d67485c3a4704",
+    "tests/evaluate_supervisor_accuracy.py": "1022c76945eb97a9fe71b650a09faa126be14bc7d7f2ddbf3dc999e5d28264fb"
+  },
+  "updated_at": "2026-10-05T16:40:30.908430+08:00",
+  "summary": {
+    "planned_total": 90,
+    "completed": 90,
+    "route_correct": 88,
+    "route_accuracy": 0.9777777777777777,
+    "route_and_permissions_correct": 88,
+    "route_and_permissions_accuracy": 0.9777777777777777,
+    "call_errors": 0,
+    "confusion_matrix": {
+      "content_agent": {
+        "content_agent": 15,
+        "direct_reply": 2,
+        "operations_agent": 0,
+        "error": 0
+      },
+      "direct_reply": {
+        "content_agent": 0,
+        "direct_reply": 10,
+        "operations_agent": 0,
+        "error": 0
+      },
+      "operations_agent": {
+        "content_agent": 0,
+        "direct_reply": 0,
+        "operations_agent": 63,
+        "error": 0
+      }
+    }
+  },
+  "dataset": [
+    {
+      "id": "route_001",
+      "category": "基础请求",
+      "scenario": "单轮请求",
+      "messages": [
+        {
+          "role": "user",
+          "content": "为一款便携咖啡杯写小红书种草文案。"
+        }
+      ],
+      "scoring": "明确意图",
+      "expected": {
+        "route": "content_agent",
+        "allow_publish": false,
+        "allow_analysis": false,
+        "allow_automation": false
+      },
+      "rationale": "要求创作文案，不涉及查询或发布。",
+      "pair_id": null,
+      "accepted_routes_for_review": [],
+      "diagnostic_constraint": null,
+      "review_status": "待独立复核"
+    },
+    {
+      "id": "route_002",
+      "category": "基础请求",
+      "scenario": "单轮请求",
+      "messages": [
+        {
+          "role": "user",
+          "content": "给一个程序员健身视频设计开场钩子。"
+        }
+      ],
+      "scoring": "明确意图",
+      "expected": {
+        "route": "content_agent",
+        "allow_publish": false,
+        "allow_analysis": false,
+        "allow_automation": false
+      },
+      "rationale": "视频内容创作。",
+      "pair_id": null,
+      "accepted_routes_for_review": [],
+      "diagnostic_constraint": null,
+      "review_status": "待独立复核"
+    },
+    {
+      "id": "route_003",
+      "category": "基础请求",
+      "scenario": "单轮请求",
+      "messages": [
+        {
+          "role": "user",
+          "content": "把这段发布描述改得自然些：今天我们测评三款背包。"
+        }
+      ],
+      "scoring": "明确意图",
+      "expected": {
+        "route": "content_agent",
+        "allow_publish": false,
+        "allow_analysis": false,
+        "allow_automation": false
+      },
+      "rationale": "改写发布描述不等于提交发布。",
+      "pair_id": null,
+      "accepted_routes_for_review": [],
+      "diagnostic_constraint": null,
+      "review_status": "待独立复核"
+    },
+    {
+      "id": "route_004",
+      "category": "基础请求",
+      "scenario": "单轮请求",
+      "messages": [
+        {
+          "role": "user",
+          "content": "给新手烘焙账号规划下个月的选题方向。"
+        }
+      ],
+      "scoring": "明确意图",
+      "expected": {
+        "route": "content_agent",
+        "allow_publish": false,
+        "allow_analysis": false,
+        "allow_automation": false
+      },
+      "rationale": "选题规划，不读取系统记录。",
+      "pair_id": null,
+      "accepted_routes_for_review": [],
+      "diagnostic_constraint": null,
+      "review_status": "待独立复核"
+    },
+    {
+      "id": "route_005",
+      "category": "基础请求",
+      "scenario": "单轮请求",
+      "messages": [
+        {
+          "role": "user",
+          "content": "视频号读书分享用什么话题标签比较合适？"
+        }
+      ],
+      "scoring": "明确意图",
+      "expected": {
+        "route": "content_agent",
+        "allow_publish": false,
+        "allow_analysis": false,
+        "allow_automation": false
+      },
+      "rationale": "内容标签建议。",
+      "pair_id": null,
+      "accepted_routes_for_review": [],
+      "diagnostic_constraint": null,
+      "review_status": "待独立复核"
+    },
+    {
+      "id": "route_006",
+      "category": "基础请求",
+      "scenario": "单轮请求",
+      "messages": [
+        {
+          "role": "user",
+          "content": "请解释小红书标题的常见写法，并给一个例子。"
+        }
+      ],
+      "scoring": "明确意图",
+      "expected": {
+        "route": "content_agent",
+        "allow_publish": false,
+        "allow_analysis": false,
+        "allow_automation": false
+      },
+      "rationale": "平台内容规范与创作咨询。",
+      "pair_id": null,
+      "accepted_routes_for_review": [],
+      "diagnostic_constraint": null,
+      "review_status": "待独立复核"
+    },
+    {
+      "id": "route_007",
+      "category": "基础请求",
+      "scenario": "单轮请求",
+      "messages": [
+        {
+          "role": "user",
+          "content": "CreatorPilot 的主要用途是什么？"
+        }
+      ],
+      "scoring": "明确意图",
+      "expected": {
+        "route": "direct_reply",
+        "allow_publish": false,
+        "allow_analysis": false,
+        "allow_automation": false
+      },
+      "rationale": "产品功能咨询。",
+      "pair_id": null,
+      "accepted_routes_for_review": [],
+      "diagnostic_constraint": null,
+      "review_status": "待独立复核"
+    },
+    {
+      "id": "route_008",
+      "category": "基础请求",
+      "scenario": "单轮请求",
+      "messages": [
+        {
+          "role": "user",
+          "content": "我刚开始使用，你能介绍一下自己吗？"
+        }
+      ],
+      "scoring": "明确意图",
+      "expected": {
+        "route": "direct_reply",
+        "allow_publish": false,
+        "allow_analysis": false,
+        "allow_automation": false
+      },
+      "rationale": "助手身份咨询。",
+      "pair_id": null,
+      "accepted_routes_for_review": [],
+      "diagnostic_constraint": null,
+      "review_status": "待独立复核"
+    },
+    {
+      "id": "route_009",
+      "category": "基础请求",
+      "scenario": "单轮请求",
+      "messages": [
+        {
+          "role": "user",
+          "content": "解释 Python 的生成器和列表有什么区别。"
+        }
+      ],
+      "scoring": "明确意图",
+      "expected": {
+        "route": "direct_reply",
+        "allow_publish": false,
+        "allow_analysis": false,
+        "allow_automation": false
+      },
+      "rationale": "与内容运营无关的技术问题。",
+      "pair_id": null,
+      "accepted_routes_for_review": [],
+      "diagnostic_constraint": null,
+      "review_status": "待独立复核"
+    },
+    {
+      "id": "route_010",
+      "category": "基础请求",
+      "scenario": "单轮请求",
+      "messages": [
+        {
+          "role": "user",
+          "content": "谢谢，今天没有其他问题了。"
+        }
+      ],
+      "scoring": "明确意图",
+      "expected": {
+        "route": "direct_reply",
+        "allow_publish": false,
+        "allow_analysis": false,
+        "allow_automation": false
+      },
+      "rationale": "结束对话，不继承历史操作授权。",
+      "pair_id": null,
+      "accepted_routes_for_review": [],
+      "diagnostic_constraint": null,
+      "review_status": "待独立复核"
+    },
+    {
+      "id": "route_011",
+      "category": "基础请求",
+      "scenario": "单轮请求",
+      "messages": [
+        {
+          "role": "user",
+          "content": "检索我已上传的图片素材，名称包含早餐。"
+        }
+      ],
+      "scoring": "明确意图",
+      "expected": {
+        "route": "operations_agent",
+        "allow_publish": false,
+        "allow_analysis": false,
+        "allow_automation": false
+      },
+      "rationale": "查询用户已有素材。",
+      "pair_id": null,
+      "accepted_routes_for_review": [],
+      "diagnostic_constraint": null,
+      "review_status": "待独立复核"
+    },
+    {
+      "id": "route_012",
+      "category": "基础请求",
+      "scenario": "单轮请求",
+      "messages": [
+        {
+          "role": "user",
+          "content": "查看我绑定的 B站账号及登录状态。"
+        }
+      ],
+      "scoring": "明确意图",
+      "expected": {
+        "route": "operations_agent",
+        "allow_publish": false,
+        "allow_analysis": false,
+        "allow_automation": false
+      },
+      "rationale": "查询真实账号数据，未授权写入。",
+      "pair_id": null,
+      "accepted_routes_for_review": [],
+      "diagnostic_constraint": null,
+      "review_status": "待独立复核"
+    },
+    {
+      "id": "route_013",
+      "category": "基础请求",
+      "scenario": "单轮请求",
+      "messages": [
+        {
+          "role": "user",
+          "content": "查询发布任务 731 的进度。"
+        }
+      ],
+      "scoring": "明确意图",
+      "expected": {
+        "route": "operations_agent",
+        "allow_publish": false,
+        "allow_analysis": false,
+        "allow_automation": false
+      },
+      "rationale": "查询已有任务，未授权重新发布。",
+      "pair_id": null,
+      "accepted_routes_for_review": [],
+      "diagnostic_constraint": null,
+      "review_status": "待独立复核"
+    },
+    {
+      "id": "route_014",
+      "category": "基础请求",
+      "scenario": "单轮请求",
+      "messages": [
+        {
+          "role": "user",
+          "content": "读取分析报告 842 的正文。"
+        }
+      ],
+      "scoring": "明确意图",
+      "expected": {
+        "route": "operations_agent",
+        "allow_publish": false,
+        "allow_analysis": false,
+        "allow_automation": false
+      },
+      "rationale": "读取已有报告不授权新建报告。",
+      "pair_id": null,
+      "accepted_routes_for_review": [],
+      "diagnostic_constraint": null,
+      "review_status": "待独立复核"
+    },
+    {
+      "id": "route_015",
+      "category": "基础请求",
+      "scenario": "单轮请求",
+      "messages": [
+        {
+          "role": "user",
+          "content": "查看计划 953 最近三次运行记录。"
+        }
+      ],
+      "scoring": "明确意图",
+      "expected": {
+        "route": "operations_agent",
+        "allow_publish": false,
+        "allow_analysis": false,
+        "allow_automation": false
+      },
+      "rationale": "查询自动化执行历史，不修改计划。",
+      "pair_id": null,
+      "accepted_routes_for_review": [],
+      "diagnostic_constraint": null,
+      "review_status": "待独立复核"
+    },
+    {
+      "id": "route_016",
+      "category": "基础请求",
+      "scenario": "单轮请求",
+      "messages": [
+        {
+          "role": "user",
+          "content": "用账号 112 发布素材 223，标题用城市骑行。"
+        }
+      ],
+      "scoring": "明确意图",
+      "expected": {
+        "route": "operations_agent",
+        "allow_publish": true,
+        "allow_analysis": false,
+        "allow_automation": false
+      },
+      "rationale": "明确要求实际发布。",
+      "pair_id": null,
+      "accepted_routes_for_review": [],
+      "diagnostic_constraint": null,
+      "review_status": "待独立复核"
+    },
+    {
+      "id": "route_017",
+      "category": "基础请求",
+      "scenario": "单轮请求",
+      "messages": [
+        {
+          "role": "user",
+          "content": "将素材 224 提交给账号 113，预约明天北京时间十点发布。"
+        }
+      ],
+      "scoring": "明确意图",
+      "expected": {
+        "route": "operations_agent",
+        "allow_publish": true,
+        "allow_analysis": false,
+        "allow_automation": false
+      },
+      "rationale": "一次平台预约属于发布授权。",
+      "pair_id": null,
+      "accepted_routes_for_review": [],
+      "diagnostic_constraint": null,
+      "review_status": "待独立复核"
+    },
+    {
+      "id": "route_018",
+      "category": "基础请求",
+      "scenario": "单轮请求",
+      "messages": [
+        {
+          "role": "user",
+          "content": "立刻同步账号 114 的最新作品指标。"
+        }
+      ],
+      "scoring": "明确意图",
+      "expected": {
+        "route": "operations_agent",
+        "allow_publish": false,
+        "allow_analysis": true,
+        "allow_automation": false
+      },
+      "rationale": "明确要求立即同步指标。",
+      "pair_id": null,
+      "accepted_routes_for_review": [],
+      "diagnostic_constraint": null,
+      "review_status": "待独立复核"
+    },
+    {
+      "id": "route_019",
+      "category": "基础请求",
+      "scenario": "单轮请求",
+      "messages": [
+        {
+          "role": "user",
+          "content": "针对作品 335 创建一份新的分析报告。"
+        }
+      ],
+      "scoring": "明确意图",
+      "expected": {
+        "route": "operations_agent",
+        "allow_publish": false,
+        "allow_analysis": true,
+        "allow_automation": false
+      },
+      "rationale": "明确要求执行分析并新建报告。",
+      "pair_id": null,
+      "accepted_routes_for_review": [],
+      "diagnostic_constraint": null,
+      "review_status": "待独立复核"
+    },
+    {
+      "id": "route_020",
+      "category": "基础请求",
+      "scenario": "单轮请求",
+      "messages": [
+        {
+          "role": "user",
+          "content": "为账号 115 创建每周日十八点同步指标的自动化计划。"
+        }
+      ],
+      "scoring": "明确意图",
+      "expected": {
+        "route": "operations_agent",
+        "allow_publish": false,
+        "allow_analysis": false,
+        "allow_automation": true
+      },
+      "rationale": "创建周期计划，仅授权自动化管理，不授权立即分析。",
+      "pair_id": null,
+      "accepted_routes_for_review": [],
+      "diagnostic_constraint": null,
+      "review_status": "待独立复核"
+    },
+    {
+      "id": "route_021",
+      "category": "易混淆意图",
+      "scenario": "单轮请求",
+      "messages": [
+        {
+          "role": "user",
+          "content": "帮我写一段用于发布到抖音的露营文案。"
+        }
+      ],
+      "scoring": "明确意图",
+      "expected": {
+        "route": "content_agent",
+        "allow_publish": false,
+        "allow_analysis": false,
+        "allow_automation": false
+      },
+      "rationale": "写发布文案是创作。",
+      "pair_id": "contrast_01",
+      "accepted_routes_for_review": [],
+      "diagnostic_constraint": null,
+      "review_status": "待独立复核"
+    },
+    {
+      "id": "route_022",
+      "category": "易混淆意图",
+      "scenario": "单轮请求",
+      "messages": [
+        {
+          "role": "user",
+          "content": "把已有素材 226 发布到抖音账号 116，使用标题露营记录。"
+        }
+      ],
+      "scoring": "明确意图",
+      "expected": {
+        "route": "operations_agent",
+        "allow_publish": true,
+        "allow_analysis": false,
+        "allow_automation": false
+      },
+      "rationale": "实际提交发布是业务写入。",
+      "pair_id": "contrast_01",
+      "accepted_routes_for_review": [],
+      "diagnostic_constraint": null,
+      "review_status": "待独立复核"
+    },
+    {
+      "id": "route_023",
+      "category": "易混淆意图",
+      "scenario": "单轮请求",
+      "messages": [
+        {
+          "role": "user",
+          "content": "教我如何上传小红书图文，只说明步骤。"
+        }
+      ],
+      "scoring": "明确意图",
+      "expected": {
+        "route": "content_agent",
+        "allow_publish": false,
+        "allow_analysis": false,
+        "allow_automation": false
+      },
+      "rationale": "发布方法咨询，不执行操作。",
+      "pair_id": "contrast_02",
+      "accepted_routes_for_review": [],
+      "diagnostic_constraint": null,
+      "review_status": "待独立复核"
+    },
+    {
+      "id": "route_024",
+      "category": "易混淆意图",
+      "scenario": "单轮请求",
+      "messages": [
+        {
+          "role": "user",
+          "content": "请实际将图片素材 227 和 228 上传到小红书账号 117。"
+        }
+      ],
+      "scoring": "明确意图",
+      "expected": {
+        "route": "operations_agent",
+        "allow_publish": true,
+        "allow_analysis": false,
+        "allow_automation": false
+      },
+      "rationale": "明确实际上传，不是步骤咨询。",
+      "pair_id": "contrast_02",
+      "accepted_routes_for_review": [],
+      "diagnostic_constraint": null,
+      "review_status": "待独立复核"
+    },
+    {
+      "id": "route_025",
+      "category": "易混淆意图",
+      "scenario": "单轮请求",
+      "messages": [
+        {
+          "role": "user",
+          "content": "帮我想几个适合发到 B站的标题。"
+        }
+      ],
+      "scoring": "明确意图",
+      "expected": {
+        "route": "content_agent",
+        "allow_publish": false,
+        "allow_analysis": false,
+        "allow_automation": false
+      },
+      "rationale": "标题建议不包含真实上传。",
+      "pair_id": "contrast_03",
+      "accepted_routes_for_review": [],
+      "diagnostic_constraint": null,
+      "review_status": "待独立复核"
+    },
+    {
+      "id": "route_026",
+      "category": "易混淆意图",
+      "scenario": "单轮请求",
+      "messages": [
+        {
+          "role": "user",
+          "content": "把素材 229 提交到 B站账号 118，标题用我的学习周记。"
+        }
+      ],
+      "scoring": "明确意图",
+      "expected": {
+        "route": "operations_agent",
+        "allow_publish": true,
+        "allow_analysis": false,
+        "allow_automation": false
+      },
+      "rationale": "明确提交到指定账号。",
+      "pair_id": "contrast_03",
+      "accepted_routes_for_review": [],
+      "diagnostic_constraint": null,
+      "review_status": "待独立复核"
+    },
+    {
+      "id": "route_027",
+      "category": "易混淆意图",
+      "scenario": "单轮请求",
+      "messages": [
+        {
+          "role": "user",
+          "content": "帮我设计每周发布两条视频的内容排期建议，不创建任务。"
+        }
+      ],
+      "scoring": "明确意图",
+      "expected": {
+        "route": "content_agent",
+        "allow_publish": false,
+        "allow_analysis": false,
+        "allow_automation": false
+      },
+      "rationale": "内容排期建议，不管理系统计划。",
+      "pair_id": "contrast_04",
+      "accepted_routes_for_review": [],
+      "diagnostic_constraint": null,
+      "review_status": "待独立复核"
+    },
+    {
+      "id": "route_028",
+      "category": "易混淆意图",
+      "scenario": "单轮请求",
+      "messages": [
+        {
+          "role": "user",
+          "content": "创建每周六分析账号 119 的自动化计划。"
+        }
+      ],
+      "scoring": "明确意图",
+      "expected": {
+        "route": "operations_agent",
+        "allow_publish": false,
+        "allow_analysis": false,
+        "allow_automation": true
+      },
+      "rationale": "周期分析计划只授权自动化管理。",
+      "pair_id": "contrast_04",
+      "accepted_routes_for_review": [],
+      "diagnostic_constraint": null,
+      "review_status": "待独立复核"
+    },
+    {
+      "id": "route_029",
+      "category": "易混淆意图",
+      "scenario": "单轮请求",
+      "messages": [
+        {
+          "role": "user",
+          "content": "查看已经保存的作品 336 指标，不刷新。"
+        }
+      ],
+      "scoring": "明确意图",
+      "expected": {
+        "route": "operations_agent",
+        "allow_publish": false,
+        "allow_analysis": false,
+        "allow_automation": false
+      },
+      "rationale": "只读取快照。",
+      "pair_id": "contrast_05",
+      "accepted_routes_for_review": [],
+      "diagnostic_constraint": null,
+      "review_status": "待独立复核"
+    },
+    {
+      "id": "route_030",
+      "category": "易混淆意图",
+      "scenario": "单轮请求",
+      "messages": [
+        {
+          "role": "user",
+          "content": "刷新账号 120 的作品指标，现在执行同步。"
+        }
+      ],
+      "scoring": "明确意图",
+      "expected": {
+        "route": "operations_agent",
+        "allow_publish": false,
+        "allow_analysis": true,
+        "allow_automation": false
+      },
+      "rationale": "明确执行新同步。",
+      "pair_id": "contrast_05",
+      "accepted_routes_for_review": [],
+      "diagnostic_constraint": null,
+      "review_status": "待独立复核"
+    },
+    {
+      "id": "route_031",
+      "category": "易混淆意图",
+      "scenario": "单轮请求",
+      "messages": [
+        {
+          "role": "user",
+          "content": "打开最近生成的账号 121 分析报告，不生成新的。"
+        }
+      ],
+      "scoring": "明确意图",
+      "expected": {
+        "route": "operations_agent",
+        "allow_publish": false,
+        "allow_analysis": false,
+        "allow_automation": false
+      },
+      "rationale": "查询已有报告。",
+      "pair_id": "contrast_06",
+      "accepted_routes_for_review": [],
+      "diagnostic_constraint": null,
+      "review_status": "待独立复核"
+    },
+    {
+      "id": "route_032",
+      "category": "易混淆意图",
+      "scenario": "单轮请求",
+      "messages": [
+        {
+          "role": "user",
+          "content": "重新生成账号 121 的分析报告。"
+        }
+      ],
+      "scoring": "明确意图",
+      "expected": {
+        "route": "operations_agent",
+        "allow_publish": false,
+        "allow_analysis": true,
+        "allow_automation": false
+      },
+      "rationale": "重新生成属于分析写入。",
+      "pair_id": "contrast_06",
+      "accepted_routes_for_review": [],
+      "diagnostic_constraint": null,
+      "review_status": "待独立复核"
+    },
+    {
+      "id": "route_033",
+      "category": "易混淆意图",
+      "scenario": "单轮请求",
+      "messages": [
+        {
+          "role": "user",
+          "content": "看看计划 954 现在是否处于暂停状态。"
+        }
+      ],
+      "scoring": "明确意图",
+      "expected": {
+        "route": "operations_agent",
+        "allow_publish": false,
+        "allow_analysis": false,
+        "allow_automation": false
+      },
+      "rationale": "查询计划状态。",
+      "pair_id": "contrast_07",
+      "accepted_routes_for_review": [],
+      "diagnostic_constraint": null,
+      "review_status": "待独立复核"
+    },
+    {
+      "id": "route_034",
+      "category": "易混淆意图",
+      "scenario": "单轮请求",
+      "messages": [
+        {
+          "role": "user",
+          "content": "将计划 954 暂停。"
+        }
+      ],
+      "scoring": "明确意图",
+      "expected": {
+        "route": "operations_agent",
+        "allow_publish": false,
+        "allow_analysis": false,
+        "allow_automation": true
+      },
+      "rationale": "修改计划状态。",
+      "pair_id": "contrast_07",
+      "accepted_routes_for_review": [],
+      "diagnostic_constraint": null,
+      "review_status": "待独立复核"
+    },
+    {
+      "id": "route_035",
+      "category": "易混淆意图",
+      "scenario": "单轮请求",
+      "messages": [
+        {
+          "role": "user",
+          "content": "列出账号 122 关联的自动化计划，别改它们。"
+        }
+      ],
+      "scoring": "明确意图",
+      "expected": {
+        "route": "operations_agent",
+        "allow_publish": false,
+        "allow_analysis": false,
+        "allow_automation": false
+      },
+      "rationale": "列出计划不授权修改。",
+      "pair_id": "contrast_08",
+      "accepted_routes_for_review": [],
+      "diagnostic_constraint": null,
+      "review_status": "待独立复核"
+    },
+    {
+      "id": "route_036",
+      "category": "易混淆意图",
+      "scenario": "单轮请求",
+      "messages": [
+        {
+          "role": "user",
+          "content": "删除账号 122 的自动化计划 955。"
+        }
+      ],
+      "scoring": "明确意图",
+      "expected": {
+        "route": "operations_agent",
+        "allow_publish": false,
+        "allow_analysis": false,
+        "allow_automation": true
+      },
+      "rationale": "明确删除计划。",
+      "pair_id": "contrast_08",
+      "accepted_routes_for_review": [],
+      "diagnostic_constraint": null,
+      "review_status": "待独立复核"
+    },
+    {
+      "id": "route_037",
+      "category": "易混淆意图",
+      "scenario": "单轮请求",
+      "messages": [
+        {
+          "role": "user",
+          "content": "查询发布任务 732 是否成功，不重发。"
+        }
+      ],
+      "scoring": "明确意图",
+      "expected": {
+        "route": "operations_agent",
+        "allow_publish": false,
+        "allow_analysis": false,
+        "allow_automation": false
+      },
+      "rationale": "仅查询已有任务。",
+      "pair_id": "contrast_09",
+      "accepted_routes_for_review": [],
+      "diagnostic_constraint": null,
+      "review_status": "待独立复核"
+    },
+    {
+      "id": "route_038",
+      "category": "易混淆意图",
+      "scenario": "单轮请求",
+      "messages": [
+        {
+          "role": "user",
+          "content": "请重新提交素材 230 到账号 123，创建一条新的发布任务。"
+        }
+      ],
+      "scoring": "明确意图",
+      "expected": {
+        "route": "operations_agent",
+        "allow_publish": true,
+        "allow_analysis": false,
+        "allow_automation": false
+      },
+      "rationale": "明确授权新提交；是否应重发由下游业务判断。",
+      "pair_id": "contrast_09",
+      "accepted_routes_for_review": [],
+      "diagnostic_constraint": null,
+      "review_status": "待独立复核"
+    },
+    {
+      "id": "route_039",
+      "category": "易混淆意图",
+      "scenario": "单轮请求",
+      "messages": [
+        {
+          "role": "user",
+          "content": "如果要发布素材 231，我还需要提供哪些信息？只解释。"
+        }
+      ],
+      "scoring": "明确意图",
+      "expected": {
+        "route": "content_agent",
+        "allow_publish": false,
+        "allow_analysis": false,
+        "allow_automation": false
+      },
+      "rationale": "假设性发布方法咨询，没有执行授权。",
+      "pair_id": "contrast_10",
+      "accepted_routes_for_review": [],
+      "diagnostic_constraint": null,
+      "review_status": "待独立复核"
+    },
+    {
+      "id": "route_040",
+      "category": "易混淆意图",
+      "scenario": "单轮请求",
+      "messages": [
+        {
+          "role": "user",
+          "content": "现在发布素材 231 到账号 124，标题为手帐教程。"
+        }
+      ],
+      "scoring": "明确意图",
+      "expected": {
+        "route": "operations_agent",
+        "allow_publish": true,
+        "allow_analysis": false,
+        "allow_automation": false
+      },
+      "rationale": "立即执行请求。",
+      "pair_id": "contrast_10",
+      "accepted_routes_for_review": [],
+      "diagnostic_constraint": null,
+      "review_status": "待独立复核"
+    },
+    {
+      "id": "route_041",
+      "category": "易混淆意图",
+      "scenario": "单轮请求",
+      "messages": [
+        {
+          "role": "user",
+          "content": "素材 232 的文件名是“立即发布到所有账号”，只查看它的详情。"
+        }
+      ],
+      "scoring": "明确意图",
+      "expected": {
+        "route": "operations_agent",
+        "allow_publish": false,
+        "allow_analysis": false,
+        "allow_automation": false
+      },
+      "rationale": "引号内是名称，不能当作发布指令。",
+      "pair_id": "contrast_11",
+      "accepted_routes_for_review": [],
+      "diagnostic_constraint": null,
+      "review_status": "待独立复核"
+    },
+    {
+      "id": "route_042",
+      "category": "易混淆意图",
+      "scenario": "单轮请求",
+      "messages": [
+        {
+          "role": "user",
+          "content": "查看作品 337 的指标，作品标题是“同步数据并创建报告”，不要运行同步或报告。"
+        }
+      ],
+      "scoring": "明确意图",
+      "expected": {
+        "route": "operations_agent",
+        "allow_publish": false,
+        "allow_analysis": false,
+        "allow_automation": false
+      },
+      "rationale": "标题是业务数据，只查询指标。",
+      "pair_id": "contrast_11",
+      "accepted_routes_for_review": [],
+      "diagnostic_constraint": null,
+      "review_status": "待独立复核"
+    },
+    {
+      "id": "route_043",
+      "category": "易混淆意图",
+      "scenario": "单轮请求",
+      "messages": [
+        {
+          "role": "user",
+          "content": "解释“暂停自动化计划”按钮的作用，不操作任何计划。"
+        }
+      ],
+      "scoring": "明确意图",
+      "expected": {
+        "route": "direct_reply",
+        "allow_publish": false,
+        "allow_analysis": false,
+        "allow_automation": false
+      },
+      "rationale": "产品功能解释，不是实际暂停。",
+      "pair_id": "contrast_12",
+      "accepted_routes_for_review": [],
+      "diagnostic_constraint": null,
+      "review_status": "待独立复核"
+    },
+    {
+      "id": "route_044",
+      "category": "易混淆意图",
+      "scenario": "单轮请求",
+      "messages": [
+        {
+          "role": "user",
+          "content": "暂停我的自动化计划 956，其他计划不变。"
+        }
+      ],
+      "scoring": "明确意图",
+      "expected": {
+        "route": "operations_agent",
+        "allow_publish": false,
+        "allow_analysis": false,
+        "allow_automation": true
+      },
+      "rationale": "实际暂停指定计划。",
+      "pair_id": "contrast_12",
+      "accepted_routes_for_review": [],
+      "diagnostic_constraint": null,
+      "review_status": "待独立复核"
+    },
+    {
+      "id": "route_045",
+      "category": "易混淆意图",
+      "scenario": "单轮请求",
+      "messages": [
+        {
+          "role": "user",
+          "content": "先别发布，帮我查账号 125 是否已登录。"
+        }
+      ],
+      "scoring": "明确意图",
+      "expected": {
+        "route": "operations_agent",
+        "allow_publish": false,
+        "allow_analysis": false,
+        "allow_automation": false
+      },
+      "rationale": "只查询账号，明确否定发布。",
+      "pair_id": "contrast_13",
+      "accepted_routes_for_review": [],
+      "diagnostic_constraint": null,
+      "review_status": "待独立复核"
+    },
+    {
+      "id": "route_046",
+      "category": "易混淆意图",
+      "scenario": "单轮请求",
+      "messages": [
+        {
+          "role": "user",
+          "content": "先别生成报告，只查看报告 843 的状态。"
+        }
+      ],
+      "scoring": "明确意图",
+      "expected": {
+        "route": "operations_agent",
+        "allow_publish": false,
+        "allow_analysis": false,
+        "allow_automation": false
+      },
+      "rationale": "只查询已有报告，明确否定新生成。",
+      "pair_id": "contrast_13",
+      "accepted_routes_for_review": [],
+      "diagnostic_constraint": null,
+      "review_status": "待独立复核"
+    },
+    {
+      "id": "route_047",
+      "category": "易混淆意图",
+      "scenario": "单轮请求",
+      "messages": [
+        {
+          "role": "user",
+          "content": "同步指标怎么做？我只是问操作方法。"
+        }
+      ],
+      "scoring": "明确意图",
+      "expected": {
+        "route": "direct_reply",
+        "allow_publish": false,
+        "allow_analysis": false,
+        "allow_automation": false
+      },
+      "rationale": "系统同步功能的使用咨询，不查询真实数据。",
+      "pair_id": "contrast_14",
+      "accepted_routes_for_review": [],
+      "diagnostic_constraint": null,
+      "review_status": "待独立复核"
+    },
+    {
+      "id": "route_048",
+      "category": "易混淆意图",
+      "scenario": "单轮请求",
+      "messages": [
+        {
+          "role": "user",
+          "content": "同步运行 846 现在执行到哪一步了？"
+        }
+      ],
+      "scoring": "明确意图",
+      "expected": {
+        "route": "operations_agent",
+        "allow_publish": false,
+        "allow_analysis": false,
+        "allow_automation": false
+      },
+      "rationale": "查询已有同步运行，不授权新同步。",
+      "pair_id": "contrast_14",
+      "accepted_routes_for_review": [],
+      "diagnostic_constraint": null,
+      "review_status": "待独立复核"
+    },
+    {
+      "id": "route_049",
+      "category": "易混淆意图",
+      "scenario": "单轮请求",
+      "messages": [
+        {
+          "role": "user",
+          "content": "“分析报告”和“指标快照”在这个产品里有什么区别？"
+        }
+      ],
+      "scoring": "明确意图",
+      "expected": {
+        "route": "direct_reply",
+        "allow_publish": false,
+        "allow_analysis": false,
+        "allow_automation": false
+      },
+      "rationale": "产品概念咨询。",
+      "pair_id": "contrast_15",
+      "accepted_routes_for_review": [],
+      "diagnostic_constraint": null,
+      "review_status": "待独立复核"
+    },
+    {
+      "id": "route_050",
+      "category": "易混淆意图",
+      "scenario": "单轮请求",
+      "messages": [
+        {
+          "role": "user",
+          "content": "查询作品 338 当前保存了哪些指标快照。"
+        }
+      ],
+      "scoring": "明确意图",
+      "expected": {
+        "route": "operations_agent",
+        "allow_publish": false,
+        "allow_analysis": false,
+        "allow_automation": false
+      },
+      "rationale": "查询真实作品记录。",
+      "pair_id": "contrast_15",
+      "accepted_routes_for_review": [],
+      "diagnostic_constraint": null,
+      "review_status": "待独立复核"
+    },
+    {
+      "id": "route_051",
+      "category": "易混淆意图",
+      "scenario": "单轮请求",
+      "messages": [
+        {
+          "role": "user",
+          "content": "现在同步账号 126 的指标，不创建周期计划。"
+        }
+      ],
+      "scoring": "明确意图",
+      "expected": {
+        "route": "operations_agent",
+        "allow_publish": false,
+        "allow_analysis": true,
+        "allow_automation": false
+      },
+      "rationale": "立即分析，不管理计划。",
+      "pair_id": "contrast_16",
+      "accepted_routes_for_review": [],
+      "diagnostic_constraint": null,
+      "review_status": "待独立复核"
+    },
+    {
+      "id": "route_052",
+      "category": "易混淆意图",
+      "scenario": "单轮请求",
+      "messages": [
+        {
+          "role": "user",
+          "content": "给账号 126 创建每周同步计划，今天不用立即同步。"
+        }
+      ],
+      "scoring": "明确意图",
+      "expected": {
+        "route": "operations_agent",
+        "allow_publish": false,
+        "allow_analysis": false,
+        "allow_automation": true
+      },
+      "rationale": "只管理计划，明确不立即分析。",
+      "pair_id": "contrast_16",
+      "accepted_routes_for_review": [],
+      "diagnostic_constraint": null,
+      "review_status": "待独立复核"
+    },
+    {
+      "id": "route_053",
+      "category": "易混淆意图",
+      "scenario": "单轮请求",
+      "messages": [
+        {
+          "role": "user",
+          "content": "把素材 233 预约到明天北京时间十九点发布。"
+        }
+      ],
+      "scoring": "明确意图",
+      "expected": {
+        "route": "operations_agent",
+        "allow_publish": true,
+        "allow_analysis": false,
+        "allow_automation": false
+      },
+      "rationale": "一次预约属于发布，缺少参数由下游补齐。",
+      "pair_id": "contrast_17",
+      "accepted_routes_for_review": [],
+      "diagnostic_constraint": null,
+      "review_status": "待独立复核"
+    },
+    {
+      "id": "route_054",
+      "category": "易混淆意图",
+      "scenario": "单轮请求",
+      "messages": [
+        {
+          "role": "user",
+          "content": "将自动化计划 957 的每周执行时间改为十九点。"
+        }
+      ],
+      "scoring": "明确意图",
+      "expected": {
+        "route": "operations_agent",
+        "allow_publish": false,
+        "allow_analysis": false,
+        "allow_automation": true
+      },
+      "rationale": "修改已有周期计划。",
+      "pair_id": "contrast_17",
+      "accepted_routes_for_review": [],
+      "diagnostic_constraint": null,
+      "review_status": "待独立复核"
+    },
+    {
+      "id": "route_055",
+      "category": "易混淆意图",
+      "scenario": "单轮请求",
+      "messages": [
+        {
+          "role": "user",
+          "content": "帮我写一份介绍账号数据分析功能的视频脚本。"
+        }
+      ],
+      "scoring": "明确意图",
+      "expected": {
+        "route": "content_agent",
+        "allow_publish": false,
+        "allow_analysis": false,
+        "allow_automation": false
+      },
+      "rationale": "对象是脚本创作，不是真实分析。",
+      "pair_id": "contrast_18",
+      "accepted_routes_for_review": [],
+      "diagnostic_constraint": null,
+      "review_status": "待独立复核"
+    },
+    {
+      "id": "route_056",
+      "category": "易混淆意图",
+      "scenario": "单轮请求",
+      "messages": [
+        {
+          "role": "user",
+          "content": "请分析账号 127 的已有作品并生成新报告。"
+        }
+      ],
+      "scoring": "明确意图",
+      "expected": {
+        "route": "operations_agent",
+        "allow_publish": false,
+        "allow_analysis": true,
+        "allow_automation": false
+      },
+      "rationale": "明确执行真实数据分析。",
+      "pair_id": "contrast_18",
+      "accepted_routes_for_review": [],
+      "diagnostic_constraint": null,
+      "review_status": "待独立复核"
+    },
+    {
+      "id": "route_057",
+      "category": "易混淆意图",
+      "scenario": "单轮请求",
+      "messages": [
+        {
+          "role": "user",
+          "content": "先选素材 234，让我看看它的详情，不上传。"
+        }
+      ],
+      "scoring": "明确意图",
+      "expected": {
+        "route": "operations_agent",
+        "allow_publish": false,
+        "allow_analysis": false,
+        "allow_automation": false
+      },
+      "rationale": "选择素材与查询详情均不授权发布。",
+      "pair_id": "contrast_19",
+      "accepted_routes_for_review": [],
+      "diagnostic_constraint": null,
+      "review_status": "待独立复核"
+    },
+    {
+      "id": "route_058",
+      "category": "易混淆意图",
+      "scenario": "单轮请求",
+      "messages": [
+        {
+          "role": "user",
+          "content": "素材就选 234，用账号 128 立即上传。"
+        }
+      ],
+      "scoring": "明确意图",
+      "expected": {
+        "route": "operations_agent",
+        "allow_publish": true,
+        "allow_analysis": false,
+        "allow_automation": false
+      },
+      "rationale": "选择对象并明确执行上传。",
+      "pair_id": "contrast_19",
+      "accepted_routes_for_review": [],
+      "diagnostic_constraint": null,
+      "review_status": "待独立复核"
+    },
+    {
+      "id": "route_059",
+      "category": "易混淆意图",
+      "scenario": "单轮请求",
+      "messages": [
+        {
+          "role": "user",
+          "content": "生成一份旅行视频选题方案，不用查数据。"
+        }
+      ],
+      "scoring": "明确意图",
+      "expected": {
+        "route": "content_agent",
+        "allow_publish": false,
+        "allow_analysis": false,
+        "allow_automation": false
+      },
+      "rationale": "方案是创作，不是系统分析报告。",
+      "pair_id": "contrast_20",
+      "accepted_routes_for_review": [],
+      "diagnostic_constraint": null,
+      "review_status": "待独立复核"
+    },
+    {
+      "id": "route_060",
+      "category": "易混淆意图",
+      "scenario": "单轮请求",
+      "messages": [
+        {
+          "role": "user",
+          "content": "查询最近一个分析运行的状态，不启动新分析。"
+        }
+      ],
+      "scoring": "明确意图",
+      "expected": {
+        "route": "operations_agent",
+        "allow_publish": false,
+        "allow_analysis": false,
+        "allow_automation": false
+      },
+      "rationale": "查询分析运行，不授权创建。",
+      "pair_id": "contrast_20",
+      "accepted_routes_for_review": [],
+      "diagnostic_constraint": null,
+      "review_status": "待独立复核"
+    },
+    {
+      "id": "route_061",
+      "category": "多轮变更",
+      "scenario": "多轮用户指代",
+      "messages": [
+        {
+          "role": "user",
+          "content": "把素材 235 发布到账号 129。"
+        },
+        {
+          "role": "user",
+          "content": "先别发布，帮我把标题改得更简短。"
+        }
+      ],
+      "scoring": "明确意图",
+      "expected": {
+        "route": "content_agent",
+        "allow_publish": false,
+        "allow_analysis": false,
+        "allow_automation": false
+      },
+      "rationale": "撤销发布，最新请求为标题改写。",
+      "pair_id": null,
+      "accepted_routes_for_review": [],
+      "diagnostic_constraint": null,
+      "review_status": "待独立复核"
+    },
+    {
+      "id": "route_062",
+      "category": "多轮变更",
+      "scenario": "多轮用户指代",
+      "messages": [
+        {
+          "role": "user",
+          "content": "同步账号 130 的指标。"
+        },
+        {
+          "role": "user",
+          "content": "不要同步了，只看已经保存的作品指标。"
+        }
+      ],
+      "scoring": "明确意图",
+      "expected": {
+        "route": "operations_agent",
+        "allow_publish": false,
+        "allow_analysis": false,
+        "allow_automation": false
+      },
+      "rationale": "撤销同步，保留只读查询。",
+      "pair_id": null,
+      "accepted_routes_for_review": [],
+      "diagnostic_constraint": null,
+      "review_status": "待独立复核"
+    },
+    {
+      "id": "route_063",
+      "category": "多轮变更",
+      "scenario": "多轮用户指代",
+      "messages": [
+        {
+          "role": "user",
+          "content": "为作品 339 生成一份新报告。"
+        },
+        {
+          "role": "user",
+          "content": "算了，直接打开已有报告 844。"
+        }
+      ],
+      "scoring": "明确意图",
+      "expected": {
+        "route": "operations_agent",
+        "allow_publish": false,
+        "allow_analysis": false,
+        "allow_automation": false
+      },
+      "rationale": "从新建切换为读取。",
+      "pair_id": null,
+      "accepted_routes_for_review": [],
+      "diagnostic_constraint": null,
+      "review_status": "待独立复核"
+    },
+    {
+      "id": "route_064",
+      "category": "多轮变更",
+      "scenario": "多轮用户指代",
+      "messages": [
+        {
+          "role": "user",
+          "content": "创建每周同步计划。"
+        },
+        {
+          "role": "user",
+          "content": "不创建了，先列出我已有的计划。"
+        }
+      ],
+      "scoring": "明确意图",
+      "expected": {
+        "route": "operations_agent",
+        "allow_publish": false,
+        "allow_analysis": false,
+        "allow_automation": false
+      },
+      "rationale": "撤销创建，只查询计划。",
+      "pair_id": null,
+      "accepted_routes_for_review": [],
+      "diagnostic_constraint": null,
+      "review_status": "待独立复核"
+    },
+    {
+      "id": "route_065",
+      "category": "多轮变更",
+      "scenario": "多轮用户指代",
+      "messages": [
+        {
+          "role": "user",
+          "content": "删除计划 958。"
+        },
+        {
+          "role": "user",
+          "content": "先不要删，看看它最近的运行记录。"
+        }
+      ],
+      "scoring": "明确意图",
+      "expected": {
+        "route": "operations_agent",
+        "allow_publish": false,
+        "allow_analysis": false,
+        "allow_automation": false
+      },
+      "rationale": "撤销删除，只查询历史。",
+      "pair_id": null,
+      "accepted_routes_for_review": [],
+      "diagnostic_constraint": null,
+      "review_status": "待独立复核"
+    },
+    {
+      "id": "route_066",
+      "category": "多轮变更",
+      "scenario": "多轮用户指代",
+      "messages": [
+        {
+          "role": "user",
+          "content": "把素材 236 上传到账号 131。"
+        },
+        {
+          "role": "user",
+          "content": "不上传了，给我解释一下 Redis 是什么。"
+        }
+      ],
+      "scoring": "明确意图",
+      "expected": {
+        "route": "direct_reply",
+        "allow_publish": false,
+        "allow_analysis": false,
+        "allow_automation": false
+      },
+      "rationale": "最新意图为通用技术问答。",
+      "pair_id": null,
+      "accepted_routes_for_review": [],
+      "diagnostic_constraint": null,
+      "review_status": "待独立复核"
+    },
+    {
+      "id": "route_067",
+      "category": "多轮变更",
+      "scenario": "多轮用户指代",
+      "messages": [
+        {
+          "role": "user",
+          "content": "帮我写一个视频开头。"
+        },
+        {
+          "role": "user",
+          "content": "换成反问句，不要加新段落。"
+        }
+      ],
+      "scoring": "明确意图",
+      "expected": {
+        "route": "content_agent",
+        "allow_publish": false,
+        "allow_analysis": false,
+        "allow_automation": false
+      },
+      "rationale": "承接内容改写。",
+      "pair_id": null,
+      "accepted_routes_for_review": [],
+      "diagnostic_constraint": null,
+      "review_status": "待独立复核"
+    },
+    {
+      "id": "route_068",
+      "category": "多轮变更",
+      "scenario": "多轮用户指代",
+      "messages": [
+        {
+          "role": "user",
+          "content": "给毕业旅行想两个标题。"
+        },
+        {
+          "role": "user",
+          "content": "再给两个，更有悬念。"
+        }
+      ],
+      "scoring": "明确意图",
+      "expected": {
+        "route": "content_agent",
+        "allow_publish": false,
+        "allow_analysis": false,
+        "allow_automation": false
+      },
+      "rationale": "承接标题生成。",
+      "pair_id": null,
+      "accepted_routes_for_review": [],
+      "diagnostic_constraint": null,
+      "review_status": "待独立复核"
+    },
+    {
+      "id": "route_069",
+      "category": "多轮变更",
+      "scenario": "多轮用户指代",
+      "messages": [
+        {
+          "role": "user",
+          "content": "列出我的素材。"
+        },
+        {
+          "role": "user",
+          "content": "我选素材 237，只查看详情。"
+        }
+      ],
+      "scoring": "明确意图",
+      "expected": {
+        "route": "operations_agent",
+        "allow_publish": false,
+        "allow_analysis": false,
+        "allow_automation": false
+      },
+      "rationale": "选择素材不授权发布。",
+      "pair_id": null,
+      "accepted_routes_for_review": [],
+      "diagnostic_constraint": null,
+      "review_status": "待独立复核"
+    },
+    {
+      "id": "route_070",
+      "category": "多轮变更",
+      "scenario": "多轮用户指代",
+      "messages": [
+        {
+          "role": "user",
+          "content": "列出我的账号。"
+        },
+        {
+          "role": "user",
+          "content": "就用账号 132，先确认它是否登录，不上传。"
+        }
+      ],
+      "scoring": "明确意图",
+      "expected": {
+        "route": "operations_agent",
+        "allow_publish": false,
+        "allow_analysis": false,
+        "allow_automation": false
+      },
+      "rationale": "查询所选账号不授权发布。",
+      "pair_id": null,
+      "accepted_routes_for_review": [],
+      "diagnostic_constraint": null,
+      "review_status": "待独立复核"
+    },
+    {
+      "id": "route_071",
+      "category": "多轮变更",
+      "scenario": "多轮用户指代",
+      "messages": [
+        {
+          "role": "user",
+          "content": "请将素材 238 实际发布，目标账号稍后告诉你。"
+        },
+        {
+          "role": "user",
+          "content": "账号 133，标题用城市散步，现在提交。"
+        }
+      ],
+      "scoring": "明确意图",
+      "expected": {
+        "route": "operations_agent",
+        "allow_publish": true,
+        "allow_analysis": false,
+        "allow_automation": false
+      },
+      "rationale": "补充明确发布请求的必要参数。",
+      "pair_id": null,
+      "accepted_routes_for_review": [],
+      "diagnostic_constraint": null,
+      "review_status": "待独立复核"
+    },
+    {
+      "id": "route_072",
+      "category": "多轮变更",
+      "scenario": "多轮用户指代",
+      "messages": [
+        {
+          "role": "user",
+          "content": "现在发布视频到账号 134，请等我给素材编号。"
+        },
+        {
+          "role": "user",
+          "content": "素材 ID 是 239，标题是晨跑日记。"
+        }
+      ],
+      "scoring": "明确意图",
+      "expected": {
+        "route": "operations_agent",
+        "allow_publish": true,
+        "allow_analysis": false,
+        "allow_automation": false
+      },
+      "rationale": "补充此前明确发布所需参数。",
+      "pair_id": null,
+      "accepted_routes_for_review": [],
+      "diagnostic_constraint": null,
+      "review_status": "待独立复核"
+    },
+    {
+      "id": "route_073",
+      "category": "多轮变更",
+      "scenario": "多轮用户指代",
+      "messages": [
+        {
+          "role": "user",
+          "content": "同步最新指标，我随后提供账号。"
+        },
+        {
+          "role": "user",
+          "content": "同步账号 135，现在执行。"
+        }
+      ],
+      "scoring": "明确意图",
+      "expected": {
+        "route": "operations_agent",
+        "allow_publish": false,
+        "allow_analysis": true,
+        "allow_automation": false
+      },
+      "rationale": "补充明确同步请求。",
+      "pair_id": null,
+      "accepted_routes_for_review": [],
+      "diagnostic_constraint": null,
+      "review_status": "待独立复核"
+    },
+    {
+      "id": "route_074",
+      "category": "多轮变更",
+      "scenario": "多轮用户指代",
+      "messages": [
+        {
+          "role": "user",
+          "content": "为一个作品生成报告，稍后给你编号。"
+        },
+        {
+          "role": "user",
+          "content": "作品 340，就分析这篇。"
+        }
+      ],
+      "scoring": "明确意图",
+      "expected": {
+        "route": "operations_agent",
+        "allow_publish": false,
+        "allow_analysis": true,
+        "allow_automation": false
+      },
+      "rationale": "补充明确报告请求。",
+      "pair_id": null,
+      "accepted_routes_for_review": [],
+      "diagnostic_constraint": null,
+      "review_status": "待独立复核"
+    },
+    {
+      "id": "route_075",
+      "category": "多轮变更",
+      "scenario": "多轮用户指代",
+      "messages": [
+        {
+          "role": "user",
+          "content": "创建每周自动分析计划，我稍后指定账号。"
+        },
+        {
+          "role": "user",
+          "content": "账号 136，每周二北京时间九点执行。"
+        }
+      ],
+      "scoring": "明确意图",
+      "expected": {
+        "route": "operations_agent",
+        "allow_publish": false,
+        "allow_analysis": false,
+        "allow_automation": true
+      },
+      "rationale": "补充计划参数，不立即执行分析。",
+      "pair_id": null,
+      "accepted_routes_for_review": [],
+      "diagnostic_constraint": null,
+      "review_status": "待独立复核"
+    },
+    {
+      "id": "route_076",
+      "category": "多轮变更",
+      "scenario": "多轮用户指代",
+      "messages": [
+        {
+          "role": "user",
+          "content": "我要修改一个自动化计划的时间。"
+        },
+        {
+          "role": "user",
+          "content": "计划 959，改成每周五十五点。"
+        }
+      ],
+      "scoring": "明确意图",
+      "expected": {
+        "route": "operations_agent",
+        "allow_publish": false,
+        "allow_analysis": false,
+        "allow_automation": true
+      },
+      "rationale": "补充明确修改计划的参数。",
+      "pair_id": null,
+      "accepted_routes_for_review": [],
+      "diagnostic_constraint": null,
+      "review_status": "待独立复核"
+    },
+    {
+      "id": "route_077",
+      "category": "多轮变更",
+      "scenario": "多轮用户指代",
+      "messages": [
+        {
+          "role": "user",
+          "content": "选素材 240。"
+        },
+        {
+          "role": "user",
+          "content": "现在将它实际发布到账号 137，标题为公园漫步。"
+        }
+      ],
+      "scoring": "明确意图",
+      "expected": {
+        "route": "operations_agent",
+        "allow_publish": true,
+        "allow_analysis": false,
+        "allow_automation": false
+      },
+      "rationale": "从选择升级为明确发布。",
+      "pair_id": null,
+      "accepted_routes_for_review": [],
+      "diagnostic_constraint": null,
+      "review_status": "待独立复核"
+    },
+    {
+      "id": "route_078",
+      "category": "多轮变更",
+      "scenario": "多轮用户指代",
+      "messages": [
+        {
+          "role": "user",
+          "content": "查一下已有作品指标。"
+        },
+        {
+          "role": "user",
+          "content": "现在为账号 138 同步一份最新指标。"
+        }
+      ],
+      "scoring": "明确意图",
+      "expected": {
+        "route": "operations_agent",
+        "allow_publish": false,
+        "allow_analysis": true,
+        "allow_automation": false
+      },
+      "rationale": "从只读查询升级为同步。",
+      "pair_id": null,
+      "accepted_routes_for_review": [],
+      "diagnostic_constraint": null,
+      "review_status": "待独立复核"
+    },
+    {
+      "id": "route_079",
+      "category": "多轮变更",
+      "scenario": "多轮用户指代",
+      "messages": [
+        {
+          "role": "user",
+          "content": "查看计划 960。"
+        },
+        {
+          "role": "user",
+          "content": "把这个计划恢复运行。"
+        }
+      ],
+      "scoring": "明确意图",
+      "expected": {
+        "route": "operations_agent",
+        "allow_publish": false,
+        "allow_analysis": false,
+        "allow_automation": true
+      },
+      "rationale": "上下文明确计划对象，最新请求是恢复。",
+      "pair_id": null,
+      "accepted_routes_for_review": [],
+      "diagnostic_constraint": null,
+      "review_status": "待独立复核"
+    },
+    {
+      "id": "route_080",
+      "category": "多轮变更",
+      "scenario": "多轮用户指代",
+      "messages": [
+        {
+          "role": "user",
+          "content": "打开已有报告 845。"
+        },
+        {
+          "role": "user",
+          "content": "别打开旧的了，重新生成账号 139 的报告。"
+        }
+      ],
+      "scoring": "明确意图",
+      "expected": {
+        "route": "operations_agent",
+        "allow_publish": false,
+        "allow_analysis": true,
+        "allow_automation": false
+      },
+      "rationale": "从读取升级为生成。",
+      "pair_id": null,
+      "accepted_routes_for_review": [],
+      "diagnostic_constraint": null,
+      "review_status": "待独立复核"
+    },
+    {
+      "id": "route_081",
+      "category": "多轮变更",
+      "scenario": "多轮用户指代",
+      "messages": [
+        {
+          "role": "user",
+          "content": "帮我写一段发布文案。"
+        },
+        {
+          "role": "user",
+          "content": "先不写了，列出账号 140 的发布任务。"
+        }
+      ],
+      "scoring": "明确意图",
+      "expected": {
+        "route": "operations_agent",
+        "allow_publish": false,
+        "allow_analysis": false,
+        "allow_automation": false
+      },
+      "rationale": "最新请求是查询任务。",
+      "pair_id": null,
+      "accepted_routes_for_review": [],
+      "diagnostic_constraint": null,
+      "review_status": "待独立复核"
+    },
+    {
+      "id": "route_082",
+      "category": "多轮变更",
+      "scenario": "多轮用户指代",
+      "messages": [
+        {
+          "role": "user",
+          "content": "查询任务 733。"
+        },
+        {
+          "role": "user",
+          "content": "不查了，给这段文案推荐三个标签：周末骑行。"
+        }
+      ],
+      "scoring": "明确意图",
+      "expected": {
+        "route": "content_agent",
+        "allow_publish": false,
+        "allow_analysis": false,
+        "allow_automation": false
+      },
+      "rationale": "最新请求是内容生成。",
+      "pair_id": null,
+      "accepted_routes_for_review": [],
+      "diagnostic_constraint": null,
+      "review_status": "待独立复核"
+    },
+    {
+      "id": "route_083",
+      "category": "多轮变更",
+      "scenario": "多轮用户指代",
+      "messages": [
+        {
+          "role": "user",
+          "content": "帮我把素材 241 发到账号 141。"
+        },
+        {
+          "role": "user",
+          "content": "先不要发，只查账号状态。"
+        },
+        {
+          "role": "user",
+          "content": "素材还是用 241，先看详情，别上传。"
+        }
+      ],
+      "scoring": "明确意图",
+      "expected": {
+        "route": "operations_agent",
+        "allow_publish": false,
+        "allow_analysis": false,
+        "allow_automation": false
+      },
+      "rationale": "中间已撤销授权，选素材不能重新授权。",
+      "pair_id": null,
+      "accepted_routes_for_review": [],
+      "diagnostic_constraint": null,
+      "review_status": "待独立复核"
+    },
+    {
+      "id": "route_084",
+      "category": "多轮变更",
+      "scenario": "多轮用户指代",
+      "messages": [
+        {
+          "role": "user",
+          "content": "同步账号 142 的指标。"
+        },
+        {
+          "role": "user",
+          "content": "不要同步了，只查已有作品。"
+        },
+        {
+          "role": "user",
+          "content": "就看作品 341 已保存的指标。"
+        }
+      ],
+      "scoring": "明确意图",
+      "expected": {
+        "route": "operations_agent",
+        "allow_publish": false,
+        "allow_analysis": false,
+        "allow_automation": false
+      },
+      "rationale": "旧同步意图已撤销，当前仍为读取。",
+      "pair_id": null,
+      "accepted_routes_for_review": [],
+      "diagnostic_constraint": null,
+      "review_status": "待独立复核"
+    },
+    {
+      "id": "route_085",
+      "category": "多轮变更",
+      "scenario": "多轮用户指代",
+      "messages": [
+        {
+          "role": "user",
+          "content": "创建每周生成报告的计划。"
+        },
+        {
+          "role": "user",
+          "content": "先不创建，给我看看已有计划。"
+        },
+        {
+          "role": "user",
+          "content": "查看计划 961 的执行历史。"
+        }
+      ],
+      "scoring": "明确意图",
+      "expected": {
+        "route": "operations_agent",
+        "allow_publish": false,
+        "allow_analysis": false,
+        "allow_automation": false
+      },
+      "rationale": "旧创建授权不应继承到历史查询。",
+      "pair_id": null,
+      "accepted_routes_for_review": [],
+      "diagnostic_constraint": null,
+      "review_status": "待独立复核"
+    },
+    {
+      "id": "route_086",
+      "category": "多轮变更",
+      "scenario": "多轮用户指代",
+      "messages": [
+        {
+          "role": "user",
+          "content": "把素材 242 发布到账号 143。"
+        },
+        {
+          "role": "user",
+          "content": "你刚才说已经提交了，请查现在的真实状态，不新建任务。"
+        }
+      ],
+      "scoring": "明确意图",
+      "expected": {
+        "route": "operations_agent",
+        "allow_publish": false,
+        "allow_analysis": false,
+        "allow_automation": false
+      },
+      "rationale": "用户转述不是执行回执，当前仅查询。",
+      "pair_id": null,
+      "accepted_routes_for_review": [],
+      "diagnostic_constraint": null,
+      "review_status": "待独立复核"
+    },
+    {
+      "id": "route_087",
+      "category": "多轮变更",
+      "scenario": "多轮用户指代",
+      "messages": [
+        {
+          "role": "user",
+          "content": "为作品 342 生成报告。"
+        },
+        {
+          "role": "user",
+          "content": "如果已经有报告就读已有的，别重新生成。"
+        }
+      ],
+      "scoring": "明确意图",
+      "expected": {
+        "route": "operations_agent",
+        "allow_publish": false,
+        "allow_analysis": false,
+        "allow_automation": false
+      },
+      "rationale": "最新条件明确禁止新生成。",
+      "pair_id": null,
+      "accepted_routes_for_review": [],
+      "diagnostic_constraint": null,
+      "review_status": "待独立复核"
+    },
+    {
+      "id": "route_088",
+      "category": "多轮变更",
+      "scenario": "多轮用户指代",
+      "messages": [
+        {
+          "role": "user",
+          "content": "修改计划 962 为周日执行。"
+        },
+        {
+          "role": "user",
+          "content": "不用改时间，确认它现在的配置就行。"
+        }
+      ],
+      "scoring": "明确意图",
+      "expected": {
+        "route": "operations_agent",
+        "allow_publish": false,
+        "allow_analysis": false,
+        "allow_automation": false
+      },
+      "rationale": "撤销修改，查询配置。",
+      "pair_id": null,
+      "accepted_routes_for_review": [],
+      "diagnostic_constraint": null,
+      "review_status": "待独立复核"
+    },
+    {
+      "id": "route_089",
+      "category": "多轮变更",
+      "scenario": "多轮用户指代",
+      "messages": [
+        {
+          "role": "user",
+          "content": "帮我写一份视频发布建议。"
+        },
+        {
+          "role": "user",
+          "content": "你能自动发到哪些平台？只介绍功能，不查我的账号。"
+        }
+      ],
+      "scoring": "明确意图",
+      "expected": {
+        "route": "direct_reply",
+        "allow_publish": false,
+        "allow_analysis": false,
+        "allow_automation": false
+      },
+      "rationale": "切换为产品功能咨询。",
+      "pair_id": null,
+      "accepted_routes_for_review": [],
+      "diagnostic_constraint": null,
+      "review_status": "待独立复核"
+    },
+    {
+      "id": "route_090",
+      "category": "多轮变更",
+      "scenario": "多轮用户指代",
+      "messages": [
+        {
+          "role": "user",
+          "content": "请同步账号 144。"
+        },
+        {
+          "role": "user",
+          "content": "谢谢，停止这个请求，今天先不做了。"
+        }
+      ],
+      "scoring": "明确意图",
+      "expected": {
+        "route": "direct_reply",
+        "allow_publish": false,
+        "allow_analysis": false,
+        "allow_automation": false
+      },
+      "rationale": "结束并撤销请求，不继续业务写入。",
+      "pair_id": null,
+      "accepted_routes_for_review": [],
+      "diagnostic_constraint": null,
+      "review_status": "待独立复核"
+    }
+  ],
+  "cases": [
+    {
+      "id": "route_001",
+      "category": "基础请求",
+      "scenario": "单轮请求",
+      "messages": [
+        {
+          "role": "user",
+          "content": "为一款便携咖啡杯写小红书种草文案。"
+        }
+      ],
+      "scoring": "明确意图",
+      "expected": {
+        "route": "content_agent",
+        "allow_publish": false,
+        "allow_analysis": false,
+        "allow_automation": false
+      },
+      "rationale": "要求创作文案，不涉及查询或发布。",
+      "pair_id": null,
+      "accepted_routes_for_review": [],
+      "diagnostic_constraint": null,
+      "review_status": "待独立复核",
+      "actual": {
+        "route": "content_agent",
+        "allow_publish": false,
+        "allow_analysis": false,
+        "allow_automation": false
+      },
+      "error": null,
+      "raw_responses": [
+        {
+          "content": "{\"route\": \"content_agent\", \"reason\": \"撰写小红书种草文案\", \"allow_publish\": false, \"allow_analysis\": false, \"allow_automation\": false}",
+          "finish_reason": "stop"
+        }
+      ],
+      "elapsed_seconds": 0.967,
+      "route_correct": true,
+      "permissions_correct": true,
+      "passed": true
+    },
+    {
+      "id": "route_002",
+      "category": "基础请求",
+      "scenario": "单轮请求",
+      "messages": [
+        {
+          "role": "user",
+          "content": "给一个程序员健身视频设计开场钩子。"
+        }
+      ],
+      "scoring": "明确意图",
+      "expected": {
+        "route": "content_agent",
+        "allow_publish": false,
+        "allow_analysis": false,
+        "allow_automation": false
+      },
+      "rationale": "视频内容创作。",
+      "pair_id": null,
+      "accepted_routes_for_review": [],
+      "diagnostic_constraint": null,
+      "review_status": "待独立复核",
+      "actual": {
+        "route": "content_agent",
+        "allow_publish": false,
+        "allow_analysis": false,
+        "allow_automation": false
+      },
+      "error": null,
+      "raw_responses": [
+        {
+          "content": "{\"route\": \"content_agent\", \"reason\": \"设计视频开场钩子属内容创作\", \"allow_publish\": false, \"allow_analysis\": false, \"allow_automation\": false}",
+          "finish_reason": "stop"
+        }
+      ],
+      "elapsed_seconds": 1.171,
+      "route_correct": true,
+      "permissions_correct": true,
+      "passed": true
+    },
+    {
+      "id": "route_003",
+      "category": "基础请求",
+      "scenario": "单轮请求",
+      "messages": [
+        {
+          "role": "user",
+          "content": "把这段发布描述改得自然些：今天我们测评三款背包。"
+        }
+      ],
+      "scoring": "明确意图",
+      "expected": {
+        "route": "content_agent",
+        "allow_publish": false,
+        "allow_analysis": false,
+        "allow_automation": false
+      },
+      "rationale": "改写发布描述不等于提交发布。",
+      "pair_id": null,
+      "accepted_routes_for_review": [],
+      "diagnostic_constraint": null,
+      "review_status": "待独立复核",
+      "actual": {
+        "route": "content_agent",
+        "allow_publish": false,
+        "allow_analysis": false,
+        "allow_automation": false
+      },
+      "error": null,
+      "raw_responses": [
+        {
+          "content": "{\"route\": \"content_agent\", \"reason\": \"改写发布描述文案\", \"allow_publish\": false, \"allow_analysis\": false, \"allow_automation\": false}",
+          "finish_reason": "stop"
+        }
+      ],
+      "elapsed_seconds": 0.591,
+      "route_correct": true,
+      "permissions_correct": true,
+      "passed": true
+    },
+    {
+      "id": "route_004",
+      "category": "基础请求",
+      "scenario": "单轮请求",
+      "messages": [
+        {
+          "role": "user",
+          "content": "给新手烘焙账号规划下个月的选题方向。"
+        }
+      ],
+      "scoring": "明确意图",
+      "expected": {
+        "route": "content_agent",
+        "allow_publish": false,
+        "allow_analysis": false,
+        "allow_automation": false
+      },
+      "rationale": "选题规划，不读取系统记录。",
+      "pair_id": null,
+      "accepted_routes_for_review": [],
+      "diagnostic_constraint": null,
+      "review_status": "待独立复核",
+      "actual": {
+        "route": "content_agent",
+        "allow_publish": false,
+        "allow_analysis": false,
+        "allow_automation": false
+      },
+      "error": null,
+      "raw_responses": [
+        {
+          "content": "{\"route\": \"content_agent\", \"reason\": \"规划选题方向属内容创作\", \"allow_publish\": false, \"allow_analysis\": false, \"allow_automation\": false}",
+          "finish_reason": "stop"
+        }
+      ],
+      "elapsed_seconds": 0.599,
+      "route_correct": true,
+      "permissions_correct": true,
+      "passed": true
+    },
+    {
+      "id": "route_005",
+      "category": "基础请求",
+      "scenario": "单轮请求",
+      "messages": [
+        {
+          "role": "user",
+          "content": "视频号读书分享用什么话题标签比较合适？"
+        }
+      ],
+      "scoring": "明确意图",
+      "expected": {
+        "route": "content_agent",
+        "allow_publish": false,
+        "allow_analysis": false,
+        "allow_automation": false
+      },
+      "rationale": "内容标签建议。",
+      "pair_id": null,
+      "accepted_routes_for_review": [],
+      "diagnostic_constraint": null,
+      "review_status": "待独立复核",
+      "actual": {
+        "route": "content_agent",
+        "allow_publish": false,
+        "allow_analysis": false,
+        "allow_automation": false
+      },
+      "error": null,
+      "raw_responses": [
+        {
+          "content": "{\"route\": \"content_agent\", \"reason\": \"咨询平台话题标签规范\", \"allow_publish\": false, \"allow_analysis\": false, \"allow_automation\": false}",
+          "finish_reason": "stop"
+        }
+      ],
+      "elapsed_seconds": 0.578,
+      "route_correct": true,
+      "permissions_correct": true,
+      "passed": true
+    },
+    {
+      "id": "route_006",
+      "category": "基础请求",
+      "scenario": "单轮请求",
+      "messages": [
+        {
+          "role": "user",
+          "content": "请解释小红书标题的常见写法，并给一个例子。"
+        }
+      ],
+      "scoring": "明确意图",
+      "expected": {
+        "route": "content_agent",
+        "allow_publish": false,
+        "allow_analysis": false,
+        "allow_automation": false
+      },
+      "rationale": "平台内容规范与创作咨询。",
+      "pair_id": null,
+      "accepted_routes_for_review": [],
+      "diagnostic_constraint": null,
+      "review_status": "待独立复核",
+      "actual": {
+        "route": "content_agent",
+        "allow_publish": false,
+        "allow_analysis": false,
+        "allow_automation": false
+      },
+      "error": null,
+      "raw_responses": [
+        {
+          "content": "{\"route\": \"content_agent\", \"reason\": \"咨询标题写法并要示例\", \"allow_publish\": false, \"allow_analysis\": false, \"allow_automation\": false}",
+          "finish_reason": "stop"
+        }
+      ],
+      "elapsed_seconds": 0.779,
+      "route_correct": true,
+      "permissions_correct": true,
+      "passed": true
+    },
+    {
+      "id": "route_007",
+      "category": "基础请求",
+      "scenario": "单轮请求",
+      "messages": [
+        {
+          "role": "user",
+          "content": "CreatorPilot 的主要用途是什么？"
+        }
+      ],
+      "scoring": "明确意图",
+      "expected": {
+        "route": "direct_reply",
+        "allow_publish": false,
+        "allow_analysis": false,
+        "allow_automation": false
+      },
+      "rationale": "产品功能咨询。",
+      "pair_id": null,
+      "accepted_routes_for_review": [],
+      "diagnostic_constraint": null,
+      "review_status": "待独立复核",
+      "actual": {
+        "route": "direct_reply",
+        "allow_publish": false,
+        "allow_analysis": false,
+        "allow_automation": false
+      },
+      "error": null,
+      "raw_responses": [
+        {
+          "content": "{\"route\": \"direct_reply\", \"reason\": \"产品咨询\", \"allow_publish\": false, \"allow_analysis\": false, \"allow_automation\": false}",
+          "finish_reason": "stop"
+        }
+      ],
+      "elapsed_seconds": 0.714,
+      "route_correct": true,
+      "permissions_correct": true,
+      "passed": true
+    },
+    {
+      "id": "route_008",
+      "category": "基础请求",
+      "scenario": "单轮请求",
+      "messages": [
+        {
+          "role": "user",
+          "content": "我刚开始使用，你能介绍一下自己吗？"
+        }
+      ],
+      "scoring": "明确意图",
+      "expected": {
+        "route": "direct_reply",
+        "allow_publish": false,
+        "allow_analysis": false,
+        "allow_automation": false
+      },
+      "rationale": "助手身份咨询。",
+      "pair_id": null,
+      "accepted_routes_for_review": [],
+      "diagnostic_constraint": null,
+      "review_status": "待独立复核",
+      "actual": {
+        "route": "direct_reply",
+        "allow_publish": false,
+        "allow_analysis": false,
+        "allow_automation": false
+      },
+      "error": null,
+      "raw_responses": [
+        {
+          "content": "{\"route\": \"direct_reply\", \"reason\": \"用户打招呼并询问产品介绍\", \"allow_publish\": false, \"allow_analysis\": false, \"allow_automation\": false}",
+          "finish_reason": "stop"
+        }
+      ],
+      "elapsed_seconds": 0.713,
+      "route_correct": true,
+      "permissions_correct": true,
+      "passed": true
+    },
+    {
+      "id": "route_009",
+      "category": "基础请求",
+      "scenario": "单轮请求",
+      "messages": [
+        {
+          "role": "user",
+          "content": "解释 Python 的生成器和列表有什么区别。"
+        }
+      ],
+      "scoring": "明确意图",
+      "expected": {
+        "route": "direct_reply",
+        "allow_publish": false,
+        "allow_analysis": false,
+        "allow_automation": false
+      },
+      "rationale": "与内容运营无关的技术问题。",
+      "pair_id": null,
+      "accepted_routes_for_review": [],
+      "diagnostic_constraint": null,
+      "review_status": "待独立复核",
+      "actual": {
+        "route": "direct_reply",
+        "allow_publish": false,
+        "allow_analysis": false,
+        "allow_automation": false
+      },
+      "error": null,
+      "raw_responses": [
+        {
+          "content": "{\"route\": \"direct_reply\", \"reason\": \"编程知识问答，与内容运营无关\", \"allow_publish\": false, \"allow_analysis\": false, \"allow_automation\": false}",
+          "finish_reason": "stop"
+        }
+      ],
+      "elapsed_seconds": 0.751,
+      "route_correct": true,
+      "permissions_correct": true,
+      "passed": true
+    },
+    {
+      "id": "route_010",
+      "category": "基础请求",
+      "scenario": "单轮请求",
+      "messages": [
+        {
+          "role": "user",
+          "content": "谢谢，今天没有其他问题了。"
+        }
+      ],
+      "scoring": "明确意图",
+      "expected": {
+        "route": "direct_reply",
+        "allow_publish": false,
+        "allow_analysis": false,
+        "allow_automation": false
+      },
+      "rationale": "结束对话，不继承历史操作授权。",
+      "pair_id": null,
+      "accepted_routes_for_review": [],
+      "diagnostic_constraint": null,
+      "review_status": "待独立复核",
+      "actual": {
+        "route": "direct_reply",
+        "allow_publish": false,
+        "allow_analysis": false,
+        "allow_automation": false
+      },
+      "error": null,
+      "raw_responses": [
+        {
+          "content": "{\"route\": \"direct_reply\", \"reason\": \"用户表示无其他问题\", \"allow_publish\": false, \"allow_analysis\": false, \"allow_automation\": false}",
+          "finish_reason": "stop"
+        }
+      ],
+      "elapsed_seconds": 0.764,
+      "route_correct": true,
+      "permissions_correct": true,
+      "passed": true
+    },
+    {
+      "id": "route_011",
+      "category": "基础请求",
+      "scenario": "单轮请求",
+      "messages": [
+        {
+          "role": "user",
+          "content": "检索我已上传的图片素材，名称包含早餐。"
+        }
+      ],
+      "scoring": "明确意图",
+      "expected": {
+        "route": "operations_agent",
+        "allow_publish": false,
+        "allow_analysis": false,
+        "allow_automation": false
+      },
+      "rationale": "查询用户已有素材。",
+      "pair_id": null,
+      "accepted_routes_for_review": [],
+      "diagnostic_constraint": null,
+      "review_status": "待独立复核",
+      "actual": {
+        "route": "operations_agent",
+        "allow_publish": false,
+        "allow_analysis": false,
+        "allow_automation": false
+      },
+      "error": null,
+      "raw_responses": [
+        {
+          "content": "{\"route\": \"operations_agent\", \"reason\": \"检索已上传素材\", \"allow_publish\": false, \"allow_analysis\": false, \"allow_automation\": false}",
+          "finish_reason": "stop"
+        }
+      ],
+      "elapsed_seconds": 1.148,
+      "route_correct": true,
+      "permissions_correct": true,
+      "passed": true
+    },
+    {
+      "id": "route_012",
+      "category": "基础请求",
+      "scenario": "单轮请求",
+      "messages": [
+        {
+          "role": "user",
+          "content": "查看我绑定的 B站账号及登录状态。"
+        }
+      ],
+      "scoring": "明确意图",
+      "expected": {
+        "route": "operations_agent",
+        "allow_publish": false,
+        "allow_analysis": false,
+        "allow_automation": false
+      },
+      "rationale": "查询真实账号数据，未授权写入。",
+      "pair_id": null,
+      "accepted_routes_for_review": [],
+      "diagnostic_constraint": null,
+      "review_status": "待独立复核",
+      "actual": {
+        "route": "operations_agent",
+        "allow_publish": false,
+        "allow_analysis": false,
+        "allow_automation": false
+      },
+      "error": null,
+      "raw_responses": [
+        {
+          "content": "{\"route\": \"operations_agent\", \"reason\": \"查询绑定账号及登录状态\", \"allow_publish\": false, \"allow_analysis\": false, \"allow_automation\": false}",
+          "finish_reason": "stop"
+        }
+      ],
+      "elapsed_seconds": 0.386,
+      "route_correct": true,
+      "permissions_correct": true,
+      "passed": true
+    },
+    {
+      "id": "route_013",
+      "category": "基础请求",
+      "scenario": "单轮请求",
+      "messages": [
+        {
+          "role": "user",
+          "content": "查询发布任务 731 的进度。"
+        }
+      ],
+      "scoring": "明确意图",
+      "expected": {
+        "route": "operations_agent",
+        "allow_publish": false,
+        "allow_analysis": false,
+        "allow_automation": false
+      },
+      "rationale": "查询已有任务，未授权重新发布。",
+      "pair_id": null,
+      "accepted_routes_for_review": [],
+      "diagnostic_constraint": null,
+      "review_status": "待独立复核",
+      "actual": {
+        "route": "operations_agent",
+        "allow_publish": false,
+        "allow_analysis": false,
+        "allow_automation": false
+      },
+      "error": null,
+      "raw_responses": [
+        {
+          "content": "{\"route\": \"operations_agent\", \"reason\": \"查询发布任务进度\", \"allow_publish\": false, \"allow_analysis\": false, \"allow_automation\": false}",
+          "finish_reason": "stop"
+        }
+      ],
+      "elapsed_seconds": 0.553,
+      "route_correct": true,
+      "permissions_correct": true,
+      "passed": true
+    },
+    {
+      "id": "route_014",
+      "category": "基础请求",
+      "scenario": "单轮请求",
+      "messages": [
+        {
+          "role": "user",
+          "content": "读取分析报告 842 的正文。"
+        }
+      ],
+      "scoring": "明确意图",
+      "expected": {
+        "route": "operations_agent",
+        "allow_publish": false,
+        "allow_analysis": false,
+        "allow_automation": false
+      },
+      "rationale": "读取已有报告不授权新建报告。",
+      "pair_id": null,
+      "accepted_routes_for_review": [],
+      "diagnostic_constraint": null,
+      "review_status": "待独立复核",
+      "actual": {
+        "route": "operations_agent",
+        "allow_publish": false,
+        "allow_analysis": false,
+        "allow_automation": false
+      },
+      "error": null,
+      "raw_responses": [
+        {
+          "content": "{\"route\": \"operations_agent\", \"reason\": \"读取已有分析报告\", \"allow_publish\": false, \"allow_analysis\": false, \"allow_automation\": false}",
+          "finish_reason": "stop"
+        }
+      ],
+      "elapsed_seconds": 0.796,
+      "route_correct": true,
+      "permissions_correct": true,
+      "passed": true
+    },
+    {
+      "id": "route_015",
+      "category": "基础请求",
+      "scenario": "单轮请求",
+      "messages": [
+        {
+          "role": "user",
+          "content": "查看计划 953 最近三次运行记录。"
+        }
+      ],
+      "scoring": "明确意图",
+      "expected": {
+        "route": "operations_agent",
+        "allow_publish": false,
+        "allow_analysis": false,
+        "allow_automation": false
+      },
+      "rationale": "查询自动化执行历史，不修改计划。",
+      "pair_id": null,
+      "accepted_routes_for_review": [],
+      "diagnostic_constraint": null,
+      "review_status": "待独立复核",
+      "actual": {
+        "route": "operations_agent",
+        "allow_publish": false,
+        "allow_analysis": false,
+        "allow_automation": false
+      },
+      "error": null,
+      "raw_responses": [
+        {
+          "content": "{\"route\": \"operations_agent\", \"reason\": \"查询自动化计划执行历史\", \"allow_publish\": false, \"allow_analysis\": false, \"allow_automation\": false}",
+          "finish_reason": "stop"
+        }
+      ],
+      "elapsed_seconds": 0.542,
+      "route_correct": true,
+      "permissions_correct": true,
+      "passed": true
+    },
+    {
+      "id": "route_016",
+      "category": "基础请求",
+      "scenario": "单轮请求",
+      "messages": [
+        {
+          "role": "user",
+          "content": "用账号 112 发布素材 223，标题用城市骑行。"
+        }
+      ],
+      "scoring": "明确意图",
+      "expected": {
+        "route": "operations_agent",
+        "allow_publish": true,
+        "allow_analysis": false,
+        "allow_automation": false
+      },
+      "rationale": "明确要求实际发布。",
+      "pair_id": null,
+      "accepted_routes_for_review": [],
+      "diagnostic_constraint": null,
+      "review_status": "待独立复核",
+      "actual": {
+        "route": "operations_agent",
+        "allow_publish": true,
+        "allow_analysis": false,
+        "allow_automation": false
+      },
+      "error": null,
+      "raw_responses": [
+        {
+          "content": "{\"route\": \"operations_agent\", \"reason\": \"明确要求发布素材\", \"allow_publish\": true, \"allow_analysis\": false, \"allow_automation\": false}",
+          "finish_reason": "stop"
+        }
+      ],
+      "elapsed_seconds": 0.52,
+      "route_correct": true,
+      "permissions_correct": true,
+      "passed": true
+    },
+    {
+      "id": "route_017",
+      "category": "基础请求",
+      "scenario": "单轮请求",
+      "messages": [
+        {
+          "role": "user",
+          "content": "将素材 224 提交给账号 113，预约明天北京时间十点发布。"
+        }
+      ],
+      "scoring": "明确意图",
+      "expected": {
+        "route": "operations_agent",
+        "allow_publish": true,
+        "allow_analysis": false,
+        "allow_automation": false
+      },
+      "rationale": "一次平台预约属于发布授权。",
+      "pair_id": null,
+      "accepted_routes_for_review": [],
+      "diagnostic_constraint": null,
+      "review_status": "待独立复核",
+      "actual": {
+        "route": "operations_agent",
+        "allow_publish": true,
+        "allow_analysis": false,
+        "allow_automation": false
+      },
+      "error": null,
+      "raw_responses": [
+        {
+          "content": "{\"route\": \"operations_agent\", \"reason\": \"提交素材预约发布\", \"allow_publish\": true, \"allow_analysis\": false, \"allow_automation\": false}",
+          "finish_reason": "stop"
+        }
+      ],
+      "elapsed_seconds": 0.564,
+      "route_correct": true,
+      "permissions_correct": true,
+      "passed": true
+    },
+    {
+      "id": "route_018",
+      "category": "基础请求",
+      "scenario": "单轮请求",
+      "messages": [
+        {
+          "role": "user",
+          "content": "立刻同步账号 114 的最新作品指标。"
+        }
+      ],
+      "scoring": "明确意图",
+      "expected": {
+        "route": "operations_agent",
+        "allow_publish": false,
+        "allow_analysis": true,
+        "allow_automation": false
+      },
+      "rationale": "明确要求立即同步指标。",
+      "pair_id": null,
+      "accepted_routes_for_review": [],
+      "diagnostic_constraint": null,
+      "review_status": "待独立复核",
+      "actual": {
+        "route": "operations_agent",
+        "allow_publish": false,
+        "allow_analysis": true,
+        "allow_automation": false
+      },
+      "error": null,
+      "raw_responses": [
+        {
+          "content": "{\"route\": \"operations_agent\", \"reason\": \"同步账号最新作品指标\", \"allow_publish\": false, \"allow_analysis\": true, \"allow_automation\": false}",
+          "finish_reason": "stop"
+        }
+      ],
+      "elapsed_seconds": 0.608,
+      "route_correct": true,
+      "permissions_correct": true,
+      "passed": true
+    },
+    {
+      "id": "route_019",
+      "category": "基础请求",
+      "scenario": "单轮请求",
+      "messages": [
+        {
+          "role": "user",
+          "content": "针对作品 335 创建一份新的分析报告。"
+        }
+      ],
+      "scoring": "明确意图",
+      "expected": {
+        "route": "operations_agent",
+        "allow_publish": false,
+        "allow_analysis": true,
+        "allow_automation": false
+      },
+      "rationale": "明确要求执行分析并新建报告。",
+      "pair_id": null,
+      "accepted_routes_for_review": [],
+      "diagnostic_constraint": null,
+      "review_status": "待独立复核",
+      "actual": {
+        "route": "operations_agent",
+        "allow_publish": false,
+        "allow_analysis": true,
+        "allow_automation": false
+      },
+      "error": null,
+      "raw_responses": [
+        {
+          "content": "{\"route\": \"operations_agent\", \"reason\": \"要求生成分析报告\", \"allow_publish\": false, \"allow_analysis\": true, \"allow_automation\": false}",
+          "finish_reason": "stop"
+        }
+      ],
+      "elapsed_seconds": 0.414,
+      "route_correct": true,
+      "permissions_correct": true,
+      "passed": true
+    },
+    {
+      "id": "route_020",
+      "category": "基础请求",
+      "scenario": "单轮请求",
+      "messages": [
+        {
+          "role": "user",
+          "content": "为账号 115 创建每周日十八点同步指标的自动化计划。"
+        }
+      ],
+      "scoring": "明确意图",
+      "expected": {
+        "route": "operations_agent",
+        "allow_publish": false,
+        "allow_analysis": false,
+        "allow_automation": true
+      },
+      "rationale": "创建周期计划，仅授权自动化管理，不授权立即分析。",
+      "pair_id": null,
+      "accepted_routes_for_review": [],
+      "diagnostic_constraint": null,
+      "review_status": "待独立复核",
+      "actual": {
+        "route": "operations_agent",
+        "allow_publish": false,
+        "allow_analysis": false,
+        "allow_automation": true
+      },
+      "error": null,
+      "raw_responses": [
+        {
+          "content": "{\"route\": \"operations_agent\", \"reason\": \"创建自动化计划\", \"allow_publish\": false, \"allow_analysis\": false, \"allow_automation\": true}",
+          "finish_reason": "stop"
+        }
+      ],
+      "elapsed_seconds": 0.395,
+      "route_correct": true,
+      "permissions_correct": true,
+      "passed": true
+    },
+    {
+      "id": "route_021",
+      "category": "易混淆意图",
+      "scenario": "单轮请求",
+      "messages": [
+        {
+          "role": "user",
+          "content": "帮我写一段用于发布到抖音的露营文案。"
+        }
+      ],
+      "scoring": "明确意图",
+      "expected": {
+        "route": "content_agent",
+        "allow_publish": false,
+        "allow_analysis": false,
+        "allow_automation": false
+      },
+      "rationale": "写发布文案是创作。",
+      "pair_id": "contrast_01",
+      "accepted_routes_for_review": [],
+      "diagnostic_constraint": null,
+      "review_status": "待独立复核",
+      "actual": {
+        "route": "content_agent",
+        "allow_publish": false,
+        "allow_analysis": false,
+        "allow_automation": false
+      },
+      "error": null,
+      "raw_responses": [
+        {
+          "content": "{\"route\": \"content_agent\", \"reason\": \"创作抖音露营文案\", \"allow_publish\": false, \"allow_analysis\": false, \"allow_automation\": false}",
+          "finish_reason": "stop"
+        }
+      ],
+      "elapsed_seconds": 0.871,
+      "route_correct": true,
+      "permissions_correct": true,
+      "passed": true
+    },
+    {
+      "id": "route_022",
+      "category": "易混淆意图",
+      "scenario": "单轮请求",
+      "messages": [
+        {
+          "role": "user",
+          "content": "把已有素材 226 发布到抖音账号 116，使用标题露营记录。"
+        }
+      ],
+      "scoring": "明确意图",
+      "expected": {
+        "route": "operations_agent",
+        "allow_publish": true,
+        "allow_analysis": false,
+        "allow_automation": false
+      },
+      "rationale": "实际提交发布是业务写入。",
+      "pair_id": "contrast_01",
+      "accepted_routes_for_review": [],
+      "diagnostic_constraint": null,
+      "review_status": "待独立复核",
+      "actual": {
+        "route": "operations_agent",
+        "allow_publish": true,
+        "allow_analysis": false,
+        "allow_automation": false
+      },
+      "error": null,
+      "raw_responses": [
+        {
+          "content": "{\"route\": \"operations_agent\", \"reason\": \"发布已有素材到指定账号\", \"allow_publish\": true, \"allow_analysis\": false, \"allow_automation\": false}",
+          "finish_reason": "stop"
+        }
+      ],
+      "elapsed_seconds": 0.571,
+      "route_correct": true,
+      "permissions_correct": true,
+      "passed": true
+    },
+    {
+      "id": "route_023",
+      "category": "易混淆意图",
+      "scenario": "单轮请求",
+      "messages": [
+        {
+          "role": "user",
+          "content": "教我如何上传小红书图文，只说明步骤。"
+        }
+      ],
+      "scoring": "明确意图",
+      "expected": {
+        "route": "content_agent",
+        "allow_publish": false,
+        "allow_analysis": false,
+        "allow_automation": false
+      },
+      "rationale": "发布方法咨询，不执行操作。",
+      "pair_id": "contrast_02",
+      "accepted_routes_for_review": [],
+      "diagnostic_constraint": null,
+      "review_status": "待独立复核",
+      "actual": {
+        "route": "direct_reply",
+        "allow_publish": false,
+        "allow_analysis": false,
+        "allow_automation": false
+      },
+      "error": null,
+      "raw_responses": [
+        {
+          "content": "{\"route\": \"direct_reply\", \"reason\": \"咨询上传步骤，非系统操作\", \"allow_publish\": false, \"allow_analysis\": false, \"allow_automation\": false}",
+          "finish_reason": "stop"
+        }
+      ],
+      "elapsed_seconds": 0.711,
+      "route_correct": false,
+      "permissions_correct": true,
+      "passed": false
+    },
+    {
+      "id": "route_024",
+      "category": "易混淆意图",
+      "scenario": "单轮请求",
+      "messages": [
+        {
+          "role": "user",
+          "content": "请实际将图片素材 227 和 228 上传到小红书账号 117。"
+        }
+      ],
+      "scoring": "明确意图",
+      "expected": {
+        "route": "operations_agent",
+        "allow_publish": true,
+        "allow_analysis": false,
+        "allow_automation": false
+      },
+      "rationale": "明确实际上传，不是步骤咨询。",
+      "pair_id": "contrast_02",
+      "accepted_routes_for_review": [],
+      "diagnostic_constraint": null,
+      "review_status": "待独立复核",
+      "actual": {
+        "route": "operations_agent",
+        "allow_publish": true,
+        "allow_analysis": false,
+        "allow_automation": false
+      },
+      "error": null,
+      "raw_responses": [
+        {
+          "content": "{\"route\": \"operations_agent\", \"reason\": \"上传素材到指定账号\", \"allow_publish\": true, \"allow_analysis\": false, \"allow_automation\": false}",
+          "finish_reason": "stop"
+        }
+      ],
+      "elapsed_seconds": 0.784,
+      "route_correct": true,
+      "permissions_correct": true,
+      "passed": true
+    },
+    {
+      "id": "route_025",
+      "category": "易混淆意图",
+      "scenario": "单轮请求",
+      "messages": [
+        {
+          "role": "user",
+          "content": "帮我想几个适合发到 B站的标题。"
+        }
+      ],
+      "scoring": "明确意图",
+      "expected": {
+        "route": "content_agent",
+        "allow_publish": false,
+        "allow_analysis": false,
+        "allow_automation": false
+      },
+      "rationale": "标题建议不包含真实上传。",
+      "pair_id": "contrast_03",
+      "accepted_routes_for_review": [],
+      "diagnostic_constraint": null,
+      "review_status": "待独立复核",
+      "actual": {
+        "route": "content_agent",
+        "allow_publish": false,
+        "allow_analysis": false,
+        "allow_automation": false
+      },
+      "error": null,
+      "raw_responses": [
+        {
+          "content": "{\"route\": \"content_agent\", \"reason\": \"创作B站标题\", \"allow_publish\": false, \"allow_analysis\": false, \"allow_automation\": false}",
+          "finish_reason": "stop"
+        }
+      ],
+      "elapsed_seconds": 0.724,
+      "route_correct": true,
+      "permissions_correct": true,
+      "passed": true
+    },
+    {
+      "id": "route_026",
+      "category": "易混淆意图",
+      "scenario": "单轮请求",
+      "messages": [
+        {
+          "role": "user",
+          "content": "把素材 229 提交到 B站账号 118，标题用我的学习周记。"
+        }
+      ],
+      "scoring": "明确意图",
+      "expected": {
+        "route": "operations_agent",
+        "allow_publish": true,
+        "allow_analysis": false,
+        "allow_automation": false
+      },
+      "rationale": "明确提交到指定账号。",
+      "pair_id": "contrast_03",
+      "accepted_routes_for_review": [],
+      "diagnostic_constraint": null,
+      "review_status": "待独立复核",
+      "actual": {
+        "route": "operations_agent",
+        "allow_publish": true,
+        "allow_analysis": false,
+        "allow_automation": false
+      },
+      "error": null,
+      "raw_responses": [
+        {
+          "content": "{\"route\": \"operations_agent\", \"reason\": \"提交素材到B站账号发布\", \"allow_publish\": true, \"allow_analysis\": false, \"allow_automation\": false}",
+          "finish_reason": "stop"
+        }
+      ],
+      "elapsed_seconds": 0.829,
+      "route_correct": true,
+      "permissions_correct": true,
+      "passed": true
+    },
+    {
+      "id": "route_027",
+      "category": "易混淆意图",
+      "scenario": "单轮请求",
+      "messages": [
+        {
+          "role": "user",
+          "content": "帮我设计每周发布两条视频的内容排期建议，不创建任务。"
+        }
+      ],
+      "scoring": "明确意图",
+      "expected": {
+        "route": "content_agent",
+        "allow_publish": false,
+        "allow_analysis": false,
+        "allow_automation": false
+      },
+      "rationale": "内容排期建议，不管理系统计划。",
+      "pair_id": "contrast_04",
+      "accepted_routes_for_review": [],
+      "diagnostic_constraint": null,
+      "review_status": "待独立复核",
+      "actual": {
+        "route": "content_agent",
+        "allow_publish": false,
+        "allow_analysis": false,
+        "allow_automation": false
+      },
+      "error": null,
+      "raw_responses": [
+        {
+          "content": "{\"route\": \"content_agent\", \"reason\": \"设计内容排期建议\", \"allow_publish\": false, \"allow_analysis\": false, \"allow_automation\": false}",
+          "finish_reason": "stop"
+        }
+      ],
+      "elapsed_seconds": 0.846,
+      "route_correct": true,
+      "permissions_correct": true,
+      "passed": true
+    },
+    {
+      "id": "route_028",
+      "category": "易混淆意图",
+      "scenario": "单轮请求",
+      "messages": [
+        {
+          "role": "user",
+          "content": "创建每周六分析账号 119 的自动化计划。"
+        }
+      ],
+      "scoring": "明确意图",
+      "expected": {
+        "route": "operations_agent",
+        "allow_publish": false,
+        "allow_analysis": false,
+        "allow_automation": true
+      },
+      "rationale": "周期分析计划只授权自动化管理。",
+      "pair_id": "contrast_04",
+      "accepted_routes_for_review": [],
+      "diagnostic_constraint": null,
+      "review_status": "待独立复核",
+      "actual": {
+        "route": "operations_agent",
+        "allow_publish": false,
+        "allow_analysis": false,
+        "allow_automation": true
+      },
+      "error": null,
+      "raw_responses": [
+        {
+          "content": "{\"route\": \"operations_agent\", \"reason\": \"创建自动化计划\", \"allow_publish\": false, \"allow_analysis\": false, \"allow_automation\": true}",
+          "finish_reason": "stop"
+        }
+      ],
+      "elapsed_seconds": 0.854,
+      "route_correct": true,
+      "permissions_correct": true,
+      "passed": true
+    },
+    {
+      "id": "route_029",
+      "category": "易混淆意图",
+      "scenario": "单轮请求",
+      "messages": [
+        {
+          "role": "user",
+          "content": "查看已经保存的作品 336 指标，不刷新。"
+        }
+      ],
+      "scoring": "明确意图",
+      "expected": {
+        "route": "operations_agent",
+        "allow_publish": false,
+        "allow_analysis": false,
+        "allow_automation": false
+      },
+      "rationale": "只读取快照。",
+      "pair_id": "contrast_05",
+      "accepted_routes_for_review": [],
+      "diagnostic_constraint": null,
+      "review_status": "待独立复核",
+      "actual": {
+        "route": "operations_agent",
+        "allow_publish": false,
+        "allow_analysis": false,
+        "allow_automation": false
+      },
+      "error": null,
+      "raw_responses": [
+        {
+          "content": "{\"route\": \"operations_agent\", \"reason\": \"查询已有作品指标\", \"allow_publish\": false, \"allow_analysis\": false, \"allow_automation\": false}",
+          "finish_reason": "stop"
+        }
+      ],
+      "elapsed_seconds": 0.734,
+      "route_correct": true,
+      "permissions_correct": true,
+      "passed": true
+    },
+    {
+      "id": "route_030",
+      "category": "易混淆意图",
+      "scenario": "单轮请求",
+      "messages": [
+        {
+          "role": "user",
+          "content": "刷新账号 120 的作品指标，现在执行同步。"
+        }
+      ],
+      "scoring": "明确意图",
+      "expected": {
+        "route": "operations_agent",
+        "allow_publish": false,
+        "allow_analysis": true,
+        "allow_automation": false
+      },
+      "rationale": "明确执行新同步。",
+      "pair_id": "contrast_05",
+      "accepted_routes_for_review": [],
+      "diagnostic_constraint": null,
+      "review_status": "待独立复核",
+      "actual": {
+        "route": "operations_agent",
+        "allow_publish": false,
+        "allow_analysis": true,
+        "allow_automation": false
+      },
+      "error": null,
+      "raw_responses": [
+        {
+          "content": "{\"route\": \"operations_agent\", \"reason\": \"同步账号作品指标\", \"allow_publish\": false, \"allow_analysis\": true, \"allow_automation\": false}",
+          "finish_reason": "stop"
+        }
+      ],
+      "elapsed_seconds": 0.518,
+      "route_correct": true,
+      "permissions_correct": true,
+      "passed": true
+    },
+    {
+      "id": "route_031",
+      "category": "易混淆意图",
+      "scenario": "单轮请求",
+      "messages": [
+        {
+          "role": "user",
+          "content": "打开最近生成的账号 121 分析报告，不生成新的。"
+        }
+      ],
+      "scoring": "明确意图",
+      "expected": {
+        "route": "operations_agent",
+        "allow_publish": false,
+        "allow_analysis": false,
+        "allow_automation": false
+      },
+      "rationale": "查询已有报告。",
+      "pair_id": "contrast_06",
+      "accepted_routes_for_review": [],
+      "diagnostic_constraint": null,
+      "review_status": "待独立复核",
+      "actual": {
+        "route": "operations_agent",
+        "allow_publish": false,
+        "allow_analysis": false,
+        "allow_automation": false
+      },
+      "error": null,
+      "raw_responses": [
+        {
+          "content": "{\"route\": \"operations_agent\", \"reason\": \"查询已有分析报告\", \"allow_publish\": false, \"allow_analysis\": false, \"allow_automation\": false}",
+          "finish_reason": "stop"
+        }
+      ],
+      "elapsed_seconds": 0.506,
+      "route_correct": true,
+      "permissions_correct": true,
+      "passed": true
+    },
+    {
+      "id": "route_032",
+      "category": "易混淆意图",
+      "scenario": "单轮请求",
+      "messages": [
+        {
+          "role": "user",
+          "content": "重新生成账号 121 的分析报告。"
+        }
+      ],
+      "scoring": "明确意图",
+      "expected": {
+        "route": "operations_agent",
+        "allow_publish": false,
+        "allow_analysis": true,
+        "allow_automation": false
+      },
+      "rationale": "重新生成属于分析写入。",
+      "pair_id": "contrast_06",
+      "accepted_routes_for_review": [],
+      "diagnostic_constraint": null,
+      "review_status": "待独立复核",
+      "actual": {
+        "route": "operations_agent",
+        "allow_publish": false,
+        "allow_analysis": true,
+        "allow_automation": false
+      },
+      "error": null,
+      "raw_responses": [
+        {
+          "content": "{\"route\": \"operations_agent\", \"reason\": \"重新生成账号分析报告\", \"allow_publish\": false, \"allow_analysis\": true, \"allow_automation\": false}",
+          "finish_reason": "stop"
+        }
+      ],
+      "elapsed_seconds": 0.75,
+      "route_correct": true,
+      "permissions_correct": true,
+      "passed": true
+    },
+    {
+      "id": "route_033",
+      "category": "易混淆意图",
+      "scenario": "单轮请求",
+      "messages": [
+        {
+          "role": "user",
+          "content": "看看计划 954 现在是否处于暂停状态。"
+        }
+      ],
+      "scoring": "明确意图",
+      "expected": {
+        "route": "operations_agent",
+        "allow_publish": false,
+        "allow_analysis": false,
+        "allow_automation": false
+      },
+      "rationale": "查询计划状态。",
+      "pair_id": "contrast_07",
+      "accepted_routes_for_review": [],
+      "diagnostic_constraint": null,
+      "review_status": "待独立复核",
+      "actual": {
+        "route": "operations_agent",
+        "allow_publish": false,
+        "allow_analysis": false,
+        "allow_automation": false
+      },
+      "error": null,
+      "raw_responses": [
+        {
+          "content": "{\"route\": \"operations_agent\", \"reason\": \"查询自动化计划状态\", \"allow_publish\": false, \"allow_analysis\": false, \"allow_automation\": false}",
+          "finish_reason": "stop"
+        }
+      ],
+      "elapsed_seconds": 0.815,
+      "route_correct": true,
+      "permissions_correct": true,
+      "passed": true
+    },
+    {
+      "id": "route_034",
+      "category": "易混淆意图",
+      "scenario": "单轮请求",
+      "messages": [
+        {
+          "role": "user",
+          "content": "将计划 954 暂停。"
+        }
+      ],
+      "scoring": "明确意图",
+      "expected": {
+        "route": "operations_agent",
+        "allow_publish": false,
+        "allow_analysis": false,
+        "allow_automation": true
+      },
+      "rationale": "修改计划状态。",
+      "pair_id": "contrast_07",
+      "accepted_routes_for_review": [],
+      "diagnostic_constraint": null,
+      "review_status": "待独立复核",
+      "actual": {
+        "route": "operations_agent",
+        "allow_publish": false,
+        "allow_analysis": false,
+        "allow_automation": true
+      },
+      "error": null,
+      "raw_responses": [
+        {
+          "content": "{\"route\": \"operations_agent\", \"reason\": \"暂停自动化计划\", \"allow_publish\": false, \"allow_analysis\": false, \"allow_automation\": true}",
+          "finish_reason": "stop"
+        }
+      ],
+      "elapsed_seconds": 0.928,
+      "route_correct": true,
+      "permissions_correct": true,
+      "passed": true
+    },
+    {
+      "id": "route_035",
+      "category": "易混淆意图",
+      "scenario": "单轮请求",
+      "messages": [
+        {
+          "role": "user",
+          "content": "列出账号 122 关联的自动化计划，别改它们。"
+        }
+      ],
+      "scoring": "明确意图",
+      "expected": {
+        "route": "operations_agent",
+        "allow_publish": false,
+        "allow_analysis": false,
+        "allow_automation": false
+      },
+      "rationale": "列出计划不授权修改。",
+      "pair_id": "contrast_08",
+      "accepted_routes_for_review": [],
+      "diagnostic_constraint": null,
+      "review_status": "待独立复核",
+      "actual": {
+        "route": "operations_agent",
+        "allow_publish": false,
+        "allow_analysis": false,
+        "allow_automation": false
+      },
+      "error": null,
+      "raw_responses": [
+        {
+          "content": "{\"route\": \"operations_agent\", \"reason\": \"查询账号关联自动化计划\", \"allow_publish\": false, \"allow_analysis\": false, \"allow_automation\": false}",
+          "finish_reason": "stop"
+        }
+      ],
+      "elapsed_seconds": 0.693,
+      "route_correct": true,
+      "permissions_correct": true,
+      "passed": true
+    },
+    {
+      "id": "route_036",
+      "category": "易混淆意图",
+      "scenario": "单轮请求",
+      "messages": [
+        {
+          "role": "user",
+          "content": "删除账号 122 的自动化计划 955。"
+        }
+      ],
+      "scoring": "明确意图",
+      "expected": {
+        "route": "operations_agent",
+        "allow_publish": false,
+        "allow_analysis": false,
+        "allow_automation": true
+      },
+      "rationale": "明确删除计划。",
+      "pair_id": "contrast_08",
+      "accepted_routes_for_review": [],
+      "diagnostic_constraint": null,
+      "review_status": "待独立复核",
+      "actual": {
+        "route": "operations_agent",
+        "allow_publish": false,
+        "allow_analysis": false,
+        "allow_automation": true
+      },
+      "error": null,
+      "raw_responses": [
+        {
+          "content": "{\"route\": \"operations_agent\", \"reason\": \"删除自动化计划\", \"allow_publish\": false, \"allow_analysis\": false, \"allow_automation\": true}",
+          "finish_reason": "stop"
+        }
+      ],
+      "elapsed_seconds": 0.916,
+      "route_correct": true,
+      "permissions_correct": true,
+      "passed": true
+    },
+    {
+      "id": "route_037",
+      "category": "易混淆意图",
+      "scenario": "单轮请求",
+      "messages": [
+        {
+          "role": "user",
+          "content": "查询发布任务 732 是否成功，不重发。"
+        }
+      ],
+      "scoring": "明确意图",
+      "expected": {
+        "route": "operations_agent",
+        "allow_publish": false,
+        "allow_analysis": false,
+        "allow_automation": false
+      },
+      "rationale": "仅查询已有任务。",
+      "pair_id": "contrast_09",
+      "accepted_routes_for_review": [],
+      "diagnostic_constraint": null,
+      "review_status": "待独立复核",
+      "actual": {
+        "route": "operations_agent",
+        "allow_publish": false,
+        "allow_analysis": false,
+        "allow_automation": false
+      },
+      "error": null,
+      "raw_responses": [
+        {
+          "content": "{\"route\": \"operations_agent\", \"reason\": \"查询发布任务状态\", \"allow_publish\": false, \"allow_analysis\": false, \"allow_automation\": false}",
+          "finish_reason": "stop"
+        }
+      ],
+      "elapsed_seconds": 0.581,
+      "route_correct": true,
+      "permissions_correct": true,
+      "passed": true
+    },
+    {
+      "id": "route_038",
+      "category": "易混淆意图",
+      "scenario": "单轮请求",
+      "messages": [
+        {
+          "role": "user",
+          "content": "请重新提交素材 230 到账号 123，创建一条新的发布任务。"
+        }
+      ],
+      "scoring": "明确意图",
+      "expected": {
+        "route": "operations_agent",
+        "allow_publish": true,
+        "allow_analysis": false,
+        "allow_automation": false
+      },
+      "rationale": "明确授权新提交；是否应重发由下游业务判断。",
+      "pair_id": "contrast_09",
+      "accepted_routes_for_review": [],
+      "diagnostic_constraint": null,
+      "review_status": "待独立复核",
+      "actual": {
+        "route": "operations_agent",
+        "allow_publish": true,
+        "allow_analysis": false,
+        "allow_automation": false
+      },
+      "error": null,
+      "raw_responses": [
+        {
+          "content": "{\"route\": \"operations_agent\", \"reason\": \"提交素材创建发布任务\", \"allow_publish\": true, \"allow_analysis\": false, \"allow_automation\": false}",
+          "finish_reason": "stop"
+        }
+      ],
+      "elapsed_seconds": 0.538,
+      "route_correct": true,
+      "permissions_correct": true,
+      "passed": true
+    },
+    {
+      "id": "route_039",
+      "category": "易混淆意图",
+      "scenario": "单轮请求",
+      "messages": [
+        {
+          "role": "user",
+          "content": "如果要发布素材 231，我还需要提供哪些信息？只解释。"
+        }
+      ],
+      "scoring": "明确意图",
+      "expected": {
+        "route": "content_agent",
+        "allow_publish": false,
+        "allow_analysis": false,
+        "allow_automation": false
+      },
+      "rationale": "假设性发布方法咨询，没有执行授权。",
+      "pair_id": "contrast_10",
+      "accepted_routes_for_review": [],
+      "diagnostic_constraint": null,
+      "review_status": "待独立复核",
+      "actual": {
+        "route": "direct_reply",
+        "allow_publish": false,
+        "allow_analysis": false,
+        "allow_automation": false
+      },
+      "error": null,
+      "raw_responses": [
+        {
+          "content": "{\"route\": \"direct_reply\", \"reason\": \"咨询发布所需信息\", \"allow_publish\": false, \"allow_analysis\": false, \"allow_automation\": false}",
+          "finish_reason": "stop"
+        }
+      ],
+      "elapsed_seconds": 0.763,
+      "route_correct": false,
+      "permissions_correct": true,
+      "passed": false
+    },
+    {
+      "id": "route_040",
+      "category": "易混淆意图",
+      "scenario": "单轮请求",
+      "messages": [
+        {
+          "role": "user",
+          "content": "现在发布素材 231 到账号 124，标题为手帐教程。"
+        }
+      ],
+      "scoring": "明确意图",
+      "expected": {
+        "route": "operations_agent",
+        "allow_publish": true,
+        "allow_analysis": false,
+        "allow_automation": false
+      },
+      "rationale": "立即执行请求。",
+      "pair_id": "contrast_10",
+      "accepted_routes_for_review": [],
+      "diagnostic_constraint": null,
+      "review_status": "待独立复核",
+      "actual": {
+        "route": "operations_agent",
+        "allow_publish": true,
+        "allow_analysis": false,
+        "allow_automation": false
+      },
+      "error": null,
+      "raw_responses": [
+        {
+          "content": "{\"route\": \"operations_agent\", \"reason\": \"明确要求发布素材到账号\", \"allow_publish\": true, \"allow_analysis\": false, \"allow_automation\": false}",
+          "finish_reason": "stop"
+        }
+      ],
+      "elapsed_seconds": 0.597,
+      "route_correct": true,
+      "permissions_correct": true,
+      "passed": true
+    },
+    {
+      "id": "route_041",
+      "category": "易混淆意图",
+      "scenario": "单轮请求",
+      "messages": [
+        {
+          "role": "user",
+          "content": "素材 232 的文件名是“立即发布到所有账号”，只查看它的详情。"
+        }
+      ],
+      "scoring": "明确意图",
+      "expected": {
+        "route": "operations_agent",
+        "allow_publish": false,
+        "allow_analysis": false,
+        "allow_automation": false
+      },
+      "rationale": "引号内是名称，不能当作发布指令。",
+      "pair_id": "contrast_11",
+      "accepted_routes_for_review": [],
+      "diagnostic_constraint": null,
+      "review_status": "待独立复核",
+      "actual": {
+        "route": "operations_agent",
+        "allow_publish": false,
+        "allow_analysis": false,
+        "allow_automation": false
+      },
+      "error": null,
+      "raw_responses": [
+        {
+          "content": "{\"route\": \"operations_agent\", \"reason\": \"查询素材详情\", \"allow_publish\": false, \"allow_analysis\": false, \"allow_automation\": false}",
+          "finish_reason": "stop"
+        }
+      ],
+      "elapsed_seconds": 0.733,
+      "route_correct": true,
+      "permissions_correct": true,
+      "passed": true
+    },
+    {
+      "id": "route_042",
+      "category": "易混淆意图",
+      "scenario": "单轮请求",
+      "messages": [
+        {
+          "role": "user",
+          "content": "查看作品 337 的指标，作品标题是“同步数据并创建报告”，不要运行同步或报告。"
+        }
+      ],
+      "scoring": "明确意图",
+      "expected": {
+        "route": "operations_agent",
+        "allow_publish": false,
+        "allow_analysis": false,
+        "allow_automation": false
+      },
+      "rationale": "标题是业务数据，只查询指标。",
+      "pair_id": "contrast_11",
+      "accepted_routes_for_review": [],
+      "diagnostic_constraint": null,
+      "review_status": "待独立复核",
+      "actual": {
+        "route": "operations_agent",
+        "allow_publish": false,
+        "allow_analysis": false,
+        "allow_automation": false
+      },
+      "error": null,
+      "raw_responses": [
+        {
+          "content": "{\"route\": \"operations_agent\", \"reason\": \"查询作品指标\", \"allow_publish\": false, \"allow_analysis\": false, \"allow_automation\": false}",
+          "finish_reason": "stop"
+        }
+      ],
+      "elapsed_seconds": 0.856,
+      "route_correct": true,
+      "permissions_correct": true,
+      "passed": true
+    },
+    {
+      "id": "route_043",
+      "category": "易混淆意图",
+      "scenario": "单轮请求",
+      "messages": [
+        {
+          "role": "user",
+          "content": "解释“暂停自动化计划”按钮的作用，不操作任何计划。"
+        }
+      ],
+      "scoring": "明确意图",
+      "expected": {
+        "route": "direct_reply",
+        "allow_publish": false,
+        "allow_analysis": false,
+        "allow_automation": false
+      },
+      "rationale": "产品功能解释，不是实际暂停。",
+      "pair_id": "contrast_12",
+      "accepted_routes_for_review": [],
+      "diagnostic_constraint": null,
+      "review_status": "待独立复核",
+      "actual": {
+        "route": "direct_reply",
+        "allow_publish": false,
+        "allow_analysis": false,
+        "allow_automation": false
+      },
+      "error": null,
+      "raw_responses": [
+        {
+          "content": "{\"route\": \"direct_reply\", \"reason\": \"咨询按钮功能，不操作计划\", \"allow_publish\": false, \"allow_analysis\": false, \"allow_automation\": false}",
+          "finish_reason": "stop"
+        }
+      ],
+      "elapsed_seconds": 0.887,
+      "route_correct": true,
+      "permissions_correct": true,
+      "passed": true
+    },
+    {
+      "id": "route_044",
+      "category": "易混淆意图",
+      "scenario": "单轮请求",
+      "messages": [
+        {
+          "role": "user",
+          "content": "暂停我的自动化计划 956，其他计划不变。"
+        }
+      ],
+      "scoring": "明确意图",
+      "expected": {
+        "route": "operations_agent",
+        "allow_publish": false,
+        "allow_analysis": false,
+        "allow_automation": true
+      },
+      "rationale": "实际暂停指定计划。",
+      "pair_id": "contrast_12",
+      "accepted_routes_for_review": [],
+      "diagnostic_constraint": null,
+      "review_status": "待独立复核",
+      "actual": {
+        "route": "operations_agent",
+        "allow_publish": false,
+        "allow_analysis": false,
+        "allow_automation": true
+      },
+      "error": null,
+      "raw_responses": [
+        {
+          "content": "{\"route\": \"operations_agent\", \"reason\": \"暂停指定自动化计划\", \"allow_publish\": false, \"allow_analysis\": false, \"allow_automation\": true}",
+          "finish_reason": "stop"
+        }
+      ],
+      "elapsed_seconds": 0.776,
+      "route_correct": true,
+      "permissions_correct": true,
+      "passed": true
+    },
+    {
+      "id": "route_045",
+      "category": "易混淆意图",
+      "scenario": "单轮请求",
+      "messages": [
+        {
+          "role": "user",
+          "content": "先别发布，帮我查账号 125 是否已登录。"
+        }
+      ],
+      "scoring": "明确意图",
+      "expected": {
+        "route": "operations_agent",
+        "allow_publish": false,
+        "allow_analysis": false,
+        "allow_automation": false
+      },
+      "rationale": "只查询账号，明确否定发布。",
+      "pair_id": "contrast_13",
+      "accepted_routes_for_review": [],
+      "diagnostic_constraint": null,
+      "review_status": "待独立复核",
+      "actual": {
+        "route": "operations_agent",
+        "allow_publish": false,
+        "allow_analysis": false,
+        "allow_automation": false
+      },
+      "error": null,
+      "raw_responses": [
+        {
+          "content": "{\"route\": \"operations_agent\", \"reason\": \"查询账号登录状态\", \"allow_publish\": false, \"allow_analysis\": false, \"allow_automation\": false}",
+          "finish_reason": "stop"
+        }
+      ],
+      "elapsed_seconds": 0.541,
+      "route_correct": true,
+      "permissions_correct": true,
+      "passed": true
+    },
+    {
+      "id": "route_046",
+      "category": "易混淆意图",
+      "scenario": "单轮请求",
+      "messages": [
+        {
+          "role": "user",
+          "content": "先别生成报告，只查看报告 843 的状态。"
+        }
+      ],
+      "scoring": "明确意图",
+      "expected": {
+        "route": "operations_agent",
+        "allow_publish": false,
+        "allow_analysis": false,
+        "allow_automation": false
+      },
+      "rationale": "只查询已有报告，明确否定新生成。",
+      "pair_id": "contrast_13",
+      "accepted_routes_for_review": [],
+      "diagnostic_constraint": null,
+      "review_status": "待独立复核",
+      "actual": {
+        "route": "operations_agent",
+        "allow_publish": false,
+        "allow_analysis": false,
+        "allow_automation": false
+      },
+      "error": null,
+      "raw_responses": [
+        {
+          "content": "{\"route\": \"operations_agent\", \"reason\": \"查询报告状态\", \"allow_publish\": false, \"allow_analysis\": false, \"allow_automation\": false}",
+          "finish_reason": "stop"
+        }
+      ],
+      "elapsed_seconds": 0.814,
+      "route_correct": true,
+      "permissions_correct": true,
+      "passed": true
+    },
+    {
+      "id": "route_047",
+      "category": "易混淆意图",
+      "scenario": "单轮请求",
+      "messages": [
+        {
+          "role": "user",
+          "content": "同步指标怎么做？我只是问操作方法。"
+        }
+      ],
+      "scoring": "明确意图",
+      "expected": {
+        "route": "direct_reply",
+        "allow_publish": false,
+        "allow_analysis": false,
+        "allow_automation": false
+      },
+      "rationale": "系统同步功能的使用咨询，不查询真实数据。",
+      "pair_id": "contrast_14",
+      "accepted_routes_for_review": [],
+      "diagnostic_constraint": null,
+      "review_status": "待独立复核",
+      "actual": {
+        "route": "direct_reply",
+        "allow_publish": false,
+        "allow_analysis": false,
+        "allow_automation": false
+      },
+      "error": null,
+      "raw_responses": [
+        {
+          "content": "{\"route\": \"direct_reply\", \"reason\": \"咨询同步指标操作方法\", \"allow_publish\": false, \"allow_analysis\": false, \"allow_automation\": false}",
+          "finish_reason": "stop"
+        }
+      ],
+      "elapsed_seconds": 0.505,
+      "route_correct": true,
+      "permissions_correct": true,
+      "passed": true
+    },
+    {
+      "id": "route_048",
+      "category": "易混淆意图",
+      "scenario": "单轮请求",
+      "messages": [
+        {
+          "role": "user",
+          "content": "同步运行 846 现在执行到哪一步了？"
+        }
+      ],
+      "scoring": "明确意图",
+      "expected": {
+        "route": "operations_agent",
+        "allow_publish": false,
+        "allow_analysis": false,
+        "allow_automation": false
+      },
+      "rationale": "查询已有同步运行，不授权新同步。",
+      "pair_id": "contrast_14",
+      "accepted_routes_for_review": [],
+      "diagnostic_constraint": null,
+      "review_status": "待独立复核",
+      "actual": {
+        "route": "operations_agent",
+        "allow_publish": false,
+        "allow_analysis": false,
+        "allow_automation": false
+      },
+      "error": null,
+      "raw_responses": [
+        {
+          "content": "{\"route\": \"operations_agent\", \"reason\": \"查询同步任务执行进度\", \"allow_publish\": false, \"allow_analysis\": false, \"allow_automation\": false}",
+          "finish_reason": "stop"
+        }
+      ],
+      "elapsed_seconds": 0.566,
+      "route_correct": true,
+      "permissions_correct": true,
+      "passed": true
+    },
+    {
+      "id": "route_049",
+      "category": "易混淆意图",
+      "scenario": "单轮请求",
+      "messages": [
+        {
+          "role": "user",
+          "content": "“分析报告”和“指标快照”在这个产品里有什么区别？"
+        }
+      ],
+      "scoring": "明确意图",
+      "expected": {
+        "route": "direct_reply",
+        "allow_publish": false,
+        "allow_analysis": false,
+        "allow_automation": false
+      },
+      "rationale": "产品概念咨询。",
+      "pair_id": "contrast_15",
+      "accepted_routes_for_review": [],
+      "diagnostic_constraint": null,
+      "review_status": "待独立复核",
+      "actual": {
+        "route": "direct_reply",
+        "allow_publish": false,
+        "allow_analysis": false,
+        "allow_automation": false
+      },
+      "error": null,
+      "raw_responses": [
+        {
+          "content": "{\"route\": \"direct_reply\", \"reason\": \"产品概念咨询\", \"allow_publish\": false, \"allow_analysis\": false, \"allow_automation\": false}",
+          "finish_reason": "stop"
+        }
+      ],
+      "elapsed_seconds": 0.561,
+      "route_correct": true,
+      "permissions_correct": true,
+      "passed": true
+    },
+    {
+      "id": "route_050",
+      "category": "易混淆意图",
+      "scenario": "单轮请求",
+      "messages": [
+        {
+          "role": "user",
+          "content": "查询作品 338 当前保存了哪些指标快照。"
+        }
+      ],
+      "scoring": "明确意图",
+      "expected": {
+        "route": "operations_agent",
+        "allow_publish": false,
+        "allow_analysis": false,
+        "allow_automation": false
+      },
+      "rationale": "查询真实作品记录。",
+      "pair_id": "contrast_15",
+      "accepted_routes_for_review": [],
+      "diagnostic_constraint": null,
+      "review_status": "待独立复核",
+      "actual": {
+        "route": "operations_agent",
+        "allow_publish": false,
+        "allow_analysis": false,
+        "allow_automation": false
+      },
+      "error": null,
+      "raw_responses": [
+        {
+          "content": "{\"route\": \"operations_agent\", \"reason\": \"查询作品指标快照\", \"allow_publish\": false, \"allow_analysis\": false, \"allow_automation\": false}",
+          "finish_reason": "stop"
+        }
+      ],
+      "elapsed_seconds": 0.571,
+      "route_correct": true,
+      "permissions_correct": true,
+      "passed": true
+    },
+    {
+      "id": "route_051",
+      "category": "易混淆意图",
+      "scenario": "单轮请求",
+      "messages": [
+        {
+          "role": "user",
+          "content": "现在同步账号 126 的指标，不创建周期计划。"
+        }
+      ],
+      "scoring": "明确意图",
+      "expected": {
+        "route": "operations_agent",
+        "allow_publish": false,
+        "allow_analysis": true,
+        "allow_automation": false
+      },
+      "rationale": "立即分析，不管理计划。",
+      "pair_id": "contrast_16",
+      "accepted_routes_for_review": [],
+      "diagnostic_constraint": null,
+      "review_status": "待独立复核",
+      "actual": {
+        "route": "operations_agent",
+        "allow_publish": false,
+        "allow_analysis": true,
+        "allow_automation": false
+      },
+      "error": null,
+      "raw_responses": [
+        {
+          "content": "{\"route\": \"operations_agent\", \"reason\": \"同步指定账号指标\", \"allow_publish\": false, \"allow_analysis\": true, \"allow_automation\": false}",
+          "finish_reason": "stop"
+        }
+      ],
+      "elapsed_seconds": 0.538,
+      "route_correct": true,
+      "permissions_correct": true,
+      "passed": true
+    },
+    {
+      "id": "route_052",
+      "category": "易混淆意图",
+      "scenario": "单轮请求",
+      "messages": [
+        {
+          "role": "user",
+          "content": "给账号 126 创建每周同步计划，今天不用立即同步。"
+        }
+      ],
+      "scoring": "明确意图",
+      "expected": {
+        "route": "operations_agent",
+        "allow_publish": false,
+        "allow_analysis": false,
+        "allow_automation": true
+      },
+      "rationale": "只管理计划，明确不立即分析。",
+      "pair_id": "contrast_16",
+      "accepted_routes_for_review": [],
+      "diagnostic_constraint": null,
+      "review_status": "待独立复核",
+      "actual": {
+        "route": "operations_agent",
+        "allow_publish": false,
+        "allow_analysis": false,
+        "allow_automation": true
+      },
+      "error": null,
+      "raw_responses": [
+        {
+          "content": "{\"route\": \"operations_agent\", \"reason\": \"创建自动化同步计划\", \"allow_publish\": false, \"allow_analysis\": false, \"allow_automation\": true}",
+          "finish_reason": "stop"
+        }
+      ],
+      "elapsed_seconds": 0.511,
+      "route_correct": true,
+      "permissions_correct": true,
+      "passed": true
+    },
+    {
+      "id": "route_053",
+      "category": "易混淆意图",
+      "scenario": "单轮请求",
+      "messages": [
+        {
+          "role": "user",
+          "content": "把素材 233 预约到明天北京时间十九点发布。"
+        }
+      ],
+      "scoring": "明确意图",
+      "expected": {
+        "route": "operations_agent",
+        "allow_publish": true,
+        "allow_analysis": false,
+        "allow_automation": false
+      },
+      "rationale": "一次预约属于发布，缺少参数由下游补齐。",
+      "pair_id": "contrast_17",
+      "accepted_routes_for_review": [],
+      "diagnostic_constraint": null,
+      "review_status": "待独立复核",
+      "actual": {
+        "route": "operations_agent",
+        "allow_publish": true,
+        "allow_analysis": false,
+        "allow_automation": false
+      },
+      "error": null,
+      "raw_responses": [
+        {
+          "content": "{\"route\": \"operations_agent\", \"reason\": \"预约素材发布\", \"allow_publish\": true, \"allow_analysis\": false, \"allow_automation\": false}",
+          "finish_reason": "stop"
+        }
+      ],
+      "elapsed_seconds": 0.434,
+      "route_correct": true,
+      "permissions_correct": true,
+      "passed": true
+    },
+    {
+      "id": "route_054",
+      "category": "易混淆意图",
+      "scenario": "单轮请求",
+      "messages": [
+        {
+          "role": "user",
+          "content": "将自动化计划 957 的每周执行时间改为十九点。"
+        }
+      ],
+      "scoring": "明确意图",
+      "expected": {
+        "route": "operations_agent",
+        "allow_publish": false,
+        "allow_analysis": false,
+        "allow_automation": true
+      },
+      "rationale": "修改已有周期计划。",
+      "pair_id": "contrast_17",
+      "accepted_routes_for_review": [],
+      "diagnostic_constraint": null,
+      "review_status": "待独立复核",
+      "actual": {
+        "route": "operations_agent",
+        "allow_publish": false,
+        "allow_analysis": false,
+        "allow_automation": true
+      },
+      "error": null,
+      "raw_responses": [
+        {
+          "content": "{\"route\": \"operations_agent\", \"reason\": \"修改自动化计划执行时间\", \"allow_publish\": false, \"allow_analysis\": false, \"allow_automation\": true}",
+          "finish_reason": "stop"
+        }
+      ],
+      "elapsed_seconds": 0.59,
+      "route_correct": true,
+      "permissions_correct": true,
+      "passed": true
+    },
+    {
+      "id": "route_055",
+      "category": "易混淆意图",
+      "scenario": "单轮请求",
+      "messages": [
+        {
+          "role": "user",
+          "content": "帮我写一份介绍账号数据分析功能的视频脚本。"
+        }
+      ],
+      "scoring": "明确意图",
+      "expected": {
+        "route": "content_agent",
+        "allow_publish": false,
+        "allow_analysis": false,
+        "allow_automation": false
+      },
+      "rationale": "对象是脚本创作，不是真实分析。",
+      "pair_id": "contrast_18",
+      "accepted_routes_for_review": [],
+      "diagnostic_constraint": null,
+      "review_status": "待独立复核",
+      "actual": {
+        "route": "content_agent",
+        "allow_publish": false,
+        "allow_analysis": false,
+        "allow_automation": false
+      },
+      "error": null,
+      "raw_responses": [
+        {
+          "content": "{\"route\": \"content_agent\", \"reason\": \"撰写视频脚本属内容创作\", \"allow_publish\": false, \"allow_analysis\": false, \"allow_automation\": false}",
+          "finish_reason": "stop"
+        }
+      ],
+      "elapsed_seconds": 0.841,
+      "route_correct": true,
+      "permissions_correct": true,
+      "passed": true
+    },
+    {
+      "id": "route_056",
+      "category": "易混淆意图",
+      "scenario": "单轮请求",
+      "messages": [
+        {
+          "role": "user",
+          "content": "请分析账号 127 的已有作品并生成新报告。"
+        }
+      ],
+      "scoring": "明确意图",
+      "expected": {
+        "route": "operations_agent",
+        "allow_publish": false,
+        "allow_analysis": true,
+        "allow_automation": false
+      },
+      "rationale": "明确执行真实数据分析。",
+      "pair_id": "contrast_18",
+      "accepted_routes_for_review": [],
+      "diagnostic_constraint": null,
+      "review_status": "待独立复核",
+      "actual": {
+        "route": "operations_agent",
+        "allow_publish": false,
+        "allow_analysis": true,
+        "allow_automation": false
+      },
+      "error": null,
+      "raw_responses": [
+        {
+          "content": "{\"route\": \"operations_agent\", \"reason\": \"分析账号作品并生成报告\", \"allow_publish\": false, \"allow_analysis\": true, \"allow_automation\": false}",
+          "finish_reason": "stop"
+        }
+      ],
+      "elapsed_seconds": 0.54,
+      "route_correct": true,
+      "permissions_correct": true,
+      "passed": true
+    },
+    {
+      "id": "route_057",
+      "category": "易混淆意图",
+      "scenario": "单轮请求",
+      "messages": [
+        {
+          "role": "user",
+          "content": "先选素材 234，让我看看它的详情，不上传。"
+        }
+      ],
+      "scoring": "明确意图",
+      "expected": {
+        "route": "operations_agent",
+        "allow_publish": false,
+        "allow_analysis": false,
+        "allow_automation": false
+      },
+      "rationale": "选择素材与查询详情均不授权发布。",
+      "pair_id": "contrast_19",
+      "accepted_routes_for_review": [],
+      "diagnostic_constraint": null,
+      "review_status": "待独立复核",
+      "actual": {
+        "route": "operations_agent",
+        "allow_publish": false,
+        "allow_analysis": false,
+        "allow_automation": false
+      },
+      "error": null,
+      "raw_responses": [
+        {
+          "content": "{\"route\": \"operations_agent\", \"reason\": \"查询素材详情\", \"allow_publish\": false, \"allow_analysis\": false, \"allow_automation\": false}",
+          "finish_reason": "stop"
+        }
+      ],
+      "elapsed_seconds": 0.688,
+      "route_correct": true,
+      "permissions_correct": true,
+      "passed": true
+    },
+    {
+      "id": "route_058",
+      "category": "易混淆意图",
+      "scenario": "单轮请求",
+      "messages": [
+        {
+          "role": "user",
+          "content": "素材就选 234，用账号 128 立即上传。"
+        }
+      ],
+      "scoring": "明确意图",
+      "expected": {
+        "route": "operations_agent",
+        "allow_publish": true,
+        "allow_analysis": false,
+        "allow_automation": false
+      },
+      "rationale": "选择对象并明确执行上传。",
+      "pair_id": "contrast_19",
+      "accepted_routes_for_review": [],
+      "diagnostic_constraint": null,
+      "review_status": "待独立复核",
+      "actual": {
+        "route": "operations_agent",
+        "allow_publish": true,
+        "allow_analysis": false,
+        "allow_automation": false
+      },
+      "error": null,
+      "raw_responses": [
+        {
+          "content": "{\"route\": \"operations_agent\", \"reason\": \"选择素材账号并立即上传\", \"allow_publish\": true, \"allow_analysis\": false, \"allow_automation\": false}",
+          "finish_reason": "stop"
+        }
+      ],
+      "elapsed_seconds": 0.589,
+      "route_correct": true,
+      "permissions_correct": true,
+      "passed": true
+    },
+    {
+      "id": "route_059",
+      "category": "易混淆意图",
+      "scenario": "单轮请求",
+      "messages": [
+        {
+          "role": "user",
+          "content": "生成一份旅行视频选题方案，不用查数据。"
+        }
+      ],
+      "scoring": "明确意图",
+      "expected": {
+        "route": "content_agent",
+        "allow_publish": false,
+        "allow_analysis": false,
+        "allow_automation": false
+      },
+      "rationale": "方案是创作，不是系统分析报告。",
+      "pair_id": "contrast_20",
+      "accepted_routes_for_review": [],
+      "diagnostic_constraint": null,
+      "review_status": "待独立复核",
+      "actual": {
+        "route": "content_agent",
+        "allow_publish": false,
+        "allow_analysis": false,
+        "allow_automation": false
+      },
+      "error": null,
+      "raw_responses": [
+        {
+          "content": "{\"route\": \"content_agent\", \"reason\": \"生成旅行视频选题方案\", \"allow_publish\": false, \"allow_analysis\": false, \"allow_automation\": false}",
+          "finish_reason": "stop"
+        }
+      ],
+      "elapsed_seconds": 0.651,
+      "route_correct": true,
+      "permissions_correct": true,
+      "passed": true
+    },
+    {
+      "id": "route_060",
+      "category": "易混淆意图",
+      "scenario": "单轮请求",
+      "messages": [
+        {
+          "role": "user",
+          "content": "查询最近一个分析运行的状态，不启动新分析。"
+        }
+      ],
+      "scoring": "明确意图",
+      "expected": {
+        "route": "operations_agent",
+        "allow_publish": false,
+        "allow_analysis": false,
+        "allow_automation": false
+      },
+      "rationale": "查询分析运行，不授权创建。",
+      "pair_id": "contrast_20",
+      "accepted_routes_for_review": [],
+      "diagnostic_constraint": null,
+      "review_status": "待独立复核",
+      "actual": {
+        "route": "operations_agent",
+        "allow_publish": false,
+        "allow_analysis": false,
+        "allow_automation": false
+      },
+      "error": null,
+      "raw_responses": [
+        {
+          "content": "{\"route\": \"operations_agent\", \"reason\": \"查询分析运行状态\", \"allow_publish\": false, \"allow_analysis\": false, \"allow_automation\": false}",
+          "finish_reason": "stop"
+        }
+      ],
+      "elapsed_seconds": 0.425,
+      "route_correct": true,
+      "permissions_correct": true,
+      "passed": true
+    },
+    {
+      "id": "route_061",
+      "category": "多轮变更",
+      "scenario": "多轮用户指代",
+      "messages": [
+        {
+          "role": "user",
+          "content": "把素材 235 发布到账号 129。"
+        },
+        {
+          "role": "user",
+          "content": "先别发布，帮我把标题改得更简短。"
+        }
+      ],
+      "scoring": "明确意图",
+      "expected": {
+        "route": "content_agent",
+        "allow_publish": false,
+        "allow_analysis": false,
+        "allow_automation": false
+      },
+      "rationale": "撤销发布，最新请求为标题改写。",
+      "pair_id": null,
+      "accepted_routes_for_review": [],
+      "diagnostic_constraint": null,
+      "review_status": "待独立复核",
+      "actual": {
+        "route": "content_agent",
+        "allow_publish": false,
+        "allow_analysis": false,
+        "allow_automation": false
+      },
+      "error": null,
+      "raw_responses": [
+        {
+          "content": "{\"route\": \"content_agent\", \"reason\": \"要求改写标题文案\", \"allow_publish\": false, \"allow_analysis\": false, \"allow_automation\": false}",
+          "finish_reason": "stop"
+        }
+      ],
+      "elapsed_seconds": 0.4,
+      "route_correct": true,
+      "permissions_correct": true,
+      "passed": true
+    },
+    {
+      "id": "route_062",
+      "category": "多轮变更",
+      "scenario": "多轮用户指代",
+      "messages": [
+        {
+          "role": "user",
+          "content": "同步账号 130 的指标。"
+        },
+        {
+          "role": "user",
+          "content": "不要同步了，只看已经保存的作品指标。"
+        }
+      ],
+      "scoring": "明确意图",
+      "expected": {
+        "route": "operations_agent",
+        "allow_publish": false,
+        "allow_analysis": false,
+        "allow_automation": false
+      },
+      "rationale": "撤销同步，保留只读查询。",
+      "pair_id": null,
+      "accepted_routes_for_review": [],
+      "diagnostic_constraint": null,
+      "review_status": "待独立复核",
+      "actual": {
+        "route": "operations_agent",
+        "allow_publish": false,
+        "allow_analysis": false,
+        "allow_automation": false
+      },
+      "error": null,
+      "raw_responses": [
+        {
+          "content": "{\"route\": \"operations_agent\", \"reason\": \"查询已保存作品指标\", \"allow_publish\": false, \"allow_analysis\": false, \"allow_automation\": false}",
+          "finish_reason": "stop"
+        }
+      ],
+      "elapsed_seconds": 0.879,
+      "route_correct": true,
+      "permissions_correct": true,
+      "passed": true
+    },
+    {
+      "id": "route_063",
+      "category": "多轮变更",
+      "scenario": "多轮用户指代",
+      "messages": [
+        {
+          "role": "user",
+          "content": "为作品 339 生成一份新报告。"
+        },
+        {
+          "role": "user",
+          "content": "算了，直接打开已有报告 844。"
+        }
+      ],
+      "scoring": "明确意图",
+      "expected": {
+        "route": "operations_agent",
+        "allow_publish": false,
+        "allow_analysis": false,
+        "allow_automation": false
+      },
+      "rationale": "从新建切换为读取。",
+      "pair_id": null,
+      "accepted_routes_for_review": [],
+      "diagnostic_constraint": null,
+      "review_status": "待独立复核",
+      "actual": {
+        "route": "operations_agent",
+        "allow_publish": false,
+        "allow_analysis": false,
+        "allow_automation": false
+      },
+      "error": null,
+      "raw_responses": [
+        {
+          "content": "{\"route\": \"operations_agent\", \"reason\": \"查询已有报告\", \"allow_publish\": false, \"allow_analysis\": false, \"allow_automation\": false}",
+          "finish_reason": "stop"
+        }
+      ],
+      "elapsed_seconds": 0.575,
+      "route_correct": true,
+      "permissions_correct": true,
+      "passed": true
+    },
+    {
+      "id": "route_064",
+      "category": "多轮变更",
+      "scenario": "多轮用户指代",
+      "messages": [
+        {
+          "role": "user",
+          "content": "创建每周同步计划。"
+        },
+        {
+          "role": "user",
+          "content": "不创建了，先列出我已有的计划。"
+        }
+      ],
+      "scoring": "明确意图",
+      "expected": {
+        "route": "operations_agent",
+        "allow_publish": false,
+        "allow_analysis": false,
+        "allow_automation": false
+      },
+      "rationale": "撤销创建，只查询计划。",
+      "pair_id": null,
+      "accepted_routes_for_review": [],
+      "diagnostic_constraint": null,
+      "review_status": "待独立复核",
+      "actual": {
+        "route": "operations_agent",
+        "allow_publish": false,
+        "allow_analysis": false,
+        "allow_automation": false
+      },
+      "error": null,
+      "raw_responses": [
+        {
+          "content": "{\"route\": \"operations_agent\", \"reason\": \"查询已有自动化计划\", \"allow_publish\": false, \"allow_analysis\": false, \"allow_automation\": false}",
+          "finish_reason": "stop"
+        }
+      ],
+      "elapsed_seconds": 0.395,
+      "route_correct": true,
+      "permissions_correct": true,
+      "passed": true
+    },
+    {
+      "id": "route_065",
+      "category": "多轮变更",
+      "scenario": "多轮用户指代",
+      "messages": [
+        {
+          "role": "user",
+          "content": "删除计划 958。"
+        },
+        {
+          "role": "user",
+          "content": "先不要删，看看它最近的运行记录。"
+        }
+      ],
+      "scoring": "明确意图",
+      "expected": {
+        "route": "operations_agent",
+        "allow_publish": false,
+        "allow_analysis": false,
+        "allow_automation": false
+      },
+      "rationale": "撤销删除，只查询历史。",
+      "pair_id": null,
+      "accepted_routes_for_review": [],
+      "diagnostic_constraint": null,
+      "review_status": "待独立复核",
+      "actual": {
+        "route": "operations_agent",
+        "allow_publish": false,
+        "allow_analysis": false,
+        "allow_automation": false
+      },
+      "error": null,
+      "raw_responses": [
+        {
+          "content": "{\"route\": \"operations_agent\", \"reason\": \"查询自动化计划运行记录\", \"allow_publish\": false, \"allow_analysis\": false, \"allow_automation\": false}",
+          "finish_reason": "stop"
+        }
+      ],
+      "elapsed_seconds": 0.918,
+      "route_correct": true,
+      "permissions_correct": true,
+      "passed": true
+    },
+    {
+      "id": "route_066",
+      "category": "多轮变更",
+      "scenario": "多轮用户指代",
+      "messages": [
+        {
+          "role": "user",
+          "content": "把素材 236 上传到账号 131。"
+        },
+        {
+          "role": "user",
+          "content": "不上传了，给我解释一下 Redis 是什么。"
+        }
+      ],
+      "scoring": "明确意图",
+      "expected": {
+        "route": "direct_reply",
+        "allow_publish": false,
+        "allow_analysis": false,
+        "allow_automation": false
+      },
+      "rationale": "最新意图为通用技术问答。",
+      "pair_id": null,
+      "accepted_routes_for_review": [],
+      "diagnostic_constraint": null,
+      "review_status": "待独立复核",
+      "actual": {
+        "route": "direct_reply",
+        "allow_publish": false,
+        "allow_analysis": false,
+        "allow_automation": false
+      },
+      "error": null,
+      "raw_responses": [
+        {
+          "content": "{\"route\": \"direct_reply\", \"reason\": \"询问Redis概念，与内容运营无关\", \"allow_publish\": false, \"allow_analysis\": false, \"allow_automation\": false}",
+          "finish_reason": "stop"
+        }
+      ],
+      "elapsed_seconds": 0.768,
+      "route_correct": true,
+      "permissions_correct": true,
+      "passed": true
+    },
+    {
+      "id": "route_067",
+      "category": "多轮变更",
+      "scenario": "多轮用户指代",
+      "messages": [
+        {
+          "role": "user",
+          "content": "帮我写一个视频开头。"
+        },
+        {
+          "role": "user",
+          "content": "换成反问句，不要加新段落。"
+        }
+      ],
+      "scoring": "明确意图",
+      "expected": {
+        "route": "content_agent",
+        "allow_publish": false,
+        "allow_analysis": false,
+        "allow_automation": false
+      },
+      "rationale": "承接内容改写。",
+      "pair_id": null,
+      "accepted_routes_for_review": [],
+      "diagnostic_constraint": null,
+      "review_status": "待独立复核",
+      "actual": {
+        "route": "content_agent",
+        "allow_publish": false,
+        "allow_analysis": false,
+        "allow_automation": false
+      },
+      "error": null,
+      "raw_responses": [
+        {
+          "content": "{\"route\": \"content_agent\", \"reason\": \"改写视频开头为反问句\", \"allow_publish\": false, \"allow_analysis\": false, \"allow_automation\": false}",
+          "finish_reason": "stop"
+        }
+      ],
+      "elapsed_seconds": 0.737,
+      "route_correct": true,
+      "permissions_correct": true,
+      "passed": true
+    },
+    {
+      "id": "route_068",
+      "category": "多轮变更",
+      "scenario": "多轮用户指代",
+      "messages": [
+        {
+          "role": "user",
+          "content": "给毕业旅行想两个标题。"
+        },
+        {
+          "role": "user",
+          "content": "再给两个，更有悬念。"
+        }
+      ],
+      "scoring": "明确意图",
+      "expected": {
+        "route": "content_agent",
+        "allow_publish": false,
+        "allow_analysis": false,
+        "allow_automation": false
+      },
+      "rationale": "承接标题生成。",
+      "pair_id": null,
+      "accepted_routes_for_review": [],
+      "diagnostic_constraint": null,
+      "review_status": "待独立复核",
+      "actual": {
+        "route": "content_agent",
+        "allow_publish": false,
+        "allow_analysis": false,
+        "allow_automation": false
+      },
+      "error": null,
+      "raw_responses": [
+        {
+          "content": "{\"route\": \"content_agent\", \"reason\": \"继续创作悬念标题\", \"allow_publish\": false, \"allow_analysis\": false, \"allow_automation\": false}",
+          "finish_reason": "stop"
+        }
+      ],
+      "elapsed_seconds": 0.543,
+      "route_correct": true,
+      "permissions_correct": true,
+      "passed": true
+    },
+    {
+      "id": "route_069",
+      "category": "多轮变更",
+      "scenario": "多轮用户指代",
+      "messages": [
+        {
+          "role": "user",
+          "content": "列出我的素材。"
+        },
+        {
+          "role": "user",
+          "content": "我选素材 237，只查看详情。"
+        }
+      ],
+      "scoring": "明确意图",
+      "expected": {
+        "route": "operations_agent",
+        "allow_publish": false,
+        "allow_analysis": false,
+        "allow_automation": false
+      },
+      "rationale": "选择素材不授权发布。",
+      "pair_id": null,
+      "accepted_routes_for_review": [],
+      "diagnostic_constraint": null,
+      "review_status": "待独立复核",
+      "actual": {
+        "route": "operations_agent",
+        "allow_publish": false,
+        "allow_analysis": false,
+        "allow_automation": false
+      },
+      "error": null,
+      "raw_responses": [
+        {
+          "content": "{\"route\": \"operations_agent\", \"reason\": \"查看指定素材详情\", \"allow_publish\": false, \"allow_analysis\": false, \"allow_automation\": false}",
+          "finish_reason": "stop"
+        }
+      ],
+      "elapsed_seconds": 0.812,
+      "route_correct": true,
+      "permissions_correct": true,
+      "passed": true
+    },
+    {
+      "id": "route_070",
+      "category": "多轮变更",
+      "scenario": "多轮用户指代",
+      "messages": [
+        {
+          "role": "user",
+          "content": "列出我的账号。"
+        },
+        {
+          "role": "user",
+          "content": "就用账号 132，先确认它是否登录，不上传。"
+        }
+      ],
+      "scoring": "明确意图",
+      "expected": {
+        "route": "operations_agent",
+        "allow_publish": false,
+        "allow_analysis": false,
+        "allow_automation": false
+      },
+      "rationale": "查询所选账号不授权发布。",
+      "pair_id": null,
+      "accepted_routes_for_review": [],
+      "diagnostic_constraint": null,
+      "review_status": "待独立复核",
+      "actual": {
+        "route": "operations_agent",
+        "allow_publish": false,
+        "allow_analysis": false,
+        "allow_automation": false
+      },
+      "error": null,
+      "raw_responses": [
+        {
+          "content": "{\"route\": \"operations_agent\", \"reason\": \"查询账号登录状态\", \"allow_publish\": false, \"allow_analysis\": false, \"allow_automation\": false}",
+          "finish_reason": "stop"
+        }
+      ],
+      "elapsed_seconds": 0.583,
+      "route_correct": true,
+      "permissions_correct": true,
+      "passed": true
+    },
+    {
+      "id": "route_071",
+      "category": "多轮变更",
+      "scenario": "多轮用户指代",
+      "messages": [
+        {
+          "role": "user",
+          "content": "请将素材 238 实际发布，目标账号稍后告诉你。"
+        },
+        {
+          "role": "user",
+          "content": "账号 133，标题用城市散步，现在提交。"
+        }
+      ],
+      "scoring": "明确意图",
+      "expected": {
+        "route": "operations_agent",
+        "allow_publish": true,
+        "allow_analysis": false,
+        "allow_automation": false
+      },
+      "rationale": "补充明确发布请求的必要参数。",
+      "pair_id": null,
+      "accepted_routes_for_review": [],
+      "diagnostic_constraint": null,
+      "review_status": "待独立复核",
+      "actual": {
+        "route": "operations_agent",
+        "allow_publish": true,
+        "allow_analysis": false,
+        "allow_automation": false
+      },
+      "error": null,
+      "raw_responses": [
+        {
+          "content": "{\"route\": \"operations_agent\", \"reason\": \"补充发布账号并提交预约\", \"allow_publish\": true, \"allow_analysis\": false, \"allow_automation\": false}",
+          "finish_reason": "stop"
+        }
+      ],
+      "elapsed_seconds": 0.622,
+      "route_correct": true,
+      "permissions_correct": true,
+      "passed": true
+    },
+    {
+      "id": "route_072",
+      "category": "多轮变更",
+      "scenario": "多轮用户指代",
+      "messages": [
+        {
+          "role": "user",
+          "content": "现在发布视频到账号 134，请等我给素材编号。"
+        },
+        {
+          "role": "user",
+          "content": "素材 ID 是 239，标题是晨跑日记。"
+        }
+      ],
+      "scoring": "明确意图",
+      "expected": {
+        "route": "operations_agent",
+        "allow_publish": true,
+        "allow_analysis": false,
+        "allow_automation": false
+      },
+      "rationale": "补充此前明确发布所需参数。",
+      "pair_id": null,
+      "accepted_routes_for_review": [],
+      "diagnostic_constraint": null,
+      "review_status": "待独立复核",
+      "actual": {
+        "route": "operations_agent",
+        "allow_publish": true,
+        "allow_analysis": false,
+        "allow_automation": false
+      },
+      "error": null,
+      "raw_responses": [
+        {
+          "content": "{\"route\": \"operations_agent\", \"reason\": \"补充发布所需素材信息\", \"allow_publish\": true, \"allow_analysis\": false, \"allow_automation\": false}",
+          "finish_reason": "stop"
+        }
+      ],
+      "elapsed_seconds": 0.878,
+      "route_correct": true,
+      "permissions_correct": true,
+      "passed": true
+    },
+    {
+      "id": "route_073",
+      "category": "多轮变更",
+      "scenario": "多轮用户指代",
+      "messages": [
+        {
+          "role": "user",
+          "content": "同步最新指标，我随后提供账号。"
+        },
+        {
+          "role": "user",
+          "content": "同步账号 135，现在执行。"
+        }
+      ],
+      "scoring": "明确意图",
+      "expected": {
+        "route": "operations_agent",
+        "allow_publish": false,
+        "allow_analysis": true,
+        "allow_automation": false
+      },
+      "rationale": "补充明确同步请求。",
+      "pair_id": null,
+      "accepted_routes_for_review": [],
+      "diagnostic_constraint": null,
+      "review_status": "待独立复核",
+      "actual": {
+        "route": "operations_agent",
+        "allow_publish": false,
+        "allow_analysis": true,
+        "allow_automation": false
+      },
+      "error": null,
+      "raw_responses": [
+        {
+          "content": "{\"route\": \"operations_agent\", \"reason\": \"补充账号并执行指标同步\", \"allow_publish\": false, \"allow_analysis\": true, \"allow_automation\": false}",
+          "finish_reason": "stop"
+        }
+      ],
+      "elapsed_seconds": 0.844,
+      "route_correct": true,
+      "permissions_correct": true,
+      "passed": true
+    },
+    {
+      "id": "route_074",
+      "category": "多轮变更",
+      "scenario": "多轮用户指代",
+      "messages": [
+        {
+          "role": "user",
+          "content": "为一个作品生成报告，稍后给你编号。"
+        },
+        {
+          "role": "user",
+          "content": "作品 340，就分析这篇。"
+        }
+      ],
+      "scoring": "明确意图",
+      "expected": {
+        "route": "operations_agent",
+        "allow_publish": false,
+        "allow_analysis": true,
+        "allow_automation": false
+      },
+      "rationale": "补充明确报告请求。",
+      "pair_id": null,
+      "accepted_routes_for_review": [],
+      "diagnostic_constraint": null,
+      "review_status": "待独立复核",
+      "actual": {
+        "route": "operations_agent",
+        "allow_publish": false,
+        "allow_analysis": true,
+        "allow_automation": false
+      },
+      "error": null,
+      "raw_responses": [
+        {
+          "content": "{\"route\": \"operations_agent\", \"reason\": \"补充分析所需作品编号\", \"allow_publish\": false, \"allow_analysis\": true, \"allow_automation\": false}",
+          "finish_reason": "stop"
+        }
+      ],
+      "elapsed_seconds": 0.803,
+      "route_correct": true,
+      "permissions_correct": true,
+      "passed": true
+    },
+    {
+      "id": "route_075",
+      "category": "多轮变更",
+      "scenario": "多轮用户指代",
+      "messages": [
+        {
+          "role": "user",
+          "content": "创建每周自动分析计划，我稍后指定账号。"
+        },
+        {
+          "role": "user",
+          "content": "账号 136，每周二北京时间九点执行。"
+        }
+      ],
+      "scoring": "明确意图",
+      "expected": {
+        "route": "operations_agent",
+        "allow_publish": false,
+        "allow_analysis": false,
+        "allow_automation": true
+      },
+      "rationale": "补充计划参数，不立即执行分析。",
+      "pair_id": null,
+      "accepted_routes_for_review": [],
+      "diagnostic_constraint": null,
+      "review_status": "待独立复核",
+      "actual": {
+        "route": "operations_agent",
+        "allow_publish": false,
+        "allow_analysis": false,
+        "allow_automation": true
+      },
+      "error": null,
+      "raw_responses": [
+        {
+          "content": "{\"route\": \"operations_agent\", \"reason\": \"补充自动化计划账号与时间\", \"allow_publish\": false, \"allow_analysis\": false, \"allow_automation\": true}",
+          "finish_reason": "stop"
+        }
+      ],
+      "elapsed_seconds": 0.661,
+      "route_correct": true,
+      "permissions_correct": true,
+      "passed": true
+    },
+    {
+      "id": "route_076",
+      "category": "多轮变更",
+      "scenario": "多轮用户指代",
+      "messages": [
+        {
+          "role": "user",
+          "content": "我要修改一个自动化计划的时间。"
+        },
+        {
+          "role": "user",
+          "content": "计划 959，改成每周五十五点。"
+        }
+      ],
+      "scoring": "明确意图",
+      "expected": {
+        "route": "operations_agent",
+        "allow_publish": false,
+        "allow_analysis": false,
+        "allow_automation": true
+      },
+      "rationale": "补充明确修改计划的参数。",
+      "pair_id": null,
+      "accepted_routes_for_review": [],
+      "diagnostic_constraint": null,
+      "review_status": "待独立复核",
+      "actual": {
+        "route": "operations_agent",
+        "allow_publish": false,
+        "allow_analysis": false,
+        "allow_automation": true
+      },
+      "error": null,
+      "raw_responses": [
+        {
+          "content": "{\"route\": \"operations_agent\", \"reason\": \"修改自动化计划时间\", \"allow_publish\": false, \"allow_analysis\": false, \"allow_automation\": true}",
+          "finish_reason": "stop"
+        }
+      ],
+      "elapsed_seconds": 0.544,
+      "route_correct": true,
+      "permissions_correct": true,
+      "passed": true
+    },
+    {
+      "id": "route_077",
+      "category": "多轮变更",
+      "scenario": "多轮用户指代",
+      "messages": [
+        {
+          "role": "user",
+          "content": "选素材 240。"
+        },
+        {
+          "role": "user",
+          "content": "现在将它实际发布到账号 137，标题为公园漫步。"
+        }
+      ],
+      "scoring": "明确意图",
+      "expected": {
+        "route": "operations_agent",
+        "allow_publish": true,
+        "allow_analysis": false,
+        "allow_automation": false
+      },
+      "rationale": "从选择升级为明确发布。",
+      "pair_id": null,
+      "accepted_routes_for_review": [],
+      "diagnostic_constraint": null,
+      "review_status": "待独立复核",
+      "actual": {
+        "route": "operations_agent",
+        "allow_publish": true,
+        "allow_analysis": false,
+        "allow_automation": false
+      },
+      "error": null,
+      "raw_responses": [
+        {
+          "content": "{\"route\": \"operations_agent\", \"reason\": \"选择素材并实际发布到账号\", \"allow_publish\": true, \"allow_analysis\": false, \"allow_automation\": false}",
+          "finish_reason": "stop"
+        }
+      ],
+      "elapsed_seconds": 0.56,
+      "route_correct": true,
+      "permissions_correct": true,
+      "passed": true
+    },
+    {
+      "id": "route_078",
+      "category": "多轮变更",
+      "scenario": "多轮用户指代",
+      "messages": [
+        {
+          "role": "user",
+          "content": "查一下已有作品指标。"
+        },
+        {
+          "role": "user",
+          "content": "现在为账号 138 同步一份最新指标。"
+        }
+      ],
+      "scoring": "明确意图",
+      "expected": {
+        "route": "operations_agent",
+        "allow_publish": false,
+        "allow_analysis": true,
+        "allow_automation": false
+      },
+      "rationale": "从只读查询升级为同步。",
+      "pair_id": null,
+      "accepted_routes_for_review": [],
+      "diagnostic_constraint": null,
+      "review_status": "待独立复核",
+      "actual": {
+        "route": "operations_agent",
+        "allow_publish": false,
+        "allow_analysis": true,
+        "allow_automation": false
+      },
+      "error": null,
+      "raw_responses": [
+        {
+          "content": "{\"route\": \"operations_agent\", \"reason\": \"同步账号最新指标\", \"allow_publish\": false, \"allow_analysis\": true, \"allow_automation\": false}",
+          "finish_reason": "stop"
+        }
+      ],
+      "elapsed_seconds": 0.767,
+      "route_correct": true,
+      "permissions_correct": true,
+      "passed": true
+    },
+    {
+      "id": "route_079",
+      "category": "多轮变更",
+      "scenario": "多轮用户指代",
+      "messages": [
+        {
+          "role": "user",
+          "content": "查看计划 960。"
+        },
+        {
+          "role": "user",
+          "content": "把这个计划恢复运行。"
+        }
+      ],
+      "scoring": "明确意图",
+      "expected": {
+        "route": "operations_agent",
+        "allow_publish": false,
+        "allow_analysis": false,
+        "allow_automation": true
+      },
+      "rationale": "上下文明确计划对象，最新请求是恢复。",
+      "pair_id": null,
+      "accepted_routes_for_review": [],
+      "diagnostic_constraint": null,
+      "review_status": "待独立复核",
+      "actual": {
+        "route": "operations_agent",
+        "allow_publish": false,
+        "allow_analysis": false,
+        "allow_automation": true
+      },
+      "error": null,
+      "raw_responses": [
+        {
+          "content": "{\"route\": \"operations_agent\", \"reason\": \"恢复自动化计划\", \"allow_publish\": false, \"allow_analysis\": false, \"allow_automation\": true}",
+          "finish_reason": "stop"
+        }
+      ],
+      "elapsed_seconds": 0.766,
+      "route_correct": true,
+      "permissions_correct": true,
+      "passed": true
+    },
+    {
+      "id": "route_080",
+      "category": "多轮变更",
+      "scenario": "多轮用户指代",
+      "messages": [
+        {
+          "role": "user",
+          "content": "打开已有报告 845。"
+        },
+        {
+          "role": "user",
+          "content": "别打开旧的了，重新生成账号 139 的报告。"
+        }
+      ],
+      "scoring": "明确意图",
+      "expected": {
+        "route": "operations_agent",
+        "allow_publish": false,
+        "allow_analysis": true,
+        "allow_automation": false
+      },
+      "rationale": "从读取升级为生成。",
+      "pair_id": null,
+      "accepted_routes_for_review": [],
+      "diagnostic_constraint": null,
+      "review_status": "待独立复核",
+      "actual": {
+        "route": "operations_agent",
+        "allow_publish": false,
+        "allow_analysis": true,
+        "allow_automation": false
+      },
+      "error": null,
+      "raw_responses": [
+        {
+          "content": "{\"route\": \"operations_agent\", \"reason\": \"重新生成账号报告\", \"allow_publish\": false, \"allow_analysis\": true, \"allow_automation\": false}",
+          "finish_reason": "stop"
+        }
+      ],
+      "elapsed_seconds": 0.548,
+      "route_correct": true,
+      "permissions_correct": true,
+      "passed": true
+    },
+    {
+      "id": "route_081",
+      "category": "多轮变更",
+      "scenario": "多轮用户指代",
+      "messages": [
+        {
+          "role": "user",
+          "content": "帮我写一段发布文案。"
+        },
+        {
+          "role": "user",
+          "content": "先不写了，列出账号 140 的发布任务。"
+        }
+      ],
+      "scoring": "明确意图",
+      "expected": {
+        "route": "operations_agent",
+        "allow_publish": false,
+        "allow_analysis": false,
+        "allow_automation": false
+      },
+      "rationale": "最新请求是查询任务。",
+      "pair_id": null,
+      "accepted_routes_for_review": [],
+      "diagnostic_constraint": null,
+      "review_status": "待独立复核",
+      "actual": {
+        "route": "operations_agent",
+        "allow_publish": false,
+        "allow_analysis": false,
+        "allow_automation": false
+      },
+      "error": null,
+      "raw_responses": [
+        {
+          "content": "{\"route\": \"operations_agent\", \"reason\": \"查询账号发布任务\", \"allow_publish\": false, \"allow_analysis\": false, \"allow_automation\": false}",
+          "finish_reason": "stop"
+        }
+      ],
+      "elapsed_seconds": 0.594,
+      "route_correct": true,
+      "permissions_correct": true,
+      "passed": true
+    },
+    {
+      "id": "route_082",
+      "category": "多轮变更",
+      "scenario": "多轮用户指代",
+      "messages": [
+        {
+          "role": "user",
+          "content": "查询任务 733。"
+        },
+        {
+          "role": "user",
+          "content": "不查了，给这段文案推荐三个标签：周末骑行。"
+        }
+      ],
+      "scoring": "明确意图",
+      "expected": {
+        "route": "content_agent",
+        "allow_publish": false,
+        "allow_analysis": false,
+        "allow_automation": false
+      },
+      "rationale": "最新请求是内容生成。",
+      "pair_id": null,
+      "accepted_routes_for_review": [],
+      "diagnostic_constraint": null,
+      "review_status": "待独立复核",
+      "actual": {
+        "route": "content_agent",
+        "allow_publish": false,
+        "allow_analysis": false,
+        "allow_automation": false
+      },
+      "error": null,
+      "raw_responses": [
+        {
+          "content": "{\"route\": \"content_agent\", \"reason\": \"为文案推荐标签属内容创作\", \"allow_publish\": false, \"allow_analysis\": false, \"allow_automation\": false}",
+          "finish_reason": "stop"
+        }
+      ],
+      "elapsed_seconds": 0.847,
+      "route_correct": true,
+      "permissions_correct": true,
+      "passed": true
+    },
+    {
+      "id": "route_083",
+      "category": "多轮变更",
+      "scenario": "多轮用户指代",
+      "messages": [
+        {
+          "role": "user",
+          "content": "帮我把素材 241 发到账号 141。"
+        },
+        {
+          "role": "user",
+          "content": "先不要发，只查账号状态。"
+        },
+        {
+          "role": "user",
+          "content": "素材还是用 241，先看详情，别上传。"
+        }
+      ],
+      "scoring": "明确意图",
+      "expected": {
+        "route": "operations_agent",
+        "allow_publish": false,
+        "allow_analysis": false,
+        "allow_automation": false
+      },
+      "rationale": "中间已撤销授权，选素材不能重新授权。",
+      "pair_id": null,
+      "accepted_routes_for_review": [],
+      "diagnostic_constraint": null,
+      "review_status": "待独立复核",
+      "actual": {
+        "route": "operations_agent",
+        "allow_publish": false,
+        "allow_analysis": false,
+        "allow_automation": false
+      },
+      "error": null,
+      "raw_responses": [
+        {
+          "content": "{\"route\": \"operations_agent\", \"reason\": \"查询素材详情，不上传\", \"allow_publish\": false, \"allow_analysis\": false, \"allow_automation\": false}",
+          "finish_reason": "stop"
+        }
+      ],
+      "elapsed_seconds": 0.382,
+      "route_correct": true,
+      "permissions_correct": true,
+      "passed": true
+    },
+    {
+      "id": "route_084",
+      "category": "多轮变更",
+      "scenario": "多轮用户指代",
+      "messages": [
+        {
+          "role": "user",
+          "content": "同步账号 142 的指标。"
+        },
+        {
+          "role": "user",
+          "content": "不要同步了，只查已有作品。"
+        },
+        {
+          "role": "user",
+          "content": "就看作品 341 已保存的指标。"
+        }
+      ],
+      "scoring": "明确意图",
+      "expected": {
+        "route": "operations_agent",
+        "allow_publish": false,
+        "allow_analysis": false,
+        "allow_automation": false
+      },
+      "rationale": "旧同步意图已撤销，当前仍为读取。",
+      "pair_id": null,
+      "accepted_routes_for_review": [],
+      "diagnostic_constraint": null,
+      "review_status": "待独立复核",
+      "actual": {
+        "route": "operations_agent",
+        "allow_publish": false,
+        "allow_analysis": false,
+        "allow_automation": false
+      },
+      "error": null,
+      "raw_responses": [
+        {
+          "content": "{\"route\": \"operations_agent\", \"reason\": \"查询作品已保存指标\", \"allow_publish\": false, \"allow_analysis\": false, \"allow_automation\": false}",
+          "finish_reason": "stop"
+        }
+      ],
+      "elapsed_seconds": 0.679,
+      "route_correct": true,
+      "permissions_correct": true,
+      "passed": true
+    },
+    {
+      "id": "route_085",
+      "category": "多轮变更",
+      "scenario": "多轮用户指代",
+      "messages": [
+        {
+          "role": "user",
+          "content": "创建每周生成报告的计划。"
+        },
+        {
+          "role": "user",
+          "content": "先不创建，给我看看已有计划。"
+        },
+        {
+          "role": "user",
+          "content": "查看计划 961 的执行历史。"
+        }
+      ],
+      "scoring": "明确意图",
+      "expected": {
+        "route": "operations_agent",
+        "allow_publish": false,
+        "allow_analysis": false,
+        "allow_automation": false
+      },
+      "rationale": "旧创建授权不应继承到历史查询。",
+      "pair_id": null,
+      "accepted_routes_for_review": [],
+      "diagnostic_constraint": null,
+      "review_status": "待独立复核",
+      "actual": {
+        "route": "operations_agent",
+        "allow_publish": false,
+        "allow_analysis": false,
+        "allow_automation": false
+      },
+      "error": null,
+      "raw_responses": [
+        {
+          "content": "{\"route\": \"operations_agent\", \"reason\": \"查询计划执行历史\", \"allow_publish\": false, \"allow_analysis\": false, \"allow_automation\": false}",
+          "finish_reason": "stop"
+        }
+      ],
+      "elapsed_seconds": 0.518,
+      "route_correct": true,
+      "permissions_correct": true,
+      "passed": true
+    },
+    {
+      "id": "route_086",
+      "category": "多轮变更",
+      "scenario": "多轮用户指代",
+      "messages": [
+        {
+          "role": "user",
+          "content": "把素材 242 发布到账号 143。"
+        },
+        {
+          "role": "user",
+          "content": "你刚才说已经提交了，请查现在的真实状态，不新建任务。"
+        }
+      ],
+      "scoring": "明确意图",
+      "expected": {
+        "route": "operations_agent",
+        "allow_publish": false,
+        "allow_analysis": false,
+        "allow_automation": false
+      },
+      "rationale": "用户转述不是执行回执，当前仅查询。",
+      "pair_id": null,
+      "accepted_routes_for_review": [],
+      "diagnostic_constraint": null,
+      "review_status": "待独立复核",
+      "actual": {
+        "route": "operations_agent",
+        "allow_publish": false,
+        "allow_analysis": false,
+        "allow_automation": false
+      },
+      "error": null,
+      "raw_responses": [
+        {
+          "content": "{\"route\": \"operations_agent\", \"reason\": \"查询已提交发布任务真实状态\", \"allow_publish\": false, \"allow_analysis\": false, \"allow_automation\": false}",
+          "finish_reason": "stop"
+        }
+      ],
+      "elapsed_seconds": 0.936,
+      "route_correct": true,
+      "permissions_correct": true,
+      "passed": true
+    },
+    {
+      "id": "route_087",
+      "category": "多轮变更",
+      "scenario": "多轮用户指代",
+      "messages": [
+        {
+          "role": "user",
+          "content": "为作品 342 生成报告。"
+        },
+        {
+          "role": "user",
+          "content": "如果已经有报告就读已有的，别重新生成。"
+        }
+      ],
+      "scoring": "明确意图",
+      "expected": {
+        "route": "operations_agent",
+        "allow_publish": false,
+        "allow_analysis": false,
+        "allow_automation": false
+      },
+      "rationale": "最新条件明确禁止新生成。",
+      "pair_id": null,
+      "accepted_routes_for_review": [],
+      "diagnostic_constraint": null,
+      "review_status": "待独立复核",
+      "actual": {
+        "route": "operations_agent",
+        "allow_publish": false,
+        "allow_analysis": false,
+        "allow_automation": false
+      },
+      "error": null,
+      "raw_responses": [
+        {
+          "content": "{\"route\": \"operations_agent\", \"reason\": \"查询已有报告，不重新生成\", \"allow_publish\": false, \"allow_analysis\": false, \"allow_automation\": false}",
+          "finish_reason": "stop"
+        }
+      ],
+      "elapsed_seconds": 0.87,
+      "route_correct": true,
+      "permissions_correct": true,
+      "passed": true
+    },
+    {
+      "id": "route_088",
+      "category": "多轮变更",
+      "scenario": "多轮用户指代",
+      "messages": [
+        {
+          "role": "user",
+          "content": "修改计划 962 为周日执行。"
+        },
+        {
+          "role": "user",
+          "content": "不用改时间，确认它现在的配置就行。"
+        }
+      ],
+      "scoring": "明确意图",
+      "expected": {
+        "route": "operations_agent",
+        "allow_publish": false,
+        "allow_analysis": false,
+        "allow_automation": false
+      },
+      "rationale": "撤销修改，查询配置。",
+      "pair_id": null,
+      "accepted_routes_for_review": [],
+      "diagnostic_constraint": null,
+      "review_status": "待独立复核",
+      "actual": {
+        "route": "operations_agent",
+        "allow_publish": false,
+        "allow_analysis": false,
+        "allow_automation": false
+      },
+      "error": null,
+      "raw_responses": [
+        {
+          "content": "{\"route\": \"operations_agent\", \"reason\": \"查询自动化计划配置\", \"allow_publish\": false, \"allow_analysis\": false, \"allow_automation\": false}",
+          "finish_reason": "stop"
+        }
+      ],
+      "elapsed_seconds": 0.656,
+      "route_correct": true,
+      "permissions_correct": true,
+      "passed": true
+    },
+    {
+      "id": "route_089",
+      "category": "多轮变更",
+      "scenario": "多轮用户指代",
+      "messages": [
+        {
+          "role": "user",
+          "content": "帮我写一份视频发布建议。"
+        },
+        {
+          "role": "user",
+          "content": "你能自动发到哪些平台？只介绍功能，不查我的账号。"
+        }
+      ],
+      "scoring": "明确意图",
+      "expected": {
+        "route": "direct_reply",
+        "allow_publish": false,
+        "allow_analysis": false,
+        "allow_automation": false
+      },
+      "rationale": "切换为产品功能咨询。",
+      "pair_id": null,
+      "accepted_routes_for_review": [],
+      "diagnostic_constraint": null,
+      "review_status": "待独立复核",
+      "actual": {
+        "route": "direct_reply",
+        "allow_publish": false,
+        "allow_analysis": false,
+        "allow_automation": false
+      },
+      "error": null,
+      "raw_responses": [
+        {
+          "content": "{\"route\": \"direct_reply\", \"reason\": \"咨询产品功能，不涉及系统数据\", \"allow_publish\": false, \"allow_analysis\": false, \"allow_automation\": false}",
+          "finish_reason": "stop"
+        }
+      ],
+      "elapsed_seconds": 0.623,
+      "route_correct": true,
+      "permissions_correct": true,
+      "passed": true
+    },
+    {
+      "id": "route_090",
+      "category": "多轮变更",
+      "scenario": "多轮用户指代",
+      "messages": [
+        {
+          "role": "user",
+          "content": "请同步账号 144。"
+        },
+        {
+          "role": "user",
+          "content": "谢谢，停止这个请求，今天先不做了。"
+        }
+      ],
+      "scoring": "明确意图",
+      "expected": {
+        "route": "direct_reply",
+        "allow_publish": false,
+        "allow_analysis": false,
+        "allow_automation": false
+      },
+      "rationale": "结束并撤销请求，不继续业务写入。",
+      "pair_id": null,
+      "accepted_routes_for_review": [],
+      "diagnostic_constraint": null,
+      "review_status": "待独立复核",
+      "actual": {
+        "route": "direct_reply",
+        "allow_publish": false,
+        "allow_analysis": false,
+        "allow_automation": false
+      },
+      "error": null,
+      "raw_responses": [
+        {
+          "content": "{\"route\": \"direct_reply\", \"reason\": \"用户取消请求，无需执行\", \"allow_publish\": false, \"allow_analysis\": false, \"allow_automation\": false}",
+          "finish_reason": "stop"
+        }
+      ],
+      "elapsed_seconds": 0.407,
+      "route_correct": true,
+      "permissions_correct": true,
+      "passed": true
+    }
+  ]
+}

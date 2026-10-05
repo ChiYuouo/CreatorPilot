@@ -1,0 +1,325 @@
+{
+  "evaluated_at": "2026-10-05T16:43:18.762283+08:00",
+  "redis_mode": "内存模拟",
+  "summary": {
+    "total": 30,
+    "passed": 30,
+    "categories": {
+      "跨用户隔离": {
+        "total": 6,
+        "passed": 6
+      },
+      "跨会话隔离": {
+        "total": 6,
+        "passed": 6
+      },
+      "并发读写隔离": {
+        "total": 6,
+        "passed": 6
+      },
+      "定向删除隔离": {
+        "total": 4,
+        "passed": 4
+      },
+      "历史输入截断": {
+        "total": 4,
+        "passed": 4
+      },
+      "TTL 设置与模拟到期": {
+        "total": 2,
+        "passed": 2
+      },
+      "损坏历史兜底": {
+        "total": 2,
+        "passed": 2
+      }
+    }
+  },
+  "cases": [
+    {
+      "id": "memory_001",
+      "category": "跨用户隔离",
+      "size": 1,
+      "passed": true,
+      "details": {
+        "历史与工具记忆均隔离": true
+      }
+    },
+    {
+      "id": "memory_002",
+      "category": "跨用户隔离",
+      "size": 2,
+      "passed": true,
+      "details": {
+        "历史与工具记忆均隔离": true
+      }
+    },
+    {
+      "id": "memory_003",
+      "category": "跨用户隔离",
+      "size": 3,
+      "passed": true,
+      "details": {
+        "历史与工具记忆均隔离": true
+      }
+    },
+    {
+      "id": "memory_004",
+      "category": "跨用户隔离",
+      "size": 4,
+      "passed": true,
+      "details": {
+        "历史与工具记忆均隔离": true
+      }
+    },
+    {
+      "id": "memory_005",
+      "category": "跨用户隔离",
+      "size": 5,
+      "passed": true,
+      "details": {
+        "历史与工具记忆均隔离": true
+      }
+    },
+    {
+      "id": "memory_006",
+      "category": "跨用户隔离",
+      "size": 6,
+      "passed": true,
+      "details": {
+        "历史与工具记忆均隔离": true
+      }
+    },
+    {
+      "id": "memory_007",
+      "category": "跨会话隔离",
+      "size": 1,
+      "passed": true,
+      "details": {
+        "历史与工具记忆均隔离": true
+      }
+    },
+    {
+      "id": "memory_008",
+      "category": "跨会话隔离",
+      "size": 2,
+      "passed": true,
+      "details": {
+        "历史与工具记忆均隔离": true
+      }
+    },
+    {
+      "id": "memory_009",
+      "category": "跨会话隔离",
+      "size": 3,
+      "passed": true,
+      "details": {
+        "历史与工具记忆均隔离": true
+      }
+    },
+    {
+      "id": "memory_010",
+      "category": "跨会话隔离",
+      "size": 4,
+      "passed": true,
+      "details": {
+        "历史与工具记忆均隔离": true
+      }
+    },
+    {
+      "id": "memory_011",
+      "category": "跨会话隔离",
+      "size": 5,
+      "passed": true,
+      "details": {
+        "历史与工具记忆均隔离": true
+      }
+    },
+    {
+      "id": "memory_012",
+      "category": "跨会话隔离",
+      "size": 6,
+      "passed": true,
+      "details": {
+        "历史与工具记忆均隔离": true
+      }
+    },
+    {
+      "id": "memory_013",
+      "category": "并发读写隔离",
+      "size": 3,
+      "passed": true,
+      "details": {
+        "并发会话数": 3,
+        "读取匹配数": 3
+      }
+    },
+    {
+      "id": "memory_014",
+      "category": "并发读写隔离",
+      "size": 5,
+      "passed": true,
+      "details": {
+        "并发会话数": 5,
+        "读取匹配数": 5
+      }
+    },
+    {
+      "id": "memory_015",
+      "category": "并发读写隔离",
+      "size": 10,
+      "passed": true,
+      "details": {
+        "并发会话数": 10,
+        "读取匹配数": 10
+      }
+    },
+    {
+      "id": "memory_016",
+      "category": "并发读写隔离",
+      "size": 20,
+      "passed": true,
+      "details": {
+        "并发会话数": 20,
+        "读取匹配数": 20
+      }
+    },
+    {
+      "id": "memory_017",
+      "category": "并发读写隔离",
+      "size": 30,
+      "passed": true,
+      "details": {
+        "并发会话数": 30,
+        "读取匹配数": 30
+      }
+    },
+    {
+      "id": "memory_018",
+      "category": "并发读写隔离",
+      "size": 50,
+      "passed": true,
+      "details": {
+        "并发会话数": 50,
+        "读取匹配数": 50
+      }
+    },
+    {
+      "id": "memory_019",
+      "category": "定向删除隔离",
+      "size": 1,
+      "passed": true,
+      "details": {
+        "历史与工具记忆均隔离": true
+      }
+    },
+    {
+      "id": "memory_020",
+      "category": "定向删除隔离",
+      "size": 2,
+      "passed": true,
+      "details": {
+        "历史与工具记忆均隔离": true
+      }
+    },
+    {
+      "id": "memory_021",
+      "category": "定向删除隔离",
+      "size": 3,
+      "passed": true,
+      "details": {
+        "历史与工具记忆均隔离": true
+      }
+    },
+    {
+      "id": "memory_022",
+      "category": "定向删除隔离",
+      "size": 4,
+      "passed": true,
+      "details": {
+        "历史与工具记忆均隔离": true
+      }
+    },
+    {
+      "id": "memory_023",
+      "category": "历史输入截断",
+      "size": 20,
+      "passed": true,
+      "details": {
+        "初始历史条数": 20,
+        "图输入条数": 20,
+        "回复后存储条数": 21
+      }
+    },
+    {
+      "id": "memory_024",
+      "category": "历史输入截断",
+      "size": 25,
+      "passed": true,
+      "details": {
+        "初始历史条数": 25,
+        "图输入条数": 20,
+        "回复后存储条数": 21
+      }
+    },
+    {
+      "id": "memory_025",
+      "category": "历史输入截断",
+      "size": 50,
+      "passed": true,
+      "details": {
+        "初始历史条数": 50,
+        "图输入条数": 20,
+        "回复后存储条数": 21
+      }
+    },
+    {
+      "id": "memory_026",
+      "category": "历史输入截断",
+      "size": 100,
+      "passed": true,
+      "details": {
+        "初始历史条数": 100,
+        "图输入条数": 20,
+        "回复后存储条数": 21
+      }
+    },
+    {
+      "id": "memory_027",
+      "category": "TTL 设置与模拟到期",
+      "size": 0,
+      "passed": true,
+      "details": {
+        "TTL参数秒数": 604800,
+        "验证写入数": 2
+      }
+    },
+    {
+      "id": "memory_028",
+      "category": "TTL 设置与模拟到期",
+      "size": 1,
+      "passed": true,
+      "details": {
+        "虚拟时钟到期后历史及工具记忆为空": true
+      }
+    },
+    {
+      "id": "memory_029",
+      "category": "损坏历史兜底",
+      "size": 0,
+      "passed": true,
+      "details": {
+        "错误JSON或非列表按空历史处理": true
+      }
+    },
+    {
+      "id": "memory_030",
+      "category": "损坏历史兜底",
+      "size": 1,
+      "passed": true,
+      "details": {
+        "错误JSON或非列表按空历史处理": true
+      }
+    }
+  ]
+}

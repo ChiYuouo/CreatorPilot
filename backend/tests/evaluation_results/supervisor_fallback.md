@@ -1,6 +1,6 @@
 # Supervisor 路由兜底评测报告
 
-评测时间（北京时间）：2026-10-05T15:16:58.235038+08:00
+评测时间（北京时间）：2026-10-05T16:28:42.979362+08:00
 
 测试范围：真实 Supervisor 节点与预设模型响应；不评测语义准确率或服务层异常处理。
 
@@ -82,6 +82,6 @@
 ## 复现信息
 
 - Python：3.12.10
-- Git 提交：2d3503c04c9e721310c8116d46040b7b9cf0b619（被测文件内容哈希见原始记录）
+- Git 提交：3647096d16c028a1d55506ea23423ff4a47eb422（被测文件内容哈希见原始记录）
 - 在 backend 目录运行：`.venv/Scripts/python.exe tests/evaluate_supervisor_fallback.py`
 - [完整原始记录](supervisor_fallback.json)

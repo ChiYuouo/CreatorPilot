@@ -1,0 +1,1375 @@
+{
+  "evaluated_at": "2026-10-05T16:39:42.325121+08:00",
+  "summary": {
+    "total": 20,
+    "passed": 20,
+    "categories": {
+      "无回执声明拦截": {
+        "total": 6,
+        "passed": 6
+      },
+      "轮数上限终止": {
+        "total": 8,
+        "passed": 8
+      },
+      "工具错误回传与恢复": {
+        "total": 4,
+        "passed": 4
+      },
+      "流式工具参数拼接": {
+        "total": 2,
+        "passed": 2
+      }
+    }
+  },
+  "cases": [
+    {
+      "id": "guard_001",
+      "category": "无回执声明拦截",
+      "stage": "operations_agent",
+      "limit": 5,
+      "checks": {
+        "重试一次": true,
+        "原无依据声明未流出": true,
+        "返回无法确认提示": true,
+        "未执行业务": true
+      },
+      "passed": true,
+      "model_rounds": 2,
+      "result": {
+        "final_content": "本轮未取得业务工具结果，无法确认任务是否已创建或当前状态。请提供任务编号，或明确要查询的账号、素材或任务范围。",
+        "messages": [
+          {
+            "role": "user",
+            "content": "查询素材201"
+          },
+          {
+            "role": "assistant",
+            "content": "本轮未取得业务工具结果，无法确认任务是否已创建或当前状态。请提供任务编号，或明确要查询的账号、素材或任务范围。"
+          }
+        ]
+      },
+      "events": [
+        {
+          "type": "stage",
+          "stage": "operations_agent",
+          "status": "start"
+        },
+        {
+          "type": "token",
+          "text": "本轮未取得业务工具结果，无法确认任务是否已创建或当前状态。请提供任务编号，或明确要查询的账号、素材或任务范围。"
+        },
+        {
+          "type": "stage",
+          "stage": "operations_agent",
+          "status": "done"
+        }
+      ],
+      "error": null
+    },
+    {
+      "id": "guard_002",
+      "category": "无回执声明拦截",
+      "stage": "operations_agent",
+      "limit": 5,
+      "checks": {
+        "重试一次": true,
+        "原无依据声明未流出": true,
+        "返回无法确认提示": true,
+        "未执行业务": true
+      },
+      "passed": true,
+      "model_rounds": 2,
+      "result": {
+        "final_content": "本轮未取得业务工具结果，无法确认任务是否已创建或当前状态。请提供任务编号，或明确要查询的账号、素材或任务范围。",
+        "messages": [
+          {
+            "role": "user",
+            "content": "查询素材201"
+          },
+          {
+            "role": "assistant",
+            "content": "本轮未取得业务工具结果，无法确认任务是否已创建或当前状态。请提供任务编号，或明确要查询的账号、素材或任务范围。"
+          }
+        ]
+      },
+      "events": [
+        {
+          "type": "stage",
+          "stage": "operations_agent",
+          "status": "start"
+        },
+        {
+          "type": "token",
+          "text": "本轮未取得业务工具结果，无法确认任务是否已创建或当前状态。请提供任务编号，或明确要查询的账号、素材或任务范围。"
+        },
+        {
+          "type": "stage",
+          "stage": "operations_agent",
+          "status": "done"
+        }
+      ],
+      "error": null
+    },
+    {
+      "id": "guard_003",
+      "category": "无回执声明拦截",
+      "stage": "operations_agent",
+      "limit": 5,
+      "checks": {
+        "重试一次": true,
+        "原无依据声明未流出": true,
+        "返回无法确认提示": true,
+        "未执行业务": true
+      },
+      "passed": true,
+      "model_rounds": 2,
+      "result": {
+        "final_content": "本轮未取得业务工具结果，无法确认任务是否已创建或当前状态。请提供任务编号，或明确要查询的账号、素材或任务范围。",
+        "messages": [
+          {
+            "role": "user",
+            "content": "查询素材201"
+          },
+          {
+            "role": "assistant",
+            "content": "本轮未取得业务工具结果，无法确认任务是否已创建或当前状态。请提供任务编号，或明确要查询的账号、素材或任务范围。"
+          }
+        ]
+      },
+      "events": [
+        {
+          "type": "stage",
+          "stage": "operations_agent",
+          "status": "start"
+        },
+        {
+          "type": "token",
+          "text": "本轮未取得业务工具结果，无法确认任务是否已创建或当前状态。请提供任务编号，或明确要查询的账号、素材或任务范围。"
+        },
+        {
+          "type": "stage",
+          "stage": "operations_agent",
+          "status": "done"
+        }
+      ],
+      "error": null
+    },
+    {
+      "id": "guard_004",
+      "category": "无回执声明拦截",
+      "stage": "operations_agent",
+      "limit": 5,
+      "checks": {
+        "重试一次": true,
+        "原无依据声明未流出": true,
+        "返回无法确认提示": true,
+        "未执行业务": true
+      },
+      "passed": true,
+      "model_rounds": 2,
+      "result": {
+        "final_content": "本轮未取得业务工具结果，无法确认任务是否已创建或当前状态。请提供任务编号，或明确要查询的账号、素材或任务范围。",
+        "messages": [
+          {
+            "role": "user",
+            "content": "查询素材201"
+          },
+          {
+            "role": "assistant",
+            "content": "本轮未取得业务工具结果，无法确认任务是否已创建或当前状态。请提供任务编号，或明确要查询的账号、素材或任务范围。"
+          }
+        ]
+      },
+      "events": [
+        {
+          "type": "stage",
+          "stage": "operations_agent",
+          "status": "start"
+        },
+        {
+          "type": "token",
+          "text": "本轮未取得业务工具结果，无法确认任务是否已创建或当前状态。请提供任务编号，或明确要查询的账号、素材或任务范围。"
+        },
+        {
+          "type": "stage",
+          "stage": "operations_agent",
+          "status": "done"
+        }
+      ],
+      "error": null
+    },
+    {
+      "id": "guard_005",
+      "category": "无回执声明拦截",
+      "stage": "operations_agent",
+      "limit": 5,
+      "checks": {
+        "重试一次": true,
+        "原无依据声明未流出": true,
+        "返回无法确认提示": true,
+        "未执行业务": true
+      },
+      "passed": true,
+      "model_rounds": 2,
+      "result": {
+        "final_content": "本轮未取得业务工具结果，无法确认任务是否已创建或当前状态。请提供任务编号，或明确要查询的账号、素材或任务范围。",
+        "messages": [
+          {
+            "role": "user",
+            "content": "查询素材201"
+          },
+          {
+            "role": "assistant",
+            "content": "本轮未取得业务工具结果，无法确认任务是否已创建或当前状态。请提供任务编号，或明确要查询的账号、素材或任务范围。"
+          }
+        ]
+      },
+      "events": [
+        {
+          "type": "stage",
+          "stage": "operations_agent",
+          "status": "start"
+        },
+        {
+          "type": "token",
+          "text": "本轮未取得业务工具结果，无法确认任务是否已创建或当前状态。请提供任务编号，或明确要查询的账号、素材或任务范围。"
+        },
+        {
+          "type": "stage",
+          "stage": "operations_agent",
+          "status": "done"
+        }
+      ],
+      "error": null
+    },
+    {
+      "id": "guard_006",
+      "category": "无回执声明拦截",
+      "stage": "operations_agent",
+      "limit": 5,
+      "checks": {
+        "重试一次": true,
+        "原无依据声明未流出": true,
+        "返回无法确认提示": true,
+        "未执行业务": true
+      },
+      "passed": true,
+      "model_rounds": 2,
+      "result": {
+        "final_content": "本轮未取得业务工具结果，无法确认任务是否已创建或当前状态。请提供任务编号，或明确要查询的账号、素材或任务范围。",
+        "messages": [
+          {
+            "role": "user",
+            "content": "查询素材201"
+          },
+          {
+            "role": "assistant",
+            "content": "本轮未取得业务工具结果，无法确认任务是否已创建或当前状态。请提供任务编号，或明确要查询的账号、素材或任务范围。"
+          }
+        ]
+      },
+      "events": [
+        {
+          "type": "stage",
+          "stage": "operations_agent",
+          "status": "start"
+        },
+        {
+          "type": "token",
+          "text": "本轮未取得业务工具结果，无法确认任务是否已创建或当前状态。请提供任务编号，或明确要查询的账号、素材或任务范围。"
+        },
+        {
+          "type": "stage",
+          "stage": "operations_agent",
+          "status": "done"
+        }
+      ],
+      "error": null
+    },
+    {
+      "id": "guard_007",
+      "category": "轮数上限终止",
+      "stage": "operations_agent",
+      "limit": 1,
+      "checks": {
+        "调用轮数未超限": true,
+        "收到轮数上限事件": true,
+        "结果说明超限": true
+      },
+      "passed": true,
+      "model_rounds": 1,
+      "result": {
+        "final_content": "工具调用轮数超过上限；已提交的任务不会撤销，请根据返回的任务 ID 查询进度。",
+        "messages": [
+          {
+            "role": "user",
+            "content": "查询素材201"
+          },
+          {
+            "role": "assistant",
+            "content": "工具调用轮数超过上限；已提交的任务不会撤销，请根据返回的任务 ID 查询进度。"
+          }
+        ]
+      },
+      "events": [
+        {
+          "type": "stage",
+          "stage": "operations_agent",
+          "status": "start"
+        },
+        {
+          "type": "tool_call",
+          "id": "call1",
+          "name": "get_asset",
+          "arguments": "{\"asset_id\":201}"
+        },
+        {
+          "type": "tool_result",
+          "id": "call1",
+          "name": "get_asset",
+          "ok": true,
+          "output": {
+            "id": 201
+          }
+        },
+        {
+          "type": "error",
+          "message": "工具调用轮数超过上限"
+        },
+        {
+          "type": "stage",
+          "stage": "operations_agent",
+          "status": "done"
+        }
+      ],
+      "error": null
+    },
+    {
+      "id": "guard_008",
+      "category": "轮数上限终止",
+      "stage": "operations_agent",
+      "limit": 2,
+      "checks": {
+        "调用轮数未超限": true,
+        "收到轮数上限事件": true,
+        "结果说明超限": true
+      },
+      "passed": true,
+      "model_rounds": 2,
+      "result": {
+        "final_content": "工具调用轮数超过上限；已提交的任务不会撤销，请根据返回的任务 ID 查询进度。",
+        "messages": [
+          {
+            "role": "user",
+            "content": "查询素材201"
+          },
+          {
+            "role": "assistant",
+            "content": "工具调用轮数超过上限；已提交的任务不会撤销，请根据返回的任务 ID 查询进度。"
+          }
+        ]
+      },
+      "events": [
+        {
+          "type": "stage",
+          "stage": "operations_agent",
+          "status": "start"
+        },
+        {
+          "type": "tool_call",
+          "id": "call1",
+          "name": "get_asset",
+          "arguments": "{\"asset_id\":201}"
+        },
+        {
+          "type": "tool_result",
+          "id": "call1",
+          "name": "get_asset",
+          "ok": true,
+          "output": {
+            "id": 201
+          }
+        },
+        {
+          "type": "tool_call",
+          "id": "call1",
+          "name": "get_asset",
+          "arguments": "{\"asset_id\":201}"
+        },
+        {
+          "type": "tool_result",
+          "id": "call1",
+          "name": "get_asset",
+          "ok": true,
+          "output": {
+            "id": 201
+          }
+        },
+        {
+          "type": "error",
+          "message": "工具调用轮数超过上限"
+        },
+        {
+          "type": "stage",
+          "stage": "operations_agent",
+          "status": "done"
+        }
+      ],
+      "error": null
+    },
+    {
+      "id": "guard_009",
+      "category": "轮数上限终止",
+      "stage": "operations_agent",
+      "limit": 3,
+      "checks": {
+        "调用轮数未超限": true,
+        "收到轮数上限事件": true,
+        "结果说明超限": true
+      },
+      "passed": true,
+      "model_rounds": 3,
+      "result": {
+        "final_content": "工具调用轮数超过上限；已提交的任务不会撤销，请根据返回的任务 ID 查询进度。",
+        "messages": [
+          {
+            "role": "user",
+            "content": "查询素材201"
+          },
+          {
+            "role": "assistant",
+            "content": "工具调用轮数超过上限；已提交的任务不会撤销，请根据返回的任务 ID 查询进度。"
+          }
+        ]
+      },
+      "events": [
+        {
+          "type": "stage",
+          "stage": "operations_agent",
+          "status": "start"
+        },
+        {
+          "type": "tool_call",
+          "id": "call1",
+          "name": "get_asset",
+          "arguments": "{\"asset_id\":201}"
+        },
+        {
+          "type": "tool_result",
+          "id": "call1",
+          "name": "get_asset",
+          "ok": true,
+          "output": {
+            "id": 201
+          }
+        },
+        {
+          "type": "tool_call",
+          "id": "call1",
+          "name": "get_asset",
+          "arguments": "{\"asset_id\":201}"
+        },
+        {
+          "type": "tool_result",
+          "id": "call1",
+          "name": "get_asset",
+          "ok": true,
+          "output": {
+            "id": 201
+          }
+        },
+        {
+          "type": "tool_call",
+          "id": "call1",
+          "name": "get_asset",
+          "arguments": "{\"asset_id\":201}"
+        },
+        {
+          "type": "tool_result",
+          "id": "call1",
+          "name": "get_asset",
+          "ok": true,
+          "output": {
+            "id": 201
+          }
+        },
+        {
+          "type": "error",
+          "message": "工具调用轮数超过上限"
+        },
+        {
+          "type": "stage",
+          "stage": "operations_agent",
+          "status": "done"
+        }
+      ],
+      "error": null
+    },
+    {
+      "id": "guard_010",
+      "category": "轮数上限终止",
+      "stage": "operations_agent",
+      "limit": 5,
+      "checks": {
+        "调用轮数未超限": true,
+        "收到轮数上限事件": true,
+        "结果说明超限": true
+      },
+      "passed": true,
+      "model_rounds": 5,
+      "result": {
+        "final_content": "工具调用轮数超过上限；已提交的任务不会撤销，请根据返回的任务 ID 查询进度。",
+        "messages": [
+          {
+            "role": "user",
+            "content": "查询素材201"
+          },
+          {
+            "role": "assistant",
+            "content": "工具调用轮数超过上限；已提交的任务不会撤销，请根据返回的任务 ID 查询进度。"
+          }
+        ]
+      },
+      "events": [
+        {
+          "type": "stage",
+          "stage": "operations_agent",
+          "status": "start"
+        },
+        {
+          "type": "tool_call",
+          "id": "call1",
+          "name": "get_asset",
+          "arguments": "{\"asset_id\":201}"
+        },
+        {
+          "type": "tool_result",
+          "id": "call1",
+          "name": "get_asset",
+          "ok": true,
+          "output": {
+            "id": 201
+          }
+        },
+        {
+          "type": "tool_call",
+          "id": "call1",
+          "name": "get_asset",
+          "arguments": "{\"asset_id\":201}"
+        },
+        {
+          "type": "tool_result",
+          "id": "call1",
+          "name": "get_asset",
+          "ok": true,
+          "output": {
+            "id": 201
+          }
+        },
+        {
+          "type": "tool_call",
+          "id": "call1",
+          "name": "get_asset",
+          "arguments": "{\"asset_id\":201}"
+        },
+        {
+          "type": "tool_result",
+          "id": "call1",
+          "name": "get_asset",
+          "ok": true,
+          "output": {
+            "id": 201
+          }
+        },
+        {
+          "type": "tool_call",
+          "id": "call1",
+          "name": "get_asset",
+          "arguments": "{\"asset_id\":201}"
+        },
+        {
+          "type": "tool_result",
+          "id": "call1",
+          "name": "get_asset",
+          "ok": true,
+          "output": {
+            "id": 201
+          }
+        },
+        {
+          "type": "tool_call",
+          "id": "call1",
+          "name": "get_asset",
+          "arguments": "{\"asset_id\":201}"
+        },
+        {
+          "type": "tool_result",
+          "id": "call1",
+          "name": "get_asset",
+          "ok": true,
+          "output": {
+            "id": 201
+          }
+        },
+        {
+          "type": "error",
+          "message": "工具调用轮数超过上限"
+        },
+        {
+          "type": "stage",
+          "stage": "operations_agent",
+          "status": "done"
+        }
+      ],
+      "error": null
+    },
+    {
+      "id": "guard_011",
+      "category": "轮数上限终止",
+      "stage": "content_agent",
+      "limit": 1,
+      "checks": {
+        "调用轮数未超限": true,
+        "收到轮数上限事件": true,
+        "结果说明超限": true
+      },
+      "passed": true,
+      "model_rounds": 1,
+      "result": {
+        "final_content": "内容生成未能完成：工具调用轮数超过上限，请精简需求后重试。",
+        "messages": [
+          {
+            "role": "user",
+            "content": "查询素材201"
+          },
+          {
+            "role": "assistant",
+            "content": "内容生成未能完成：工具调用轮数超过上限，请精简需求后重试。"
+          }
+        ]
+      },
+      "events": [
+        {
+          "type": "stage",
+          "stage": "content_agent",
+          "status": "start"
+        },
+        {
+          "type": "tool_call",
+          "id": "call1",
+          "name": "get_asset",
+          "arguments": "{\"asset_id\":201}"
+        },
+        {
+          "type": "tool_result",
+          "id": "call1",
+          "name": "get_asset",
+          "ok": true,
+          "output": {
+            "id": 201
+          }
+        },
+        {
+          "type": "error",
+          "message": "工具调用轮数超过上限"
+        },
+        {
+          "type": "stage",
+          "stage": "content_agent",
+          "status": "done"
+        }
+      ],
+      "error": null
+    },
+    {
+      "id": "guard_012",
+      "category": "轮数上限终止",
+      "stage": "content_agent",
+      "limit": 2,
+      "checks": {
+        "调用轮数未超限": true,
+        "收到轮数上限事件": true,
+        "结果说明超限": true
+      },
+      "passed": true,
+      "model_rounds": 2,
+      "result": {
+        "final_content": "内容生成未能完成：工具调用轮数超过上限，请精简需求后重试。",
+        "messages": [
+          {
+            "role": "user",
+            "content": "查询素材201"
+          },
+          {
+            "role": "assistant",
+            "content": "内容生成未能完成：工具调用轮数超过上限，请精简需求后重试。"
+          }
+        ]
+      },
+      "events": [
+        {
+          "type": "stage",
+          "stage": "content_agent",
+          "status": "start"
+        },
+        {
+          "type": "tool_call",
+          "id": "call1",
+          "name": "get_asset",
+          "arguments": "{\"asset_id\":201}"
+        },
+        {
+          "type": "tool_result",
+          "id": "call1",
+          "name": "get_asset",
+          "ok": true,
+          "output": {
+            "id": 201
+          }
+        },
+        {
+          "type": "tool_call",
+          "id": "call1",
+          "name": "get_asset",
+          "arguments": "{\"asset_id\":201}"
+        },
+        {
+          "type": "tool_result",
+          "id": "call1",
+          "name": "get_asset",
+          "ok": true,
+          "output": {
+            "id": 201
+          }
+        },
+        {
+          "type": "error",
+          "message": "工具调用轮数超过上限"
+        },
+        {
+          "type": "stage",
+          "stage": "content_agent",
+          "status": "done"
+        }
+      ],
+      "error": null
+    },
+    {
+      "id": "guard_013",
+      "category": "轮数上限终止",
+      "stage": "content_agent",
+      "limit": 3,
+      "checks": {
+        "调用轮数未超限": true,
+        "收到轮数上限事件": true,
+        "结果说明超限": true
+      },
+      "passed": true,
+      "model_rounds": 3,
+      "result": {
+        "final_content": "内容生成未能完成：工具调用轮数超过上限，请精简需求后重试。",
+        "messages": [
+          {
+            "role": "user",
+            "content": "查询素材201"
+          },
+          {
+            "role": "assistant",
+            "content": "内容生成未能完成：工具调用轮数超过上限，请精简需求后重试。"
+          }
+        ]
+      },
+      "events": [
+        {
+          "type": "stage",
+          "stage": "content_agent",
+          "status": "start"
+        },
+        {
+          "type": "tool_call",
+          "id": "call1",
+          "name": "get_asset",
+          "arguments": "{\"asset_id\":201}"
+        },
+        {
+          "type": "tool_result",
+          "id": "call1",
+          "name": "get_asset",
+          "ok": true,
+          "output": {
+            "id": 201
+          }
+        },
+        {
+          "type": "tool_call",
+          "id": "call1",
+          "name": "get_asset",
+          "arguments": "{\"asset_id\":201}"
+        },
+        {
+          "type": "tool_result",
+          "id": "call1",
+          "name": "get_asset",
+          "ok": true,
+          "output": {
+            "id": 201
+          }
+        },
+        {
+          "type": "tool_call",
+          "id": "call1",
+          "name": "get_asset",
+          "arguments": "{\"asset_id\":201}"
+        },
+        {
+          "type": "tool_result",
+          "id": "call1",
+          "name": "get_asset",
+          "ok": true,
+          "output": {
+            "id": 201
+          }
+        },
+        {
+          "type": "error",
+          "message": "工具调用轮数超过上限"
+        },
+        {
+          "type": "stage",
+          "stage": "content_agent",
+          "status": "done"
+        }
+      ],
+      "error": null
+    },
+    {
+      "id": "guard_014",
+      "category": "轮数上限终止",
+      "stage": "content_agent",
+      "limit": 5,
+      "checks": {
+        "调用轮数未超限": true,
+        "收到轮数上限事件": true,
+        "结果说明超限": true
+      },
+      "passed": true,
+      "model_rounds": 5,
+      "result": {
+        "final_content": "内容生成未能完成：工具调用轮数超过上限，请精简需求后重试。",
+        "messages": [
+          {
+            "role": "user",
+            "content": "查询素材201"
+          },
+          {
+            "role": "assistant",
+            "content": "内容生成未能完成：工具调用轮数超过上限，请精简需求后重试。"
+          }
+        ]
+      },
+      "events": [
+        {
+          "type": "stage",
+          "stage": "content_agent",
+          "status": "start"
+        },
+        {
+          "type": "tool_call",
+          "id": "call1",
+          "name": "get_asset",
+          "arguments": "{\"asset_id\":201}"
+        },
+        {
+          "type": "tool_result",
+          "id": "call1",
+          "name": "get_asset",
+          "ok": true,
+          "output": {
+            "id": 201
+          }
+        },
+        {
+          "type": "tool_call",
+          "id": "call1",
+          "name": "get_asset",
+          "arguments": "{\"asset_id\":201}"
+        },
+        {
+          "type": "tool_result",
+          "id": "call1",
+          "name": "get_asset",
+          "ok": true,
+          "output": {
+            "id": 201
+          }
+        },
+        {
+          "type": "tool_call",
+          "id": "call1",
+          "name": "get_asset",
+          "arguments": "{\"asset_id\":201}"
+        },
+        {
+          "type": "tool_result",
+          "id": "call1",
+          "name": "get_asset",
+          "ok": true,
+          "output": {
+            "id": 201
+          }
+        },
+        {
+          "type": "tool_call",
+          "id": "call1",
+          "name": "get_asset",
+          "arguments": "{\"asset_id\":201}"
+        },
+        {
+          "type": "tool_result",
+          "id": "call1",
+          "name": "get_asset",
+          "ok": true,
+          "output": {
+            "id": 201
+          }
+        },
+        {
+          "type": "tool_call",
+          "id": "call1",
+          "name": "get_asset",
+          "arguments": "{\"asset_id\":201}"
+        },
+        {
+          "type": "tool_result",
+          "id": "call1",
+          "name": "get_asset",
+          "ok": true,
+          "output": {
+            "id": 201
+          }
+        },
+        {
+          "type": "error",
+          "message": "工具调用轮数超过上限"
+        },
+        {
+          "type": "stage",
+          "stage": "content_agent",
+          "status": "done"
+        }
+      ],
+      "error": null
+    },
+    {
+      "id": "guard_015",
+      "category": "工具错误回传与恢复",
+      "stage": "operations_agent",
+      "limit": 5,
+      "checks": {
+        "错误回传后成功": true,
+        "合法业务执行一次": true,
+        "错误作为tool消息回喂": true,
+        "最终生成回复": true
+      },
+      "passed": true,
+      "model_rounds": 3,
+      "result": {
+        "final_content": "查询到素材201",
+        "messages": [
+          {
+            "role": "user",
+            "content": "查询素材201"
+          },
+          {
+            "role": "assistant",
+            "content": "查询到素材201"
+          }
+        ]
+      },
+      "events": [
+        {
+          "type": "stage",
+          "stage": "operations_agent",
+          "status": "start"
+        },
+        {
+          "type": "tool_call",
+          "id": "call1",
+          "name": "get_asset",
+          "arguments": "{}"
+        },
+        {
+          "type": "tool_result",
+          "id": "call1",
+          "name": "get_asset",
+          "ok": false,
+          "output": "工具 get_asset 缺少必填参数：['asset_id']"
+        },
+        {
+          "type": "tool_call",
+          "id": "call1",
+          "name": "get_asset",
+          "arguments": "{\"asset_id\":201}"
+        },
+        {
+          "type": "tool_result",
+          "id": "call1",
+          "name": "get_asset",
+          "ok": true,
+          "output": {
+            "id": 201
+          }
+        },
+        {
+          "type": "token",
+          "text": "查询到素材201"
+        },
+        {
+          "type": "stage",
+          "stage": "operations_agent",
+          "status": "done"
+        }
+      ],
+      "error": null
+    },
+    {
+      "id": "guard_016",
+      "category": "工具错误回传与恢复",
+      "stage": "operations_agent",
+      "limit": 5,
+      "checks": {
+        "错误回传后成功": true,
+        "合法业务执行一次": true,
+        "错误作为tool消息回喂": true,
+        "最终生成回复": true
+      },
+      "passed": true,
+      "model_rounds": 3,
+      "result": {
+        "final_content": "查询到素材201",
+        "messages": [
+          {
+            "role": "user",
+            "content": "查询素材201"
+          },
+          {
+            "role": "assistant",
+            "content": "查询到素材201"
+          }
+        ]
+      },
+      "events": [
+        {
+          "type": "stage",
+          "stage": "operations_agent",
+          "status": "start"
+        },
+        {
+          "type": "tool_call",
+          "id": "call1",
+          "name": "get_asset",
+          "arguments": "{\"asset_id\":\"201\"}"
+        },
+        {
+          "type": "tool_result",
+          "id": "call1",
+          "name": "get_asset",
+          "ok": false,
+          "output": {
+            "code": "invalid_arguments",
+            "errors": [
+              {
+                "field": "asset_id",
+                "message": "Input should be a valid integer"
+              }
+            ]
+          }
+        },
+        {
+          "type": "tool_call",
+          "id": "call1",
+          "name": "get_asset",
+          "arguments": "{\"asset_id\":201}"
+        },
+        {
+          "type": "tool_result",
+          "id": "call1",
+          "name": "get_asset",
+          "ok": true,
+          "output": {
+            "id": 201
+          }
+        },
+        {
+          "type": "token",
+          "text": "查询到素材201"
+        },
+        {
+          "type": "stage",
+          "stage": "operations_agent",
+          "status": "done"
+        }
+      ],
+      "error": null
+    },
+    {
+      "id": "guard_017",
+      "category": "工具错误回传与恢复",
+      "stage": "operations_agent",
+      "limit": 5,
+      "checks": {
+        "错误回传后成功": true,
+        "合法业务执行一次": true,
+        "错误作为tool消息回喂": true,
+        "最终生成回复": true
+      },
+      "passed": true,
+      "model_rounds": 3,
+      "result": {
+        "final_content": "查询到素材201",
+        "messages": [
+          {
+            "role": "user",
+            "content": "查询素材201"
+          },
+          {
+            "role": "assistant",
+            "content": "查询到素材201"
+          }
+        ]
+      },
+      "events": [
+        {
+          "type": "stage",
+          "stage": "operations_agent",
+          "status": "start"
+        },
+        {
+          "type": "tool_call",
+          "id": "call1",
+          "name": "unknown",
+          "arguments": "{\"asset_id\":201}"
+        },
+        {
+          "type": "tool_result",
+          "id": "call1",
+          "name": "unknown",
+          "ok": false,
+          "output": "未知工具 unknown，可用工具：get_asset"
+        },
+        {
+          "type": "tool_call",
+          "id": "call1",
+          "name": "get_asset",
+          "arguments": "{\"asset_id\":201}"
+        },
+        {
+          "type": "tool_result",
+          "id": "call1",
+          "name": "get_asset",
+          "ok": true,
+          "output": {
+            "id": 201
+          }
+        },
+        {
+          "type": "token",
+          "text": "查询到素材201"
+        },
+        {
+          "type": "stage",
+          "stage": "operations_agent",
+          "status": "done"
+        }
+      ],
+      "error": null
+    },
+    {
+      "id": "guard_018",
+      "category": "工具错误回传与恢复",
+      "stage": "operations_agent",
+      "limit": 5,
+      "checks": {
+        "错误回传后成功": true,
+        "合法业务执行一次": true,
+        "错误作为tool消息回喂": true,
+        "最终生成回复": true
+      },
+      "passed": true,
+      "model_rounds": 3,
+      "result": {
+        "final_content": "查询到素材201",
+        "messages": [
+          {
+            "role": "user",
+            "content": "查询素材201"
+          },
+          {
+            "role": "assistant",
+            "content": "查询到素材201"
+          }
+        ]
+      },
+      "events": [
+        {
+          "type": "stage",
+          "stage": "operations_agent",
+          "status": "start"
+        },
+        {
+          "type": "tool_call",
+          "id": "call1",
+          "name": "get_asset",
+          "arguments": "{\"asset_id\":999}"
+        },
+        {
+          "type": "tool_result",
+          "id": "call1",
+          "name": "get_asset",
+          "ok": false,
+          "output": "工具 get_asset 执行失败：模拟素材不存在"
+        },
+        {
+          "type": "tool_call",
+          "id": "call1",
+          "name": "get_asset",
+          "arguments": "{\"asset_id\":201}"
+        },
+        {
+          "type": "tool_result",
+          "id": "call1",
+          "name": "get_asset",
+          "ok": true,
+          "output": {
+            "id": 201
+          }
+        },
+        {
+          "type": "token",
+          "text": "查询到素材201"
+        },
+        {
+          "type": "stage",
+          "stage": "operations_agent",
+          "status": "done"
+        }
+      ],
+      "error": null
+    },
+    {
+      "id": "guard_019",
+      "category": "流式工具参数拼接",
+      "stage": "operations_agent",
+      "limit": 5,
+      "checks": {
+        "参数片段正确拼接": true,
+        "工具成功": true
+      },
+      "passed": true,
+      "model_rounds": 2,
+      "result": {
+        "final_content": "查询到素材201",
+        "messages": [
+          {
+            "role": "user",
+            "content": "查询素材201"
+          },
+          {
+            "role": "assistant",
+            "content": "查询到素材201"
+          }
+        ]
+      },
+      "events": [
+        {
+          "type": "stage",
+          "stage": "operations_agent",
+          "status": "start"
+        },
+        {
+          "type": "tool_call",
+          "id": "call1",
+          "name": "get_asset",
+          "arguments": "{\"asset_id\":201}"
+        },
+        {
+          "type": "tool_result",
+          "id": "call1",
+          "name": "get_asset",
+          "ok": true,
+          "output": {
+            "id": 201
+          }
+        },
+        {
+          "type": "token",
+          "text": "查询到素材201"
+        },
+        {
+          "type": "stage",
+          "stage": "operations_agent",
+          "status": "done"
+        }
+      ],
+      "error": null
+    },
+    {
+      "id": "guard_020",
+      "category": "流式工具参数拼接",
+      "stage": "content_agent",
+      "limit": 5,
+      "checks": {
+        "参数片段正确拼接": true,
+        "工具成功": true
+      },
+      "passed": true,
+      "model_rounds": 2,
+      "result": {
+        "final_content": "查询到素材201",
+        "messages": [
+          {
+            "role": "user",
+            "content": "查询素材201"
+          },
+          {
+            "role": "assistant",
+            "content": "查询到素材201"
+          }
+        ]
+      },
+      "events": [
+        {
+          "type": "stage",
+          "stage": "content_agent",
+          "status": "start"
+        },
+        {
+          "type": "tool_call",
+          "id": "call1",
+          "name": "get_asset",
+          "arguments": "{\"asset_id\":201}"
+        },
+        {
+          "type": "tool_result",
+          "id": "call1",
+          "name": "get_asset",
+          "ok": true,
+          "output": {
+            "id": 201
+          }
+        },
+        {
+          "type": "token",
+          "text": "查询到素材201"
+        },
+        {
+          "type": "stage",
+          "stage": "content_agent",
+          "status": "done"
+        }
+      ],
+      "error": null
+    }
+  ]
+}
